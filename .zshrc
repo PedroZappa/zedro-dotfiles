@@ -32,3 +32,10 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+#
+### Zedro's Aliases
+#
+# Navigation
+alias ll='ls -al'
+# Compiling
+alias ccW='cc -Wall -Wextra -Werror'

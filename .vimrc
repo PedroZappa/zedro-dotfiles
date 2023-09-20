@@ -118,7 +118,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'preservim/nerdtree'
 
-    Plug 'dracula/vim', { 'as': 'dracula' }
+    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 call plug#end()
 
