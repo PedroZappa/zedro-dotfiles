@@ -13,4 +13,13 @@ gh repo clone PedroZappa/zedro-dotfiles ~/dotfiles
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
-``` 
+```
+
+- Setup vimrc
+
+```sh 
+mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
+
+cd ~/.vim/colors
+curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+```
