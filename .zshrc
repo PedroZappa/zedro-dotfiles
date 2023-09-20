@@ -36,6 +36,6 @@ unset __conda_setup
 ### Zedro's Aliases
 #
 # Navigation
-alias ll='ls -al'
+alias ll='ls -al --color'
 # Compiling
 alias ccW='cc -Wall -Wextra -Werror'
