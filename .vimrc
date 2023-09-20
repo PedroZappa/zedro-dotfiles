@@ -9,8 +9,9 @@
 " Zedro's Config           
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
 
-" BASE SETTINGS  ------------------------------------------------- {{{
-"1. important
+" OPTIONS 
+
+" 1. important------------------------------------------------- {{{
 " disable compatibility with vi which can cause unexpected issues 
 set nocp
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
@@ -21,9 +22,42 @@ filetype plugin on
 filetype indent on
 " Turn syntax highlighting on.
 syntax on
+
+" }}}
+
+" 2. moving around, searching and patterns------------------------------------------------- {{{
+set path+=**
+" While searching though a file incrementally highlight matching characters as you type.
+set incsearch
+" Ignore capital letters during search.
+set ignorecase
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
+set smartcase
+
+" }}}
+
+" 3. tags------------------------------------------------ {{{
+" Use binary search in tag files
+set tbs
+
+" }}}
+
+" 4. Display text------------------------------------------------- {{{
+" Do not let cursor scroll below or above N number of lines when scrolling.
+set scr=10
+set scrolloff=10
 " Add numbers to each line on the left-hand side.
 set number
 set relativenumber
+
+
+" }}}
+
+" 5. Syntax highlight and spelling ------------------------------------------------ {{{
+
+
+
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -37,27 +71,24 @@ set tabstop=4
 " Use space characters instead of tabs.
 set expandtab
 
+" Indent
+set ai
+set si
+
 " Do not save backup files.
 set nobackup
 
-" Do not let cursor scroll below or above N number of lines when scrolling.
-set scrolloff=10
 
 " Wrap lines.
 set wrap
 
-" While searching though a file incrementally highlight matching characters as you type.
-set incsearch
-" Ignore capital letters during search.
-set ignorecase
-" Override the ignorecase option if searching for capital letters.
-" This will allow you to search specifically for capital letters.
-set smartcase
 
 " Show partial command you type in the last line of the screen.
 set showcmd
 " Show the mode you are on the last line.
 set showmode
+" Show open buffers in tabs
+set showtabline=1
 
 " Show matching words during a search.
 set showmatch
@@ -77,19 +108,15 @@ set wildmode=list:longest
 " Wildmenu will ignore files with these extensions.
 "set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
+" NERDTree show hidden files
+let NERDTreeShowHidden=1
+
 colorscheme molokai 
 hi Normal guibg=NONE ctermbg=NONE
 " 2. Moving around, searching and patterns 
 " Search down into subfolders
 " Provides tab-completion for all file-related tasks
 set path+=**
-
-" 3. tags
-"
-" 4. Display Text
-"
-" Highlight on yank
-
 
 " TAG JUMPING
 " Create the `tags` file (may need to install ctags first)
@@ -100,10 +127,11 @@ let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 "
-"
 " MOUSE
 " allows the mouse to be used everywhere in Vim.
 set mouse=a
+set mousemodel=extend
+set mousehide=1
 
 " }}}
 
@@ -143,8 +171,8 @@ nnoremap <c-l> <c-w>l
 " CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
 noremap <c-up> <c-w>+
 noremap <c-down> <c-w>-
-noremap <c-left> <c-w>>
-noremap <c-right> <c-w><
+noremap <c-left> <c-w><
+noremap <c-right> <c-w>>
 
 " Press SPACE-p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
@@ -185,7 +213,11 @@ nnoremap <leader>e :NERDTreeToggle<cr>
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 
+" Codeium Mappings
+imap <script><silent><nowait><expr> <C-g> codeium#Accept()
+imap <C-x>   <Cmd>call codeium#Clear()<CR>"
 
+ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
