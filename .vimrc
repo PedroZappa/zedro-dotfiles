@@ -143,6 +143,17 @@ set mousehide=1
 " }}}
 
 " 11. Messages and info ------------------------------------------------ {{{
+" Show partial command you type in the last line of the screen.
+set showcmd
+" Show the mode you are on the last line.
+set showmode
+" Show cursor position below each window.
+set ru
+" use a visual bell for error messages
+set vb
+
+
+
 
 " }}}
 
@@ -183,7 +194,7 @@ set mousehide=1
 
 " }}}
 
-" 22. Running make and jumping to errors ------------------------------------------------ {{{
+" 22. Running make and jumping to errors ----------------------------------------- {{{
 
 " }}}
 
@@ -222,10 +233,6 @@ set nobackup
 set wrap
 
 
-" Show partial command you type in the last line of the screen.
-set showcmd
-" Show the mode you are on the last line.
-set showmode
 
 " Show matching words during a search.
 set showmatch
