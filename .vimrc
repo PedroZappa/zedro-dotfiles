@@ -69,13 +69,37 @@ set cuc
 " highlight the screen line of the cursor
 set cul
 
+" Highlight Spelling Mistakes 
+set spell
+" list of accepted languages
+set spl=en
+
+
 " }}}
 
-" 6. Multiple Windows ------------------------------------------------ {{{
+" 6. Multiple Windows (Status Line) ------------------------------------------------ {{{
+" Clear status line when vimrc is reloaded.
+set statusline=
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+" Show the status on the second to last line.
+set laststatus=2
+
+"  Identifies the preview window
+set previewwindow
+" Scroll bind : this window scrolls together with other bound windows
+set scb
+" Cursor bind : this window's cursor moves together with other bound windows
+set crb
 
 " }}}
 
 " 7. Multiple tab pages ------------------------------------------------ {{{
+
 
 " }}}
 
@@ -146,7 +170,6 @@ set cul
 
 " 25. Various ------------------------------------------------ {{{
 
-" }}}
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
@@ -396,19 +419,5 @@ endif
 
 " STATUS LINE ------------------------------------------------------------ {{{
 
-" Clear status line when vimrc is reloaded.
-set statusline=
-
-" Status line left side.
-set statusline+=\ %F\ %M\ %Y\ %R
-
-" Use a divider to separate the left side from the right side.
-set statusline+=%=
-
-" Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-
-" Show the status on the second to last line.
-set laststatus=2
 
 " }}}
