@@ -46,19 +46,46 @@ set tbs
 " 4. Display text------------------------------------------------- {{{
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scr=10
-set scrolloff=10
+" Set smoothscroll : scroll by screen line
+set sms
+set scrolloff=5
 " Add numbers to each line on the left-hand side.
 set number
 set relativenumber
+set numberwidth=4
 
 
 " }}}
 
 " 5. Syntax highlight and spelling ------------------------------------------------ {{{
 
+" }}}
 
+" 6. Multiple Windows ------------------------------------------------ {{{
 
+" }}}
 
+" 7. Multiple tab pages ------------------------------------------------ {{{
+
+" }}}
+
+" 8. terminal  ------------------------------------------------ {{{
+
+" }}}
+
+" 9. ------------------------------------------------ {{{
+
+" }}}
+
+" 10. ------------------------------------------------ {{{
+
+" }}}
+" 11. ------------------------------------------------ {{{
+
+" }}}
+" 12. ------------------------------------------------ {{{
+
+" }}}
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
 " Highlight cursor line underneath the cursor vertically.
@@ -225,6 +252,9 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Command Mode
 
+
+""" Terminal Mode
+tnoremap <Esc> <C-\><C-n>
 
 " Have nerdtree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
