@@ -51,6 +51,8 @@ set scr=10
 " Set smoothscroll : scroll by screen line
 set sms
 set scrolloff=5
+" Wrap lines.
+set wrap
 " Add numbers to each line on the left-hand side.
 set number
 set relativenumber
@@ -67,9 +69,9 @@ set hlsearch
 " UseGUI colors for the terminal
 set tgc
 " highlight the screen column of the cursor
-set cuc
+set cursorcolumn
 " highlight the screen line of the cursor
-set cul
+set cursorline
 
 " Highlight Spelling Mistakes 
 set spell
@@ -94,9 +96,9 @@ set laststatus=2
 "  Identifies the preview window
 set previewwindow
 " Scroll bind : this window scrolls together with other bound windows
-set scb
+"set scb
 " Cursor bind : this window's cursor moves together with other bound windows
-set crb
+"set crb
 
 " }}}
 
@@ -254,60 +256,49 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " }}}
 
 " 21. Executing external commands ------------------------------------------------ {{{
+" Name of the shell program used for external commands
+set sh=/usr/bin/fish
 
 " }}}
 
 " 22. Running make and jumping to errors ----------------------------------------- {{{
-
+" Program used for the ":make" command
+set makeprg=make
 " }}}
 
 " 23. Language Specific ------------------------------------------------ {{{
+" Insert Characters backwards (Off)
+set norevins
 
 " }}}
 
 " 24. Multi-Byte Characters ------------------------------------------------ {{{
+" character encoding used in Vim
+set encoding=utf-8
+" emoji characters are full width
+set emoji
 
 " }}}
 
 " 25. Various ------------------------------------------------ {{{
-
-
-" Highlight cursor line underneath the cursor horizontally.
-set cursorline
-" Highlight cursor line underneath the cursor vertically.
-set cursorcolumn
-
-
-
-" Do not save backup files.
-set nobackup
-
-
-" Wrap lines.
-set wrap
-
-
-
-
-
-
-
-" NERDTree show hidden files
-let NERDTreeShowHidden=1
-
-colorscheme molokai 
-hi Normal guibg=NONE ctermbg=NONE
+" Load plugin scripts when stating up
+set lpl
 
 " TAG JUMPING
 " Create the `tags` file (may need to install ctags first)
-command! MakeTags !ctags -R .
+"command! MakeTags !ctags -R .
 "
-" NETrw settings (file tree)
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-"
-" MOUSE
+" }}}
+
+
+" Vim Theme ------------------------------------------------ {{{
+" set color scheme
+colorscheme molokai 
+" set transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+
+" vim Theme
 
 " }}}
 
@@ -317,6 +308,8 @@ let g:netrw_liststyle=3     " tree view
 " Plugin code goes here.
 
 call plug#begin('~/.vim/plugged')
+
+    Plug 'christoomey/vim-tmux-navigator'
 
     Plug 'dense-analysis/ale'
 
@@ -328,6 +321,19 @@ call plug#end()
 
 " }}}
 
+" NERDTree Options ------------------------------------------------ {{{
+" NERDTree show hidden files
+let NERDTreeShowHidden=1
+
+
+" }}}
+
+" NETRW Options ------------------------------------------------ {{{
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+
+" }}}
 
 " MAPPINGS --------------------------------------------------------------- {{{
 
