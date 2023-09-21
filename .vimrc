@@ -164,20 +164,38 @@ set selection=inclusive
 " When to start Select mode instead of Visual mode
 set selectmode=mouse,key,cmd
 
-
-
-
 " }}}
 
 " 13. Editing text ------------------------------------------------ {{{
+" Maximum amount of changes that can be undone
+set undolevels=1000
+" automatically save and restore undo history
+set undofile
+" list of directories for undo files
+set undodir=~/.vim/backup
+" maximum number of lines to save for undo on a buffer reload
+set ur=10000
+" changes have been made and not written to a file
+set nomod
+" buffer is not to be written
+set noro
+" completeopt :  whether to use a popup menu for Insert mode completion
+set cot=menu,preview
+
+" Show matching words during a search.
+set showmatch
+
 
 " }}}
+
 " 14. Selecting text ------------------------------------------------ {{{
 
 " }}}
+
 " 15. Folding  ------------------------------------------------ {{{
 
 " }}}
+
 " 16. Diff Mode  ------------------------------------------------ {{{
 
 " }}}
@@ -242,8 +260,6 @@ set wrap
 
 
 
-" Show matching words during a search.
-set showmatch
 
 
 " Set the commands to save in history default number is 20.
