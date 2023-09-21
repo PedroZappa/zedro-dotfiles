@@ -58,6 +58,16 @@ set numberwidth=4
 " }}}
 
 " 5. Syntax highlight and spelling ------------------------------------------------ {{{
+" Set backgound color brightness
+set bg=dark
+" Use highlighting when doing a search.
+set hlsearch
+" UseGUI colors for the terminal
+set tgc
+" highlight the screen column of the cursor
+set cuc
+" highlight the screen line of the cursor
+set cul
 
 " }}}
 
@@ -73,19 +83,71 @@ set numberwidth=4
 
 " }}}
 
-" 9. ------------------------------------------------ {{{
+" 9. Using the Mouse ------------------------------------------------ {{{
 
 " }}}
 
-" 10. ------------------------------------------------ {{{
+" 10. Printing ------------------------------------------------ {{{
 
 " }}}
-" 11. ------------------------------------------------ {{{
+
+" 11. Messages and info ------------------------------------------------ {{{
 
 " }}}
-" 12. ------------------------------------------------ {{{
+
+" 12. Selecting text ------------------------------------------------ {{{
 
 " }}}
+
+" 13. Editing text ------------------------------------------------ {{{
+
+" }}}
+" 14. Selecting text ------------------------------------------------ {{{
+
+" }}}
+" 15. Folding  ------------------------------------------------ {{{
+
+" }}}
+" 16. Diff Mode  ------------------------------------------------ {{{
+
+" }}}
+
+" 17. Mapping ------------------------------------------------ {{{
+
+" }}}
+
+" 18. Reading and writing files ------------------------------------------------ {{{
+
+" }}}
+
+" 19. The swap file ------------------------------------------------ {{{
+
+" }}}
+
+" 20. Command line editing ------------------------------------------------ {{{
+
+" }}}
+
+" 21. Executing external commands ------------------------------------------------ {{{
+
+" }}}
+
+" 22. Running make and jumping to errors ------------------------------------------------ {{{
+
+" }}}
+
+" 23. Language Specific ------------------------------------------------ {{{
+
+" }}}
+
+" 24. Multi-Byte Characters ------------------------------------------------ {{{
+
+" }}}
+
+" 25. Various ------------------------------------------------ {{{
+
+" }}}
+
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline
 " Highlight cursor line underneath the cursor vertically.
@@ -120,8 +182,6 @@ set showtabline=1
 " Show matching words during a search.
 set showmatch
 
-" Use highlighting when doing a search.
-set hlsearch
 
 " Set the commands to save in history default number is 20.
 set history=1000
