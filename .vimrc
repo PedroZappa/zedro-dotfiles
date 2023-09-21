@@ -99,7 +99,10 @@ set crb
 " }}}
 
 " 7. Multiple tab pages ------------------------------------------------ {{{
-
+" Show open buffers in tabs
+set showtabline=1
+" Maximum number of tab pages to be opened
+set tabpagemax=10
 
 " }}}
 
@@ -199,8 +202,6 @@ set wrap
 set showcmd
 " Show the mode you are on the last line.
 set showmode
-" Show open buffers in tabs
-set showtabline=1
 
 " Show matching words during a search.
 set showmatch
