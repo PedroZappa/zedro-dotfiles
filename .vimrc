@@ -189,6 +189,22 @@ set showmatch
 " }}}
 
 " 14. Selecting text ------------------------------------------------ {{{
+" Set the number of spaces a tab stands for.
+set tabstop=4
+" Number of spaces used for each step of (auto)indent 
+set shiftwidth=4
+" Use space characters instead of tabs.
+set expandtab
+" Automatically set the Indent of a new line
+set autoindent
+" Do clever auto-indenting
+set smartindent 
+" Enable specific indenting for C code
+set cindent
+" Copy whitespace for indenting from previous line
+set copyindent
+
+
 
 " }}}
 
@@ -240,16 +256,7 @@ set cursorline
 " Highlight cursor line underneath the cursor vertically.
 set cursorcolumn
 
-" Set shift width to 4 spaces.
-set shiftwidth=4
-" Set tab width to 4 columns.
-set tabstop=4
-" Use space characters instead of tabs.
-set expandtab
 
-" Indent
-set ai
-set si
 
 " Do not save backup files.
 set nobackup
