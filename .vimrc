@@ -256,11 +256,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " }}}
 
-" 21. Executing external commands ------------------------------------------------ {{{
-" Name of the shell program used for external commands
-set sh=/usr/bin/fish
-
-" }}}
 
 " 22. Running make and jumping to errors ----------------------------------------- {{{
 " Program used for the ":make" command
@@ -315,7 +310,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'dense-analysis/ale'
 
     Plug 'preservim/nerdtree' |
-        \ Plug 'Xuyuanp/nerdtree-git-plugin'
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
     Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
@@ -328,19 +325,53 @@ call plug#end()
 " NERDTree Options ------------------------------------------------ {{{
 " show hidden files
 let NERDTreeShowHidden=1
+ 
+" Nerdfonts predefined map
+let g:NERDTreeGitStatusUseNerdFonts = 1 
+" Show ignored files, a heavy feature may cost much more time. default: 0
+let g:NERDTreeGitStatusShowIgnored = 1 
+" Show 'clean' indicator
+let g:NERDTreeGitStatusShowClean = 1 " default: 0
 
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-                    \ 'Modified'  :'✹',
-                    \ 'Staged'    :'✚',
-                    \ 'Untracked' :'✭',
-                    \ 'Renamed'   :'➜',
-                    \ 'Unmerged'  :'═',
-                    \ 'Deleted'   :'✖',
-                    \ 'Dirty'     :'✗',
-                    \ 'Ignored'   :'☒',
-                    \ 'Clean'     :'✔︎',
-                    \ 'Unknown'   :'?',
-                    \ }
+" NERDTree Syntax Highlighting
+" Disable unmatched folder and file icons having the same color as label 
+let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
+let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
+
+" Set NERDTree colors
+" Helper Colors codes
+let s:brown = "905532"
+let s:aqua =  "3AFFDB"
+let s:blue = "689FB6"
+let s:darkBlue = "44788E"
+let s:purple = "834F79"
+let s:lightPurple = "834F79"
+let s:red = "AE403F"
+let s:beige = "F5C06F"
+let s:yellow = "F09F17"
+let s:orange = "D4843E"
+let s:darkOrange = "F16529"
+let s:pink = "CB6F6F"
+let s:salmon = "EE6E73"
+let s:green = "8FAA54"
+let s:lightGreen = "31B53E"
+let s:white = "FFFFFF"
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+
+let git_files = ['.git', '.gitconfig', '.gitignore_global', '.gitignore', '.gitmodules', '.gitattributes', ".git_globals"]
+
+let g:NERDTreeExactMatchHighlightColor = {}
+for git_file in git_files
+    let g:NERDTreeExactMatchHighlightColor[git_file] = s:git_orange " sets the color for .gitignore files
+endfor
+
+"let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['c'] = s:blue " sets the color of .c files to blue
+
+" DevIcons Default Options
+let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
+let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
 
 " }}}
