@@ -190,6 +190,7 @@ set showmatch
 
 " }}}
 
+
 " 14. Selecting text ------------------------------------------------ {{{
 " Set the number of spaces a tab stands for.
 set tabstop=4
@@ -313,7 +314,8 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'dense-analysis/ale'
 
-    Plug 'preservim/nerdtree'
+    Plug 'preservim/nerdtree' |
+        \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
     Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
@@ -321,9 +323,24 @@ call plug#end()
 
 " }}}
 
+""" PLUGIN CONFIG
+
 " NERDTree Options ------------------------------------------------ {{{
-" NERDTree show hidden files
+" show hidden files
 let NERDTreeShowHidden=1
+
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                    \ 'Modified'  :'✹',
+                    \ 'Staged'    :'✚',
+                    \ 'Untracked' :'✭',
+                    \ 'Renamed'   :'➜',
+                    \ 'Unmerged'  :'═',
+                    \ 'Deleted'   :'✖',
+                    \ 'Dirty'     :'✗',
+                    \ 'Ignored'   :'☒',
+                    \ 'Clean'     :'✔︎',
+                    \ 'Unknown'   :'?',
+                    \ }
 
 
 " }}}
