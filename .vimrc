@@ -102,9 +102,9 @@ set tabpagemax=10
 
 " 8. terminal  ------------------------------------------------ {{{
 " name of the used terminal
-set term=tmux-256color
+set term=screen-256color
 " alias for 'term'
-set tty=tmux-256color
+set tty=screen-256color
 " Show info in the window title
 set title
 " Percentage of 'columns' used for the window title
@@ -245,6 +245,12 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " }}}
 
+" 21. Reading and writing files ------------------------------------------------ {{{
+" name of the shell program used for external commands 
+set shell=/usr/bin/fish
+
+" }}}
+
 " 22. Running make and jumping to errors ----------------------------------------- {{{
 " Program used for the ":make" command
 set makeprg=make
@@ -300,7 +306,7 @@ call plug#begin('~/.vim/plugged')
             \ Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+        Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
     Plug 'mbbill/undotree'
 
@@ -502,9 +508,7 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>"
  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
-" Git-fugitive
-" Open visual selection in the browser
-vnoremap <leader>gb :Gbrowse<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Command Mode
@@ -512,8 +516,6 @@ vnoremap <leader>gb :Gbrowse<CR>
 
 """ Terminal Mode
 tnoremap <Esc> <C-\><C-n>
-
-
 
 " }}}
 
