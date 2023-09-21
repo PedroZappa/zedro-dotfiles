@@ -81,18 +81,8 @@ set spl=en
 
 " }}}
 
-" 6. Multiple Windows (Status Line) ------------------------------------------------ {{{
-" Clear status line when vimrc is reloaded.
-set statusline=
-" Status line left side.
-set statusline+=\ %F\ %M\ %Y\ %R
-" Use a divider to separate the left side from the right side.
-set statusline+=%=
-" Status line right side.
-set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
-" Show the status on the second to last line.
-set laststatus=2
-
+" 6. Multiple Windows ------------------------------------------------ {{{
+" Check Status Line for more settings from this section
 "  Identifies the preview window
 set previewwindow
 " Scroll bind : this window scrolls together with other bound windows
@@ -294,8 +284,6 @@ colorscheme molokai
 hi Normal guibg=NONE ctermbg=NONE
 
 
-" vim Theme
-
 " }}}
 
 
@@ -316,11 +304,19 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
+    Plug 'mbbill/undotree'
+
+    Plug 'airblade/vim-gitgutter'
+
+    Plug 'vim-airline/vim-airline' |
+            \ Plug 'vim-airline/vim-airline-themes'
+
 call plug#end()
 
 " }}}
 
-""" PLUGIN CONFIG
+
+""" PLUGIN CONFIG """
 
 " NERDTree Options ------------------------------------------------ {{{
 " show hidden files
@@ -373,6 +369,9 @@ endfor
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
+" Have NERDTree ignore certain files and directories.
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+
 " Mitigation LAG
 " Disable all default file highlighting (you can use this to easily customize all the highlighting rules)
 "let g:NERDTreeSyntaxDisableDefaultExtensions = 1
@@ -391,8 +390,42 @@ let g:netrw_liststyle=3     " tree view
 
 " }}}
 
-" MAPPINGS --------------------------------------------------------------- {{{
+" gitgutter Options ------------------------------------------------ {{{
+" Use fontawesome icons as signs
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '>'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = '<'
 
+let g:gitgutter_override_sign_column_highlight = 1
+hi SignColumn guibg=NONE
+hi SignColumn ctermbg=NONE
+
+" Your vimrc
+function! GitStatus()
+    let [a,m,r] = GitGutterGetHunkSummary()
+    return printf('| Git: +%d ~%d -%d', a, m, r)
+endfunction
+
+" }}}
+
+" Airline Options ------------------------------------------------ {{{
+" Show open buffer tabline
+let g:airline#extensions#tabline#enabled = 1
+" Setup Separators
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+" Set Path formatter
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" Set Airline Theme
+let g:airline_theme='wombat'
+
+" }}}
+
+
+" MAPPINGS --------------------------------------------------------------- {{{
 """ Normal Mode
 " Set the space bar as the leader key.
 let mapleader = " "
@@ -445,6 +478,9 @@ nnoremap <f5> :w <CR>:!clear <CR>:!python3 % <CR>
 " Map the F3 key to toggle NERDTree open and close.
 nnoremap <leader>e :NERDTreeToggle<cr>
 
+" Undotree
+nnoremap <leader>u :UndotreeToggle<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Insert Mode 
@@ -467,8 +503,6 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>"
 """ Terminal Mode
 tnoremap <Esc> <C-\><C-n>
 
-" Have nerdtree ignore certain files and directories.
-let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
 
 
 " }}}
@@ -546,6 +580,18 @@ endif
 "
 
 " STATUS LINE ------------------------------------------------------------ {{{
-
+" Vanilla Vim Status line config
+" Clear status line when vimrc is reloaded.
+set statusline=
+" Status line left side.
+set statusline+=\ %F\ %M\ %Y\ %R
+" gitgutter status
+set statusline+=%{GitStatus()}
+" Use a divider to separate the left side from the right side.
+set statusline+=%=
+" Status line right side.
+set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
+" Show the status on the second to last line.
+set laststatus=2
 
 " }}}
