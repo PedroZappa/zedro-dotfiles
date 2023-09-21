@@ -454,6 +454,9 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w><
 noremap <c-right> <c-w>>
 
+" Search and Replace CMD
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
 " Press SPACE-p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
 " Set default printer:       lpoptions -d <printer_name>
@@ -518,7 +521,13 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>"
 
 
 """ Terminal Mode
+" Open a new empty terminal window
+nnoremap <leader>tr :terminal<CR>
+
+" Exit insert mode in terminal mode
 tnoremap <Esc> <C-\><C-n>
+" Terminate terminal and close pane
+tnoremap <Esc><Esc> <C-\><C-n>:bd!<CR>
 
 " }}}
 
