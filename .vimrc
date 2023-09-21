@@ -58,7 +58,6 @@ set number
 set relativenumber
 set numberwidth=4
 
-
 " }}}
 
 " 5. Syntax highlight and spelling ------------------------------------------------ {{{
@@ -83,7 +82,8 @@ set spl=en
 
 " 6. Multiple Windows ------------------------------------------------ {{{
 " Check Status Line for more settings from this section
-"  Identifies the preview window
+" ( ... )
+" Identifies the preview window
 set previewwindow
 " Scroll bind : this window scrolls together with other bound windows
 "set scb
@@ -330,7 +330,7 @@ call plug#end()
 " show hidden files
 let NERDTreeShowHidden=1
  
-" Nerdfonts predefined map
+" Use Nerdfonts predefined map
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 " Show ignored files, a heavy feature may cost much more time. default: 0
 let g:NERDTreeGitStatusShowIgnored = 1 
@@ -440,6 +440,15 @@ let mapleader = " "
 nnoremap <leader>\ ``
 " Source the current Vim configuration file
 nnoremap <leader><leader> :source $MYVIMRC<CR>
+" Call for Help
+nnoremap <leader>h :help<CR>
+" Close Help Buffer
+nnoremap <leader>ch :helpclose<CR>
+" Call for Options
+nnoremap <leader>o :options<CR>
+" Close active buffer
+nnoremap <leader>bd :bd!<CR>
+
 " Navigation Controls
 " You can split the window in Vim by typing :split or :vsplit.
 " Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
@@ -454,8 +463,16 @@ noremap <c-down> <c-w>-
 noremap <c-left> <c-w><
 noremap <c-right> <c-w>>
 
+" Folding and Unfolding
+" Open all folds
+nnoremap <leader>of :normal! zR<CR>
+" Close all folds
+nnoremap <leader>cf :normal! zM<CR>
+
 " Search and Replace CMD
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+" clear Search Highlight
+nnoremap <silent> <leader>cs :nohlsearch<CR>
 
 " Press SPACE-p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
@@ -495,11 +512,11 @@ nnoremap <C-n> :NERDTreeToggle<cr>
 nnoremap <leader>u :UndotreeToggle<CR>
 
 " Open vimagit pane
-nnoremap <leader>gs :Magit<CR>       " git status
+nnoremap <leader>gs :Magit<CR>
 
 " vim-fugitive
 " Show commits for every source line
-nnoremap <leader>gb :Git blame<CR>  " git blame
+nnoremap <leader>gb :Git blame<CR> 
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -508,21 +525,26 @@ nnoremap <leader>gb :Git blame<CR>  " git blame
 inoremap jj <Esc>
 
 " Codeium Mappings
-imap <script><silent><nowait><expr> <C-g> codeium#Accept()
-imap <C-x>   <Cmd>call codeium#Clear()<CR>"
+inoremap <script><silent><nowait><expr> <C-g> codeium#Accept()
+inoremap <M-q>   <Cmd>call codeium#CycleCompletions(1)<CR>
+inoremap <M-w>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+inoremap <M-x>   <Cmd>call codeium#Clear()<CR>"
 
- 
+" S 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
-
+          
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Command Mode
 
 
 """ Terminal Mode
-" Open a new empty terminal window
-nnoremap <leader>tr :terminal<CR>
+" Open a new empty horizontal terminal window
+nnoremap <leader>tr :belowright terminal<CR>
+" Open a new vertical terminal window
+nnoremap <leader>tv :vertical terminal<CR><C-W>L
+
 
 " Exit insert mode in terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -611,6 +633,8 @@ set statusline=
 set statusline+=\ %F\ %M\ %Y\ %R
 " gitgutter status
 set statusline+=%{GitStatus()}
+" Codeium Status
+set statusline+=\ \|\ \{…\}%3{codeium#GetStatusString()}
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
 " Status line right side.
@@ -619,4 +643,3 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 
 " }}}
-
