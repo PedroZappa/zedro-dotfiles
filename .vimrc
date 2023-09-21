@@ -311,10 +311,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline' |
             \ Plug 'vim-airline/vim-airline-themes'
 
+    Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 " }}}
-
 
 """ PLUGIN CONFIG """
 
@@ -595,3 +596,4 @@ set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 
 " }}}
+
