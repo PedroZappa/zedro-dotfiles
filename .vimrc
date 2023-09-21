@@ -159,6 +159,14 @@ set vb
 
 " 12. Selecting text ------------------------------------------------ {{{
 
+" How selecting text behaves
+set selection=inclusive
+" When to start Select mode instead of Visual mode
+set selectmode=mouse,key,cmd
+
+
+
+
 " }}}
 
 " 13. Editing text ------------------------------------------------ {{{
