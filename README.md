@@ -13,6 +13,8 @@ gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux/.tmux.conf.local
+
 ```
 
 - Setup vimrc
