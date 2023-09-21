@@ -205,7 +205,6 @@ set cindent
 set copyindent
 
 
-
 " }}}
 
 " 15. Folding  ------------------------------------------------ {{{
@@ -217,18 +216,40 @@ set copyindent
 " }}}
 
 " 17. Mapping ------------------------------------------------ {{{
+" recognize mappings in mapped keys
+set remap
+" allow timing out halfway into a mapping
+set timeout
 
 " }}}
 
 " 18. Reading and writing files ------------------------------------------------ {{{
+" automatically write a file when leaving a modified buffer
+set autowrite
+" Automatically read a file when it was modified outside of Vim
+set autoread
+
 
 " }}}
 
 " 19. The swap file ------------------------------------------------ {{{
+" Do not use a swap file for this buffer
+set noswf
+
 
 " }}}
 
 " 20. Command line editing ------------------------------------------------ {{{
+" Set the commands to save in history default number is 20.
+set history=1000
+" Auto-complete
+" Make wildmenu behave like similar to Bash completion.
+set wildmode=list:longest
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " }}}
 
@@ -269,17 +290,7 @@ set wrap
 
 
 
-" Set the commands to save in history default number is 20.
-set history=1000
 
-" Auto-complete
-" Enable auto completion menu after pressing TAB.
-set wildmenu
-" Make wildmenu behave like similar to Bash completion.
-set wildmode=list:longest
-" There are certain files that we would never want to edit with Vim.
-" Wildmenu will ignore files with these extensions.
-"set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " NERDTree show hidden files
 let NERDTreeShowHidden=1
