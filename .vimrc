@@ -11,6 +11,7 @@
 " OPTIONS 
 
 " 1. important------------------------------------------------- {{{
+"
 " disable compatibility with vi which can cause unexpected issues 
 set nocp
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
@@ -305,6 +306,8 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'airblade/vim-gitgutter'
     Plug 'jreybert/vimagit'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-rhubarb'
 
     Plug 'vim-airline/vim-airline' |
             \ Plug 'vim-airline/vim-airline-themes'
@@ -479,10 +482,13 @@ nnoremap <leader>e :NERDTreeToggle<cr>
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
+
 " Open vimagit pane
 nnoremap <leader>gs :Magit<CR>       " git status
 
-
+" vim-fugitive
+" Show commits for every source line
+nnoremap <leader>gb :Git blame<CR>  " git blame
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Insert Mode 
@@ -496,7 +502,9 @@ imap <C-x>   <Cmd>call codeium#Clear()<CR>"
  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
-
+" Git-fugitive
+" Open visual selection in the browser
+vnoremap <leader>gb :Gbrowse<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Command Mode
