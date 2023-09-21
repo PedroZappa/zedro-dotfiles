@@ -26,6 +26,8 @@ syntax on
 " }}}
 
 " 2. moving around, searching and patterns------------------------------------------------- {{{
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
 set path+=**
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
@@ -107,6 +109,19 @@ set tabpagemax=10
 " }}}
 
 " 8. terminal  ------------------------------------------------ {{{
+" name of the used terminal
+set term=tmux-256color
+" alias for 'term'
+set tty=tmux-256color
+" Show info in the window title
+set title
+" Percentage of 'columns' used for the window title
+set titlelen=66
+" string to be used for the window title
+set titlestring=Zedro's\ Term
+" string to restore the title to when exiting Vim
+set titleold=See\ you\ in\ another\ life\ Zedro!
+
 
 " }}}
 
@@ -224,10 +239,6 @@ let NERDTreeShowHidden=1
 
 colorscheme molokai 
 hi Normal guibg=NONE ctermbg=NONE
-" 2. Moving around, searching and patterns 
-" Search down into subfolders
-" Provides tab-completion for all file-related tasks
-set path+=**
 
 " TAG JUMPING
 " Create the `tags` file (may need to install ctags first)
