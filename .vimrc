@@ -121,11 +121,20 @@ set titlelen=66
 set titlestring=Zedro's\ Term
 " string to restore the title to when exiting Vim
 set titleold=See\ you\ in\ another\ life\ Zedro!
+" set the text of the icon for this window
+set icon
 
 
 " }}}
 
 " 9. Using the Mouse ------------------------------------------------ {{{
+" allows the mouse to be used everywhere in Vim.
+set mouse=a
+" What the right mouse button is used for
+set mousemodel=extend
+" Hide the mouse pointer while typing
+set mousehide=1
+
 
 " }}}
 
@@ -250,10 +259,6 @@ let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 "
 " MOUSE
-" allows the mouse to be used everywhere in Vim.
-set mouse=a
-set mousemodel=extend
-set mousehide=1
 
 " }}}
 
