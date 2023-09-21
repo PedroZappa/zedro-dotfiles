@@ -432,13 +432,14 @@ let g:airline_theme='wombat'
 
 " }}}
 
-
 " MAPPINGS --------------------------------------------------------------- {{{
 """ Normal Mode
 " Set the space bar as the leader key.
 let mapleader = " "
 " Press SPACE-\ to jump back to the last cursor position.
 nnoremap <leader>\ ``
+" Source the current Vim configuration file
+nnoremap <leader><leader> :source $MYVIMRC<CR>
 " Navigation Controls
 " You can split the window in Vim by typing :split or :vsplit.
 " Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
@@ -485,6 +486,7 @@ nnoremap <f5> :w <CR>:!clear <CR>:!python3 % <CR>
 " NERDTree specific mappings.
 " Map the F3 key to toggle NERDTree open and close.
 nnoremap <leader>e :NERDTreeToggle<cr>
+nnoremap <C-n> :NERDTreeToggle<cr>
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -495,6 +497,7 @@ nnoremap <leader>gs :Magit<CR>       " git status
 " vim-fugitive
 " Show commits for every source line
 nnoremap <leader>gb :Git blame<CR>  " git blame
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Insert Mode 
