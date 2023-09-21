@@ -306,7 +306,7 @@ call plug#begin('~/.vim/plugged')
             \ Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-        Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
     Plug 'mbbill/undotree'
 

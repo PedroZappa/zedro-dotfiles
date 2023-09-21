@@ -3,7 +3,7 @@
 - Clone repo into .dotfiles folder in home directory.
 
 ```sh 
-gh repo clone PedroZappa/zedro-dotfiles ~/dotfiles
+gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
 ``` 
 
 - Create symlinks to .dotfiles in home directory.
