@@ -8,7 +8,6 @@
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 " Zedro's Config           
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
-
 " OPTIONS 
 
 " 1. important------------------------------------------------- {{{
@@ -180,7 +179,6 @@ set showmatch
 
 " }}}
 
-
 " 14. Selecting text ------------------------------------------------ {{{
 " Set the number of spaces a tab stands for.
 set tabstop=4
@@ -246,7 +244,6 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " }}}
 
-
 " 22. Running make and jumping to errors ----------------------------------------- {{{
 " Program used for the ":make" command
 set makeprg=make
@@ -307,6 +304,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'
 
     Plug 'airblade/vim-gitgutter'
+    Plug 'jreybert/vimagit'
 
     Plug 'vim-airline/vim-airline' |
             \ Plug 'vim-airline/vim-airline-themes'
@@ -481,6 +479,9 @@ nnoremap <leader>e :NERDTreeToggle<cr>
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
+" Open vimagit pane
+nnoremap <leader>gs :Magit<CR>       " git status
+
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
