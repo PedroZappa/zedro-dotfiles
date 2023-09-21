@@ -373,6 +373,14 @@ endfor
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
+" Mitigation LAG
+" Disable all default file highlighting (you can use this to easily customize all the highlighting rules)
+"let g:NERDTreeSyntaxDisableDefaultExtensions = 1
+"let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+"let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+" Enable specific file extensions
+"let g:NERDTreeSyntaxEnabledExtensions = ['lua', 'c', 'h', 'c++', 'cpp', 'php', 'rb', 'js', 'css', 'html'] " enabled extensions with default colors
+"let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
 
 " }}}
 
