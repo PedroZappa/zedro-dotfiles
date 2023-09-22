@@ -363,10 +363,13 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf
+
 # replace C-b by C-a instead of using both prefixes
  set -gu prefix2
  unbind C-a
- unbind C-b
+ unbind C-r
 # set -g prefix C-a
 # bind C-a send-prefix
 
@@ -417,13 +420,27 @@ tmux_conf_uninstall_plugins_on_reload=true
 
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
-set -g @plugin 'christoomey/vim-tmux-navigator'
+#set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'dracula/tmux'
+# dracula customizations
+#set -g @dracula-plugins "battery weather time"
+set -g @dracula-show-left-icon session
+set -g @dracula-border-contrast true
+set -g @dracula-show-powerline true
+set -g @dracula-show-flags true
+set -g @dracula-cpu-display-load true
+set -g @dracula-cpu-usage-label "CPU"
+# default is ✓. Avoid using non unicode characters that bash uses like $, * and !
+set -g @dracula-git-show-current-symbol ✓
+set -g @dracula-show-location false
+set -g @dracula-show-fahrenheit true 
+#set -g @dracula-military-time true
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-cpu'
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
-
+set -g @plugin 'christoomey/vim-tmux-navigator'
 
 # -- custom variables ----------------------------------------------------------
 
