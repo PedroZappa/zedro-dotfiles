@@ -178,9 +178,9 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_attr="none"
-tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
 #tmux_conf_theme_window_status_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
-#tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
+tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
 
 # window current status style
 #   - built-in variables are:
@@ -195,9 +195,9 @@ tmux_conf_theme_window_status_format="#I #W#{?#{||:#{window_bell_flag},#{window_
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
 tmux_conf_theme_window_status_current_attr="bold"
-tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
+#tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
 #tmux_conf_theme_window_status_current_format="#{circled_window_index} #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,!,}#{?window_zoomed_flag,Z,}"
-#tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
+tmux_conf_theme_window_status_current_format="#I #W#{?#{||:#{window_bell_flag},#{window_zoomed_flag}}, ,}#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
 
 # window activity status style
 tmux_conf_theme_window_status_activity_fg="default"
@@ -295,10 +295,10 @@ tmux_conf_theme_synchronized_bg="none"
 tmux_conf_theme_synchronized_attr="none"
 
 # battery bar symbols
-tmux_conf_battery_bar_symbol_full="◼"
-tmux_conf_battery_bar_symbol_empty="◻"
-#tmux_conf_battery_bar_symbol_full="♥"
-#tmux_conf_battery_bar_symbol_empty="·"
+#tmux_conf_battery_bar_symbol_full="◼"
+#tmux_conf_battery_bar_symbol_empty="◻"
+tmux_conf_battery_bar_symbol_full="♥"
+tmux_conf_battery_bar_symbol_empty="·"
 
 # battery bar length (in number of symbols), possible values are:
 #   - auto
@@ -327,10 +327,10 @@ tmux_conf_battery_vbar_palette="gradient"
 #tmux_conf_battery_vbar_palette="#d70000,#ff5f00,#5fff00"  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
-tmux_conf_battery_status_charging="↑"       # U+2191
-tmux_conf_battery_status_discharging="↓"    # U+2193
-#tmux_conf_battery_status_charging="🔌"     # U+1F50C
-#tmux_conf_battery_status_discharging="🔋"  # U+1F50B
+#tmux_conf_battery_status_charging="↑"       # U+2191
+#tmux_conf_battery_status_discharging="↓"    # U+2193
+tmux_conf_battery_status_charging="🔌"     # U+1F50C
+tmux_conf_battery_status_discharging="🔋"  # U+1F50B
 
 # clock style (when you hit <prefix> + t)
 # you may want to use %I:%M %p in place of %R in tmux_conf_theme_status_right
@@ -346,11 +346,12 @@ tmux_conf_theme_clock_style="24"
 #   - disabled
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
+
 
 # increase history size
 set -g history-limit 10000
@@ -370,8 +371,6 @@ bind r source-file ~/.tmux.conf
  set -gu prefix2
  unbind C-a
  unbind C-r
-# set -g prefix C-a
-# bind C-a send-prefix
 
 # Replace C-b by C-Space instead
 unbind C-b
@@ -423,24 +422,58 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'dracula/tmux'
 # dracula customizations
-#set -g @dracula-plugins "battery weather time"
-set -g @dracula-show-left-icon session
+set -g @dracula-plugins "cpu-usage gpu-usage ram-usage network-ping battery weather git time" 
+# Network stats options
+set -g @dracula-network-bandwidth wlan0
+set -g @dracula-network-bandwidth-interval 0
+set -g @dracula-network-bandwidth-show-interface true
+set -g @dracula-ping-server "google.com"
+set -g @dracula-ping-rate 5
+
+# system stats options
+set -g @dracula-cpu-usage-label "CPU"
+set -g @dracula-cpu-display-load false
+set -g @dracula-show-left-icon smiley 
+set -g @dracula-left-icon-padding 1
 set -g @dracula-border-contrast true
 set -g @dracula-show-powerline true
 set -g @dracula-show-flags true
-set -g @dracula-cpu-display-load true
-set -g @dracula-cpu-usage-label "CPU"
+set -g @dracula-show-empty-plugins false
+
+# Time, Location & weather Options
+#set -g @dracula-day-month true
+#set -g @dracula-military-time true
+#set -g @dracula-show-fahrenheit true 
+#set -g @dracula-showlocation true
+
+
+# git Options
+set -g @dracula-git-disable-status true
 # default is ✓. Avoid using non unicode characters that bash uses like $, * and !
 set -g @dracula-git-show-current-symbol ✓
-set -g @dracula-show-location false
-set -g @dracula-show-fahrenheit true 
-#set -g @dracula-military-time true
+# default is unicode !. Avoid bash special characters
+set -g @dracula-git-show-diff-symbol !
+# default is unicode no message
+set -g @dracula-git-no-repo-message ""
+# default is false
+set -g @dracula-git-no-untracked-files true
+# default is false
+set -g @dracula-git-show-remote-status true
+
+
+
 #set -g @plugin 'tmux-plugins/tmux-copycat'
-#set -g @plugin 'tmux-plugins/tmux-cpu'
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
-#set -g @plugin 'tmux-plugins/tmux-continuum'
-#set -g @continuum-restore 'on'
+
+# Continuum & Options
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+set -g @dracula-continuum-mode countdown
+set -g @dracula-continuum-time-threshold 60
+
+
 set -g @plugin 'christoomey/vim-tmux-navigator'
+
 
 # -- custom variables ----------------------------------------------------------
 
