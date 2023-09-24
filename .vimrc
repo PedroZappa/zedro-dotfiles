@@ -258,7 +258,7 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 " 21. Reading and writing files ------------------------------------------------ {{{
 " name of the shell program used for external commands 
-set shell=/usr/bin/fish
+set shell=zsh
 
 " }}}
 
@@ -312,7 +312,7 @@ call plug#begin('~/.vim/plugged')
             \ Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+    " Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
     Plug 'mbbill/undotree'
 
@@ -330,12 +330,14 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'https://github.com/preservim/tagbar'
 
-call plug#end()
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+call plug#end()
 
 " }}}
 
-" Vim Theme ------------------------------------------------ {{{
+"
+" Vim THEME ------------------------------------------------ {{{
 "
 " set color scheme
 " colorscheme molokai 
@@ -346,7 +348,6 @@ hi Normal guibg=NONE ctermbg=NONE
 
 
 " }}}
-
 
 
 """ PLUGIN CONFIG """
@@ -408,8 +409,8 @@ let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', 
 " Mitigation LAG
 " Disable all default file highlighting (you can use this to easily customize all the highlighting rules)
 "let g:NERDTreeSyntaxDisableDefaultExtensions = 1
-"let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
-"let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
+let g:NERDTreeSyntaxDisableDefaultExactMatches = 1
+let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
 " Enable specific file extensions
 "let g:NERDTreeSyntaxEnabledExtensions = ['lua', 'c', 'h', 'c++', 'cpp', 'php', 'rb', 'js', 'css', 'html'] " enabled extensions with default colors
 "let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
@@ -454,6 +455,14 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Set Airline Theme
 let g:airline_theme='wombat'
+
+" }}}
+
+" CoC Config ------------------------------------------------ {{{
+" Get correct syntax highlighting
+  autocmd FileType json syntax match Comment +\/\/.\+$+
+
+
 
 " }}}
 

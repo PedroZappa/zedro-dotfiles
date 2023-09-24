@@ -9,6 +9,7 @@ gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
 - Create symlinks to .dotfiles in home directory.
 
 ```sh 
+~
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ```
