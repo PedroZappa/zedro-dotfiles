@@ -12,6 +12,8 @@
 
 " 1. important------------------------------------------------- {{{
 "
+" Initialize Vim to its default
+source $VIMRUNTIME/defaults.vim
 " disable compatibility with vi which can cause unexpected issues 
 set nocp
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
@@ -94,7 +96,7 @@ set previewwindow
 
 " 7. Multiple tab pages ------------------------------------------------ {{{
 " Show open buffers in tabs
-set showtabline=1
+set showtabline=2
 " Maximum number of tab pages to be opened
 set tabpagemax=10
 
@@ -140,11 +142,11 @@ set showcmd
 " Show the mode you are on the last line.
 set showmode
 " Show cursor position below each window.
-set ru
+set ruler
 " use a visual bell for error messages
-set vb
-
-
+set visualbell
+" ring the bell for error messages
+set errorbells
 
 
 " }}}
@@ -227,7 +229,16 @@ set autoread
 " 19. The swap file ------------------------------------------------ {{{
 " Do not use a swap file for this buffer
 set noswf
-
+" Tells vim to keep a backup copy of a file when overwritting it. But not on
+" VMS system, since it keepss versions of old files already.
+if has("vms")
+    set nobackup
+else
+    set backup
+    if has('persistent_undo')
+        set undofile
+    endif
+endif
 
 " }}}
 
@@ -316,6 +327,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
 
     Plug 'dracula/vim', { 'as': 'dracula' }
+
+    Plug 'https://github.com/preservim/tagbar'
 
 call plug#end()
 
@@ -518,7 +531,6 @@ nnoremap <f5> :w <CR>:!clear <CR>:!python3 % <CR>
 " NERDTree specific mappings.
 " Map the F3 key to toggle NERDTree open and close.
 nnoremap <leader>e :NERDTreeToggle<cr>
-nnoremap <C-n> :NERDTreeToggle<cr>
 
 " Undotree
 nnoremap <leader>u :UndotreeToggle<CR>
@@ -530,6 +542,8 @@ nnoremap <leader>gs :Magit<CR>
 " Show commits for every source line
 nnoremap <leader>gb :Git blame<CR> 
 
+" tagbar mappings
+nnoremap <leader>tb :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Insert Mode 

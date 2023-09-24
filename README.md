@@ -9,9 +9,6 @@ gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
 - Create symlinks to .dotfiles in home directory.
 
 ```sh 
-~
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ```
@@ -26,7 +23,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use 
 ```
 
-- Setup `.vimrc`
+# Setup `.vimrc`
 
 
 ```sh 

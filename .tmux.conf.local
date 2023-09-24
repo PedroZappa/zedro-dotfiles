@@ -444,7 +444,7 @@ set -g @dracula-show-empty-plugins false
 #set -g @dracula-day-month true
 #set -g @dracula-military-time true
 #set -g @dracula-show-fahrenheit true 
-#set -g @dracula-showlocation true
+set -g @dracula-showlocation false 
 
 
 # git Options
