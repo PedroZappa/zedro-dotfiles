@@ -16,7 +16,17 @@ ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ```
 
-- Setup vimrc
+# Setup `zsh` plugins 
+
+Clone `zsh_autosuggestions` & `zsh-syntax-highlighting` into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+```
+
+- Setup `.vimrc`
+
 
 ```sh 
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged

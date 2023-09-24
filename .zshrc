@@ -47,7 +47,7 @@ zstyle ':omz:update' frequency 13
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -76,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git sudo copyfile copybuffer dirhistory zsh-autosuggestions web-search jsontools you-should-use emoji)
+plugins=(git sudo copyfile copybuffer dirhistory zsh-autosuggestions zsh-syntax-highlighting web-search jsontools you-should-use emoji)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,7 +113,6 @@ alias ll='ls -al --color'
 alias ccW='cc -Wall -Wextra -Werror'
 
 ### Source Plugins
-source /home/zedr0/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
