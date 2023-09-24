@@ -312,7 +312,7 @@ call plug#begin('~/.vim/plugged')
             \ Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-    " Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
     Plug 'mbbill/undotree'
 
@@ -329,8 +329,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' }
 
     Plug 'https://github.com/preservim/tagbar'
-
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -458,13 +456,13 @@ let g:airline_theme='wombat'
 
 " }}}
 
-" CoC Config ------------------------------------------------ {{{
-" Get correct syntax highlighting
-  autocmd FileType json syntax match Comment +\/\/.\+$+
-
-
+" NERDCommenter Options ------------------------------------------------ {{{
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
 
 " }}}
+
+
 
 " MAPPINGS --------------------------------------------------------------- {{{
 """ Normal Mode
@@ -484,12 +482,6 @@ nnoremap <leader>o :options<CR>
 nnoremap <leader>bd :bd!<CR>
 
 " Navigation Controls
-" You can split the window in Vim by typing :split or :vsplit.
-" Navigate the split view easier by pressing CTRL+j, CTRL+k, CTRL+h, or CTRL+l.
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 " Resize split windows using arrow keys by pressing:
 " CTRL+UP, CTRL+DOWN, CTRL+LEFT, or CTRL+RIGHT.
 noremap <c-up> <c-w>+
@@ -565,7 +557,7 @@ inoremap <M-q>   <Cmd>call codeium#CycleCompletions(1)<CR>
 inoremap <M-w>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 inoremap <M-x>   <Cmd>call codeium#Clear()<CR>"
 
-" S 
+"  
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
