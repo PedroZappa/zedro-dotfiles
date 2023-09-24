@@ -277,13 +277,18 @@ set lpl
 " TAG JUMPING
 " Create the `tags` file (may need to install ctags first)
 "command! MakeTags !ctags -R .
-"
+
+" Trying to reduce LAG
+set timeoutlen=1000
+set ttimeoutlen=0
+
 " }}}
+"
 
 
 " Vim Theme ------------------------------------------------ {{{
 " set color scheme
-colorscheme molokai 
+colorscheme dracula 
 " set transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
@@ -320,7 +325,10 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'tpope/vim-commentary'
 
+    Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
+
 
 " }}}
 
@@ -329,7 +337,7 @@ call plug#end()
 " NERDTree Options ------------------------------------------------ {{{
 " show hidden files
 let NERDTreeShowHidden=1
- 
+
 " Use Nerdfonts predefined map
 let g:NERDTreeGitStatusUseNerdFonts = 1 
 " Show ignored files, a heavy feature may cost much more time. default: 0
@@ -534,7 +542,7 @@ inoremap <M-x>   <Cmd>call codeium#Clear()<CR>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
-          
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Command Mode
 
@@ -615,10 +623,10 @@ if has('gui_running')
     " <Bar> is the pipe character.
     " <CR> is the enter key.
     nnoremap <F4> :if &guioptions=~#'mTr'<Bar>
-        \set guioptions-=mTr<Bar>
-        \else<Bar>
-        \set guioptions+=mTr<Bar>
-        \endif<CR>
+                \set guioptions-=mTr<Bar>
+                \else<Bar>
+                \set guioptions+=mTr<Bar>
+                \endif<CR>
 
 endif
 
