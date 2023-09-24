@@ -73,7 +73,7 @@ set cursorcolumn
 set cursorline
 
 " Highlight Spelling Mistakes 
-set spell
+set nospell
 " list of accepted languages
 set spl=en
 
@@ -286,16 +286,6 @@ set ttimeoutlen=0
 "
 
 
-" Vim Theme ------------------------------------------------ {{{
-" set color scheme
-colorscheme dracula 
-" set transparent background
-hi Normal guibg=NONE ctermbg=NONE
-
-
-" }}}
-
-
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
@@ -331,6 +321,20 @@ call plug#end()
 
 
 " }}}
+
+" Vim Theme ------------------------------------------------ {{{
+"
+" set color scheme
+" colorscheme molokai 
+colorscheme dracula
+
+" set transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+
+" }}}
+
+
 
 """ PLUGIN CONFIG """
 
