@@ -68,14 +68,20 @@ set bg=dark
 " Use highlighting when doing a search.
 set hlsearch
 " UseGUI colors for the terminal
-set tgc
+set termguicolors
 " highlight the screen column of the cursor
 set cursorcolumn
 " highlight the screen line of the cursor
-set cursorline
+" Enable cursorline in Normal mode
+autocmd InsertEnter * set nocursorline
+" Disable cursorline in Insert mode
+autocmd InsertLeave * set cursorline
 
 " Highlight Spelling Mistakes 
 set nospell
+" Enable spell check for .md and .txt files
+autocmd BufNewFile,BufRead *.md,*.txt setlocal spell
+
 " list of accepted languages
 set spl=en
 
@@ -86,7 +92,7 @@ set spl=en
 " Check Status Line for more settings from this section
 " ( ... )
 " Identifies the preview window
-set previewwindow
+" set previewwindow
 " Scroll bind : this window scrolls together with other bound windows
 "set scb
 " Cursor bind : this window's cursor moves together with other bound windows
@@ -156,7 +162,7 @@ set errorbells
 " How selecting text behaves
 set selection=inclusive
 " When to start Select mode instead of Visual mode
-set selectmode=mouse,key,cmd
+" set selectmode=mouse,key,cmd
 
 " }}}
 
@@ -196,7 +202,7 @@ set smartindent
 " Enable specific indenting for C code
 set cindent
 " Copy whitespace for indenting from previous line
-set copyindent
+" set copyindent
 
 
 " }}}
@@ -330,23 +336,11 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'https://github.com/preservim/tagbar'
 
+    Plug 'BourgeoisBear/clrzr' 
+
 call plug#end()
 
 " }}}
-
-"
-" Vim THEME ------------------------------------------------ {{{
-"
-" set color scheme
-" colorscheme molokai 
-colorscheme dracula
-
-" set transparent background
-hi Normal guibg=NONE ctermbg=NONE
-
-
-" }}}
-
 
 """ PLUGIN CONFIG """
 
@@ -452,7 +446,11 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Set Airline Theme
-let g:airline_theme='wombat'
+" let g:airline_theme='wombat'
+let g:airline_theme='powerlineish'
+" let g:airline_theme='jellybeans'
+" let g:airline_theme='minimalist'
+" let g:airline_theme='term'
 
 " }}}
 
@@ -462,6 +460,23 @@ let g:tmux_navigator_save_on_switch = 2
 
 " }}}
 
+" clrzr Options ------------------------------------------------ {{{
+
+" }}}
+
+
+
+" Vim THEME ------------------------------------------------ {{{
+"
+" set color scheme
+" colorscheme molokai 
+colorscheme dracula
+
+" set transparent background
+hi Normal guibg=NONE ctermbg=NONE
+
+
+" }}}
 
 
 " MAPPINGS --------------------------------------------------------------- {{{

@@ -113,6 +113,7 @@ alias ll='ls -al --color'
 alias ccW='cc -Wall -Wextra -Werror'
 
 ### Source Plugins
+export PATH=$PATH:/path/to/nvim
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
