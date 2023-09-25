@@ -3,7 +3,7 @@
 ## Clone repo into .dotfiles folder in home directory.
 
 ```sh 
-gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
+git clone PedroZappa/zedro-dotfiles ~/.dotfiles
 ``` 
 
 ## Create symlinks to .dotfiles in home directory.
@@ -12,7 +12,7 @@ gh repo clone PedroZappa/zedro-dotfiles ~/.dotfiles
 ~
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.zshrc ~/.
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ```
 
