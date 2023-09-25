@@ -3,7 +3,7 @@
 ## Clone repo into .dotfiles folder in home directory.
 
 ```sh 
-git clone PedroZappa/zedro-dotfiles ~/.dotfiles
+git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 ``` 
 
 ## Create symlinks to .dotfiles in home directory.
