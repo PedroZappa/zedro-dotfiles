@@ -407,6 +407,7 @@ let g:NERDTreeSyntaxDisableDefaultPatternMatches = 1
 "let g:NERDTreeSyntaxEnabledExtensions = ['lua', 'c', 'h', 'c++', 'cpp', 'php', 'rb', 'js', 'css', 'html'] " enabled extensions with default colors
 "let g:NERDTreeSyntaxEnabledExactMatches = ['node_modules', 'favicon.ico'] " enabled exact matches with default colors
 
+
 " }}}
 
 " NETRW Options ------------------------------------------------ {{{
