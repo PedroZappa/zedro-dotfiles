@@ -41,7 +41,7 @@ set smartcase
 
 " }}}
 
-" 3. tags------------------------------------------------ {{{
+" 3. tags (aka. hyperlinks) ------------------------------------------------ {{{
 " Use binary search in tag files
 set tbs
 
@@ -173,6 +173,17 @@ set undolevels=1000
 set undofile
 " list of directories for undo files
 set undodir=~/.vim/backup
+" Tells vim to keep a backup copy of a file when overwritting it. But not on
+" VMS system, since it keepss versions of old files already.
+" if has("vms")
+"     set nobackup
+" else
+"     set backup
+"     if has('persistent_undo')
+"         set undofile
+"     endif
+" endif
+
 " maximum number of lines to save for undo on a buffer reload
 set ur=10000
 " changes have been made and not written to a file
@@ -238,16 +249,6 @@ set autoread
 " 19. The swap file ------------------------------------------------ {{{
 " Do not use a swap file for this buffer
 set noswf
-" Tells vim to keep a backup copy of a file when overwritting it. But not on
-" VMS system, since it keepss versions of old files already.
-if has("vms")
-    set nobackup
-else
-    set backup
-    if has('persistent_undo')
-        set undofile
-    endif
-endif
 
 " }}}
 
@@ -492,6 +493,8 @@ nnoremap <leader><leader> :source $MYVIMRC<CR>
 nnoremap <leader>h :help<CR>
 " Close Help Buffer
 nnoremap <leader>ch :helpclose<CR>
+" Go into inside tag
+map oo <C-]>
 " Call for Options
 nnoremap <leader>o :options<CR>
 " Close active buffer
