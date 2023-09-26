@@ -55,6 +55,14 @@ set sms
 set scrolloff=5
 " Wrap lines.
 set wrap
+" Show tabs and trailing spaces
+set list
+" list of strigns used for list mode
+" set listchars=tab:>-,trail:-
+
+" number of lines used for the command line
+set cmdheight=1
+
 " Add numbers to each line on the left-hand side.
 set number
 set relativenumber
@@ -185,13 +193,16 @@ set undodir=~/.vim/backup
 " endif
 
 " maximum number of lines to save for undo on a buffer reload
-set ur=10000
+set undoreload=10000
 " changes have been made and not written to a file
-set nomod
+set nomodified
 " buffer is not to be written
-set noro
+set noreadonly
+" Specifies what <BS>, CTRL-W, etc, can do in Insert mode
+set backspace=indent,eol,start
+
 " completeopt :  whether to use a popup menu for Insert mode completion
-set cot=menu,preview
+set completeopt=menu,preview
 
 " Show matching words during a search.
 set showmatch
@@ -342,6 +353,10 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'BourgeoisBear/clrzr' 
 
+    Plug 'https://github.com/adelarsq/vim-matchit'
+
+    Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 " }}}
@@ -473,6 +488,8 @@ let g:tmux_navigator_save_on_switch = 2
 " set color scheme
 " colorscheme molokai 
 colorscheme dracula
+" Adjust Type highlighting
+hi Type gui=bold guifg=#60ff60
 
 " set transparent background
 hi Normal guibg=NONE ctermbg=NONE
@@ -533,6 +550,17 @@ nnoremap \ :
 nnoremap o o<esc>
 nnoremap O O<esc>
 
+" Surround word by curly braces {}
+map <leader>\{ i{<Esc>ea}<Esc>
+" Surround word by square braces []
+map <leader>\[ i[<Esc>ea]<Esc>
+" Surround word by braces ()
+map <leader>\( i(<Esc>ea)<Esc>
+" Surround word by double quotes
+map <leader>\" i"<Esc>ea"<Esc>
+" Surround word by single quotes
+map <leader>\' i'<Esc>ea'<Esc>
+
 " Center the cursor vertically when moving to the next word during a search.
 nnoremap n nzz
 nnoremap N Nzz
@@ -546,7 +574,7 @@ nnoremap Y y$
 " <CR> (carriage return) is like pressing the enter key.
 " !clear runs the external clear screen command.
 " !python3 % executes the current file with Python.
-nnoremap <f5> :w <CR>:!clear <CR>:!python3 % <CR>
+" nnoremap <f5> :w <CR>:!clear <CR>:!python3 % <CR>
 
 " NERDTree specific mappings.
 " Map the F3 key to toggle NERDTree open and close.
@@ -565,6 +593,7 @@ nnoremap <leader>gb :Git blame<CR>
 " tagbar mappings
 nnoremap <leader>tb :TagbarToggle<CR>
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Insert Mode 
 " Type jj to exit insert mode quickly.
@@ -580,12 +609,13 @@ inoremap <M-x>   <Cmd>call codeium#Clear()<CR>"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
+" Yank visually selected text and serch for it in C files
+vnoremap _g y:exe "grep /" .. escape(@", '\\/') .. "/ *.c *.h"<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" Command Mode
-
-
 """ Terminal Mode
+
 " Open a new empty horizontal terminal window
 nnoremap <leader>tr :belowright terminal<CR>
 " Open a new vertical terminal window
@@ -602,6 +632,8 @@ tnoremap <Esc><Esc> <C-\><C-n>:bd!<CR>
 
 " VIMSCRIPT -------------------------------------------------------------- {{{
 
+" File Type Related Settings
+
 " This will enable code folding.
 " Use the marker method of folding.
 augroup filetype_vim
@@ -609,6 +641,11 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
+" for text documents break lines at 78 characters
+augroup vimrcEx
+    au!
+    autocmd FileType text setlocal textwidth=78
+augroup END
 
 " If Vim version is equal to or greater than 7.3 enable undofile.
 " This allows you to undo changes to a file even after saving it.
