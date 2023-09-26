@@ -204,6 +204,9 @@ set cindent
 " Copy whitespace for indenting from previous line
 " set copyindent
 
+" If the current file type is HTML, set indentation to 2 spaces.
+autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
+
 
 " }}}
 
@@ -334,7 +337,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'dracula/vim', { 'as': 'dracula' }
 
-    Plug 'https://github.com/preservim/tagbar'
+    Plug 'preservim/tagbar'
 
     Plug 'BourgeoisBear/clrzr' 
 
@@ -396,7 +399,8 @@ let g:WebDevIconsDefaultFolderSymbolColor = s:beige " sets the color for folders
 let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that did not match any rule
 
 " Have NERDTree ignore certain files and directories.
-let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$', '\.DS_Store']
+    
 
 " Mitigation LAG
 " Disable all default file highlighting (you can use this to easily customize all the highlighting rules)
@@ -458,10 +462,6 @@ let g:airline_theme='powerlineish'
 " NERDCommenter Options ------------------------------------------------ {{{
 " Write all buffers before navigating from Vim to tmux pane
 let g:tmux_navigator_save_on_switch = 2
-
-" }}}
-
-" clrzr Options ------------------------------------------------ {{{
 
 " }}}
 
@@ -606,8 +606,6 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" If the current file type is HTML, set indentation to 2 spaces.
-autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 
 " If Vim version is equal to or greater than 7.3 enable undofile.
 " This allows you to undo changes to a file even after saving it.

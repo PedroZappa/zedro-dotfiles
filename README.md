@@ -1,5 +1,20 @@
 # zedro-dotfiles
 
+## Install [`oh-my-zsh`](https://ohmyz.sh/)
+
+```sh 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+## Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
+
+```sh
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+```
+
 ## Clone repo into .dotfiles folder in home directory.
 
 ```sh 
