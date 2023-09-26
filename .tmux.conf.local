@@ -442,7 +442,7 @@ tmux_conf_uninstall_plugins_on_reload=true
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
 #set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'dracula/tmux'
+# set -g @plugin 'dracula/tmux'
 # dracula customizations
 set -g @dracula-plugins "cpu-usage gpu-usage ram-usage network-ping battery weather git time" 
 # Network stats options
