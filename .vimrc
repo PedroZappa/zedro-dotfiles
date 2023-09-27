@@ -1,20 +1,20 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"               
+"
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
-"               ██║   ██║██║██╔████╔██║██████╔╝██║     
-"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
+"               ██║   ██║██║██╔████╔██║██████╔╝██║
+"               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║
 "                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 " Zedro's Config
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OPTIONS
 
 " 1. important------------------------------------------------- {{{
 "
 " Initialize Vim to its default
 source $VIMRUNTIME/defaults.vim
-" disable compatibility with vi which can cause unexpected issues 
+" disable compatibility with vi which can cause unexpected issues
 set nocp
 " Enable type file detection. Vim will be able to try to detect the type of file in use.
 filetype on
@@ -85,7 +85,7 @@ autocmd InsertEnter * set nocursorline
 " Disable cursorline in Insert mode
 autocmd InsertLeave * set cursorline
 
-" Highlight Spelling Mistakes 
+" Highlight Spelling Mistakes
 set nospell
 " Enable spell check for .md and .txt files
 autocmd BufNewFile,BufRead *.md,*.txt setlocal spell
@@ -98,12 +98,27 @@ set spl=en
 " 6. Multiple Windows ------------------------------------------------ {{{
 " Check Status Line for more settings from this section
 " ( ... )
+" Specify when the last window has a statusline
+set laststatus=2
+
 " Identifies the preview window
 " set previewwindow
 " Scroll bind : this window scrolls together with other bound windows
 "set scb
 " Cursor bind : this window's cursor moves together with other bound windows
 "set crb
+
+" Windows Default Dimensions
+set winwidth=20
+set winminwidth=7
+set winheight=22
+set winminheight=3
+" Make windows the same size when adding/removing sindows
+set equalalways
+" Make new window appear below the current window
+set splitbelow
+" Make new vertical window appear to the right of the current window
+set splitright
 
 " }}}
 
@@ -141,7 +156,8 @@ set mouse=a
 set mousemodel=extend
 " Hide the mouse pointer while typing
 set mousehide=1
-
+" Make mouse behave like xterm or mswin
+set ttymouse=xterm
 
 " }}}
 
@@ -195,6 +211,8 @@ set undodir=~/.vim/backup
 set undoreload=10000
 " changes have been made and not written to a file
 set nomodified
+" line length above which to break a line
+set textwidth=72
 " buffer is not to be written
 set noreadonly
 " Specifies what <BS>, CTRL-W, etc, can do in Insert mode
@@ -205,6 +223,8 @@ set completeopt=menu,preview
 
 " Show matching words during a search.
 set showmatch
+"Use two spaces after '.' when joining a line
+set joinspaces
 
 
 " }}}
@@ -212,14 +232,14 @@ set showmatch
 " 14. Selecting text ------------------------------------------------ {{{
 " Set the number of spaces a tab stands for.
 set tabstop=4
-" Number of spaces used for each step of (auto)indent 
+" Number of spaces used for each step of (auto)indent
 set shiftwidth=4
 " Use space characters instead of tabs.
 set expandtab
 " Automatically set the Indent of a new line
 set autoindent
 " Do clever auto-indenting
-set smartindent 
+set smartindent
 " Enable specific indenting for C code
 set cindent
 " Copy whitespace for indenting from previous line
@@ -268,16 +288,20 @@ set history=1000
 " Auto-complete
 " Make wildmenu behave like similar to Bash completion.
 set wildmode=list:longest
+" list of file name extensions that have lower priority
+set su=yy.bak,~,.o,.h,.info,.swp,.obj
 " Enable auto completion menu after pressing TAB.
 set wildmenu
 " There are certain files that we would never want to edit with Vim.
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
+" show a larger popup menu with more completion entries
+set wildoptions+=pum
 
 " }}}
 
 " 21. Reading and writing files ------------------------------------------------ {{{
-" name of the shell program used for external commands 
+" name of the shell program used for external commands
 set shell=zsh
 
 " }}}
@@ -285,6 +309,8 @@ set shell=zsh
 " 22. Running make and jumping to errors ----------------------------------------- {{{
 " Program used for the ":make" command
 set makeprg=make
+" pr" program used forogram used for the ":grep" command
+set gp=grep\ -n\ $*\ /dev/null
 " }}}
 
 " 23. Language Specific ------------------------------------------------ {{{
@@ -315,12 +341,14 @@ set ttimeoutlen=0
 
 " }}}
 "
-
-
+ 
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
+" vim Plugins
+runtime! ftplugin/man.vim
 
+" vim-plug Plugins
 call plug#begin('~/.vim/plugged')
 
     Plug 'christoomey/vim-tmux-navigator'
@@ -350,7 +378,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'preservim/tagbar'
 
-    Plug 'BourgeoisBear/clrzr' 
+    Plug 'BourgeoisBear/clrzr'
 
     Plug 'https://github.com/adelarsq/vim-matchit'
 
@@ -367,14 +395,14 @@ call plug#end()
 let NERDTreeShowHidden=1
 
 " Use Nerdfonts predefined map
-let g:NERDTreeGitStatusUseNerdFonts = 1 
+let g:NERDTreeGitStatusUseNerdFonts = 1
 " Show ignored files, a heavy feature may cost much more time. default: 0
-let g:NERDTreeGitStatusShowIgnored = 1 
+let g:NERDTreeGitStatusShowIgnored = 1
 " Show 'clean' indicator
 let g:NERDTreeGitStatusShowClean = 1 " default: 0
 
 " NERDTree Syntax Highlighting
-" Disable unmatched folder and file icons having the same color as label 
+" Disable unmatched folder and file icons having the same color as label
 let g:WebDevIconsDisableDefaultFolderSymbolColorFromNERDTreeDir = 1
 let g:WebDevIconsDisableDefaultFileSymbolColorFromNERDTreeFile = 1
 
@@ -415,7 +443,7 @@ let g:WebDevIconsDefaultFileSymbolColor = s:blue " sets the color for files that
 
 " Have NERDTree ignore certain files and directories.
 let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$', '\.DS_Store']
-    
+
 
 " Mitigation LAG
 " Disable all default file highlighting (you can use this to easily customize all the highlighting rules)
@@ -485,7 +513,7 @@ let g:tmux_navigator_save_on_switch = 2
 " Vim THEME ------------------------------------------------ {{{
 "
 " set color scheme
-" colorscheme molokai 
+" colorscheme molokai
 colorscheme dracula
 " Adjust Type highlighting
 hi Type gui=bold guifg=#60ff60
@@ -534,6 +562,10 @@ nnoremap <leader>cf :normal! zM<CR>
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 " clear Search Highlight
 nnoremap <silent> <leader>cs :nohlsearch<CR>
+
+" formatting
+" trim whitespace from the end of every line
+nnoremap <leader>trm :%s/\s\+$//
 
 " Press SPACE-p to print the current file to the default printer from a Linux operating system.
 " View available printers:   lpstat -v
@@ -587,14 +619,14 @@ nnoremap <leader>gs :Magit<CR>
 
 " vim-fugitive
 " Show commits for every source line
-nnoremap <leader>gb :Git blame<CR> 
+nnoremap <leader>gb :Git blame<CR>
 
 " tagbar mappings
 nnoremap <leader>tb :TagbarToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" Insert Mode 
+""" Insert Mode
 " Type jj to exit insert mode quickly.
 inoremap jj <Esc>
 
@@ -604,7 +636,7 @@ inoremap <M-q>   <Cmd>call codeium#CycleCompletions(1)<CR>
 inoremap <M-w>   <Cmd>call codeium#CycleCompletions(-1)<CR>
 inoremap <M-x>   <Cmd>call codeium#Clear()<CR>"
 
-"  
+"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ Visual Mode
 
