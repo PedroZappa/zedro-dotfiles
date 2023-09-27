@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "               
 "               ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗
 "               ██║   ██║██║████╗ ████║██╔══██╗██╔════╝
@@ -6,9 +6,9 @@
 "               ╚██╗ ██╔╝██║██║╚██╔╝██║██╔══██╗██║     
 "                ╚████╔╝ ██║██║ ╚═╝ ██║██║  ██║╚██████╗
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
-" Zedro's Config           
+" Zedro's Config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""      
-" OPTIONS 
+" OPTIONS
 
 " 1. important------------------------------------------------- {{{
 "
@@ -56,9 +56,9 @@ set scrolloff=5
 " Wrap lines.
 set wrap
 " Show tabs and trailing spaces
-set list
+set nolist
 " list of strigns used for list mode
-" set listchars=tab:>-,trail:-
+set listchars=tab:>-,trail:-
 
 " number of lines used for the command line
 set cmdheight=1
@@ -89,7 +89,6 @@ autocmd InsertLeave * set cursorline
 set nospell
 " Enable spell check for .md and .txt files
 autocmd BufNewFile,BufRead *.md,*.txt setlocal spell
-
 " list of accepted languages
 set spl=en
 
