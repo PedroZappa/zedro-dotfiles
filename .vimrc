@@ -331,6 +331,14 @@ set emoji
 " Load plugin scripts when stating up
 set lpl
 
+" list of words that specifies what to put in a session file
+set sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
+" List that specifies what to write in the viminfo file
+" '# : how many files for which to save marks
+" <# : how many lines are saved for each of the registers
+" f# : if set to 1, marks are saved, set to 0 they are not saved
+set viminfo='1000,<50,s10,f1
+
 " TAG JUMPING
 " Create the `tags` file (may need to install ctags first)
 "command! MakeTags !ctags -R .
