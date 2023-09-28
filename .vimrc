@@ -49,16 +49,20 @@ set tbs
 
 " 4. Display text------------------------------------------------- {{{
 " Do not let cursor scroll below or above N number of lines when scrolling.
-set scr=10
+set scr=7
 " Set smoothscroll : scroll by screen line
 set sms
 set scrolloff=5
 " Wrap lines.
 set wrap
+" wrap long lines at a character in 'breakat'
+set linebreak
+" which characters might cause a line break
+set breakat=\ \	!@*-+;:,./?
 " Show tabs and trailing spaces
 set nolist
 " list of strigns used for list mode
-set listchars=tab:>-,trail:-
+set listchars=tab:>-,trail:$
 
 " number of lines used for the command line
 set cmdheight=1
@@ -220,6 +224,8 @@ set backspace=indent,eol,start
 
 " completeopt :  whether to use a popup menu for Insert mode completion
 set completeopt=menu,preview
+" function for filetype-specific Insert mode completion
+set omnifunc=
 
 " Show matching words during a search.
 set showmatch
@@ -268,8 +274,14 @@ set timeout
 " }}}
 
 " 18. Reading and writing files ------------------------------------------------ {{{
+" enable using settings from modelines when reading a file
+set modeline
+" Number of lines to check for modelines
+set modelines=5
 " automatically write a file when leaving a modified buffer
 set autowrite
+" list of file formats to look for when editing a file (unix, dos, mac)
+set ffs=unix,dos
 " Automatically read a file when it was modified outside of Vim
 set autoread
 
@@ -278,7 +290,7 @@ set autoread
 
 " 19. The swap file ------------------------------------------------ {{{
 " Do not use a swap file for this buffer
-set noswf
+set noswapfile
 
 " }}}
 
@@ -332,7 +344,7 @@ set emoji
 set lpl
 
 " list of words that specifies what to put in a session file
-set sessionoptions="blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
+set sessionoptions+="unix,slash,blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
 " List that specifies what to write in the viminfo file
 " '# : how many files for which to save marks
 " <# : how many lines are saved for each of the registers
@@ -349,12 +361,14 @@ set ttimeoutlen=0
 
 " }}}
 "
- 
+
 " PLUGINS ---------------------------------------------------------------- {{{
 
 " Plugin code goes here.
 " vim Plugins
 runtime! ftplugin/man.vim
+" Formatting Plugins
+packadd! justify
 
 " vim-plug Plugins
 call plug#begin('~/.vim/plugged')
@@ -515,7 +529,6 @@ let g:airline_theme='powerlineish'
 let g:tmux_navigator_save_on_switch = 2
 
 " }}}
-
 
 
 " Vim THEME ------------------------------------------------ {{{
