@@ -8,7 +8,6 @@
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 " Zedro's Config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" OPTIONS
 
 " 1. important------------------------------------------------- {{{
 "
@@ -42,8 +41,16 @@ set smartcase
 " }}}
 
 " 3. tags (aka. hyperlinks) ------------------------------------------------ {{{
+
+" TAG JUMPING
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
 " Use binary search in tag files
-set tbs
+set tagbsearch
+" list of file names to search for tags (global or local to buffer)
+" Finds a tags file in the same directory as the current file, one
+" directory level higher and in all subdirectories
+set tag=./tags,./../tags,./*/tags
 
 " }}}
 
@@ -258,7 +265,10 @@ autocmd Filetype html setlocal tabstop=2 shiftwidth=2 expandtab
 " }}}
 
 " 15. Folding  ------------------------------------------------ {{{
-
+" Set fold method
+"set foldmethod=indent
+" Set folds closing on exit
+set foldclose=all
 " }}}
 
 " 16. Diff Mode  ------------------------------------------------ {{{
@@ -351,9 +361,6 @@ set sessionoptions+="unix,slash,blank,buffers,curdir,folds,help,options,tabpages
 " f# : if set to 1, marks are saved, set to 0 they are not saved
 set viminfo='1000,<50,s10,f1
 
-" TAG JUMPING
-" Create the `tags` file (may need to install ctags first)
-"command! MakeTags !ctags -R .
 
 " Trying to reduce LAG
 set timeoutlen=1000
