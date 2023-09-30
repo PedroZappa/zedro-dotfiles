@@ -404,7 +404,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
 
     Plug 'dracula/vim', { 'as': 'dracula' }
-
     Plug 'preservim/tagbar'
 
     Plug 'BourgeoisBear/clrzr'
