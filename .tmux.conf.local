@@ -365,13 +365,22 @@ set -g mouse on
 set -g status-keys vi
 set -g mode-keys vi
 
+# Enable copy-pastei (needs xclip to be installed)
+set-option -s set-clipboard off
+bind P paste-buffer
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X rectangle-toggle
+unbind -T copy-mode-vi Enter
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip -se c -i'
+
 # reload config file (change file location to your the tmux.conf you want to use)
 bind r source-file ~/.tmux.conf
 
 # replace C-b by C-a instead of using both prefixes
- set -gu prefix2
- unbind C-a
- unbind C-r
+set -gu prefix2
+unbind C-a
+unbind C-r
 
 # Replace C-b by C-Space instead
 unbind C-b
@@ -407,9 +416,6 @@ bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
 
-# Enable copy-pastei (needs xclip to be installed)
-#bind C-c run "tmux save-buffer - | xclip -i -sel clipboard"
-#bind C-v run "tmux set-buffer "$(xclip -o -sel clipboard)"; tmux paste-buffer"
 
 
 # -- tpm -----------------------------------------------------------------------
@@ -448,9 +454,9 @@ tmux_conf_uninstall_plugins_on_reload=true
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tmux-copycat'
-set -g @plugin 'tmux-plugins/tmux-resurrect'
+#set -g @plugin 'tmux-plugins/tmux-yank'
+#set -g @plugin 'tmux-plugins/tmux-copycat'
+#set -g @plugin 'tmux-plugins/tmux-resurrect'
 
 # Continuum & Options
 set -g @plugin 'tmux-plugins/tmux-continuum'
