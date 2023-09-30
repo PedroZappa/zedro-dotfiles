@@ -48,10 +48,10 @@ command! MakeTags !ctags -R .
 " Use binary search in tag files
 set tagbsearch
 " list of file names to search for tags (global or local to buffer)
-" Finds a tags file in the same directory as the current file, one
-" directory level higher and in all subdirectories
-set tag=./tags,./../tags,./*/tags
+set tags+=~/.tags
 
+" cscope 
+set csprg=cscope
 " }}}
 
 " 4. Display text------------------------------------------------- {{{
@@ -232,7 +232,7 @@ set backspace=indent,eol,start
 " completeopt :  whether to use a popup menu for Insert mode completion
 set completeopt=menu,preview
 " function for filetype-specific Insert mode completion
-set omnifunc=
+set omnifunc=complete#Complete
 
 " Show matching words during a search.
 set showmatch
@@ -545,6 +545,8 @@ let g:tmux_navigator_save_on_switch = 2
 colorscheme dracula
 " Adjust Type highlighting
 hi Type gui=bold guifg=#60ff60
+hi Function guifg=#60ff60
+hi deff gui=bold guifg=#60ff60  
 
 " set transparent background
 hi Normal guibg=NONE ctermbg=NONE
