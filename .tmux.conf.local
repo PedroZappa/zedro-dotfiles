@@ -85,8 +85,7 @@ tmux_conf_theme_colour_14="#080808"   # dark gray
 tmux_conf_theme_colour_15="#080808"   # dark gray
 tmux_conf_theme_colour_16="#d70000"   # red
 tmux_conf_theme_colour_17="#e4e4e4"   # white
-tmux_conf_theme_colour_18="#9370db"   # purple
-
+tmux_conf_theme_colour_18="#854dff"   # purple
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
@@ -242,7 +241,7 @@ tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?batt
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_4,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_11,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_11"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
