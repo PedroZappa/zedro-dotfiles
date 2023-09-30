@@ -458,7 +458,7 @@ set -g @mode_indicator_prefix_prompt ' WAIT '
 # prompt to display when tmux is in copy mode
 set -g @mode_indicator_copy_prompt ' YANK '
 #  style values for prefix prompt
-set -g @mode_indicator_prefix_mode_style 'bg=#9370db,fg=#ffffff'
+set -g @mode_indicator_prefix_mode_style 'bg=#d70000,fg=#ffffff'
 
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g status-interval 2
