@@ -400,12 +400,16 @@ if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
 if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
+#moving between panes
 bind-key -T copy-mode-vi 'C-h' select-pane -L
 bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
 
+# Enable copy-pastei (needs xclip to be installed)
+#bind C-c run "tmux save-buffer - | xclip -i -sel clipboard"
+#bind C-v run "tmux set-buffer "$(xclip -o -sel clipboard)"; tmux paste-buffer"
 
 
 # -- tpm -----------------------------------------------------------------------
@@ -443,49 +447,8 @@ tmux_conf_uninstall_plugins_on_reload=true
 
 # to enable a plugin, use the 'set -g @plugin' syntax:
 # visit https://github.com/tmux-plugins for available plugins
-#set -g @plugin 'tmux-plugins/tmux-sensible'
-# set -g @plugin 'dracula/tmux'
-# dracula customizations
-set -g @dracula-plugins "cpu-usage gpu-usage ram-usage network-ping battery weather git time" 
-# Network stats options
-set -g @dracula-network-bandwidth wlan0
-set -g @dracula-network-bandwidth-interval 0
-set -g @dracula-network-bandwidth-show-interface true
-set -g @dracula-ping-server "google.com"
-set -g @dracula-ping-rate 5
-
-# system stats options
-set -g @dracula-cpu-usage-label "CPU"
-set -g @dracula-cpu-display-load false
-set -g @dracula-show-left-icon smiley 
-set -g @dracula-left-icon-padding 1
-set -g @dracula-border-contrast true
-set -g @dracula-show-powerline true
-set -g @dracula-show-flags true
-set -g @dracula-show-empty-plugins false
-
-# Time, Location & weather Options
-#set -g @dracula-day-month true
-#set -g @dracula-military-time true
-#set -g @dracula-show-fahrenheit true 
-set -g @dracula-showlocation false 
-
-
-# git Options
-set -g @dracula-git-disable-status true
-# default is ✓. Avoid using non unicode characters that bash uses like $, * and !
-set -g @dracula-git-show-current-symbol ✓
-# default is unicode !. Avoid bash special characters
-set -g @dracula-git-show-diff-symbol !
-# default is unicode no message
-set -g @dracula-git-no-repo-message ""
-# default is false
-set -g @dracula-git-no-untracked-files true
-# default is false
-set -g @dracula-git-show-remote-status true
-
-
-
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 
