@@ -59,4 +59,5 @@ curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colo
 curl -o dogrun.vim https://raw.githubusercontent.com/wadackel/vim-dogrun/main/colors/dogrun.vim
 curl -o minimalist.vim https://raw.githubusercontent.com/dikiaap/minimalist/master/colors/minimalist.vim
 curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
+curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
