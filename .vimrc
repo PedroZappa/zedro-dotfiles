@@ -223,7 +223,7 @@ set undoreload=10000
 " changes have been made and not written to a file
 set nomodified
 " line length above which to break a line
-set textwidth=72
+"set textwidth=72
 " buffer is not to be written
 set noreadonly
 " Specifies what <BS>, CTRL-W, etc, can do in Insert mode
@@ -703,10 +703,10 @@ augroup filetype_vim
 augroup END
 
 " for text documents break lines at 78 characters
-augroup vimrcEx
-    au!
-    autocmd FileType text setlocal textwidth=78
-augroup END
+" augroup vimrcEx
+"     au!
+"     autocmd FileType text setlocal textwidth=78
+" augroup END
 
 " If Vim version is equal to or greater than 7.3 enable undofile.
 " This allows you to undo changes to a file even after saving it.

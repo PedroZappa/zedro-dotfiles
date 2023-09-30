@@ -253,7 +253,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} #{loadavg} , #{weather} , %d %b | %R | #{username}#{root} | #{hostname}   "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , #{network_bandwidth} , #{weather} , %d %b | %R | #{username}#{root} | #{hostname} #{tmux_mode_indicator}   "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -464,6 +464,15 @@ set -g @continuum-restore 'on'
 
 set -g @plugin 'christoomey/vim-tmux-navigator'
 
+set -g @plugin 'xamut/tmux-network-bandwidth'
+#set-option -g status-right "#{network_bandwidth}"
+
+set -g @plugin 'MunifTanjim/tmux-mode-indicator'
+#set -g status-right '%Y-%m-%d %H:%M #{tmux_mode_indicator}'
+
+set -g @plugin 'thewtex/tmux-mem-cpu-load'
+#set -g status-interval 2
+#set -g status-right '#[fg=green]#($~/.tmux/plugins/mem-cpu-load/tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]'
 
 # -- custom variables ----------------------------------------------------------
 
