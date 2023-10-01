@@ -538,18 +538,23 @@ let g:tmux_navigator_save_on_switch = 2
 
 
 " Vim THEME ------------------------------------------------ {{{
-"
+
+" Custom colors
+let s:green = "#60ff60"
+let s:lightGreen = "#a7ffba"
+let s:lightBlue = "#7aa2f7"
+
 " set color scheme
 " colorscheme molokai
 colorscheme dracula
-" Adjust Type highlighting
-hi Type gui=bold guifg=#60ff60
-hi Function guifg=#60ff60
-hi deff gui=bold guifg=#60ff60  
-
 " set transparent background
 hi Normal guibg=NONE ctermbg=NONE
 
+" Adjust Color highlighting
+hi Normal guifg=White
+hi Type gui=bold guifg=green
+hi Number ctermfg=lightGreen
+hi Operator guifg=Grey
 
 " }}}
 
