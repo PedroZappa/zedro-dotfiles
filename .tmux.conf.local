@@ -237,7 +237,7 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} #{loadavg} | #{network_bandwidth} | | | | | %d %b | %R | #{username}#{root} | 🔘 #{tmux_mode_indicator} 🔘"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{loadavg} | | #{network_bandwidth} | | | | %d %b | | | %R | | | | | #{tmux_mode_indicator} "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -246,7 +246,7 @@ tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
 tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_17,$tmux_conf_theme_colour_18"
+tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_18"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
 # pairing indicator
@@ -453,12 +453,12 @@ set -g @plugin 'xamut/tmux-network-bandwidth'
 set -g @plugin 'MunifTanjim/tmux-mode-indicator'
 # prompt to display when tmux is in normal mode
 set -g @mode_indicator_empty_prompt ' ZMUX '
+set -g @mode_indicator_empty_mode_style 'b g=black,fg="#ffffff'
 # prompt to display when tmux prefix key is pressed
 set -g @mode_indicator_prefix_prompt ' WAIT '
+set -g @mode_indicator_prefix_mode_style 'bg=#d70000,fg=#ffffff'
 # prompt to display when tmux is in copy mode
 set -g @mode_indicator_copy_prompt ' YANK '
-#  style values for prefix prompt
-set -g @mode_indicator_prefix_mode_style 'bg=#d70000,fg=#ffffff'
 
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g status-interval 2
