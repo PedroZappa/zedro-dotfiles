@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -al --color'
 # Compiling
 alias ccW='cc -Wall -Wextra -Werror'
+# 42 Norm Check
+alias nn='norminette -R CheckForbiddenSourceHeader'
 
 ### Source Plugins
 export PATH=$PATH:/path/to/nvim

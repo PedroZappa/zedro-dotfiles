@@ -58,7 +58,7 @@ set csprg=cscope
 " Do not let cursor scroll below or above N number of lines when scrolling.
 set scr=7
 " Set smoothscroll : scroll by screen line
-set sms
+"set sms
 set scrolloff=5
 " Wrap lines.
 set wrap
@@ -83,25 +83,25 @@ set numberwidth=4
 
 " 5. Syntax highlight and spelling ------------------------------------------------ {{{
 " Set backgound color brightness
-set bg=dark
+"set bg=dark
 " Use highlighting when doing a search.
-set hlsearch
+"set hlsearch
 " UseGUI colors for the terminal
-set termguicolors
+"set termguicolors
 " highlight the screen column of the cursor
-set cursorcolumn
+"set cursorcolumn
 " highlight the screen line of the cursor
 " Enable cursorline in Normal mode
-autocmd InsertEnter * set nocursorline
+" autocmd InsertEnter * set nocursorline
 " Disable cursorline in Insert mode
-autocmd InsertLeave * set cursorline
+" autocmd InsertLeave * set cursorline
 
 " Highlight Spelling Mistakes
-set nospell
+"set nospell
 " Enable spell check for .md and .txt files
-autocmd BufNewFile,BufRead *.md,*.txt setlocal spell
+" autocmd BufNewFile,BufRead *.md,*.txt setlocal spell
 " list of accepted languages
-set spl=en
+"set spl=en
 
 
 " }}}
@@ -248,13 +248,13 @@ set tabstop=4
 " Number of spaces used for each step of (auto)indent
 set shiftwidth=4
 " Use space characters instead of tabs.
-set expandtab
+"set expandtab
 " Automatically set the Indent of a new line
 set autoindent
 " Do clever auto-indenting
 set smartindent
 " Enable specific indenting for C code
-set cindent
+"set cindent
 " Copy whitespace for indenting from previous line
 " set copyindent
 
@@ -318,7 +318,7 @@ set wildmenu
 " Wildmenu will ignore files with these extensions.
 set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 " show a larger popup menu with more completion entries
-set wildoptions+=pum
+" set wildoptions+=pum
 
 " }}}
 
@@ -389,7 +389,7 @@ call plug#begin('~/.vim/plugged')
             \ Plug 'ryanoasis/vim-devicons'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-    Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+    "Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
     Plug 'mbbill/undotree'
 
@@ -406,7 +406,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dracula/vim', { 'as': 'dracula' }
     Plug 'preservim/tagbar'
 
-    Plug 'BourgeoisBear/clrzr'
+    "Plug 'BourgeoisBear/clrzr'
 
     Plug 'https://github.com/adelarsq/vim-matchit'
 
