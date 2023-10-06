@@ -108,12 +108,19 @@ source $ZSH/oh-my-zsh.sh
 # Navigation
 alias ll='ls -al --color'
 # Compiling
-alias ccW='cc -Wall -Wextra -Werror'
+alias ccw='cc -Wall -Wextra -Werror'
 # 42 Norm Check
 alias nn='norminette -R CheckForbiddenSourceHeader'
+# Franinette alias
+alias fr='francinette'
 
-### Source Plugins
-export PATH=$PATH:/path/to/nvim
+### Source Neovim 
+export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:$PATH
+
+
+### 42 Header Settings
+#vim.g.user42 = 'passunca'
+#vim.g.mail42 = 'yourLogin@student.42.fr'
 
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
@@ -146,3 +153,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+alias francinette=/home/zedr0/francinette/tester.sh
+
+alias paco=/home/zedr0/francinette/tester.sh
