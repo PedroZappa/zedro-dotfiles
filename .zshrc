@@ -110,7 +110,7 @@ alias ll='ls -al --color'
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror'
 # 42 Norm Check
-alias nn='norminette -R CheckForbiddenSourceHeader'
+alias nn='norminette'
 # Franinette alias
 alias fr='francinette'
 
