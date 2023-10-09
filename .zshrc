@@ -154,6 +154,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-alias francinette=/home/zedr0/francinette/tester.sh
-
-alias paco=/home/zedr0/francinette/tester.sh
+alias francinette=~/francinette/tester.sh
+alias paco=~/francinette/tester.sh
