@@ -114,8 +114,6 @@ alias nn='norminette'
 # Franinette alias
 alias fr='francinette'
 
-# Git 
-alias glggo ='git log --graph --decorate --oneline'
 
 ### Source Neovim 
 export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:$PATH
