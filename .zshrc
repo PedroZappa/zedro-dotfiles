@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Navigation
 alias ll='ls -al --color'
 # Compiling
-alias ccw='cc -Wall -Wextra -Werror'
+alias ccw='cc -Wall -Wextra -Werror -g'
 # 42 Norm Check
 alias nn='norminette'
 # Franinette alias
