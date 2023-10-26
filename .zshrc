@@ -117,17 +117,9 @@ alias fr='francinette'
 
 ### Source Neovim 
 export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:$PATH
-<<<<<<< HEAD
 export PATH="$HOME/.local/bin:$PATH"
 
-### 42 Header Settings
-#vim.g.user42 = 'passunca'
-#vim.g.mail42 = 'yourLogin@student.42.fr'
-
-=======
 #
-#
->>>>>>> ad657f9cde515686db735fe6bccc619159c0fb51
 # >>> mamba initialize >>>
 # !! Contents within this block are managed by 'mamba init' !!
 export MAMBA_EXE="/home/zedr0/.micromamba/bin/micromamba";
