@@ -117,7 +117,7 @@ alias fr='francinette'
 
 ### Source Neovim 
 export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:$PATH
-
+export PATH="$HOME/.local/bin:$PATH"
 
 ### 42 Header Settings
 #vim.g.user42 = 'passunca'
@@ -157,9 +157,6 @@ unset __conda_setup
 
 alias francinette=~/francinette/tester.sh
 alias paco=~/francinette/tester.sh
-
-alias francinette=/Users/zedro/francinette/tester.sh
-alias paco=/Users/zedro/francinette/tester.sh
 
 # Load Version Manager (for Node.js)
 export NVM_DIR="$HOME/.nvm"
