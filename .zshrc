@@ -119,9 +119,10 @@ alias fr='francinette'
 export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
 # PATH to Neovim on Z-Desk
-# if [[ $USER == "zedr0" ]]; then
-#   export PATH= 
-# fi
+if [[ $USER == "zedr0" ]]; then
+  export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
+  alias nvim=~/bin/nvim-linux64/bin/nvim
+fi
 
 #
 # >>> mamba initialize >>>
