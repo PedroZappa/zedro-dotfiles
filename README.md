@@ -2,13 +2,13 @@
 
 ## Install [`oh-my-zsh`](https://ohmyz.sh/)
 
-```sh 
+```shell 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
 ## Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
 
-```sh
+```shell
 cd
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
@@ -17,13 +17,13 @@ cp .tmux/.tmux.conf.local .
 
 ## Clone repo into .dotfiles folder in home directory.
 
-```sh 
+```shell
 git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 ``` 
 
 ## Create symlinks to .dotfiles in home directory.
 
-```sh 
+```shell
 ~
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
@@ -35,7 +35,7 @@ ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 
 Clone plugins into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
 
-```sh
+```shell
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use 
@@ -43,14 +43,14 @@ git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM
 
 ## Install [`vim-plug`](https://github.com/junegunn/vim-plug)
 
-```sh 
+```shell
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 ## Setup `.vim`
 
-```sh
+```shell
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 
 # Install color schemes
