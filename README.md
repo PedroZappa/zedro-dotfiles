@@ -29,6 +29,7 @@ ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
+ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ```
 
 ## Setup `zsh` plugins 
