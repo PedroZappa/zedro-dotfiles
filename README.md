@@ -74,4 +74,7 @@ ln -s ~/.dotfiles/.icons ~/.icons
 # Activate Theme
 gsettings set org.gnome.desktop.interface gtk-theme Dracula
 gsettings set org.gnome.desktop.wm.preferences theme Dracula
+
+# Activate Icons
+gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 ```
