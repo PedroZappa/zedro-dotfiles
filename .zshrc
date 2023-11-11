@@ -120,8 +120,9 @@ export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PAT
 export PATH="$HOME/.local/bin:$PATH"
 # PATH to Neovim on Z-Desk
 if [[ $USER == "zedr0" ]]; then
-  export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
-  alias nvim=~/bin/nvim-linux64/bin/nvim
+	export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
+	alias nvim=~/bin/nvim-linux64/bin/nvim
+	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 fi
 
 #
