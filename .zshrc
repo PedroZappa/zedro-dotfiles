@@ -123,6 +123,8 @@ if [[ $USER == "zedr0" ]]; then
 	export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
 	alias nvim=~/bin/nvim-linux64/bin/nvim
 	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
+else [[ $USER == "passunca" ]];
+	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 fi
 
 #
