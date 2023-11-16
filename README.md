@@ -68,6 +68,8 @@ curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-th
 ```shell
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ln -s ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
+# Add kitty to path
+sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
 ```
 
 ## Ubuntu Dracula Theme
