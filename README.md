@@ -70,6 +70,8 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ln -s ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
 # Add kitty to path
 sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
+# To open text and images
+cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
 ```
 
 ## Ubuntu Dracula Theme
