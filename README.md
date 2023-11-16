@@ -63,6 +63,13 @@ curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd76
 curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
 
+## Setup `kitty`
+
+```shell
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+ln -s ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
+```
+
 ## Ubuntu Dracula Theme
 
 Create symlink for ~/.themes 
