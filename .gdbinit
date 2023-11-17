@@ -59,6 +59,10 @@ set $CONTEXTSIZE_STACK = 6
 set $CONTEXTSIZE_DATA  = 8
 set $CONTEXTSIZE_CODE  = 8
 
+# Set 
+# set style enabled
+set style sources on
+
 # __________________end gdb options_________________
 #
 
