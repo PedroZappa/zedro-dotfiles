@@ -35,7 +35,7 @@ set $X86FLAVOR = 0
 set $USECOLOR = 1
 # to use with remote KDP
 set $KDP64BITS = -1
-set $64BITS = 0
+set $64BITS = 1
 
 # macOS version works better with this setting off
 set startup-with-shell off
