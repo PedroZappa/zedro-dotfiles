@@ -1,9 +1,4 @@
--- Basics
-vim.g.mapleader = " "
-vim.g.bulitin_lsp = true
-vim.opt.termguicolors = true
-
--- Lazy
+-- Lazy (Package Manager	)
 vim.loader.enable() -- cache lua modules (https://github.com/neovim/neovim/pull/22668)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -26,3 +21,8 @@ require("lazy").setup("zedro.plugins", {
     },
 })
 
+-- Key Mappings
+-- require("zedro.keymaps")
+
+-- Options
+-- require("zedro.options")
