@@ -63,6 +63,12 @@ curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd76
 curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
 
+## Setup Neovim
+
+```shell
+ln -s ~/.dotfiles/nvim/ ~/.config/
+```
+
 ## Setup `kitty`
 
 ```shell
