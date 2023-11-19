@@ -1,5 +1,4 @@
 local opt = vim.opt
--- local autocmd = vim.api.nvim_create_autocmd
 
 -- Set leader and localleader
 vim.g.mapleader = " "
@@ -14,23 +13,6 @@ opt.ignorecase = true
 opt.smartcase = true
 opt.ruler = true
 
--- Cursor
-opt.cursorcolumn = true
-opt.cursorline = true
--- opt.cursorlineopt = 'rgba:1/1/1/50'
-opt.colorcolumn = '80';
---opt.highlight.CursorLine = { gui = "underline" }
-opt.whichwrap = '<,>'
-opt.wrap = false
-
--- Windows
-opt.splitbelow = true
-opt.splitright = true
-opt.equalalways = false
-
--- sync with system Clipboard (through + register)
-opt.clipboard = "unnamedplus"
-
 -- Tabs
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -42,6 +24,24 @@ opt.winbar = '=%=%k %r %h %m %f %w'
 -- Indentation
 opt.autoindent = true
 opt.smartindent = true
+-- Line Wrapping
+opt.whichwrap = '<,>'
+opt.wrap = false
+
+-- Windows
+opt.splitbelow = true
+opt.splitright = true
+opt.equalalways = false
+
+-- Cursor
+opt.cursorcolumn = true
+opt.cursorline = true
+-- opt.cursorlineopt = 'rgba:1/1/1/50'
+opt.colorcolumn = '80';
+--opt.highlight.CursorLine = { gui = "underline" }
+
+-- sync with system Clipboard (through + register)
+opt.clipboard = "unnamedplus"
 
 -- Scroll
 opt.scrolloff = 3
@@ -71,9 +71,17 @@ opt.inccommand = "split"
 vim.g.bulitin_lsp = true
 
 -- Other
-opt.termguicolors = true
 opt.showcmd = true
 opt.showmode = true
+opt.iskeyword:append("-") -- Considers '-' as part of a word
+
+-- Appearance
+opt.termguicolors = true
+opt.background = "dark"
+opt.signcolumn = "yes"
+
+-- Backspace
+opt.backspace = "indent,eol,start"
 
 -- Spelling
 --- Enable spell check for .md and .txt files
@@ -84,7 +92,6 @@ vim.opt.updatetime = 50
 
 -- Other
 vim.opt.isfname:append("@-@")
-vim.opt.signcolumn = "yes"
 
 -- Autocommands
 --
