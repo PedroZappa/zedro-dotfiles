@@ -1,12 +1,9 @@
 local opt = vim.opt
 -- local autocmd = vim.api.nvim_create_autocmd
 
--- Theme
-vim.cmd [[
-	colorscheme dracula
-	highlight Normal guibg=none
-	highlight NonText guibg=none
-]]
+-- Set leader and localleader
+vim.g.mapleader = " "
+-- vim.g.maplocalleader = "\\"
 
 -- Options--
 -- Line Numbers

@@ -1,3 +1,8 @@
+-- Options
+require("zedro.options")
+-- Key Mappings
+require("zedro.mappings")
+--
 -- Lazy (Package Manager	)
 -- vim.loader.enable() -- cache lua modules (https://github.com/neovim/neovim/pull/22668)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -21,8 +26,10 @@ require("lazy").setup("zedro.plugins", {
     },
 })
 
--- Options
-require("zedro.options")
+-- Theme
+vim.cmd [[
+	colorscheme dracula
+	highlight Normal guibg=none
+	highlight NonText guibg=none
+]]
 
--- Key Mappings
-require("zedro.mappings")

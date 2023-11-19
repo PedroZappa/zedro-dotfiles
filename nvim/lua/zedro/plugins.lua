@@ -6,6 +6,31 @@ local plugins = {
 	-- 		require 'plugins.lspconfig'
 	-- 	end
 	-- },
+	-- Nvim-tree
+	{
+		'nvim-tree/nvim-tree.lua',
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup ({
+				sort_by = "case_sensitive",
+				view = {
+					width = 30,
+					adaptive_size = true,
+				},
+				renderer = {
+					group_empty = true,
+				},
+				filters = {
+					dotfiles = true,
+				},
+
+			})
+		end,
+	};
 	-- Undotree
 	{
 		'mbbill/undotree',
