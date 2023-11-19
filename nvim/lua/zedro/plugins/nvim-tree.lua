@@ -7,10 +7,12 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 
-		-- change color for arrows in tree to light blue
+		-- change color for arrows in tree to green
 		vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#34eb43 ]])
 		vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#34eb43 ]])
+		-- Yellow Indent lines
 		vim.cmd([[ highlight NvimTreeIndentMarker guifg=#e8eb34 ]])
+		-- Transparent background
 		vim.cmd([[ highlight NvimTreeNormal guibg=NONE ctermbg=NONE]])
 
 		-- configure nvim-tree
@@ -19,8 +21,12 @@ return {
 				width = 30,
 				relativenumber = true,
 			},
+			git = {
+				enable = true,
+			},
 			-- change folder arrow icons
 			renderer = {
+				highlight_git = true,
 				indent_markers = {
 					enable = true,
 				},
@@ -30,6 +36,9 @@ return {
 							arrow_closed = "", -- arrow when folder is closed
 							arrow_open = "", -- arrow when folder is open
 						},
+					},
+					show = {
+						git = true,
 					},
 				},
 			},
@@ -45,9 +54,6 @@ return {
 			},
 			filters = {
 				custom = { ".DS_Store" },
-			},
-			git = {
-				ignore = false,
 			},
 		})
 
