@@ -78,17 +78,17 @@ opt.iskeyword:append("-") -- Considers '-' as part of a word
 opt.termguicolors = true
 opt.background = "dark"
 opt.signcolumn = "yes"
-vim.opt.list = true -- show list chars
-vim.opt.listchars = {
-    -- these list chars
-    tab = "<->",
-    nbsp = "␣",
-    extends = "…",
-    precedes = "…",
-    trail = "·",
-    multispace = "·", -- show chars if I have multiple spaces between text
-    leadmultispace = " ", -- ...but don't show any when they're at the start
-}
+-- vim.opt.list = true -- show list chars
+-- vim.opt.listchars = {
+--     -- these list chars
+--     tab = "<->",
+--     nbsp = "␣",
+--     extends = "…",
+--     precedes = "…",
+--     trail = "·",
+--     multispace = "·", -- show chars if I have multiple spaces between text
+--     leadmultispace = " ", -- ...but don't show any when they're at the start
+-- }
 -- more defined window border
 vim.opt.fillchars:append({
     vert = "┃",
