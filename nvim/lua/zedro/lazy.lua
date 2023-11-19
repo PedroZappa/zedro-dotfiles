@@ -23,13 +23,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup('zedro.plugins')
 
--- Theme
--- vim.cmd [[
--- 	colorscheme dracula
--- 	highlight Normal guibg=none
--- 	highlight NonText guibg=none
--- ]]
-
 local plugins = {
 	-- {
 	-- 	'neovim/nvim-lspconfig',
