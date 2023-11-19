@@ -38,15 +38,6 @@ map("n", "<leader>e", ":NvimTreeFocus<CR>", "NvimTree Focus")
 -- Undotree mappings
 map("n", "<leader>u", ":UndotreeToggle<CR>", "Undotree Mappings")
 
--- Codeium Mappings
-map("i", "<C-g>", function() return vim.fn['codeium#Accept']() end, "Codeium Accept", { expr = true, vnoremap = true, nowait = true })
-map("i", "<C-x>", function() return vim.fn['codeium#Clear']() end, "Codeium Clear", { expr = true })
-map("i", "<M-]>",
-	function() return vim.fn['codeium#CycleCompletions'](1) end, "Cycle Completions: Next", { expr = true })
-map("i", "<M-[>",
-	function() return vim.fn['codeium#CycleCompletions'](-1) end, "Cycle Completions: Prev", { expr = true })
-map("i", "<C-Bslash>",
-	function() return vim.fn['codeium#Complete']() end, "Codeium Manually Trigger Suggestion", { expr = true })
 
 -- Oil Mappings
 map("n", "-", ":Oil --float<CR>", "Open Parent Directory with Oil")
