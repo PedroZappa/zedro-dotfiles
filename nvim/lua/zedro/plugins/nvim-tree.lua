@@ -24,6 +24,9 @@ return {
 			git = {
 				enable = true,
 			},
+			filesystem_watchers = {
+				enable = true,
+			},
 			-- change folder arrow icons
 			renderer = {
 				highlight_git = true,
