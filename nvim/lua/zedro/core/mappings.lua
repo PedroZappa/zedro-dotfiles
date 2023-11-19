@@ -21,12 +21,12 @@ keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
 keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert new line above" })
 -- Insert Character Pairs
-keymap.set("i", "\"", "\"\"<Esc>i", { desc = "Insert \"\"" })
-keymap.set("i", "'", "''<Esc>i", { desc = "Insert ''" })
-keymap.set("i", "(", "()<Esc>i", { desc = "Insert ()" })
-keymap.set("i", "[", "[]<Esc>i", { desc = "Insert []" })
-keymap.set("i", "{", "{}<Esc>i", { desc = "Insert {}" })
-keymap.set("i", "<", "<><Esc>i", { desc = "Insert <>" })
+-- keymap.set("i", "\"", "\"\"<Esc>i", { desc = "Insert \"\"" })
+-- keymap.set("i", "'", "''<Esc>i", { desc = "Insert ''" })
+-- keymap.set("i", "(", "()<Esc>i", { desc = "Insert ()" })
+-- keymap.set("i", "[", "[]<Esc>i", { desc = "Insert []" })
+-- keymap.set("i", "{", "{}<Esc>i", { desc = "Insert {}" })
+-- keymap.set("i", "<", "<><Esc>i", { desc = "Insert <>" })
 -- Replace Script
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
 
@@ -44,6 +44,12 @@ keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" }
 keymap.set("n", "-", ":Oil --float<CR>", { desc = "Open Parent Directory with Oil" })
 -- LazyGit
 keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
+-- vim-maximizer
+keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
+
+
+
+
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
 	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
