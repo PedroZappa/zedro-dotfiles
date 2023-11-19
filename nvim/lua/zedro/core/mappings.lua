@@ -6,41 +6,35 @@
 local map = function(mode, key, result, desc, opts)
 	vim.keymap.set(mode, key, result, { noremap = true, silent = true, desc = desc }, opts)
 end
+
 local keymap = vim.keymap -- for conciseness
--- Close buffer 
-keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "close buffer" })
-
 -- General Mappings
-map("n", "<leader><leader>", "<cmd>so %<CR>", "Source Neovim")
--- Open Options
-map("n", "<leader>o", ":vert options<CR>", "Open Options in a vertical split")
--- Close Buffer
-map("n", "<leader>bd", ":clo<CR>", "Close active buffer")
--- Cycle through open buffers
-map("n", "<tab>", ":bnext<CR>", "Next buffer")
-map("n", "<shift><tab>", ":bprevious<CR>", "Previous buffer")
+-- Close buffer 
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
+keymap.set("n", "<leader>o", ":vert options<CR>", { desc = "Open Options in a vertical split" })
+-- Buffers
+keymap.set("n", "<leader>bd", ":clo<CR>", { desc = "Close active buffer" })
+keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
+keymap.set("n", "<shift><tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 -- Replace Script
-map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], "Replace word from whole file")
+keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
 -- Inserting lines
-map("n", "o", "o<ESC>", "Insert new line below")
-map("n", "O", "O<ESC>", "Insert new line above")
-
+-- keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
+-- keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert new line above" })
 -- Resizing window
-map("n", "<C-up>", "<C-w>+", "Up")
-map("n", "<C-down>", "<C-w>-", "Down")
-map("n", "<C-left>", "<C-w>>", "Left")
-map("n", "<C-right>", "<C-w><", "Right")
-
+keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
+keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
+keymap.set("n", "<C-left>", "<C-w>>", { desc = "Left" })
+keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Formatting
 -- Trim Trailing blanks
-map("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", "Trim trailing blanks")
-
+keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 -- Nvim-tree mappings
-map("n", "<C-n>", ":NvimTreeToggle<CR>", "NvimTree Toggle")
-map("n", "<leader>e", ":NvimTreeFocus<CR>", "NvimTree Focus")
+keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NvimTree Toggle" })
+keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 -- Undotree mappings
-map("n", "<leader>u", ":UndotreeToggle<CR>", "Undotree Mappings")
-
+keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
 
 -- Oil Mappings
 map("n", "-", ":Oil --float<CR>", "Open Parent Directory with Oil")
