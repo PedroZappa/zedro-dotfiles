@@ -13,6 +13,9 @@ keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
 keymap.set("n", "<C-left>", "<C-w>>", { desc = "Left" })
 keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
+-- Splitting windows
+keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
+keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 
 -- Inserting lines
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })

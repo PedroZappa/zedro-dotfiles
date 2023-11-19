@@ -4,7 +4,7 @@ return {
 	version = "*",
 	opts = { -- require(bufferline).setup(opts)
 	options = {
-		mode = "tabs",
+		mode = "buffers",
 		buffer_close_icon = '󰅖',
 		modified_icon = '●',
 		close_icon = '',
