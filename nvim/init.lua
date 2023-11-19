@@ -1,4 +1,3 @@
--- require("zedro.core")
 -- Options
 require("zedro.core.options")
 -- Key Mappings
