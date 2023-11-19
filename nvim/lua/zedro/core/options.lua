@@ -91,14 +91,14 @@ opt.signcolumn = "yes"
 -- }
 -- more defined window border
 vim.opt.fillchars:append({
-    vert = "┃",
-    horiz = "━",
-    horizup = "┻",
-    horizdown = "┳",
-    vertleft = "┫",
-    vertright = "┣",
-    verthoriz = "╋",
-    diff = "╱",
+	vert = "┃",
+	horiz = "━",
+	horizup = "┻",
+	horizdown = "┳",
+	vertleft = "┫",
+	vertright = "┣",
+	verthoriz = "╋",
+	diff = "╱",
 })
 
 -- Backspace
@@ -124,40 +124,48 @@ vim.opt.isfname:append("@-@")
 -- })
 
 -- FileType Autocommands
--- vim.api.nvim_exec([[
--- 	augroup filetype_vim
--- 		autocmd!
--- 		autocmd FileType html,markdown setlocal tabstop=4 shiftwidth=4
--- 	augroup END
--- ]], false)
+-- Tabstop 4
+vim.api.nvim_exec([[
+	augroup filetype_vim
+		autocmd!
+		autocmd FileType html,markdown setlocal tabstop=4 shiftwidth=4
+	augroup END
+]], false)
+-- Tabstop 2
+vim.api.nvim_exec([[
+	augroup filetype_vim
+		autocmd!
+		autocmd FileType lua setlocal tabstop=2 shiftwidth=2
+	augroup END
+]], false)
 
 -- Set the cursor line to have a line at the bottom
 vim.cmd [[
-  autocmd BufEnter * highlight CursorLine gui=underline
+	autocmd BufEnter * highlight CursorLine gui=underline
 ]]
 
 -- Conceal in Neorg 
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.norg"},
-  command = "set conceallevel=3"
+	pattern = {"*.norg"},
+	command = "set conceallevel=3"
 })
 
 -- Vim Commands
 -- Highlight on yank
 vim.cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
+	augroup YankHighlight
+	autocmd!
+	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
+	augroup end
 ]]
 
 -- Turn off cursor when changing buffer
 vim.cmd [[
-  augroup cursor_off
-    autocmd!
-    autocmd WinLeave * set nocursorline nocursorcolumn
-    autocmd WinEnter * set cursorline cursorcolumn
-  augroup END
+	augroup cursor_off
+	autocmd!
+	autocmd WinLeave * set nocursorline nocursorcolumn
+	autocmd WinEnter * set cursorline cursorcolumn
+	augroup END
 ]]
 
 -- 42 hEADER sETTINGS

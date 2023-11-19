@@ -17,9 +17,9 @@ return {
     mason.setup({
       ui = {
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+          package_installed = "✔️",
+          package_pending = "➿",
+          package_uninstalled = "💤",
         },
       },
     })
@@ -27,7 +27,6 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
-		"awk_ls",
         "clangd",
         "html",
         "cssls",

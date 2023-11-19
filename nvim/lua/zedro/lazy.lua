@@ -12,19 +12,11 @@ if not vim.loop.fs_stat(lazypath) then
     })
 end
 vim.opt.rtp:prepend(lazypath)
--- Read from configs inside ~/.config/nvim/lua/zedro/plugins
--- require("lazy").setup("zedro.plugins", {
---     change_detection = {
---         -- automatically check for config file changes and reload the ui
---         enabled = true,
---         notify = false,
---     },
--- })
 
 require("lazy").setup({
 	{ import = 'zedro.plugins' },
 	{ import = 'zedro.plugins.lsp' },
-},{
+	}, {
 	install = {
 		colorscheme = { "dracula" },
 	},
