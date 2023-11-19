@@ -15,19 +15,15 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
-			require("nvim-tree").setup ({
+			require('nvim-tree').setup({
 				sort_by = "case_sensitive",
 				view = {
-					width = 30,
+					width = 20,
 					adaptive_size = true,
 				},
 				renderer = {
 					group_empty = true,
 				},
-				filters = {
-					dotfiles = true,
-				},
-
 			})
 		end,
 	};
@@ -82,15 +78,15 @@ local plugins = {
 		event = "VeryLazy",
 	},
 	-- Markdown Preview
-	-- {
-	--   "iamcco/markdown-preview.nvim",
-	--   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-	--   build = "cd app && yarn install",
-	--   init = function()
-	-- 	vim.g.mkdp_filetypes = { "markdown" }
-	--   end,
-	--   ft = { "markdown" },
-	-- },
+	{
+	  "iamcco/markdown-preview.nvim",
+	  cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+	  build = "cd app && yarn install",
+	  init = function()
+		vim.g.mkdp_filetypes = { "markdown" }
+	  end,
+	  ft = { "markdown" },
+	},
 	-- {
 	-- 	"nvim-neorg/neorg",
 	-- 	build = ":Neorg sync-parsers",

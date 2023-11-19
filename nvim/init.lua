@@ -1,9 +1,8 @@
 -- Options
-require("zedro.options")
+require("options")
 -- Key Mappings
-require("zedro.mappings")
---
--- Lazy (Package Manager	)
+require("mappings")
+-- Lazy (Package Manager)
 -- vim.loader.enable() -- cache lua modules (https://github.com/neovim/neovim/pull/22668)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -18,7 +17,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 -- Read from configs inside ~/.config/nvim/lua/zedro/plugins
-require("lazy").setup("zedro.plugins", {
+require("lazy").setup("plugins", {
     change_detection = {
         -- automatically check for config file changes and reload the ui
         enabled = true,
