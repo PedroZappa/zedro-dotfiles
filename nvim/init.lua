@@ -21,8 +21,8 @@ require("lazy").setup("zedro.plugins", {
     },
 })
 
--- Key Mappings
--- require("zedro.keymaps")
-
 -- Options
 require("zedro.options")
+
+-- Key Mappings
+require("zedro.mappings")

@@ -4,6 +4,8 @@ local opt = vim.opt
 -- Theme
 vim.cmd [[
 	colorscheme dracula
+	highlight Normal guibg=none
+	highlight NonText guibg=none
 ]]
 
 -- Options--

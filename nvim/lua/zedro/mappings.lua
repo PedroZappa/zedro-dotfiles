@@ -1,131 +1,83 @@
-local opt = vim.opt
-local autocmd = vim.api.nvim_create_autocmd
+-- Mapping helper
+---@param mode string
+---@param key string
+---@param result function | string
+---@param desc? string
+local map = function(mode, key, result, desc)
+	vim.keymap.set(mode, key, result, { noremap = true, silent = true, desc = desc })
+end
 
--- Options--
--- Line Numbers
-opt.number = true
-opt.numberwidth = 3
-opt.relativenumber = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.ruler = true
+map("n", "<leader><leader>", "<cmd>so %<CR>", "Source Neovim")
 
--- Cursor
-opt.cursorcolumn = true
-opt.cursorline = true
--- opt.cursorlineopt = 'rgba:1/1/1/50'
-opt.colorcolumn = '80';
---opt.highlight.CursorLine = { gui = "underline" }
-opt.whichwrap = '<,>'
-opt.wrap = false
-
--- Windows
-opt.splitbelow = true
-opt.splitright = true
-opt.equalalways = false
-
--- sync with system Clipboard (through + register)
-opt.clipboard = "unnamedplus"
-
--- Tabs
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
-opt.expandtab = false
--- Buffer tabs 
-opt.showtabline = 2
-opt.winbar = '=%=%k %r %h %m %f %w'
--- Indentation
-opt.autoindent = true
-opt.smartindent = true
-
--- Scroll
-opt.scrolloff = 3
-opt.sidescrolloff = 3
--- opt.sidescrolloff = 999
-
--- Fold Marks
-opt.fmr = "{{{,}}}"
-
--- Backup
-opt.backup = false
-opt.writebackup = false
-opt.swapfile = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
-
--- Search
-opt.incsearch = true
-
--- Virtual Edit
-opt.virtualedit = "block"
-
--- Inc Command
-opt.inccommand = "split"
-
--- Other
-opt.termguicolors = true
-opt.showcmd = true
-opt.showmode = true
-
--- Spelling
---- Enable spell check for .md and .txt files
-vim.cmd("autocmd BufRead,BufNewFile *.md,*.txt,*.norg setlocal spell")
-
--- Time
-vim.opt.updatetime = 50
-
--- Other
-vim.opt.isfname:append("@-@")
-vim.opt.signcolumn = "yes"
-
--- Autocommands
+-- map.general = {
+-- 	n = {
+-- 		-- Source Neovim
+-- 		["<leader><leader>"] = { "<cmd>so %<CR>", "Source Neovim" },
+-- 		-- Open Options
+-- 		["<leader>o"] = { ":vert options<CR>", "Open Options in a vertical split" },
+-- 		-- Close Buffer
+-- 		["<leader>bd"] = { ":clo<CR>", "Close active buffer" },
+-- 		-- Cycle through open buffers
+-- 		["<leader>bn"] = { ":bnext<CR>", "Next buffer" },
+-- 		["<leader>bp"] = { ":bprevious<CR>", "Previous buffer" },
+-- 		-- Replace Script
+-- 		["<leader>s"] = {
+-- 			[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+-- 			"Replace word from whole file"
+-- 		},
+-- 		-- Inserting lines
+-- 		["o"] = { "o<ESC>", "Insert new line below" },
+-- 		["O"] = { "O<ESC>", "Insert new line above" },
+-- 		-- Trim Trailing blanks
+-- 		["<leader>trm"] = {
+-- 			":%s/\\s\\+$//<CR>", "Trim Trailing whitespaces",
+-- 			opts = { noremap = true, silent = true, }
+-- 		},
+-- 		-- Resizing Window
+-- 		["<C-up>"] = { "<C-w>+", "Up" },
+-- 		["<C-down>"] = { "<C-w>-", "Down" },
+-- 		["<C-left>"] = { "<C-w>>", "Left" },
+-- 		["<C-right>"] = { "<C-w><", "Right" },
+-- 		-- Give exec permission to file
+-- 		["<leader>cx"] = { ":!chmod +x %<CR>", "Give exec permission to file" },
+-- 		--
+-- 		-- Plugin Mappings
+-- 		-- Oil Mappings
+-- 		["-"] = { ":Oil --float<CR>", "Open Parent Directory with Oil" },
+-- 		-- Nvimtree Mappings
+-- 		["<leader>n"] = { ":NvimTreeToggle<CR>", "NvimTree Toggle" },
+-- 		["<leader>e"] = { ":NvimTreeFocus<CR>", "NvimTree Focus" },
+-- 		-- Undotree Mappings
+-- 		["<leader>u"] = { ":UndotreeToggle<CR>", "Undotree Mappings" },
+-- 		-- Fugitive (Git integration) GitStatus
+-- 		["<leader>gs"] = { ":Git<CR>", "GitStatus" },
+-- 		-- LazyGit
+-- 		["<leader>gg"] = { ":LazyGit<CR>", "LazyGit" },
+-- 		-- Parrot Crash
+-- 		["<leader>pl"] = {
+-- 			":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>", "Parrot Party!!!"
+-- 		},
+-- 		-- Neorg Mappings
+-- 		["<leader>ni"] = {":Neorg index<CR>", "Neorg ndex" },
+-- 		["<leader>nj"] = {":Neorg journal today<CR>", "Neorg journal today" },
+-- 	},
+-- 	v = {
+-- 		-- Move selected blocks of code around
+-- 		["J"] = { ":m '>+1<CR>gv=gv", "Move selected lines down" },
+-- 		["K"] = { ":m '<-2<CR>gv=gv", "Move selected lines up" },
+-- 		-- Yank selection and search for it in C files
+-- 		["<leader>ys"] = { ':<C-U>exe "grep /" .. escape(@", \'\\\\/\') .. "/ *.c *.h"<CR>', {noremap = true} },
+-- 	},
+-- 	i = {
+-- 		-- Codeium Mappings
+-- 		-- ["<C-g>"] = { function() return vim.fn['codeium#Accept']() end, "Codeium Accept", opts = { expr = true, noremap = true, nowait = true }},
+-- 		["<C-x>"] = { function() return vim.fn['codeium#Clear']() end, "Codeium Clear", { expr = true }},
+-- 		["<M-]>"] = { function() return vim.fn['codeium#CycleCompletions'](1) end, "Cycle Completions: Next", { expr = true }},
+-- 		["<M-[>"] = { function() return vim.fn['codeium#CycleCompletions'](-1) end, "Cycle Completions: Prev", { expr = true }},
+-- 		-- Manually trigger suggestions
+-- 		["<C-Bslash>"] = { function() return vim.fn['codeium#Complete']() end, "Codeium Manually Trigger Suggestion", { expr = true }},
+-- 	}
+-- }
 --
-
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
-
--- FileType Autocommands
--- vim.api.nvim_exec([[
--- 	augroup filetype_vim
--- 		autocmd!
--- 		autocmd FileType html,markdown setlocal tabstop=4 shiftwidth=4
--- 	augroup END
--- ]], false)
-
--- Set the cursor line to have a line at the bottom
-vim.cmd [[
-  autocmd BufEnter * highlight CursorLine gui=underline
-]]
-
--- Conceal in Neorg 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-  pattern = {"*.norg"},
-  command = "set conceallevel=3"
-})
-
--- Vim Commands
--- Highlight on yank
-vim.cmd [[
-  augroup YankHighlight
-    autocmd!
-    autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-  augroup end
-]]
-
--- Turn off cursor when changing buffer
-vim.cmd [[
-  augroup cursor_off
-    autocmd!
-    autocmd WinLeave * set nocursorline nocursorcolumn
-    autocmd WinEnter * set cursorline cursorcolumn
-  augroup END
-]]
-
--- 42 hEADER sETTINGS
-vim.g.user42 = 'passunca'
-vim.g.mail42 = 'passunca@student.42porto.com'
-
+-- vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })
+--
