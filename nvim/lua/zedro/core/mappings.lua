@@ -30,42 +30,22 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Formatting
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
+-- Plugins
 -- Nvim-tree mappings
 keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NvimTree Toggle" })
 keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 -- Undotree mappings
 keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
-
 -- Oil Mappings
-map("n", "-", ":Oil --float<CR>", "Open Parent Directory with Oil")
+keymap.set("n", "-", ":Oil --float<CR>", { desc = "Open Parent Directory with Oil" })
 -- LazyGit
-map("n", "<leader>gg", ":LazyGit<CR>", "LazyGit")
+keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
 -- Parrot Crash
-map("n", "<leader>pl", ":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>", "Parrot Crash")
-
-
--- map.general = {
--- 	n = {
--- 		-- Oil Mappings
--- 		["-"] = { ":Oil --float<CR>", "Open Parent Directory with Oil" },
--- 		-- Fugitive (Git integration) GitStatus
--- 		["<leader>gs"] = { ":Git<CR>", "GitStatus" },
--- 		-- LazyGit
--- 		["<leader>gg"] = { ":LazyGit<CR>", "LazyGit" },
--- 		-- Parrot Crash
--- 		["<leader>pl"] = {
--- 			":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR><C-w>h:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>:term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>", "Parrot Party!!!"
--- 		},
--- 		-- Neorg Mappings
--- 		["<leader>ni"] = {":Neorg index<CR>", "Neorg ndex" },
--- 		["<leader>nj"] = {":Neorg journal today<CR>", "Neorg journal today" },
--- 	},
--- 	v = {
--- 		-- Move selected blocks of code around
--- 		["J"] = { ":m '>+1<CR>gv=gv", "Move selected lines down" },
--- 		["K"] = { ":m '<-2<CR>gv=gv", "Move selected lines up" },
--- 		-- Yank selection and search for it in C files
--- 		["<leader>ys"] = { ':<C-U>exe "grep /" .. escape(@", \'\\\\/\') .. "/ *.c *.h"<CR>', {noremap = true} },
--- 	},
--- }
---
+keymap.set("n", "<leader>pl",
+	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
+	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR><C-w>h" ..
+	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
+	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>" ..
+	":term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>",
+	{ desc = "Parrot Party!!!" }
+)
