@@ -1,5 +1,10 @@
 local opt = vim.opt
-local autocmd = vim.api.nvim_create_autocmd
+-- local autocmd = vim.api.nvim_create_autocmd
+
+-- Theme
+vim.cmd [[
+	colorscheme dracula
+]]
 
 -- Options--
 -- Line Numbers

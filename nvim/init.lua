@@ -1,5 +1,5 @@
 -- Lazy (Package Manager	)
-vim.loader.enable() -- cache lua modules (https://github.com/neovim/neovim/pull/22668)
+-- vim.loader.enable() -- cache lua modules (https://github.com/neovim/neovim/pull/22668)
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -25,4 +25,4 @@ require("lazy").setup("zedro.plugins", {
 -- require("zedro.keymaps")
 
 -- Options
--- require("zedro.options")
+require("zedro.options")
