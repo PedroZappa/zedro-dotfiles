@@ -6,6 +6,9 @@
 local map = function(mode, key, result, desc, opts)
 	vim.keymap.set(mode, key, result, { noremap = true, silent = true, desc = desc }, opts)
 end
+local keymap = vim.keymap -- for conciseness
+-- Close buffer 
+keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "close buffer" })
 
 -- General Mappings
 map("n", "<leader><leader>", "<cmd>so %<CR>", "Source Neovim")
@@ -41,8 +44,6 @@ map("n", "<leader>u", ":UndotreeToggle<CR>", "Undotree Mappings")
 
 -- Oil Mappings
 map("n", "-", ":Oil --float<CR>", "Open Parent Directory with Oil")
--- Fugitive (Git integration) GitStatus
-map("n", "<leader>gs", ":Git<CR>", "GitStatus")
 -- LazyGit
 map("n", "<leader>gg", ":LazyGit<CR>", "LazyGit")
 -- Parrot Crash
