@@ -3,6 +3,7 @@ return {
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = "make" },
+		'xiyaowong/telescope-emoji.nvim',
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
@@ -41,6 +42,23 @@ return {
 				-- please take a look at the readme of the extension you want to configure
 			}
 		}
+		require("telescope").load_extension("emoji")
+		telescope.setup {
+			extensions = {
+				emoji = {
+					action = function(emoji)
+						-- argument emoji is a table.
+						-- {name="", value="", cagegory="", description=""}
+
+						vim.fn.setreg("*", emoji.value)
+						print([[Press p or "*p to paste this emoji]] .. emoji.value)
+
+						-- insert emoji when picked
+						-- vim.api.nvim_put({ emoji.value }, 'c', false, true)
+					end,
+				}
+			},
+		}
 
 		-- telescope.load_extension("fzf")
 
@@ -50,5 +68,6 @@ return {
 		vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+		vim.keymap.set('n', '<leader>em', ":Telescope emoji<CR>", {})
 	end,
 }

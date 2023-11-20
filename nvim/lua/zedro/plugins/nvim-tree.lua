@@ -17,6 +17,7 @@ return {
 
 		-- configure nvim-tree
 		nvimtree.setup({
+			update_cwd = true,
 			view = {
 				width = 30,
 				relativenumber = true,
@@ -39,9 +40,21 @@ return {
 							arrow_closed = "", -- arrow when folder is closed
 							arrow_open = "", -- arrow when folder is open
 						},
+						git = {
+							unstaged = "✗",
+							staged = "✓",
+							unmerged = "",
+							renamed = "➜",
+							untracked = "★",
+							deleted = "",
+							ignored = "◌",
+						},
 					},
 					show = {
 						git = true,
+						file = true,
+						folder = true,
+						folder_arrow = false,
 					},
 				},
 			},
