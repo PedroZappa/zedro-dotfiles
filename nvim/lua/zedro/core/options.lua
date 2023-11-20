@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+vim.o.guifont = "Fira Code Nerd Font:h11"
 -- Set leader and localleader
 vim.g.mapleader = " "
 -- vim.g.maplocalleader = "\\"
