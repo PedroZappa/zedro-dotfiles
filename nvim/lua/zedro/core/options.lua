@@ -72,7 +72,7 @@ vim.g.bulitin_lsp = true
 -- Other
 opt.showcmd = true
 opt.showmode = true
-opt.iskeyword:append("-") -- Considers '-' as part of a word
+-- opt.iskeyword:append("-") -- Considers '-' as part of a word
 
 -- Appearance
 opt.termguicolors = true

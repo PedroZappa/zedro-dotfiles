@@ -8,7 +8,7 @@ set $ARM = 0
 set $COLOREDPROMPT = 1
 # color the first line of the disassembly - default is green, if you want to change it search for
 # SETCOLOR1STLINE and modify it :-)
-set $SETCOLOR1STLINE = 0
+set $SETCOLOR1STLINE = 1
 # set to 0 to remove disassembly display (useful for scripted commands mass dumping)
 set $SHOWDISASM = 1
 # set to 0 to remove display of objectivec messages (default is 1)
@@ -16,7 +16,7 @@ set $SHOWOBJECTIVEC = 1
 # set to 0 to remove display of cpu registers (default is 1)
 set $SHOWCPUREGISTERS = 1
 # set to 1 to enable display of stack (default is 0)
-set $SHOWSTACK = 0
+set $SHOWSTACK = 1
 # set to 1 to enable display of data window (default is 0)
 set $SHOWDATAWIN = 0
 # set to 0 to disable colored display of changed registers
@@ -34,7 +34,7 @@ set $X86FLAVOR = 0
 # use colorized output or not
 set $USECOLOR = 1
 # to use with remote KDP
-set $KDP64BITS = -1
+set $KDP64BITS = 1
 set $64BITS = 1
 
 # macOS version works better with this setting off
@@ -61,7 +61,7 @@ set $CONTEXTSIZE_CODE  = 8
 
 # Set 
 # set style enabled
-set style sources on
+# set style sources on
 
 # __________________end gdb options_________________
 #

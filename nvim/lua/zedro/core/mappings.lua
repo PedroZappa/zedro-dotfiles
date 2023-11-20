@@ -7,7 +7,7 @@ keymap.set("n", "<leader>o", ":vert options<CR>", { desc = "Open Options in a ve
 -- Buffers
 keymap.set("n", "<leader>bd", ":clo<CR>", { desc = "Close active buffer" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<shift><tab>", ":bprevious<CR>", { desc = "Previous buffer" })
+keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 -- Resizing window
 keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
