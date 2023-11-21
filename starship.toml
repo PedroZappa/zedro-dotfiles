@@ -16,7 +16,7 @@ style = "bold red"
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
 error_symbol = "[λ](bold red)"
-success_symbol = "[λ](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[λ](bold yellow)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
 # [cmd_duration]
 # min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
