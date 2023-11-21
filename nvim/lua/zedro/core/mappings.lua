@@ -16,6 +16,8 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Splitting windows
 keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
+-- Clear Highlights
+keymap.set("n", "<Esc><Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Inserting lines
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
