@@ -6,6 +6,12 @@
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+## Install [`Starship`](https://starship.rs/)
+
+```shell
+curl -sS https://starship.rs/install.sh | sh
+```
+
 ## Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
 
 ```shell
