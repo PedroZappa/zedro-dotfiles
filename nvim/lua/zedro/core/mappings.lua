@@ -17,7 +17,11 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 -- Clear Highlights
-keymap.set("n", "<Esc><Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
+
+-- Terminals
+-- Exit terminal
+keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 -- Inserting lines
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
