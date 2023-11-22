@@ -10,7 +10,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 ```shell
 curl -sS https://starship.rs/install.sh | sh
+ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 ```
+## Install Neofetch
+
+```shell
+sudo apt install neofetch
+ln -s ~/.dotfiles/neofetch.conf ~/.config/neofetch/neofetch.conf
+```
+
+___
 
 ## Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
 
