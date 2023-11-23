@@ -48,8 +48,13 @@ keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
 -- Oil Mappings
 keymap.set("n", "-", ":Oil --float<CR>", { desc = "Open Parent Directory with Oil" })
--- LazyGit
+
+-- Git
 keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
+keymap.set("n", "<leader>cm", ":Telescope git_commits<CR>", { desc = "Git commits" })
+keymap.set("n", "<leader>gt", ":Telescope git_status<CR>", { desc = "Git status" })
+keymap.set('n', '<leader>gs', ':Git<CR>')
+
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
 
