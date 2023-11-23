@@ -57,7 +57,8 @@ keymap.set('n', '<leader>gs', ':Git<CR>')
 
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
-
+-- Markdown Preview
+keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
 
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
