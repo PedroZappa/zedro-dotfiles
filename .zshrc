@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="crunch"
 # ZSH_THEME="cypher"
 # ZSH_THEME="jonathan"
-# ZSH_THEME="refined"
+ZSH_THEME="refined"
 # ZSH_THEME="rkj-repos"
 # ZSH_THEME="xiong-chiamiov-plus"
 
@@ -50,7 +50,7 @@ zstyle ':omz:update' frequency 13
 ENABLE_CORRECTION="false"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
+# You can also sgit clone https://github.com/dylanaraps/neofetchet it to another string to have that shown instead of the default red dots.
 # e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765) 
 COMPLETION_WAITING_DOTS="true"
@@ -128,39 +128,6 @@ else [[ $USER == "passunca" ]];
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
 
-#
-# >>> mamba initialize >>>
-# !! Contents within this block are managed by 'mamba init' !!
-export MAMBA_EXE="/home/zedr0/.micromamba/bin/micromamba";
-export MAMBA_ROOT_PREFIX="/home/zedr0/micromamba";
-__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__mamba_setup"
-else
-    if [ -f "/home/zedr0/micromamba/etc/profile.d/micromamba.sh" ]; then
-        . "/home/zedr0/micromamba/etc/profile.d/micromamba.sh"
-    else
-        export  PATH="/home/zedr0/micromamba/bin:$PATH"  # extra space after export prevents interference from conda init
-    fi
-fi
-unset __mamba_setup
-# <<< mamba initialize <<<
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/zedr0/micromamba/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/zedr0/micromamba/etc/profile.d/conda.sh" ]; then
-        . "/home/zedr0/micromamba/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/zedr0/micromamba/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 alias francinette=~/francinette/tester.sh
 alias paco=~/francinette/tester.sh
 
@@ -170,6 +137,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship prompt 
-eval "$(starship init zsh)"
-# Neofetch
-neofetch
+# eval "$(starship init zsh)"
+# neofetch
