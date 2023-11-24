@@ -69,3 +69,7 @@ keymap.set("n", "<leader>pl",
 	":term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>",
 	{ desc = "Parrot Party!!!" }
 )
+-- Summon Pet
+keymap.set("n", "<leader>sp", ":PetsNew Z", { desc = "Summon Pet" })
+keymap.set("n", "<leader>scp", ":PetsNewCustom slime green Z", { desc = "Summon Custom Pet" })
+keymap.set("n", "<leader>kp", ":PetsKill Z", { desc = "Kill Pet" })

@@ -105,6 +105,7 @@ source $ZSH/oh-my-zsh.sh
 
 ### Zedro's Aliases
 #
+# Global Aliases
 # Navigation
 alias ll='ls -al --color'
 # Compiling
@@ -114,33 +115,32 @@ alias nn='norminette'
 # Franinette alias
 alias fr='francinette'
 
+alias francinette=~/francinette/tester.sh
+alias paco=~/francinette/tester.sh
+
+alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 
 ### Source Neovim 
 # export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PATH
 # export PATH="$HOME/.local/bin:$PATH"
 # PATH to Neovim on Z-Desk
+
+# Local Aliases
+echo "ꔘꔘꔘ Yo $USER! Welcome to $HOST ꔘꔘꔘ"
 if [[ $USER == "zedr0" ]]; then
-	echo "Hey $USER, you are on Z-Desk"
 	# export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
 	alias nvim=~/bin/nvim-linux64/bin/nvim
-	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 else [[ $USER == "passunca" ]];
-	echo "Hey $USER, you are at 42"
-	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
-
-alias francinette=~/francinette/tester.sh
-alias paco=~/francinette/tester.sh
 
 # Load Version Manager (for Node.js)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Starship prompt 
+# Starship prompt & neofetch
 if [[ $USER == "zedr0" ]]; then
-	echo "Prompting Starship & Neofetch"
 	eval "$(starship init zsh)"
 	neofetch
 fi
