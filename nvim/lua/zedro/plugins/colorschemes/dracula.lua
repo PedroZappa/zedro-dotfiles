@@ -59,6 +59,14 @@ return {
 			colorscheme dracula
 			highlight Normal guibg=none
 			highlight NonText guibg=none
+			highlight WhichKey guifg=#13b016
+			highlight WhichKeyFloat guibg=#000000
+			highlight WhichKeySeparator guifg=#8426ff
+			highlight TelescopeNormal guibg=#000000
+			highlight TelescopeSelection guibg=#674b94 guifg=#000000
+			highlight TelescopePreviewBorder guifg=#118c1f
+			highlight TelescopeResultsBorder guifg=#118c1f
+			highlight TelescopePromptBorder guifg=#118c1f
 			]])
 	end,
 }

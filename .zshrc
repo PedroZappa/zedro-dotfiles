@@ -116,14 +116,16 @@ alias fr='francinette'
 
 
 ### Source Neovim 
-export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PATH
-export PATH="$HOME/.local/bin:$PATH"
+# export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PATH
+# export PATH="$HOME/.local/bin:$PATH"
 # PATH to Neovim on Z-Desk
 if [[ $USER == "zedr0" ]]; then
-	export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
+	echo "Hey $USER, you are on Z-Desk"
+	# export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
 	alias nvim=~/bin/nvim-linux64/bin/nvim
 	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 else [[ $USER == "passunca" ]];
+	echo "Hey $USER, you are at 42"
 	alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
@@ -137,5 +139,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Starship prompt 
-# eval "$(starship init zsh)"
-# neofetch
+if [[ $USER == "zedr0" ]]; then
+	echo "Prompting Starship & Neofetch"
+	eval "$(starship init zsh)"
+	neofetch
+fi
