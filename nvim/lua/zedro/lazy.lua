@@ -17,6 +17,7 @@ require("lazy").setup({
 	{ import = 'zedro.plugins' },
 	{ import = 'zedro.plugins.lsp' },
 	{ import = 'zedro.plugins.colorschemes' },
+	{ import = 'zedro.plugins.ctags' },
 	}, {
 	install = {
 		colorscheme = { "dracula" },
