@@ -5,10 +5,12 @@ return {
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = "make" },
 		'xiyaowong/telescope-emoji.nvim',
 		"nvim-tree/nvim-web-devicons",
+		'cljoly/telescope-repo.nvim',
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+
 		telescope.setup{
 			defaults = {
 				-- Default configuration for telescope goes here:
@@ -38,16 +40,6 @@ return {
 				-- builtin picker
 			},
 			extensions = {
-				-- Your extension configuration goes here:
-				-- extension_name = {
-				--   extension_config_key = value,
-				-- }
-				-- please take a look at the readme of the extension you want to configure
-			}
-		}
-		require("telescope").load_extension("emoji")
-		telescope.setup {
-			extensions = {
 				emoji = {
 					action = function(emoji)
 						-- argument emoji is a table.
@@ -59,11 +51,22 @@ return {
 						-- insert emoji when picked
 						-- vim.api.nvim_put({ emoji.value }, 'c', false, true)
 					end,
-				}
-			},
+				},
+				repo = {
+					list = {
+						fd_opts = {
+							"--no-ignore-vcs",
+						},
+						search_dirs = {
+							"~/my_projects",
+						},
+					},
+				},
+			}
 		}
 
-		-- telescope.load_extension("fzf")
+		require("telescope").load_extension("emoji")
+		require("telescope").load_extension("repo")
 
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -72,5 +75,6 @@ return {
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 		vim.keymap.set('n', '<leader>em', ":Telescope emoji<CR>", {})
+		vim.keymap.set('n', '<leader>re', ":Telescope repo list<CR>", {})
 	end,
 }
