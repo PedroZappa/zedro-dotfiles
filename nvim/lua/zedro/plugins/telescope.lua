@@ -69,12 +69,12 @@ return {
 		require("telescope").load_extension("repo")
 
 		local builtin = require('telescope.builtin')
-		vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-		vim.keymap.set('n', '<leader>fs', builtin.live_grep, {})
-		vim.keymap.set('n', '<leader>fc', builtin.grep_string, {})
-		vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-		vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-		vim.keymap.set('n', '<leader>em', ":Telescope emoji<CR>", {})
-		vim.keymap.set('n', '<leader>re', ":Telescope repo list<CR>", {})
+		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
+		vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = "Live grep" })
+		vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Grep string" })
+		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Buffers" })
+		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
+		vim.keymap.set('n', '<leader>em', ":Telescope emoji<CR>", { desc = "Emoji" })
+		vim.keymap.set('n', '<leader>re', ":Telescope repo list<CR>", { desc = "Repo" })
 	end,
 }
