@@ -24,6 +24,7 @@ return {
 			},
 			git = {
 				enable = true,
+				ignore = false,
 			},
 			filesystem_watchers = {
 				enable = true,
