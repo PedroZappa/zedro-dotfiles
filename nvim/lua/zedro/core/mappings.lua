@@ -23,6 +23,8 @@ keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 -- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
+
+-- Editing
 -- Inserting lines
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
 keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert new line above" })
@@ -35,10 +37,9 @@ keymap.set("i", "{", "{}<Esc>i", { desc = "Insert {}" })
 keymap.set("i", "<", "<><Esc>i", { desc = "Insert <>" })
 -- Replace Script
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
-
--- Formatting
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
+
 
 -- Plugins
 -- Nvim-tree mappings
@@ -48,17 +49,20 @@ keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
 -- Oil Mappings
 keymap.set("n", "-", ":Oil --float<CR>", { desc = "Open Parent Directory with Oil" })
-
 -- Git
 keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
 keymap.set("n", "<leader>cm", ":Telescope git_commits<CR>", { desc = "Git commits" })
 keymap.set("n", "<leader>gt", ":Telescope git_status<CR>", { desc = "Git status" })
 keymap.set('n', '<leader>gs', ':Git<CR>')
-
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
 -- Markdown Preview
 keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
+-- nvim-cheat
+keymap.set("n", "<leader>ch", ":Cheat<CR>", { desc = "Cheat Sheet" })
+keymap.set("n", "<leader>cl", ":CheatList<CR>", { desc = "Cheat Sheet List" })
+keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>", { desc = "Cheat Sheet w/out Comments" })
+
 
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
