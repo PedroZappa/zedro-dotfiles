@@ -113,8 +113,6 @@ gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 
 ## Midnight Commander
 
-### mc Color Scheme
-
 ```shell
 # mc config
 ln -s ~/.dotfiles/mc/ini ~/.config/mc/ini
