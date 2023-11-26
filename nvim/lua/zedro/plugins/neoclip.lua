@@ -1,5 +1,7 @@
 return {
 	"AckslD/nvim-neoclip.lua",
+
+	lazy = "true",
 	requires = {
 		{'nvim-telescope/telescope.nvim'},
 	},

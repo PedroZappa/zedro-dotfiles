@@ -1,5 +1,6 @@
 return {
 	"giusgad/pets.nvim",
+	lazy = true,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 		-- "giusgad/hologram.nvim",
