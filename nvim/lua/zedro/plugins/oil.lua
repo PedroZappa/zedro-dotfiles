@@ -1,16 +1,14 @@
 return {
 	'stevearc/oil.nvim',
 	lazy = true,
-	-- keys = {
-	-- 	{ "<leader>o", ":Oil<CR>", desc = "Open Oil" }
-	-- },
+	event = "BufRead",
 	-- Optional dependencies
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts = function()
 		require("oil").setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 			-- Set to false if you still want to use netrw.
-			default_file_explorer = true,
+			default_file_explorer = false,
 			-- Id is automatically added at the beginning, and name at the end
 			-- See :help oil-columns
 			columns = {
@@ -74,7 +72,7 @@ return {
 			use_default_keymaps = true,
 			view_options = {
 				-- Show files and directories that start with "."
-				show_hidden = false,
+				show_hidden = true,
 				-- This function defines what is considered a "hidden" file
 				is_hidden_file = function(name, bufnr)
 					return vim.startswith(name, ".")
@@ -94,8 +92,8 @@ return {
 			float = {
 				-- Padding around the floating window
 				padding = 2,
-				max_width = 0,
-				max_height = 0,
+				max_width = 100,
+				max_height = 100,
 				border = "rounded",
 				win_options = {
 					winblend = 0,
@@ -144,5 +142,6 @@ return {
 				},
 			},
 		})
+		vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 	end,
 }
