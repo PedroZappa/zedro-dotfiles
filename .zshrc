@@ -126,7 +126,7 @@ alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 # PATH to Neovim on Z-Desk
 
 # Local Aliases
-echo "ꔘꔘꔘ Yo $USER! Welcome to $HOST ꔘꔘꔘ"
+echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
 if [[ $USER == "zedr0" ]]; then
 	# export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
 	alias nvim=~/bin/nvim-linux64/bin/nvim
