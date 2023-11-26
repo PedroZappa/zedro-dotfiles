@@ -1,5 +1,22 @@
 # zedro-dotfiles
 
+## Clone repo into `.dotfiles` folder in home directory.
+
+```shell
+git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
+``` 
+
+## Create symlinks to .dotfiles in home directory.
+
+```sh
+~
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
+ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
+```
+
 ## Install [`oh-my-zsh`](https://ohmyz.sh/)
 
 ```shell 
@@ -12,7 +29,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 curl -sS https://starship.rs/install.sh | sh
 ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 ```
-## Install Neofetch
+## Install [Neofetch](https://github.com/dylanaraps/neofetch)
 
 ```shell
 sudo apt install neofetch
@@ -28,23 +45,6 @@ cd
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
 cp .tmux/.tmux.conf.local .
-```
-
-## Clone repo into .dotfiles folder in home directory.
-
-```shell
-git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
-``` 
-
-## Create symlinks to .dotfiles in home directory.
-
-```sh
-~
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
-ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ```
 
 ## Setup `zsh` plugins 
@@ -89,8 +89,14 @@ ln -s ~/.dotfiles/nvim/ ~/.config/
 ```shell
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ln -s ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
+
 # Add kitty to path
 sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
+
+# kitty dracula theme
+ln -s ~/.dotfiles/kitty/dracula.conf ~/.config/kitty/dracula.conf
+ln -s ~/.dotfiles/kitty/diff.conf ~/.config/kitty/diff.conf
+
 ```
 
 ## Ubuntu Dracula Theme
