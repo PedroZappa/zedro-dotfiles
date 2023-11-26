@@ -67,6 +67,8 @@ return {
 			highlight TelescopePreviewBorder guifg=#118c1f
 			highlight TelescopeResultsBorder guifg=#118c1f
 			highlight TelescopePromptBorder guifg=#118c1f
+			highlight NormalFloat guibg=#000000
+			highlight FloatBorder guifg=white guibg=#282c34
 			]])
 	end,
 }
