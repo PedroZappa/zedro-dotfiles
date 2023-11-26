@@ -38,7 +38,7 @@ git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 
 ## Create symlinks to .dotfiles in home directory.
 
-```shell
+```sh
 ~
 ln -s ~/.dotfiles/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
@@ -49,9 +49,9 @@ ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 
 ## Setup `zsh` plugins 
 
-Clone plugins into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+Clone plugins into `ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)`
 
-```shell
+```sh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use 
@@ -110,3 +110,16 @@ gsettings set org.gnome.desktop.wm.preferences theme Dracula
 # Activate Icons
 gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 ```
+
+## Midnight Commander
+
+### mc Color Scheme
+
+```shell
+# mc config
+ln -s ~/.dotfiles/mc/ini ~/.config/mc/ini
+ln -s ~/.dotfiles/mc/panels.ini ~/.config/mc/panels.ini
+
+# Dracula Color Scheme
+ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
+``
