@@ -78,7 +78,7 @@ curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd76
 curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
 
-## Setup Neovim
+## Setup `Neovim`
 
 ```shell
 ln -s ~/.dotfiles/nvim/ ~/.config/
@@ -88,11 +88,9 @@ ln -s ~/.dotfiles/nvim/ ~/.config/
 
 ```shell
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-ln -s ~/.dotfiles/kitty.conf ~/.config/kitty/kitty.conf
+ln -s ~/.dotfiles/kitty/kitty.conf ~/.config/kitty/kitty.conf
 # Add kitty to path
 sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
-# To open text and images
-cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
 ```
 
 ## Ubuntu Dracula Theme
@@ -119,5 +117,9 @@ ln -s ~/.dotfiles/mc/ini ~/.config/mc/ini
 ln -s ~/.dotfiles/mc/panels.ini ~/.config/mc/panels.ini
 
 # Dracula Color Scheme
+# dracula
+ln -s ~/.dotfiles/mc/skins/dracula.ini ~/.local/share/mc/skins/dracula.ini
+
+# dracula256
 ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
 ``
