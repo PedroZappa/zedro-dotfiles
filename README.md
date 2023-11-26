@@ -115,7 +115,7 @@ gsettings set org.gnome.desktop.wm.preferences theme Dracula
 gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 ```
 
-## Midnight Commander
+## Setup [Midnight Commander](https://midnight-commander.org/)
 
 ```shell
 # mc config
