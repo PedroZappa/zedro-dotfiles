@@ -7,7 +7,7 @@ return {
 
     lualine.setup({
       options = {
-        theme = 'nightfox',
+        theme = 'auto',
       },
       sections = {
         lualine_x = {

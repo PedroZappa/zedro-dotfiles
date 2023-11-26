@@ -4,7 +4,7 @@ return {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
     },
-	event = 'VeryLazy',
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local keymap = vim.keymap -- for short
 		keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true })

@@ -1,5 +1,7 @@
 return {
 	'dhananjaylatkar/cscope_maps.nvim',
+	lazy = true,
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"folke/which-key.nvim", -- optional [for whichkey hints]
 		"nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]

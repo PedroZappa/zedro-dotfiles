@@ -1,5 +1,7 @@
 return {
 	'ludovicchabant/vim-gutentags', -- automatic tags management
+	lazy = true,
+	event = { "BufReadPre", "BufNewFile" },
 	init = function()
 		vim.g.gutentags_modules = {"cscope_maps"} -- This is required. Other config is optional
 		vim.g.gutentags_cscope_build_inverted_index_maps = 1
