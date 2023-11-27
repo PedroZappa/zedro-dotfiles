@@ -1,12 +1,31 @@
 # zedro-dotfiles
 
-## Clone repo into `.dotfiles` folder in home directory.
+Installation instructions to my favourite digital tools.
+
+___
+
+### Table o'Contents
+
+<p>
+    ~
+    <a href="#cloning-zedro-dotfiles">Cloning</a> ~
+    <a href="#setup-zsh">Setup zsh</a> ~
+    <a href="#setup-vim">Setup vim</a> ~
+    <a href="#setup-tmux">Setup tmux</a> ~
+    <a href="#setup-terminal">Setup Terminal</a> ~
+    <a href="#setup-theme">Setup Theme</a> ~
+    <a href="#other-utilities">Other Utilities</a> ~
+</p>
+
+___
+
+### Cloning `zedro-dotfiles`
 
 ```shell
 git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 ``` 
 
-## Create symlinks to .dotfiles in home directory.
+#### Create symlinks to .dotfiles in home directory.
 
 ```sh
 ~
@@ -17,37 +36,18 @@ ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ```
 
-## Install [`oh-my-zsh`](https://ohmyz.sh/)
+___
+
+## Setup [zsh](https://www.zsh.org/)
+
+
+#### Install [`oh-my-zsh`](https://ohmyz.sh/)
 
 ```shell 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-## Install [`Starship`](https://starship.rs/)
-
-```shell
-curl -sS https://starship.rs/install.sh | sh
-ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
-```
-## Install [Neofetch](https://github.com/dylanaraps/neofetch)
-
-```shell
-sudo apt install neofetch
-ln -s ~/.dotfiles/neofetch.conf ~/.config/neofetch/neofetch.conf
-```
-
-___
-
-## Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
-
-```shell
-cd
-git clone https://github.com/gpakosz/.tmux.git
-ln -s -f .tmux/.tmux.conf
-cp .tmux/.tmux.conf.local .
-```
-
-## Setup `zsh` plugins 
+#### Setup [zsh](https://www.zsh.org/) plugins 
 
 Clone plugins into `ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)`
 
@@ -57,16 +57,25 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use 
 ```
 
-## Install [`vim-plug`](https://github.com/junegunn/vim-plug)
+#### Install [`starship`](https://starship.rs/) prompt
 
 ```shell
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+curl -sS https://starship.rs/install.sh | sh
+ln -s ~/.dotfiles/starship.toml ~/.config/starship.toml
 ```
 
-## Setup `.vim`
+___
+
+# Setup [vim](https://www.vim.org/)
+
+
+#### Setup `.vim`
 
 ```shell
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 
 # Install color schemes
@@ -78,13 +87,30 @@ curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd76
 curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
 
-## Setup `Neovim`
+#### Setup [neovim](https://neovim.io/doc/)
 
 ```shell
 ln -s ~/.dotfiles/nvim/ ~/.config/
 ```
 
-## Setup `kitty`
+___
+
+## Setup [tmux](https://github.com/tmux/tmux) 
+
+#### Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
+
+```shell
+cd
+git clone https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cp .tmux/.tmux.conf.local .
+```
+
+___
+
+## Setup Terminal
+
+#### Setup [kitty](https://sw.kovidgoyal.net/kitty/)
 
 ```shell
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -99,7 +125,11 @@ ln -s ~/.dotfiles/kitty/diff.conf ~/.config/kitty/diff.conf
 
 ```
 
-## Ubuntu Dracula Theme
+___
+
+## Setup Theme
+
+#### Ubuntu [Dracula Theme](https://draculatheme.com/gtk)
 
 Create symlink for ~/.themes 
 
@@ -115,7 +145,11 @@ gsettings set org.gnome.desktop.wm.preferences theme Dracula
 gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 ```
 
-## Setup [Midnight Commander](https://midnight-commander.org/)
+___
+
+## Other Utilities
+
+#### Setup [Midnight Commander](https://midnight-commander.org/)
 
 ```shell
 # mc config
@@ -128,4 +162,12 @@ ln -s ~/.dotfiles/mc/skins/dracula.ini ~/.local/share/mc/skins/dracula.ini
 
 # dracula256
 ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
-``
+```
+
+#### Install [neofetch](https://github.com/dylanaraps/neofetch)
+
+```shell
+sudo apt install neofetch
+ln -s ~/.dotfiles/neofetch.conf ~/.config/neofetch/neofetch.conf
+```
+
