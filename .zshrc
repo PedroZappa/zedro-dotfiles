@@ -139,10 +139,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Starship prompt & neofetch
+eval "$(starship init zsh)"
+#
+# Neofetch
 if [[ $USER == "zedr0" ]]; then
-	eval "$(starship init zsh)"
 	neofetch
-else
-	ZSH_THEME="refined"
 fi
