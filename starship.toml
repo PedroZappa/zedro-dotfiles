@@ -26,7 +26,7 @@ success_symbol = "[λ](bold yellow)"     # The "success_symbol" segment is being
 read_only = " 󰌾"
 truncate_to_repo = false
 style = "bold cyan"
-truncation_length = 7
+truncation_length = 5
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 # [git_branch]
