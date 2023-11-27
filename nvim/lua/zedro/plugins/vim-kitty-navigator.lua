@@ -1,6 +1,6 @@
 return {
 	'knubie/vim-kitty-navigator',
-	lazy = true,
+	event = 'VeryLazy',
 	build = function(plugin)
 		vim.fn.system('cp ' .. plugin.dir .. '/*.py ~/.config/kitty/')
 	end,

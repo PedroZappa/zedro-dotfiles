@@ -1,9 +1,6 @@
 return {
 	'nvim-telescope/telescope.nvim', branch = '0.1.x',
-	lazy = true,
-	keys = {
-		{ "<leader>f", mode = { "n", "v" } },
-	},
+	event = "VeryLazy",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
 		{ 'nvim-telescope/telescope-fzf-native.nvim', run = "make" },

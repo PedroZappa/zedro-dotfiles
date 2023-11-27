@@ -2,14 +2,11 @@ return {
 	"giusgad/pets.nvim",
 	dependencies = {
 		'edluffy/hologram.nvim', -- terminal image viewer
+		"MunifTanjim/nui.nvim",
 	},
 	lazy = true,
 	keys = {
 		{ "<leader>sp", "<cmd>PetsNew Z<CR>", desc = "Pet New" },
-	},
-	dependencies = {
-		"MunifTanjim/nui.nvim",
-		-- "giusgad/hologram.nvim",
 	},
 	config = function()
 		require("pets").setup({

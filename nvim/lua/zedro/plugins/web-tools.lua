@@ -1,6 +1,6 @@
 return {
 	'ray-x/web-tools.nvim',
-	lazy = true,
+	event = "VeryLazy",
 	config = function()
 		require'web-tools'.setup({
 			keymaps = {

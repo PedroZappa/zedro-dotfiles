@@ -1,6 +1,6 @@
 return {
 	"folke/which-key.nvim",
-	lazy = true,
+	event = "VeryLazy",
 	keys = {
 		{ "<leader>", mode = { "n", "v" } },
 	},

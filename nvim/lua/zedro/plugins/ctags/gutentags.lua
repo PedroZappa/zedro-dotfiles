@@ -1,6 +1,5 @@
 return {
 	'ludovicchabant/vim-gutentags', -- automatic tags management
-	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
 	init = function()
 		vim.g.gutentags_modules = {"cscope_maps"} -- This is required. Other config is optional
