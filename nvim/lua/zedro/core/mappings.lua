@@ -5,7 +5,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
 keymap.set("n", "<leader>o", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 -- Buffers
-keymap.set("n", "<leader>bd", ":clo<CR>", { desc = "Close active buffer" })
+keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>", { desc = "Close active buffer" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 -- Resizing window
