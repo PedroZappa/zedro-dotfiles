@@ -3,6 +3,8 @@ return {
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
+		local dracula = require("dracula")
+		local colors = dracula.colors()
 		-- This module contains a number of default definitions
 		local rainbow_delimiters = require 'rainbow-delimiters'
 
