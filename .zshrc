@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -76,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 plugins=(git sudo copyfile copybuffer dirhistory zsh-autosuggestions zsh-syntax-highlighting web-search jsontools you-should-use emoji)
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 
 # Created by Zap installer
@@ -85,6 +85,12 @@ plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "hlissner/zsh-autopair"
+plug "zsh-users/zsh-history-substring-search"
+plug "MichaelAquilina/zsh-you-should-use"
+plug "zap-zsh/completions"
+plug "zap-zsh/sudo"
+plug ""
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -117,7 +123,15 @@ compinit
 
 ### Zedro's Aliases
 #
-# Global Aliases
+# Git
+alias ga='git add'
+alias gst='git status'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias glgg='git log --graph --oneline --decorate'
 # Navigation
 alias ll='ls -al --color'
 # Compiling
@@ -131,11 +145,6 @@ alias francinette=~/francinette/tester.sh
 alias paco=~/francinette/tester.sh
 
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
-
-### Source Neovim 
-# export PATH=Files/Neovim/bin:/path/to/nvim:/snap/bin:./bin/nvim-linux64/bin:$PATH
-# export PATH="$HOME/.local/bin:$PATH"
-# PATH to Neovim on Z-Desk
 
 # Local Aliases
 echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
@@ -158,8 +167,14 @@ export NVM_DIR="$HOME/.nvm"
 # 	neofetch
 # fi
 
+# Load Starship
 if command -v starship > /dev/null 2>&1; then
     eval "$(starship init zsh)"
 else
     ZSH_THEME="refined"
+fi
+
+# Load Neofetch
+if command -v neofetch > /dev/null 2>&1; then
+	neofetch
 fi

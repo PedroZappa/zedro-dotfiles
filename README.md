@@ -28,10 +28,11 @@ git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 
 ```sh
 ~
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
-ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/nvim/ ~/.config/
 ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
+ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ```
 
@@ -40,26 +41,10 @@ ___
 ## Setup [zsh](https://www.zsh.org/)
 
 
-#### Install [`oh-my-zsh`](https://ohmyz.sh/)
-
-```shell 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-```
-
 #### Setup [zap](https://github.com/zap-zsh/zap) plugin manager
 
 ```shell
-	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-```
-
-#### Setup [zsh](https://www.zsh.org/) plugins 
-
-Clone plugins into `ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)`
-
-```sh
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use 
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 ```
 
 #### Install [`starship`](https://starship.rs/) prompt
@@ -74,12 +59,12 @@ ___
 # Setup [vim](https://www.vim.org/)
 
 
-#### Setup `.vim`
+#### Setup `vim`
 
 ```shell
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 
@@ -152,6 +137,6 @@ ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
 
 ```shell
 sudo apt install neofetch
-ln -s ~/.dotfiles/neofetch.conf ~/.config/neofetch/neofetch.conf
+ln -s ~/.dotfiles/neofetch/config.conf ~/.config/neofetch/config.conf
 ```
 
