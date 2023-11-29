@@ -1,5 +1,8 @@
-local keymap = vim.keymap -- for conciseness
+local keymap = vim.keymap
+
 -- General Mappings
+-- Get Help
+keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 -- Close buffer 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
@@ -16,8 +19,7 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Splitting windows
 keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
--- Clear Highlights
-keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
+
 
 -- Terminals
 -- Exit terminal
@@ -25,20 +27,17 @@ keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 
 -- Editing
+-- Toggle Relative numbers
+keymap.set("n", "<leader>rl", ":set relativenumber!<CR>", { desc = "Toggle relative numbers" })
 -- Inserting lines
 keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
 keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert new line above" })
--- Insert Character Pairs
-keymap.set("i", "\"", "\"\"<Esc>i", { desc = "Insert \"\"" })
-keymap.set("i", "'", "''<Esc>i", { desc = "Insert ''" })
-keymap.set("i", "(", "()<Esc>i", { desc = "Insert ()" })
-keymap.set("i", "[", "[]<Esc>i", { desc = "Insert []" })
-keymap.set("i", "{", "{}<Esc>i", { desc = "Insert {}" })
-keymap.set("i", "<", "<><Esc>i", { desc = "Insert <>" })
 -- Replace Script
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
+-- Clear Highlights
+keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 
 -- Plugins

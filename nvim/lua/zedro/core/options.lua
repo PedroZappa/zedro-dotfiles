@@ -105,70 +105,12 @@ vim.opt.fillchars:append({
 -- Backspace
 opt.backspace = "indent,eol,start"
 
--- Spelling
---- Enable spell check for .md and .txt files
-vim.cmd("autocmd BufRead,BufNewFile *.md,*.txt,*.norg setlocal spell")
-
 -- Time
 vim.opt.updatetime = 50
 
 -- Other
 vim.opt.isfname:append("@-@")
 
--- Autocommands
---
-
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
-
--- FileType Autocommands
--- Tabstop 4
-vim.api.nvim_exec([[
-	augroup filetype_vim
-		autocmd!
-		autocmd FileType html,markdown setlocal tabstop=4 shiftwidth=4
-	augroup END
-]], false)
--- Tabstop 2
-vim.api.nvim_exec([[
-	augroup filetype_vim
-		autocmd!
-		autocmd FileType lua setlocal tabstop=2 shiftwidth=2
-	augroup END
-]], false)
-
--- Set the cursor line to have a line at the bottom
-vim.cmd [[
-	autocmd BufEnter * highlight CursorLine gui=underline
-]]
-
--- Conceal in Neorg 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-	pattern = {"*.norg"},
-	command = "set conceallevel=3"
-})
-
--- Vim Commands
--- Highlight on yank
-vim.cmd [[
-	augroup YankHighlight
-	autocmd!
-	autocmd TextYankPost * silent! lua vim.highlight.on_yank()
-	augroup end
-]]
-
--- Turn off cursor when changing buffer
-vim.cmd [[
-	augroup cursor_off
-	autocmd!
-	autocmd WinLeave * set nocursorline nocursorcolumn
-	autocmd WinEnter * set cursorline cursorcolumn
-	augroup END
-]]
-
--- 42 hEADER sETTINGS
+-- 42 Header Settings
 vim.g.user42 = 'passunca'
 vim.g.mail42 = 'passunca@student.42porto.com'
