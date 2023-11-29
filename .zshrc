@@ -13,7 +13,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # ZSH_THEME="cypher"
 # ZSH_THEME="jonathan"
 # ZSH_THEME="refined"
-ZSH_THEME="refined"
 # ZSH_THEME="rkj-repos"
 # ZSH_THEME="xiong-chiamiov-plus"
 
@@ -142,8 +141,13 @@ export NVM_DIR="$HOME/.nvm"
 
 #
 # Neofetch
-if [[ $USER == "zedr0" ]]; then
-	eval "$(starship init zsh)"
-	neofetch
-fi
+# if [[ $USER == "zedr0" ]]; then
+# 	eval "$(starship init zsh)"
+# 	neofetch
+# fi
 
+if command -v starship > /dev/null 2>&1; then
+    eval "$(starship init zsh)"
+else
+    ZSH_THEME="refined"
+fi
