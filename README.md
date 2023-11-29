@@ -13,7 +13,6 @@ ___
     <a href="#setup-vim">Setup vim</a> ~
     <a href="#setup-tmux">Setup tmux</a> ~
     <a href="#setup-terminal">Setup Terminal</a> ~
-    <a href="#setup-theme">Setup Theme</a> ~
     <a href="#other-utilities">Other Utilities</a> ~
 </p>
 
@@ -45,6 +44,12 @@ ___
 
 ```shell 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+#### Setup [zap](https://github.com/zap-zsh/zap) plugin manager
+
+```shell
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 ```
 
 #### Setup [zsh](https://www.zsh.org/) plugins 
@@ -127,26 +132,6 @@ ln -s ~/.dotfiles/kitty/diff.conf ~/.config/kitty/diff.conf
 
 ___
 
-## Setup Theme
-
-#### Ubuntu [Dracula Theme](https://draculatheme.com/gtk)
-
-Create symlink for ~/.themes 
-
-```shell
-ln -s ~/.dotfiles/.themes ~/.themes
-ln -s ~/.dotfiles/.icons ~/.icons
-
-# Activate Theme
-gsettings set org.gnome.desktop.interface gtk-theme Dracula
-gsettings set org.gnome.desktop.wm.preferences theme Dracula
-
-# Activate Icons
-gsettings set org.gnome.desktop.interface icon-theme "Dracula"
-```
-
-___
-
 ## Other Utilities
 
 #### Setup [Midnight Commander](https://midnight-commander.org/)
@@ -159,7 +144,6 @@ ln -s ~/.dotfiles/mc/panels.ini ~/.config/mc/panels.ini
 # Dracula Color Scheme
 # dracula
 ln -s ~/.dotfiles/mc/skins/dracula.ini ~/.local/share/mc/skins/dracula.ini
-
 # dracula256
 ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
 ```
