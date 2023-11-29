@@ -1,6 +1,7 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+right_format = "$time $battery"
 # Don't print a new line at the start of the prompt
 add_newline = false
 
@@ -26,13 +27,8 @@ success_symbol = "[λ](bold yellow)"     # The "success_symbol" segment is being
 read_only = " 󰌾"
 truncate_to_repo = false
 style = "bold cyan"
-truncation_length = 5
+truncation_length = 3
 format = "[$path]($style)[$lock_symbol]($lock_style) "
-
-# [git_branch]
-# format = " [$symbol$branch]($style) "
-# # symbol = "🍣 "
-# style = "bold yellow"
 
 [git_commit]
 commit_hash_length = 8
@@ -41,20 +37,6 @@ style = "bold white"
 [git_state]
 format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
-
-# [git_status]
-# conflicted = "⚔️ "
-# ahead = "🏎️ 💨 ×${count} "
-# behind = "🐢 ×${count} "
-# diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
-# untracked = "🛤️  ×${count}" 
-# stashed = "📦 "
-# modified = "📝 ×${count} "
-# staged = "🗃️  ×${count} "
-# renamed = "📛 ×${count} "
-# deleted = "🗑️  ×${count} "
-# style = "bright-white"
-# format = "$all_status$ahead_behind"
 
 [hostname]
 ssh_symbol = " "
@@ -70,11 +52,11 @@ disabled = true
 # style = "bold dimmed white"
 # disabled = false
 
-# [time]
-# time_format = "%T"
-# format = "🕙 $time($style) "
-# style = "bright-white"
-# disabled = false
+[time]
+time_format = "%T"
+format = "⏱  $time($style) "
+style = "bright-white"
+disabled = false
 
 [username]
 format = '\[[$user]($style)\]'
