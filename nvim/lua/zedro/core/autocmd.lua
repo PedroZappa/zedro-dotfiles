@@ -1,6 +1,6 @@
 -- Autocommands
 --
-local modes = require("modes")
+-- local modes = require("modes")
 
 -- FileType Autocommands
 -- Tabstop 4
@@ -19,13 +19,13 @@ vim.api.nvim_exec([[
 ]], false)
 
 -- enter Word Processor mode
-vim.api.nvim_exec([[
-	augroup filetype_vim
-		autocmd!
-		autocmd FileType txt 
-		call WordProcessor()
-	augroup END
-]], false)
+-- vim.api.nvim_exec([[
+-- 	augroup filetype_vim
+-- 		autocmd!
+-- 		autocmd FileType txt 
+-- 		call WordProcessor()
+-- 	augroup END
+-- ]], false)
 
 -- Spelling
 --- Enable spell check for .md and .txt files
