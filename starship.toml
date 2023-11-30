@@ -46,7 +46,6 @@ trim_at = "-"
 style = "bold dimmed white"
 disabled = true
 
-
 # [memory_usage]
 # format = "$symbol[${ram}( | ${swap})]($style) "
 # threshold = 70
