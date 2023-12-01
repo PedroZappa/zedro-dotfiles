@@ -119,6 +119,12 @@ ___
 
 ## Other Utilities
 
+#### Setup [btop](https://github.com/aristocratos/btop)
+
+```shell
+ln -s ~/.dotfiles/btop/btop.conf ~/.config/btop/btop.conf
+```
+
 #### Setup [Midnight Commander](https://midnight-commander.org/)
 
 ```shell
