@@ -28,10 +28,6 @@ git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 
 ```sh
 ~
-ln -s ~/.dotfiles/.zshrc ~/.zshrc
-ln -s ~/.dotfiles/.vimrc ~/.vimrc
-ln -s ~/.dotfiles/nvim/ ~/.config/
-ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ```
@@ -40,6 +36,9 @@ ___
 
 ## Setup [zsh](https://www.zsh.org/)
 
+```shell
+ln -s ~/.dotfiles/.zshrc ~/.zshrc
+```
 
 #### Setup [zap](https://github.com/zap-zsh/zap) plugin manager
 
@@ -59,22 +58,25 @@ ___
 # Setup [vim](https://www.vim.org/)
 
 
-#### Setup `vim`
+#### Setup [vim](https://www.vim.org/)
 
 ```shell
+ln -s ~/.dotfiles/.vimrc ~/.vimrc
+```
+
+#### Install [vim-plug](https://github.com/junegunn/vim-plug)
+
+```
 # Install vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
 
-# Install color schemes
+# Install desired color scheme
 cd ~/.vim/colors
 curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-curl -o dogrun.vim https://raw.githubusercontent.com/wadackel/vim-dogrun/main/colors/dogrun.vim
-curl -o minimalist.vim https://raw.githubusercontent.com/dikiaap/minimalist/master/colors/minimalist.vim
 curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
-curl -o PaperColor.vim https://raw.githubusercontent.com/NLKNguyen/papercolor-theme/master/colors/PaperColor.vim
 ```
 
 #### Setup [neovim](https://neovim.io/doc/)
@@ -87,20 +89,21 @@ ___
 
 ## Setup [tmux](https://github.com/tmux/tmux) 
 
+```shell
+ln -s ~/.dotfiles/.tmux.conf.local ~/.tmux.conf.local
+```
+
 #### Install [`oh-my-tmux`](https://github.com/gpakosz/.tmux)
 
 ```shell
 cd
 git clone https://github.com/gpakosz/.tmux.git
 ln -s -f .tmux/.tmux.conf
-cp .tmux/.tmux.conf.local .
 ```
 
 ___
 
-## Setup Terminal
-
-#### Setup [kitty](https://sw.kovidgoyal.net/kitty/)
+## Setup [kitty](https://sw.kovidgoyal.net/kitty/)
 
 ```shell
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
