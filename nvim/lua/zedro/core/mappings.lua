@@ -23,7 +23,7 @@ keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 
 -- Terminals
 -- Exit terminal
-keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
+keymap.set("t", "<leader>tq", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 
 -- Editing
