@@ -63,16 +63,16 @@ return {
 						},
 					},
 				},
-				package_info = {
-          -- Optional theme (the extension doesn't set a default theme)
-          theme = "ivy",
-        },
+				-- package_info = {
+    --       -- Optional theme (the extension doesn't set a default theme)
+    --       theme = "ivy",
+    --     },
 			}
 		}
 
 		require("telescope").load_extension("emoji")
 		require("telescope").load_extension("repo")
-		require("telescope").load_extension("package_info")
+		-- require("telescope").load_extension("package_info")
 
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
