@@ -1,8 +1,8 @@
 return {
 	"giusgad/pets.nvim",
 	dependencies = {
-		'edluffy/hologram.nvim', -- terminal image viewer
 		"MunifTanjim/nui.nvim",
+		'edluffy/hologram.nvim', -- terminal image viewer
 	},
 	lazy = true,
 	keys = {

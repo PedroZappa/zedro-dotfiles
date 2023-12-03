@@ -1,5 +1,4 @@
-local keymap = vim.keymap
-
+local keymap = vim.keymap -- for conciseness
 -- General Mappings
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
@@ -20,10 +19,9 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
 
-
 -- Terminals
 -- Exit terminal
-keymap.set("t", "<leader>tq", "<C-\\><C-n>", { desc = "Exit terminal" })
+keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 
 -- Editing
