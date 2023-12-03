@@ -1,12 +1,12 @@
 return {
-  "neovim/nvim-lspconfig",
-	cmd = {'LspInfo', 'LspInstall', 'LspStart'},
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-		{'williamboman/mason-lspconfig.nvim'},
-  },
+	"neovim/nvim-lspconfig",
+	cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+	event = { "BufReadPre", "BufNewFile" },
+	dependencies = {
+		"hrsh7th/cmp-nvim-lsp",
+		{ "antosha417/nvim-lsp-file-operations", config = true },
+		{ 'williamboman/mason-lspconfig.nvim' },
+	},
 	config = function()
 		local lsp_zero = require('lsp-zero')
 		lsp_zero.extend_lspconfig()
@@ -14,11 +14,11 @@ return {
 		lsp_zero.on_attach(function(client, bufnr)
 			-- see :help lsp-zero-keybindings
 			-- to learn the available actions
-			lsp_zero.default_keymaps({buffer = bufnr})
+			lsp_zero.default_keymaps({ buffer = bufnr })
 		end)
 
 		require('mason-lspconfig').setup({
-			ensure_installed = {},
+			ensure_installed = { "clangd", "lua_ls" },
 			handlers = {
 				lsp_zero.default_setup,
 				lua_ls = function()
