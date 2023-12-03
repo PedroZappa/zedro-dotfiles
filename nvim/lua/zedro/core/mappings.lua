@@ -2,9 +2,8 @@ local keymap = vim.keymap -- for conciseness
 -- General Mappings
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
-keymap.set("n", "<leader>masc", ":Man ascii<CR>", { desc = "Get Help on..." })
+keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
 -- Close buffer 
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
 keymap.set("n", "<leader>o", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 -- Buffers
