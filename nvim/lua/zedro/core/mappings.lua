@@ -16,8 +16,8 @@ keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
 keymap.set("n", "<C-left>", "<C-w>>", { desc = "Left" })
 keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Splitting windows
-keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Vertical split" })
-keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Horizontal split" })
+keymap.set("n", "<leader>vs", ":vsplit<CR>", { desc = "Vertical split" })
+keymap.set("n", "<leader>hs", ":split<CR>", { desc = "Horizontal split" })
 
 -- Terminals
 -- Exit terminal
