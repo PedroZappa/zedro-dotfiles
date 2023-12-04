@@ -56,6 +56,22 @@ return {
 		},
 		use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 	},
+	config = function()
+		-- Telescope integration
+		local actions = require("telescope.actions")
+		local trouble = require("trouble.providers.telescope")
+
+		local telescope = require("telescope")
+
+		telescope.setup {
+			defaults = {
+				mappings = {
+					i = { ["<c-t>"] = trouble.open_with_trouble },
+					n = { ["<c-t>"] = trouble.open_with_trouble },
+				},
+			},
+		}
+	end,
 	-- Keymaps
 	vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end),
 	vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end),
