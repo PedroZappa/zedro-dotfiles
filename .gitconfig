@@ -6,3 +6,5 @@
 	email = 45104292+PedroZappa@users.noreply.github.com 
 [core]
 	editor = nvim
+[diff]
+	submodule = log
