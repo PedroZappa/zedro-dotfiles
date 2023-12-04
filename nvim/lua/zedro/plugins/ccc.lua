@@ -19,5 +19,8 @@ return {
 		vim.cmd [[
 			autocmd BufEnter * :CccHighlighterEnable
 		]]
+		-- Key mappings
+		vim.keymap.set("n", "<leader>ccp", ":CccPick<CR>", { silent = true, desc = "Pick color"})
+		vim.keymap.set("n", "<leader>ccr", ":CccConvert<CR>", { silent = true, desc = "Convert color"})
 	end,
 }
