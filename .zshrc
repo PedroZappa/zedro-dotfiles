@@ -47,6 +47,18 @@ export LANG=en_US.UTF-8
 export GIT_EDITOR=nvim
 
 
+# kitty-tmux kickstart
+#!/bin/bash
+
+# Check if there are any tmux sessions
+if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
+   echo "|=== Loading 󰄛 +   ===|"
+   ~/C0D3/z-scripts/kitty-tmux-starter.sh
+else
+   echo "|=== ZMUX is already initialized. ===|"
+fi
+
+
 
 ### Zedro's Aliases
 #
