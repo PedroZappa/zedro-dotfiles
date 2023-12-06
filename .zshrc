@@ -55,7 +55,7 @@ if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
    echo "|=== Loading 󰄛 +   ===|"
    ~/C0D3/z-scripts/kitty-tmux-starter.sh
 else
-   echo "|===|===|=== ZMUX ===|===|===|"
+   echo "|===|===|=== ZMUX running ===|===|===|"
 fi
 
 
