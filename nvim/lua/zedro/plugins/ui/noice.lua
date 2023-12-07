@@ -14,11 +14,6 @@ return {
 		'stevearc/dressing.nvim',
 	},
 	config = function()
-		local border_style = {
-			top_left    = "┌", top    = "─",    top_right = "┐",
-			left        = "│",                      right = "│",
-			bottom_left = "└", bottom = "─", bottom_right = "┘",
-		}
 		local rounded_border_style = {
 			top_left    = "╭", top    = "─",    top_right = "╮",
 			left        = "│",                      right = "│",
@@ -41,7 +36,7 @@ return {
 					search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex" , title = " Search " },
 					filter = { pattern = "^:%s*!", icon = "  ", lang = "bash" , title = " Shell " },
 					lua = { pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" }, icon = "  ", lang = "lua" },
-					help = { pattern = "^:%s*he?l?p?%s+", icon = " ", title = " Help " },
+					help = { pattern = "^:%s*he?l?p?%s+", icon = " 󰋖 ", title = " Help " },
 					input = {}, -- Used by input()
 					-- lua = false, -- to disable a format, set to `false`
 				},

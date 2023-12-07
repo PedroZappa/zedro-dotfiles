@@ -7,22 +7,26 @@ return {
 			width = 0.7,
 		}
 
+		-- floating terminal
 		fterm.setup({
-			border = 'double',
+			border = 'rounded',
 			dimensions= dimensions,
+			hl = 'Normal',
 		})
 
-		-- Basic keybindings
-		vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-		vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 		-- floating xtop
 		local htop = fterm:new({
 			ftype = 'fterm_htop',
 			cmd = 'htop',
 			dimensions= dimensions,
+			border = 'rounded',
 		})
 		vim.keymap.set('n', '<A-t>', function()
 			htop:toggle()
 		end)
+		--
+		-- Basic keybindings
+		vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+		vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 	end,
 }
