@@ -46,6 +46,15 @@ return {
 					-- lua = false, -- to disable a format, set to `false`
 				},
 			},
+			notify = {
+				-- Noice can be used as `vim.notify` so you can route any notification like other messages
+				-- Notification messages have their level and other properties set.
+				-- event is always "notify" and kind can be any log level as a string
+				-- The default routes will forward notifications to nvim-notify
+				-- Benefit of using Noice for this is the routing and consistent history view
+				enabled = true,
+				view = "notify",
+			},
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
@@ -117,7 +126,7 @@ return {
 		vim.notify = require("notify")
 
 		require("notify").setup({
-			background_colour = "Normal",
+			background_colour = "#000000",
 			fps = 30,
 			icons = {
 				DEBUG = " ",
@@ -126,12 +135,14 @@ return {
 				TRACE = "✎",
 				WARN = " "
 			},
-			level = 2,
+			level = 1,
 			minimum_width = 50,
 			maximum_width = 50,
 			render = "default",
-			stages = "slide",
-			timeout = 3000
+			stages = "fade_in_slide_out",
+			timeout = 3000,
+			top_down = true
 		})
 	end,
 }
+
