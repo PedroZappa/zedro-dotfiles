@@ -14,13 +14,21 @@ return {
 		-- Basic keybindings
 		vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
 		vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
-		-- floating htop
-		local htop = fterm:new({
-			ftype = 'fterm_htop',
-			cmd = 'htop',
-		})
+		-- floating xtop
 		vim.keymap.set('n', '<A-t>', function()
-			htop:toggle()
+			if os.execute("which btop") then
+				local btop = fterm:new({
+					ftype = 'fterm_btop',
+					cmd = 'btop',
+				})
+				btop:toggle()
+			else
+				local htop = fterm:new({
+					ftype = 'fterm_htop',
+					cmd = 'htop',
+				})
+				htop:toggle()
+			end
 		end)
 	end,
 }
