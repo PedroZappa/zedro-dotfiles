@@ -15,11 +15,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = 'zedro.plugins' },
+	{ import = 'zedro.plugins.ui' },
 	{ import = 'zedro.plugins.ctags' },
 	{ import = 'zedro.plugins.edit' },
 	{ import = 'zedro.plugins.git' },
 	{ import = 'zedro.plugins.lsp' },
-	{ import = 'zedro.plugins.theme' },
 }, {
 	install = {
 		colorscheme = { "dracula" },
