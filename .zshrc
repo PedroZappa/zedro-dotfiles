@@ -66,7 +66,12 @@ alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
 # Navigation
-alias ll='ls -al --color'
+if command -v lsd &> /dev/null; then
+	alias ll='lsd -al'	
+else
+	alias ll='ls -al --color'
+fi
+
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
 
