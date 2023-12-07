@@ -15,6 +15,7 @@
   "codeium.vim": { "branch": "main", "commit": "573333355648b13063e79e58d3cea16f27bb7636" },
   "cscope_maps.nvim": { "branch": "main", "commit": "c3922f1decbbcedca3aba5cd4534f397e5a903b4" },
   "dracula.nvim": { "branch": "main", "commit": "7200e64c589f899d29f8963aad7543856d1c2545" },
+  "dressing.nvim": { "branch": "master", "commit": "8b7ae53d7f04f33be3439a441db8071c96092d19" },
   "friendly-snippets": { "branch": "main", "commit": "53d3df271d031c405255e99410628c26a8f0d2b0" },
   "fzf-lua": { "branch": "main", "commit": "a1a2d0f42eaec400cc6918a8e898fc1f9c4dbc5f" },
   "gitsigns.nvim": { "branch": "main", "commit": "e93a158b8773946dc9940a4321d35c1b52c8e293" },
