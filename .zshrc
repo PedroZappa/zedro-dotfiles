@@ -44,26 +44,19 @@ compinit
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export GIT_EDITOR=nvim
-
-
-# kitty-tmux kickstart
-#!/bin/bash
-
-# Check if there are any tmux sessions
-# if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
-#    echo "|=== Loading 󰄛 +   ===|"
-#    alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
-# else
-#    echo "|===|===|=== ZMUX running ===|===|===|"
-# fi
-alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
-
+# export GIT_EDITOR=nvim
 
 
 ### Zedro's Aliases
 #
-# Git
+# Local Aliases
+echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
+if [[ $USER == "passunca" ]]; then
+	alias kitty=~/.local/kitty.app/bin/kitty
+fi
+# kitty-tmux kickstart
+alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
+# git
 alias ga='git add'
 alias gst='git status'
 alias gc='git commit -m'
@@ -76,24 +69,16 @@ alias glgg='git log --graph --oneline --decorate'
 alias ll='ls -al --color'
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
+
 # 42 Norm Check
 alias nn='norminette'
 # Franinette alias
 alias fr='francinette'
-
 alias francinette=~/francinette/tester.sh
 alias paco=~/francinette/tester.sh
 
+# Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
-
-# Local Aliases
-echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
-if [[ $USER == "zedr0" ]]; then
-	# export PATH=$PATH:/bin/nvim-linux64/bin:$PATH
-	alias nvim=~/bin/nvim-linux64/bin/nvim
-else [[ $USER == "passunca" ]];
-	alias kitty=~/.local/kitty.app/bin/kitty
-fi
 
 # Load Version Manager (for Node.js)
 export NVM_DIR="$HOME/.nvm"
