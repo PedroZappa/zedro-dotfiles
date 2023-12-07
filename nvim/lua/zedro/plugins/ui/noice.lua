@@ -36,7 +36,7 @@ return {
 					-- opts: any options passed to the view
 					-- icon_hl_group: optional hl_group for the icon
 					-- title: set to anything or empty string to hide
-					cmdline = { pattern = "^:", icon = " 󰘳 ", lang = "vim" },
+					cmdline = { pattern = "^:", icon = " 𝝺 ", lang = "vim" },
 					search_down = { kind = "search", pattern = "^/", icon = "  ", lang = "regex", title = " Search " },
 					search_up = { kind = "search", pattern = "^%?", icon = "  ", lang = "regex" , title = " Search " },
 					filter = { pattern = "^:%s*!", icon = "  ", lang = "bash" , title = " Shell " },
@@ -60,7 +60,7 @@ return {
 			views = {
 				cmdline_popup = {
 					position = {
-						row = "90%",
+						row = "40%",
 						col = "50%",
 
 					},

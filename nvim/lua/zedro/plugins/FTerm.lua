@@ -2,13 +2,14 @@ return {
 	"numToStr/FTerm.nvim",
 	config = function()
 		local fterm = require'FTerm'
+		local dimensions = {
+			height = 0.7,
+			width = 0.7,
+		}
 
 		fterm.setup({
 			border = 'double',
-			dimensions  = {
-				height = 0.7,
-				width = 0.7,
-			},
+			dimensions= dimensions,
 		})
 
 		-- Basic keybindings
@@ -18,6 +19,7 @@ return {
 		local htop = fterm:new({
 			ftype = 'fterm_htop',
 			cmd = 'htop',
+			dimensions= dimensions,
 		})
 		vim.keymap.set('n', '<A-t>', function()
 			htop:toggle()

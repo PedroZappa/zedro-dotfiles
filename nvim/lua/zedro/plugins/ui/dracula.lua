@@ -70,6 +70,8 @@ return {
 			highlight NormalFloat guibg=#000000
 			highlight FloatBorder guifg=white guibg=#282c34
 			highlight NotifyBackground guibg=#000000
-			]])
+			highlight NoiceCmdlinePopupBorder guifg=#118c1f
+			highlight NoiceCmdlineIcon guifg=#e6e600
+		]])
 	end,
 }
