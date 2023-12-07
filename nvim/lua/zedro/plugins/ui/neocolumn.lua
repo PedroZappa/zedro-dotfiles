@@ -8,5 +8,5 @@ return {
 		custom_NeoColumn = {},
 		excluded_ft = { "text", "markdown" },
 	},
-	vim.keymap.set("n", "<leader>nc", "<cmd>ToggleNeoColumn<cr>", { noremap = true, silent = true })
+	vim.keymap.set("n", "<leader>nc", "<cmd>ToggleNeoColumn<cr>", { noremap = true, silent = true }),
 }

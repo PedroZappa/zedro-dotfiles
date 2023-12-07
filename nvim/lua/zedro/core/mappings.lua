@@ -27,9 +27,6 @@ keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 -- Editing
 -- Toggle Relative numbers
 keymap.set("n", "<leader>rl", ":set relativenumber!<CR>", { desc = "Toggle relative numbers" })
--- Inserting lines
-keymap.set("n", "<leader>o", "o<ESC>", { desc = "Insert new line below" })
-keymap.set("n", "<leader>O", "O<ESC>", { desc = "Insert new line above" })
 -- Replace Script
 keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
 -- Trim Trailing blanks

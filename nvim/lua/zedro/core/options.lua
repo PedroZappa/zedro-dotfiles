@@ -36,9 +36,7 @@ opt.equalalways = false
 -- Cursor
 opt.cursorcolumn = true
 opt.cursorline = true
--- opt.cursorlineopt = 'rgba:1/1/1/50'
-opt.colorcolumn = '80';
---opt.highlight.CursorLine = { gui = "underline" }
+-- opt.colorcolumn = '80';  -- Overriden for NeoColumn
 
 -- sync with system Clipboard (through + register)
 opt.clipboard = "unnamedplus"
