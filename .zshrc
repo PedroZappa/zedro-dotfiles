@@ -51,12 +51,13 @@ export GIT_EDITOR=nvim
 #!/bin/bash
 
 # Check if there are any tmux sessions
-if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
-   echo "|=== Loading 󰄛 +   ===|"
-   ~/C0D3/z-scripts/kitty-tmux-starter.sh
-else
-   echo "|===|===|=== ZMUX running ===|===|===|"
-fi
+# if [ -z "$(tmux list-sessions 2>/dev/null)" ]; then
+#    echo "|=== Loading 󰄛 +   ===|"
+#    alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
+# else
+#    echo "|===|===|=== ZMUX running ===|===|===|"
+# fi
+alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
 
 
 
