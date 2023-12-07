@@ -61,8 +61,7 @@ keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>", { desc = "Cheat Shee
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
 	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
-	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR><C-w>h" ..
-	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
+	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR><C-w>2h" ..
 	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>" ..
 	":term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>",
 	{ desc = "Parrot Party!!!" }

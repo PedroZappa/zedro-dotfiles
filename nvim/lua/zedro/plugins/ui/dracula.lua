@@ -72,6 +72,7 @@ return {
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#118c1f
 			highlight NoiceCmdlineIcon guifg=#e6e600
+			highlight StatusLine guibg=#000000
 		]])
 	end,
 }
