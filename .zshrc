@@ -55,7 +55,9 @@ alias glgg='git log --graph --oneline --decorate'
 #
 # Navigation
 if command -v lsd &> /dev/null; then
-	alias ll='lsd -al'	
+	alias ls='lsd'
+	alias ll='lsd -al'
+	alias lt='lsd --tree'
 else
 	alias ll='ls -al --color'
 fi
