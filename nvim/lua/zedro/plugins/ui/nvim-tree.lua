@@ -8,14 +8,6 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 
-		-- change color for arrows in tree to green
-		vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#34eb43 ]])
-		vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#34eb43 ]])
-		-- Yellow Indent lines
-		vim.cmd([[ highlight NvimTreeIndentMarker guifg=#e8eb34 ]])
-		-- Transparent background
-		vim.cmd([[ highlight NvimTreeNormal guibg=NONE ctermbg=NONE]])
-
 		-- configure nvim-tree
 		nvimtree.setup({
 			update_cwd = true,

@@ -34,11 +34,11 @@ return {
 			-- show the '~' characters after the end of buffers
 			show_end_of_buffer = true, -- default false
 			-- use transparent background
-			transparent_bg = true, -- default false
+			transparent_bg = true,     -- default false
 			-- set custom lualine background color
 			lualine_bg_color = "#44475a", -- default nil
 			-- set italic comment
-			italic_comment = true, -- default false
+			italic_comment = true,     -- default false
 			-- overrides the default highlights with table see `:h synIDattr`
 			overrides = {},
 			-- You can use overrides as table like this
@@ -58,7 +58,7 @@ return {
 		vim.cmd([[
 			colorscheme dracula
 			highlight Normal guibg=none
-			highlight NonText guibg=none
+			highlight NonText guibg=#000000
 			highlight WhichKey guifg=#13b016
 			highlight WhichKeyFloat guibg=#000000
 			highlight WhichKeySeparator guifg=#8426ff
@@ -70,13 +70,20 @@ return {
 			highlight TermCursor guifg=#118c1f
 			highlight NormalFloat guibg=#000000
 			highlight WinSeparator guifg=#8426ff guibg=#000000
-			highlight NvimTreeWinSeparator guifg=#8426ff guibg=#000000
 			highlight FloatBorder guifg=green guibg=#000000
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#118c1f
 			highlight NoiceCmdlineIcon guifg=#e6e600
 			highlight BufferLineFill guibg=#000000
 			highlight StatusLine guibg=#000000
+			highlight NvimTreeWinSeparator guifg=#8426ff guibg=#000000
+			highlight NvimTreeFolderArrowClosed guifg=#34eb43
+			highlight NvimTreeFolderArrowOpen guifg=#34eb43
+			highlight NvimTreeIndentMarker guifg=#e8eb34
+			highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+			highlight CursorLineNr guifg=#e8eb34
+			highlight NvimTreeLineNr guifg=#118c16
+			highlight LineNr guifg=#118c16
 		]])
 	end,
 }
