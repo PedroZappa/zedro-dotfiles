@@ -83,7 +83,7 @@ return {
 			highlight NvimTreeNormal guibg=NONE ctermbg=NONE
 			highlight CursorLineNr guifg=#e8eb34
 			highlight NvimTreeLineNr guifg=#118c16
-			highlight LineNr guifg=#118c16
+			highlight LineNr guifg=#BD93F9
 		]])
 	end,
 }
