@@ -15,8 +15,8 @@ return {
 		},
 		float_win = { -- passed to nvim_open_win(), see :h api-floatwin
 			relative = "editor",
-			height = 25,
-			width = 100,
+			height = 50,
+			width = 200,
 			border = "rounded",
 		},
 		wrap = false,       -- text wrap, only applies to floating window
