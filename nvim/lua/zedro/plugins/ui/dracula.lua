@@ -66,9 +66,12 @@ return {
 			highlight TelescopeSelection guibg=#674b94 guifg=#000000
 			highlight TelescopePreviewBorder guifg=#118c1f
 			highlight TelescopeResultsBorder guifg=#118c1f
-			highlight TelescopePromptBorder guifg=#118c1f
+			highlight TelescopePromptBorder guifg=green
+			highlight TermCursor guifg=#118c1f
 			highlight NormalFloat guibg=#000000
-			highlight FloatBorder guifg=white guibg=#282c34
+			highlight WinSeparator guifg=green guibg=#000000
+			highlight NvimTreeWinSeparator guifg=green guibg=#000000
+			highlight FloatBorder guifg=green guibg=#288c34
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#118c1f
 			highlight NoiceCmdlineIcon guifg=#e6e600
