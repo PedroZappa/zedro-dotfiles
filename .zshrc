@@ -6,19 +6,8 @@ ENABLE_CORRECTION="false"
 # Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765) 
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
-
 
 # Zap Plugin Manager
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
@@ -38,13 +27,9 @@ plug "zap-zsh/fzf"
 autoload -Uz compinit
 compinit
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
-# setup lscolors
-# source C0D3/z-scripts/lscolors.sh
 
 ### Zedro's Aliases
 #
@@ -55,6 +40,9 @@ if [[ $USER == "passunca" ]]; then
 fi
 # kitty-tmux kickstart
 alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
+# setup lscolors
+source C0D3/z-scripts/lscolors.sh
+
 # git
 alias ga='git add'
 alias gst='git status'
@@ -64,6 +52,7 @@ alias gl='git pull'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
+#
 # Navigation
 if command -v lsd &> /dev/null; then
 	alias ll='lsd -al'	
@@ -83,6 +72,9 @@ alias paco=~/francinette/tester.sh
 
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
+
+# Glow Markdown Renderer
+alias glow=~/bin/glow/glow
 
 # Load Version Manager (for Node.js)
 export NVM_DIR="$HOME/.nvm"
