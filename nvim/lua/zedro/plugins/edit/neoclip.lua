@@ -1,8 +1,7 @@
 return {
 	"AckslD/nvim-neoclip.lua",
-
 	lazy = "true",
-	requires = {
+	dependencies = {
 		{'nvim-telescope/telescope.nvim'},
 	},
 	config = function()
