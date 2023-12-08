@@ -31,4 +31,7 @@ return {
 		ensure_installed = {},          -- get automatically installed
 		after_open = function(bufnr) end, -- callback that runs after the Devdocs window is opened. Devdocs buffer ID will be passed in
 	},
+	keys = {
+		{ "<leader>dd", ":DevdocsOpenCurrentFloat<CR>", desc = "Open devdocs" },
+	}
 }
