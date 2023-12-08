@@ -59,20 +59,20 @@ return {
 			colorscheme dracula
 			highlight Normal guibg=none
 			highlight NonText guibg=#000000
-			highlight WhichKey guifg=#13b016
+			highlight WhichKey guifg=#34eb43
 			highlight WhichKeyFloat guibg=#000000
 			highlight WhichKeySeparator guifg=#8426ff
 			highlight TelescopeNormal guibg=#000000
 			highlight TelescopeSelection guibg=#674b94 guifg=#000000
-			highlight TelescopePreviewBorder guifg=#118c1f
-			highlight TelescopeResultsBorder guifg=#118c1f
+			highlight TelescopePreviewBorder guifg=#34eb43
+			highlight TelescopeResultsBorder guifg=#34eb43
 			highlight TelescopePromptBorder guifg=green
-			highlight TermCursor guifg=#118c1f
+			highlight TermCursor guifg=#34eb43
 			highlight NormalFloat guibg=#000000
 			highlight WinSeparator guifg=#8426ff guibg=#000000
 			highlight FloatBorder guifg=green guibg=#000000
 			highlight NotifyBackground guibg=#000000
-			highlight NoiceCmdlinePopupBorder guifg=#118c1f
+			highlight NoiceCmdlinePopupBorder guifg=#34eb43
 			highlight NoiceCmdlineIcon guifg=#e6e600
 			highlight BufferLineFill guibg=#000000
 			highlight StatusLine guibg=#000000

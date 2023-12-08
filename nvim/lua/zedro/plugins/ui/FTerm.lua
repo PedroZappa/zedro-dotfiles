@@ -5,6 +5,8 @@ return {
 		local dimensions = {
 			height = 0.7,
 			width = 0.7,
+			x = 0.5,
+			y = 0.5,
 		}
 
 		-- floating terminal

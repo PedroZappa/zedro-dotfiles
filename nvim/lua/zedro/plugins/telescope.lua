@@ -14,7 +14,7 @@ return {
 
 		telescope.setup{
 			defaults = {
-				layout_strategy = "cursor",
+				layout_strategy = "horizontal",
 				layout_config = {},
 				-- Default configuration for telescope goes here:
 				-- config_key = value,
@@ -77,7 +77,7 @@ return {
 		vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Grep string" })
 		vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = "Buffers" })
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
-		vim.keymap.set('n', '<leader>em', ":Telescope emoji<CR>", { desc = "Emoji" })
-		vim.keymap.set('n', '<leader>re', ":Telescope repo list<CR>", { desc = "Repo" })
+		vim.keymap.set('n', '<leader>fe', ":Telescope emoji<CR>", { desc = "Emoji" })
+		vim.keymap.set('n', '<leader>fr', ":Telescope repo list<CR>", { desc = "Repo" })
 	end,
 }
