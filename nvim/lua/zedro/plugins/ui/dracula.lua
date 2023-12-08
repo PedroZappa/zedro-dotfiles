@@ -70,7 +70,7 @@ return {
 			highlight TermCursor guifg=#34eb43
 			highlight NormalFloat guibg=#000000
 			highlight WinSeparator guifg=#8426ff guibg=#000000
-			highlight FloatBorder guifg=green guibg=#000000
+			highlight FloatBorder guifg=#34eb43 guibg=#000000
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#34eb43
 			highlight NoiceCmdlineIcon guifg=#e6e600
