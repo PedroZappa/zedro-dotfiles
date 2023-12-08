@@ -460,7 +460,6 @@ set -g @mode_indicator_prefix_prompt ' WAIT '
 set -g @mode_indicator_prefix_mode_style 'bg=#d70000,fg=#ffffff'
 # prompt to display when tmux is in copy mode
 set -g @mode_indicator_copy_prompt ' YANK '
-
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g status-interval 2
 #set -g status-right '#[fg=green]#($~/.tmux/plugins/mem-cpu-load/tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]'

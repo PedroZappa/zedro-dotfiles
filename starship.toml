@@ -25,9 +25,10 @@ success_symbol = "[λ](bold yellow)"     # The "success_symbol" segment is being
 
 [directory]
 read_only = " 󰌾"
-truncate_to_repo = false
+truncate_to_repo = true
 style = "bold cyan"
 truncation_length = 3
+truncation_symbol = ".../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_commit]
