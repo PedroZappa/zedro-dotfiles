@@ -11,7 +11,7 @@ return {
 
 		-- floating terminal
 		fterm.setup({
-			border = 'rounded',
+			border = 'double',
 			dimensions= dimensions,
 			hl = 'Normal',
 		})
