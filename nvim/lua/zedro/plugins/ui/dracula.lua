@@ -69,12 +69,13 @@ return {
 			highlight TelescopePromptBorder guifg=green
 			highlight TermCursor guifg=#118c1f
 			highlight NormalFloat guibg=#000000
-			highlight WinSeparator guifg=green guibg=#000000
-			highlight NvimTreeWinSeparator guifg=green guibg=#000000
-			highlight FloatBorder guifg=green guibg=#288c34
+			highlight WinSeparator guifg=#8426ff guibg=#000000
+			highlight NvimTreeWinSeparator guifg=#8426ff guibg=#000000
+			highlight FloatBorder guifg=green guibg=#000000
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#118c1f
 			highlight NoiceCmdlineIcon guifg=#e6e600
+			highlight BufferLineFill guibg=#000000
 			highlight StatusLine guibg=#000000
 		]])
 	end,
