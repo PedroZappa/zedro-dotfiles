@@ -1,8 +1,13 @@
 return {
 	"epwalsh/pomo.nvim",
 	version = "*",  -- Recommended, use latest release instead of latest commit
-	event = "VeryLazy",
+	lazy = true,
 	cmd = { "TimerStart", "TimerRepeat" },
+	keys = {
+		{ "<leader>ps", ":TimerStart 1h Z-Timer", desc = "Start timer" },
+		{ "<leader>pr", ":TimerRepeat", desc = "Repeat timer" },
+		{ "<leader>pt", ":TimerHide<CR>", desc = "Hide/Flash timer message" },
+	},
 	dependencies = {
 		-- Optional, but highly recommended if you want to use the "Default" timer
 		"rcarriga/nvim-notify",
@@ -22,7 +27,7 @@ return {
 					-- With 'nvim-notify', when 'sticky = true' you'll have a live timer pop-up
 					-- continuously displayed. If you only want a pop-up notification when the timer starts
 					-- and finishes, set this to false.
-					sticky = true,
+					sticky = false,
 
 					-- Configure the display icons:
 					title_icon = "󱎫",
@@ -36,7 +41,7 @@ return {
 			-- The "System" notifier sends a system notification when the timer is finished.
 			-- Currently this is only available on MacOS.
 			-- Tracking: https://github.com/epwalsh/pomo.nvim/issues/3
-			{ name = "System" },
+			-- { name = "System" },
 
 			-- You can also define custom notifiers by providing an "init" function instead of a name.
 			-- See "Defining custom notifiers" below for an example 👇

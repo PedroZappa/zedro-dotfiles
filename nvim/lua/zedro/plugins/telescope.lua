@@ -79,5 +79,6 @@ return {
 		vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Help tags" })
 		vim.keymap.set('n', '<leader>fe', ":Telescope emoji<CR>", { desc = "Emoji" })
 		vim.keymap.set('n', '<leader>fr', ":Telescope repo list<CR>", { desc = "Repo" })
+		vim.keymap.set('n', '<leader>fn', ":Telescope notify<CR>", { desc = "Notifications in Telescope" })
 	end,
 }

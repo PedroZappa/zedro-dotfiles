@@ -2,15 +2,16 @@ local keymap = vim.keymap -- for conciseness
 -- General Mappings
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
+keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
--- Close buffer 
-keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
-keymap.set("n", "<leader>o", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 -- Buffers
 keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>", { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
+-- Close buffer 
+-- mo
+keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
 -- Resizing window
 keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
