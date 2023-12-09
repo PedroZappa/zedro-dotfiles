@@ -33,11 +33,26 @@ format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_commit]
 commit_hash_length = 8
+tag_symbol = '🔖 '
 style = "bold white"
 
 [git_state]
 format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
+cherry_pick = '[🍒 PICKING](bold red)'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+conflicted = '🏳'
+ahead = '🏎💨'
+behind = '😰'
+diverged = '😵'
+up_to_date = '✓'
+untracked = '🤷'
+stashed = '📦'
+modified = '📝'
+staged = '[++\($count\)](green)'
+renamed = '👅'
+deleted = '🗑'
 
 [hostname]
 ssh_symbol = " "
