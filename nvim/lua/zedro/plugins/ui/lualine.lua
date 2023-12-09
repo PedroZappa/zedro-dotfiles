@@ -12,6 +12,16 @@ return {
 			sections = {
 				lualine_x = {
 					{
+						lazy_status.updates,
+						cond = lazy_status.has_updates,
+						color = { fg = "#ff9e64" },
+					},
+					{ "encoding" },
+					{ "fileformat" },
+					{ "filetype" },
+				},
+				lualine_c = {
+					{
 						function()
 							local ok, pomo = pcall(require, "pomo")
 							if not ok then
@@ -21,18 +31,11 @@ return {
 							if timer == nil then
 								return ""
 							end
-							return "⏲ " .. tostring(timer)
+							return "⏲  " .. tostring(timer)
 						end,
 						"encoding",
 					},
-					{
-						lazy_status.updates,
-						cond = lazy_status.has_updates,
-						color = { fg = "#ff9e64" },
-					},
-					{ "encoding" },
-					{ "fileformat" },
-					{ "filetype" },
+
 				},
 			},
 		})
