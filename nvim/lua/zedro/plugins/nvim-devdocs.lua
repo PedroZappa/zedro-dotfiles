@@ -17,7 +17,7 @@ return {
 			relative = "editor",
 			height = 50,
 			width = 200,
-			border = "rounded",
+			border = "double",
 		},
 		wrap = false,       -- text wrap, only applies to floating window
 		previewer_cmd = nil, -- for example: "glow"

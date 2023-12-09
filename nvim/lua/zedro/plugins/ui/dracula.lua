@@ -84,6 +84,7 @@ return {
 			highlight CursorLineNr guifg=#e8eb34
 			highlight NvimTreeLineNr guifg=#34eb43
 			highlight LineNr guifg=#D6ACFF
+			highlight LspFloatWinBorder guifg=#e8eb34
 		]])
 
 	end,
