@@ -48,11 +48,11 @@ alias ga='git add'
 alias gst='git status'
 alias gc='git commit -m'
 alias gp='git push'
-alias gpl='git push & glgg | head -n 7'
 alias gl='git pull'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
+alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
 if command -v lsd &> /dev/null; then
