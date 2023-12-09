@@ -36,7 +36,7 @@ return {
 			-- use transparent background
 			transparent_bg = true,     -- default false
 			-- set custom lualine background color
-			lualine_bg_color = "#44475a", -- default nil
+			lualine_bg_color = "#000000", -- default nil
 			-- set italic comment
 			italic_comment = true,     -- default false
 			-- overrides the default highlights with table see `:h synIDattr`
