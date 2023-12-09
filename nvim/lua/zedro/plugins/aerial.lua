@@ -1,6 +1,7 @@
 return {
 	'stevearc/aerial.nvim',
-	lazy = true,
+	-- lazy = true,
+	event = "VeryLazy",
 	keys = {
 		{ "<leader>a", ":AerialToggle<CR>", desc = "Toggle Aerial" }
 	},

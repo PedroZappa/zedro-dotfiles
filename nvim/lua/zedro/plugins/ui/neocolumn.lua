@@ -1,5 +1,6 @@
 return {
 	'ecthelionvi/NeoColumn.nvim',
+	event = "BufReadPre",
 	opts = {
 		fg_color = "",
 		bg_color = "",

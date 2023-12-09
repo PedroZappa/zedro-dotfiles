@@ -1,5 +1,6 @@
 return {
 	"folke/trouble.nvim",
+	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	opts =	{
 		position = "bottom", -- position of the list can be: bottom, top, left, right
