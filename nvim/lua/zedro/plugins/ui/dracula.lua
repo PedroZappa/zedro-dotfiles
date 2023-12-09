@@ -66,7 +66,8 @@ return {
 			highlight TelescopeSelection guibg=#674b94 guifg=#000000
 			highlight TelescopePreviewBorder guifg=#34eb43
 			highlight TelescopeResultsBorder guifg=#34eb43
-			highlight TelescopePromptBorder guifg=green
+			highlight TelescopePromptBorder guifg=#34eb43
+			highlight TelescopeBorder guifg=#e6e600
 			highlight TermCursor guifg=#34eb43
 			highlight NormalFloat guibg=#000000
 			highlight WinSeparator guifg=#8426ff guibg=#000000
@@ -85,6 +86,7 @@ return {
 			highlight NvimTreeLineNr guifg=#34eb43
 			highlight LineNr guifg=#D6ACFF
 			highlight LspFloatWinBorder guifg=#e8eb34
+			highlight LspInfoBorder guifg=#e8eb34
 		]])
 
 	end,

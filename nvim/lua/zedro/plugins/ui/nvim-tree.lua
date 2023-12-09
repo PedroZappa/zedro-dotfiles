@@ -63,7 +63,7 @@ return {
 				},
 			},
 			filters = {
-				custom = { ".DS_Store", ".git" },
+				custom = { ".DS_Store" },
 			},
 			disable_netrw = true,
 			hijack_netrw = true,
