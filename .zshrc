@@ -53,7 +53,7 @@ alias gl='git pull'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
-#
+
 # Navigation
 if command -v lsd &> /dev/null; then
 	alias ls='lsd'
