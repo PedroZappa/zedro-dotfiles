@@ -43,7 +43,7 @@ cherry_pick = '[🍒 PICKING](bold red)'
 
 [git_status]
 conflicted = '🏳'
-ahead = '🏎💨'
+ahead = '💨🏎'
 behind = '😰'
 diverged = '😵'
 up_to_date = '✓'
