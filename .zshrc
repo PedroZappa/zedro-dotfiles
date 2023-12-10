@@ -39,7 +39,8 @@ if [[ $USER == "passunca" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
 # kitty-tmux kickstart
-alias zmux=~/C0D3/z-scripts/kitty-tmux-starter.sh
+alias zmux=~/C0D3/z-scripts/zmux-start.sh
+alias xmux=~/C0D3/z-scripts/zmux-kill.sh
 # setup lscolors
 source C0D3/z-scripts/lscolors.sh
 
