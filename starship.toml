@@ -33,7 +33,7 @@ truncation_symbol = ".../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_branch]
-symbol = " "
+symbol = " "
 style = "bold blue"
 format = "on [〈](bold green)[$symbol$branch(:$remote_branch)]($style)[〉](bold green)"
 
