@@ -1,10 +1,14 @@
 # Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# https://starship.rs/config/#prompt
+# Default Prompt for reference
 format = '$all'
-right_format = "$time $battery"
+right_format = "$time $battery $os"
 # Don't print a new line at the start of the prompt
-add_newline = false
+add_newline = true
+# Wait 10 milliseconds for starship to check files under the current directory.
+scan_timeout = 77
 
 [battery]
 full_symbol = "🔋"
@@ -27,20 +31,20 @@ vimcmd_visual_symbol = "[](bold yellow)"
 [directory]
 read_only = " 󰌾"
 truncate_to_repo = true
-style = "bold cyan"
+style = "bold cyan underline"
 truncation_length = 3
 truncation_symbol = ".../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_branch]
 symbol = " "
-style = "bold blue"
-format = "on[ ⟪ ](bold green)[$symbol$branch(:$remote_branch)]($style)[ ⟫ ](bold green)"
+style = "bold purple"
+format = "[on](bold dimmed white)[ ⟪ ](bold green)[$symbol$branch(:$remote_branch)]($style)[ ⟫ ](bold green)"
 
 [git_commit]
 commit_hash_length = 8
 tag_symbol = '🔖 '
-style = "bold white"
+style = "bold dimmed white"
 
 [git_state]
 format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
@@ -65,8 +69,12 @@ ssh_symbol = " "
 ssh_only = false
 format = "<[$hostname]($style)>"
 trim_at = "-"
-style = "bold dimmed white"
+style = "bold white"
 disabled = true
+
+[os]
+style = "bold dimmed white"
+disabled = false
 
 # [memory_usage]
 # format = "$symbol[${ram}( | ${swap})]($style) "
@@ -76,7 +84,7 @@ disabled = true
 
 [time]
 time_format = "%T"
-format = "󱫫 $time($style) "
+format = "󱫫 $time($style)"
 style = "bright-white"
 disabled = false
 
