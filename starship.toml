@@ -101,7 +101,7 @@ symbol = " "
 
 [c]
 symbol = " "
-format = 'via [$name $version]($style)'
+format = 'via [$name $version]($style) '
 
 [conda]
 symbol = " "
