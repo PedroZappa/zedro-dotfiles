@@ -237,7 +237,7 @@ tmux_conf_theme_right_separator_sub='\uE0B3'  #   PowerlineSymbols.otf font, see
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left="  #S | #{root}↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{loadavg} | | #{download_speed} #{upload_speed} | | | | %d %b | | | %R | | | | | #{tmux_mode_indicator} "
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | | | #{cpu_icon} #{cpu_percentage} | | | #{ram_icon} #{ram_percentage} | | | #{download_speed} #{upload_speed} | | | | %d %b | | | %R | | | | | #{tmux_mode_indicator} "
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
@@ -448,6 +448,14 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # set -g @continuum-restore 'on'
 
 set -g @plugin 'christoomey/vim-tmux-navigator'
+
+set -g @plugin 'tmux-plugins/tmux-cpu'
+set -g @cpu_low_icon "=󰻠" # icon when cpu is low
+set -g @cpu_medium_icon "≡󰻠" # icon when cpu is medium
+set -g @cpu_high_icon "≣󰻠" # icon when cpu is high
+set -g @ram_low_icon "=󰍛" # icon when ram is low
+set -g @ram_medium_icon "≡󰍛" # icon when ram is medium
+set -g @ram_high_icon "≣󰍛" # icon when ram is high
 
 set -g @plugin 'tmux-plugins/tmux-net-speed'
 set -g @download_speed_format "⇩%10s"
