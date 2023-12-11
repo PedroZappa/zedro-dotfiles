@@ -448,6 +448,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 # set -g @continuum-restore 'on'
 
 set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'tmux-plugins/vim-tmux'
 
 set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @cpu_low_icon "=󰻠" # icon when cpu is low
