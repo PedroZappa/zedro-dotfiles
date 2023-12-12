@@ -95,8 +95,8 @@ pipestatus_format = '[\[$pipestatus\] => [$symbol$common_meaning$signal_name$may
 style = 'fg:yellow'
 symbol = '[](bold red) '
 success_symbol = '🖒 '
-not_found_symbol = ' '
-sigint_symbol = '[](bold red) '
+not_found_symbol = '❓ '
+sigint_symbol = '[](bold red)  '
 signal_symbol = '󱐌 '
 recognize_signal_code = true
 map_symbol = true
