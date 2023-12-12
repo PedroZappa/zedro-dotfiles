@@ -62,7 +62,16 @@ stashed = '📦'
 modified = '📝'
 staged = '[++\($count\)](green)'
 renamed = '👅'
-deleted = '🗑'
+deleted = '🗑' 
+
+[shell]
+fish_indicator = '󰈺 '
+zsh_indicator = 'zsh'
+powershell_indicator = '_'
+cmd_indicator = ''
+unknown_indicator = '?sh'
+style = 'green bold'
+disabled = false
 
 [hostname]
 ssh_symbol = " "
