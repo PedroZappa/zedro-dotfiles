@@ -5,6 +5,6 @@
 	name = Zedro 
 	email = 45104292+PedroZappa@users.noreply.github.com 
 [core]
-	editor = nvim
+	editor = vim
 [diff]
 	submodule = log
