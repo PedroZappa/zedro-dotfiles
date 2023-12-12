@@ -88,7 +88,7 @@ disabled = false
 
 [cmd_duration]
 min_time = 100  # miliseconds
-format = "[took](bold dimmed white) [$duration]($style) [](bold green)"
+format = "[](bold green) [took](bold dimmed white) [$duration]($style) "
 style = "bold yellow"
 disabled = false
 
