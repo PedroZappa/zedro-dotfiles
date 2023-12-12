@@ -45,14 +45,16 @@ truncation_symbol = "../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_branch]
-symbol = " "
+symbol = " "
 style = "bold purple"
 format = "[on](bold dimmed white)[ ⟪ ](bold green)[$symbol$branch(:$remote_branch)]($style)[ ⟫ ](bold green)"
 
 [git_commit]
-commit_hash_length = 8
+commit_hash_length = 7
 tag_symbol = '🔖 '
+format = '[\($hash$tag\)]($style) '
 style = "bold dimmed white"
+disabled = false
 
 [git_state]
 format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
