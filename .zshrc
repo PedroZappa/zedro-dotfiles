@@ -1,14 +1,3 @@
-ENABLE_CORRECTION="false"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also sgit clone https://github.com/dylanaraps/neofetchet it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765) 
-COMPLETION_WAITING_DOTS="true"
-
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Zap Plugin Manager
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
@@ -27,9 +16,8 @@ plug "zap-zsh/fzf"
 autoload -Uz compinit
 compinit
 
-# You may need to manually set your language environment
+# Setup language
 export LANG=en_US.UTF-8
-
 
 ### Zedro's Aliases
 #
@@ -38,9 +26,11 @@ echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
 if [[ $USER == "passunca" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
-# kitty-tmux kickstart
+
+# Zmux kickstart
 alias zmux=~/C0D3/z-scripts/zmux-start.sh
 alias xmux=~/C0D3/z-scripts/zmux-kill.sh
+#
 # setup lscolors
 source C0D3/z-scripts/lscolors.sh
 
@@ -56,13 +46,7 @@ alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
-if command -v lsd &> /dev/null; then
-	alias ls='lsd'
-	alias ll='lsd -al'
-	alias lt='lsd --tree'
-else
-	alias ll='ls -al --color'
-fi
+alias ll='ls -al --color'
 
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
@@ -70,9 +54,8 @@ alias ccw='cc -Wall -Wextra -Werror -g'
 # 42 Norm Check
 alias nn='norminette'
 # Franinette alias
-alias fr='francinette'
 alias francinette=~/francinette/tester.sh
-alias paco=~/francinette/tester.sh
+alias fr='francinette'
 
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
