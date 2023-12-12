@@ -4,8 +4,9 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$c$cmd_duration
-$jobs$hostname$username$shell
+$localip$shlvl$kubernetes
+$directory$git_branch$git_commit$git_status$c$cmd_duration
+$jobs$hostname$username$character
 '''
 right_format = "$status${custom.home}${custom.valgrind} $time $battery$os"
 
@@ -27,20 +28,19 @@ discharging_symbol = "⚡"
 threshold = 30
 style = "bold red"
 
-# Replace the "❯" symbol in the prompt with "➜"
-[character]                            # The name of the module we are configuring is "character"
-error_symbol = "[λ](bold red)"
-success_symbol = "[λ](bold yellow)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
-vimcmd_symbol = "[](bold green)"
-vimcmd_replace_one_symbol = "[](bold purple)"
-vimcmd_replace_symbol = "[](bold purple)"
-vimcmd_visual_symbol = "[](bold yellow)"
+[character]
+error_symbol = "[❭](bold red)"
+success_symbol = "[❭](bold yellow)"
+vimcmd_symbol = "[❭](bold green)"
+vimcmd_replace_one_symbol = "[❭](bold purple)"
+vimcmd_replace_symbol = "[❭](bold purple)"
+vimcmd_visual_symbol = "[❭](bold yellow)"
 
 [directory]
 read_only = " 󰌾"
 truncate_to_repo = true
 style = "bold cyan underline"
-truncation_length = 3
+truncation_length = 2
 truncation_symbol = "../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
