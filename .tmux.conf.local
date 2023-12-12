@@ -451,12 +451,12 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/vim-tmux'
 
 set -g @plugin 'tmux-plugins/tmux-cpu'
-set -g @cpu_low_icon "=󰻠" # icon when cpu is low
-set -g @cpu_medium_icon "≡󰻠" # icon when cpu is medium
-set -g @cpu_high_icon "≣󰻠" # icon when cpu is high
-set -g @ram_low_icon "=󰍛" # icon when ram is low
-set -g @ram_medium_icon "≡󰍛" # icon when ram is medium
-set -g @ram_high_icon "≣󰍛" # icon when ram is high
+set -g @cpu_low_icon "󰻠" # icon when cpu is low
+set -g @cpu_medium_icon "󰻠" # icon when cpu is medium
+set -g @cpu_high_icon "󰻠" # icon when cpu is high
+set -g @ram_low_icon "󰍛" # icon when ram is low
+set -g @ram_medium_icon "󰍛" # icon when ram is medium
+set -g @ram_high_icon "󰍛" # icon when ram is high
 
 set -g @plugin 'tmux-plugins/tmux-net-speed'
 set -g @download_speed_format "⇩%10s"
