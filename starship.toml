@@ -3,12 +3,20 @@
 
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
-format = '$all$username$shell$character'
-right_format = "$status $time $battery $os"
+format = '''
+$all$directory$git_branch$git_commit$git_status
+$username$shell
+'''
+
+right_format = "$status${custom.valgrind} $time $battery$os"
+continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
-add_newline = true
+add_newline = false
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 77
+
+# [line_break]
+# disabled = false
 
 [battery]
 full_symbol = "🔋"
@@ -52,6 +60,7 @@ cherry_pick = '[🍒 PICKING](bold red)'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
 [git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
 conflicted = '🏳'
 ahead = "🏃${count}"
 behind = "🐢 ×${count}"
@@ -86,8 +95,6 @@ recognize_signal_code = true
 map_symbol = true
 pipestatus = true
 pipestatus_separator = '|'
-# pipestatus_format = '[$symbol$code]($style)'
-# pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
 disabled = false
 
 [hostname]
@@ -99,6 +106,7 @@ style = "bold white"
 disabled = true
 
 [os]
+format = " [$symbol]($style)"
 style = "bold dimmed white"
 disabled = false
 
@@ -255,3 +263,20 @@ symbol = " "
 
 [scala]
 symbol = " "
+
+[custom.home]
+format = "[$output]($style)"
+when = "test $HOME = $PWD"
+style = "bold dimmed white"
+symbol = "🏠"
+
+[custom.valgrind]
+when  = "ps aux | grep valgrind | grep -v grep"
+command = """
+	ps -o pid -p $(ps aux | grep valgrind | grep -v grep | awk '{print $2}') | grep -v PID
+"""
+format = "[$symbol $output]($style)"
+style = "dimmed white"
+symbol = "󱗀"
+
+
