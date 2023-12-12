@@ -60,7 +60,7 @@ cherry_pick = '[🍒 PICKING](bold red)'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
 
 [git_status]
-format = '([\[$ahead_behind $all_status\]]($style) )'
+format = '([\[$ahead_behind$all_status\]]($style) )'
 conflicted = '🏳'
 ahead = "🏃${count}"
 behind = "🐢 ×${count}"
