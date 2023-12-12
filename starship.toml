@@ -5,7 +5,7 @@
 # Default Prompt for reference
 format = '''
 $localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$cmd_duration
-$hostname$username$shell
+$jobs$hostname$username$shell
 '''
 right_format = "$status${custom.valgrind} $time $battery$os"
 
@@ -94,7 +94,7 @@ format = ' [$symbol$int $signal_name$maybe_int]($style)'
 pipestatus_format = '[\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)](bold green)'
 style = 'fg:yellow'
 symbol = '[](bold red) '
-success_symbol = ' '
+success_symbol = '🖒 '
 not_found_symbol = ' '
 sigint_symbol = '[](bold red) '
 signal_symbol = '󱐌 '
@@ -129,11 +129,12 @@ symbol = "👩🏻‍💻 "
 style = "bold dimmed white"
 disabled = false
 
-# [memory_usage]
-# format = "$symbol[${ram}( | ${swap})]($style) "
-# threshold = 70
-# style = "bold dimmed white"
-# disabled = false
+[jobs]
+format = '[$symbol$number]($style)'
+style = "bold purple"
+symbol = '✦'
+number_threshold = 2
+symbol_threshold = 0
 
 [time]
 time_format = "%T"
