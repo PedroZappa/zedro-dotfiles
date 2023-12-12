@@ -40,7 +40,7 @@ vimcmd_visual_symbol = "[❭](bold yellow)"
 read_only = " 󰌾"
 truncate_to_repo = true
 style = "bold cyan underline"
-truncation_length = 2
+truncation_length = 4
 truncation_symbol = "../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
