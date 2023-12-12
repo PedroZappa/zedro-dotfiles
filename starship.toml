@@ -90,7 +90,8 @@ style = "yellow bold"
 disabled = false
 
 [status]
-format = ' [$symbol$signal_name$maybe_int]($style)'
+format = ' [$symbol$int $signal_name$maybe_int]($style)'
+pipestatus_format = '[\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)](bold green)'
 style = 'fg:yellow'
 symbol = '[](bold red) '
 success_symbol = ' '
@@ -100,7 +101,7 @@ signal_symbol = '󱐌 '
 recognize_signal_code = true
 map_symbol = true
 pipestatus = true
-pipestatus_separator = '|'
+pipestatus_separator = '[|](bold green)'
 disabled = false
 
 [hostname]
@@ -130,7 +131,7 @@ disabled = false
 [time]
 time_format = "%T"
 format = "[󱫫 $time]($style)"
-style = "bold green"
+style = "bold cyan"
 disabled = false
 
 [username]
