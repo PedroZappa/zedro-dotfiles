@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '$all'
-right_format = "$time $battery $os"
+right_format = "$status $time $battery $os"
 # Don't print a new line at the start of the prompt
 add_newline = true
 # Wait 10 milliseconds for starship to check files under the current directory.
@@ -72,6 +72,22 @@ powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
 style = 'green bold'
+disabled = false
+
+[status]
+# format = '$pipestatus [$symbol$signal_name$maybe_int]($style)'
+style = 'fg:green'
+symbol = ' '
+success_symbol = ' '
+not_found_symbol = ' '
+sigint_symbol = '🖐  '
+signal_symbol = '󱐌 '
+recognize_signal_code = true
+map_symbol = true
+pipestatus = true
+pipestatus_separator = '|'
+# pipestatus_format = '[$symbol$code]($style)'
+# pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)'
 disabled = false
 
 [hostname]
