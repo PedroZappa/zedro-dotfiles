@@ -16,7 +16,7 @@ add_newline = false
 scan_timeout = 77
 
 # [line_break]
-# disabled = false
+disabled = true
 
 [battery]
 full_symbol = "🔋"
@@ -76,7 +76,7 @@ deleted = '🗑'
 [shell]
 format = '[$indicator]($style) '
 fish_indicator = '󰈺 '
-zsh_indicator = ''
+zsh_indicator = '❭'
 powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
