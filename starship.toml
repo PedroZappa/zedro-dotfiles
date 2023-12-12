@@ -3,7 +3,7 @@
 
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
-format = '$all'
+format = '$all$username$shell$character'
 right_format = "$status $time $battery $os"
 # Don't print a new line at the start of the prompt
 add_newline = true
@@ -120,9 +120,11 @@ style = "bright-white"
 disabled = false
 
 [username]
-format = '\[[$user]($style)\]'
-style_user = "bold dimmed blue"
-show_always = false
+format = '[\[](bold green)[$user]($style)[\]](bold green)'
+style_user = "bold blue"
+style_root = 'black bold'
+disabled = false
+show_always = true
 
 [aws]
 symbol = "  "
