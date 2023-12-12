@@ -7,8 +7,8 @@ format = '''
 $all$directory$git_branch$git_commit$git_status$cmd_duration
 $username$shell
 '''
-
 right_format = "$status${custom.valgrind} $time $battery$os"
+
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
 add_newline = false
@@ -41,7 +41,7 @@ read_only = " 󰌾"
 truncate_to_repo = true
 style = "bold cyan underline"
 truncation_length = 3
-truncation_symbol = ".../"
+truncation_symbol = "../"
 format = "[$path]($style)[$lock_symbol]($lock_style) "
 
 [git_branch]
@@ -278,9 +278,7 @@ symbol = "🏠"
 
 [custom.valgrind]
 when  = "ps aux | grep valgrind | grep -v grep"
-command = """
-	ps -o pid -p $(ps aux | grep valgrind | grep -v grep | awk '{print $2}') | grep -v PID
-"""
+command = "~/C0D3/z-scripts/starship-valgrind.sh"
 format = "[$symbol $output]($style)"
 style = "dimmed white"
 symbol = "󱗀"
