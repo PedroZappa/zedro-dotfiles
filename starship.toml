@@ -53,7 +53,8 @@ format = "[on](bold dimmed white)[ ⟪ ](bold green)[$symbol$branch(:$remote_bra
 commit_hash_length = 7
 tag_symbol = '🔖 '
 format = '[\($hash$tag\)]($style) '
-style = "bold dimmed white"
+style = "bold yellow"
+only_detached = false
 disabled = false
 
 [git_state]
