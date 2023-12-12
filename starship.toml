@@ -102,6 +102,11 @@ disabled = true
 style = "bold dimmed white"
 disabled = false
 
+[sudo]
+symbol = "👩🏻‍💻 "
+style = "bold dimmed white"
+disabled = false
+
 # [memory_usage]
 # format = "$symbol[${ram}( | ${swap})]($style) "
 # threshold = 70
