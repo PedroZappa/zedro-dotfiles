@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$cmd_duration
+$localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$c$cmd_duration
 $jobs$hostname$username$shell
 '''
 right_format = "$status${custom.home}${custom.valgrind} $time $battery$os"
@@ -150,7 +150,7 @@ symbol = " "
 
 [c]
 symbol = " "
-format = 'via [$name $version]($style) '
+format = '[via](bold dimmed white) [$name $version]($style) '
 commands = [[ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ]]
 
 [conda]
