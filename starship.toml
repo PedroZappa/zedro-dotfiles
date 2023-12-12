@@ -5,7 +5,7 @@
 # Default Prompt for reference
 format = '''
 $localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$cmd_duration
-$username$shell
+$hostname$username$shell
 '''
 right_format = "$status${custom.valgrind} $time $battery$os"
 
@@ -107,10 +107,17 @@ disabled = false
 [hostname]
 ssh_symbol = " "
 ssh_only = false
-format = "<[$hostname]($style)>"
+format = '[\[](bold green)[$hostname]($style)[\]](bold green)'
 trim_at = "-"
-style = "bold white"
-disabled = true
+style = "bold yellow"
+disabled = false
+
+[username]
+format = '[\[](bold green)[$user]($style)[\]](bold green)'
+style_user = "bold blue"
+style_root = 'black bold'
+disabled = false
+show_always = true
 
 [os]
 format = "[$symbol]($style)"
@@ -133,13 +140,6 @@ time_format = "%T"
 format = "[󱫫 $time]($style)"
 style = "bold cyan"
 disabled = false
-
-[username]
-format = '[\[](bold green)[$user]($style)[\]](bold green)'
-style_user = "bold blue"
-style_root = 'black bold'
-disabled = false
-show_always = true
 
 [aws]
 symbol = "  "
