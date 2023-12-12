@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$all$directory$git_branch$git_commit$git_status$cmd_duration
+$localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$cmd_duration
 $username$shell
 '''
 right_format = "$status${custom.valgrind} $time $battery$os"
@@ -90,10 +90,10 @@ style = "yellow bold"
 disabled = false
 
 [status]
-# format = '$pipestatus [$symbol$signal_name$maybe_int]($style)'
-style = 'fg:green'
-symbol = ' '
-success_symbol = ' '
+format = ' [$symbol$signal_name$maybe_int]($style)'
+style = 'fg:yellow'
+symbol = '[](bold red) '
+success_symbol = '[](bold green) '
 not_found_symbol = ' '
 sigint_symbol = '🖐  '
 signal_symbol = '󱐌 '
@@ -129,8 +129,8 @@ disabled = false
 
 [time]
 time_format = "%T"
-format = "󱫫 $time($style)"
-style = "bright-white"
+format = "[󱫫 $time]($style)"
+style = "bold green"
 disabled = false
 
 [username]
@@ -279,8 +279,7 @@ symbol = "🏠"
 [custom.valgrind]
 when  = "ps aux | grep valgrind | grep -v grep"
 command = "~/C0D3/z-scripts/starship-valgrind.sh"
-format = "[$symbol $output]($style)"
+format = "[ ⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫ ](bold red)"
 style = "dimmed white"
 symbol = "󱗀"
-
 
