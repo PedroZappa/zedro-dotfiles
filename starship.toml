@@ -65,8 +65,9 @@ renamed = '👅'
 deleted = '🗑' 
 
 [shell]
+format = '[$indicator]($style) '
 fish_indicator = '󰈺 '
-zsh_indicator = 'zsh'
+zsh_indicator = ''
 powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
