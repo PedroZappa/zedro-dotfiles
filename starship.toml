@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$all$directory$git_branch$git_commit$git_status
+$all$directory$git_branch$git_commit$git_status$cmd_duration
 $username$shell
 '''
 
@@ -81,6 +81,12 @@ powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
 style = 'green bold'
+disabled = false
+
+[cmd_duration]
+min_time = 1_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = " took [$duration]($style)"
+style = "yellow bold"
 disabled = false
 
 [status]
