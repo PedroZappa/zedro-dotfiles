@@ -7,7 +7,7 @@ format = '''
 $localip$shlvl$kubernetes$all$directory$git_branch$git_commit$git_status$cmd_duration
 $jobs$hostname$username$shell
 '''
-right_format = "$status${custom.valgrind} $time $battery$os"
+right_format = "$status${custom.home}${custom.valgrind} $time $battery$os"
 
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
@@ -80,7 +80,7 @@ zsh_indicator = ''
 powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
-style = 'green bold'
+style = 'bold yellow'
 disabled = false
 
 [cmd_duration]
@@ -92,6 +92,7 @@ disabled = false
 [status]
 format = ' [$symbol$int $signal_name$maybe_int]($style)'
 pipestatus_format = '[\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)](bold green)'
+pipestatus_separator = '[|](bold green)'
 style = 'fg:yellow'
 symbol = '[](bold red) '
 success_symbol = '🖒 '
@@ -101,7 +102,6 @@ signal_symbol = '󱐌 '
 recognize_signal_code = true
 map_symbol = true
 pipestatus = true
-pipestatus_separator = '[|](bold green)'
 disabled = false
 
 [hostname]
@@ -139,7 +139,7 @@ symbol_threshold = 0
 [time]
 time_format = "%T"
 format = "[󱫫 $time]($style)"
-style = "bold cyan"
+style = "bold green"
 disabled = false
 
 [aws]
@@ -273,10 +273,10 @@ symbol = " "
 symbol = " "
 
 [custom.home]
-format = "[$output]($style)"
+format = "[$symbol]($style)"
 when = "test $HOME = $PWD"
-style = "bold dimmed white"
-symbol = "🏠"
+style = "bold cyan"
+symbol = " 󰚡 "
 
 [custom.valgrind]
 when  = "ps aux | grep valgrind | grep -v grep"
