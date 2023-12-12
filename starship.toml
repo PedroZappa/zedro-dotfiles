@@ -102,6 +102,7 @@ symbol = " "
 [c]
 symbol = " "
 format = 'via [$name $version]($style) '
+commands = [[ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ]]
 
 [conda]
 symbol = " "
