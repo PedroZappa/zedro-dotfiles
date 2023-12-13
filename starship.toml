@@ -54,7 +54,7 @@ commit_hash_length = 7
 tag_symbol = '🔖 '
 format = '[\($hash$tag\)]($style) '
 style = "bold yellow"
-only_detached = false
+only_detached = true
 disabled = false
 
 [git_state]
@@ -94,8 +94,8 @@ disabled = false
 
 [status]
 format = ' [$symbol$int $signal_name$maybe_int]($style)'
-pipestatus_format = '[\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style)](bold green)'
-pipestatus_separator = '[|](bold green)'
+pipestatus_format = '[\[$pipestatus\] => [$symbol$int$common_meaning$signal_name$maybe_int]($style)](bold cyan)'
+pipestatus_separator = '[|](bold cyan)'
 style = 'fg:yellow'
 symbol = '[🖓 ](bold red) '
 success_symbol = '🖒 '
