@@ -4,11 +4,10 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$shlvl$kubernetes
-$directory$git_branch$git_commit$git_status$c$cmd_duration
+$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
 $jobs$hostname$username$character
 '''
-right_format = "$localip$status${custom.home}${custom.valgrind} $time $battery$os"
+right_format = "$status${custom.home}${custom.valgrind} $localip $time $battery$os"
 
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
@@ -17,10 +16,18 @@ add_newline = false
 scan_timeout = 77
 
 [localip]
-ssh_only = false
+ssh_only = true
 format = '[$localipv4]($style) '
 style = "bold dimmed white"
 disabled = false
+
+[shlvl]
+disabled = false
+format = '[$symbol$shlvl]($style)'
+repeat = true
+symbol = '❯'
+repeat_offset = 1
+threshold = 0
 
 [battery]
 full_symbol = "🔋"
