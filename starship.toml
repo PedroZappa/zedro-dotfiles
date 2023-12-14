@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
+$directory$git_branch$git_commit$git_status$c$cmd_duration$shell$shlvl
 $jobs$hostname$username$character
 '''
 right_format = "$status${custom.home}${custom.valgrind} $localip $time $battery$os"
@@ -20,14 +20,6 @@ ssh_only = true
 format = '[$localipv4]($style) '
 style = "bold dimmed white"
 disabled = false
-
-[shlvl]
-disabled = false
-format = '[$symbol$shlvl]($style)'
-repeat = true
-symbol = '❯'
-repeat_offset = 1
-threshold = 0
 
 [battery]
 full_symbol = "🔋"
@@ -87,14 +79,23 @@ renamed = '👅'
 deleted = '🗑' 
 
 [shell]
-format = '[$indicator]($style) '
+format = '[$indicator]($style)'
 fish_indicator = '󰈺 '
-zsh_indicator = '❭'
+bash_indicator = ' '
+zsh_indicator = ' '
 powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
 style = 'bold yellow'
 disabled = false
+
+[shlvl]
+disabled = false
+format = '[$symbol$shlvl]($style)'
+repeat = true
+symbol = '❯'
+repeat_offset = 1
+threshold = 0
 
 [cmd_duration]
 min_time = 100  # miliseconds
