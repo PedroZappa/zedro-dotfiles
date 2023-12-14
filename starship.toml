@@ -81,7 +81,7 @@ deleted = '🗑'
 [shell]
 format = '[$indicator]($style)'
 fish_indicator = '󰈺 '
-bash_indicator = ' '
+bash_indicator = ''
 zsh_indicator = ' '
 powershell_indicator = '_'
 cmd_indicator = ''
@@ -92,6 +92,7 @@ disabled = false
 [shlvl]
 disabled = false
 format = '[$symbol$shlvl]($style)'
+style = 'bold green'
 repeat = true
 symbol = '❯'
 repeat_offset = 1
