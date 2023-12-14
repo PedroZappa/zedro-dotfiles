@@ -4,11 +4,11 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$localip$shlvl$kubernetes
+$shlvl$kubernetes
 $directory$git_branch$git_commit$git_status$c$cmd_duration
 $jobs$hostname$username$character
 '''
-right_format = "$status${custom.home}${custom.valgrind} $time $battery$os"
+right_format = "$localip$status${custom.home}${custom.valgrind} $time $battery$os"
 
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
@@ -16,8 +16,11 @@ add_newline = false
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 77
 
-# [line_break]
-# disabled = true
+[localip]
+ssh_only = false
+format = '[$localipv4]($style) '
+style = "bold dimmed white"
+disabled = false
 
 [battery]
 full_symbol = "🔋"
