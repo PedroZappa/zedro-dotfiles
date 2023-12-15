@@ -126,7 +126,7 @@ return {
 			icons = {
 				DEBUG = " ",
 				ERROR = " ",
-				INFO = " ",
+				INFO = "🛈 ",
 				TRACE = "✎",
 				WARN = " "
 			},
@@ -135,8 +135,8 @@ return {
 			maximum_width = 50,
 			render = "default",
 			stages = "fade_in_slide_out",
-			timeout = 3000,
-			top_down = true
+			timeout = 1000,
+			top_down = false
 		})
 	end,
 }
