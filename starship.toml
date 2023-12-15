@@ -7,7 +7,7 @@ format = '''
 $directory$git_branch$git_commit$git_status$c$cmd_duration$shell$shlvl
 $jobs$hostname$username$character
 '''
-right_format = "$status${custom.home}${custom.valgrind} $localip $time $battery$os"
+right_format = "$status${custom.valgrind}$localip$time $battery$os"
 
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
@@ -109,9 +109,9 @@ format = ' [$symbol$int $signal_name$maybe_int]($style)'
 pipestatus_format = '[\[$pipestatus\] => [$symbol$int$common_meaning$signal_name$maybe_int]($style)](bold cyan)'
 pipestatus_separator = '[|](bold cyan)'
 style = 'fg:yellow'
-symbol = '[🖓 ](bold red) '
-success_symbol = '🖒 '
-not_found_symbol = '❓ '
+symbol = '[](bold red) '
+success_symbol = ' '
+not_found_symbol = '[](bold red) '
 sigint_symbol = '[](bold red)  '
 signal_symbol = '󱐌 '
 recognize_signal_code = true
@@ -287,16 +287,10 @@ symbol = " "
 [scala]
 symbol = " "
 
-[custom.home]
-format = "[$symbol]($style)"
-when = "test $HOME = $PWD"
-style = "bold cyan"
-symbol = " 󰚡 "
-
 [custom.valgrind]
 when  = "ps aux | grep valgrind | grep -v grep"
 command = "~/C0D3/z-scripts/starship-valgrind.sh"
-format = "[ ⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫ ](bold red)"
+format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
 style = "dimmed white"
 symbol = "󱗀"
 
