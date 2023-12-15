@@ -4,6 +4,7 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+		local dracula = require("lualine.themes.dracula")
 
 		lualine.setup({
 			icons_enabled = true,
@@ -68,7 +69,12 @@ return {
 			inactive_sections = {
 				lualine_a = {},
 				lualine_b = {},
-				lualine_c = { 'filename' },
+				lualine_c = {
+					{
+						'filename',
+						path = 4 -- 0: Just the filename
+					},
+				},
 				lualine_x = { 'location' },
 				lualine_y = {},
 				lualine_z = {}
@@ -80,7 +86,7 @@ return {
 						'filename',
 						file_status = true, -- Displays file status (readonly status, modified status)
 						newfile_status = true, -- Display new file status (new file means no write after created)
-						path = 4,         -- 0: Just the filename
+						path = 4,        -- 0: Just the filename
 						-- 1: Relative path
 						-- 2: Absolute path
 						-- 3: Absolute path, with tilde as the home directory
