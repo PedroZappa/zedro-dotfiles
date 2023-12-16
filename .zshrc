@@ -1,22 +1,32 @@
+###############
+### General ###
+###############
+
+# Load colors
+autoload colors && colors
+for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
+   eval $COLOR='$fg_no_bold[${(L)COLOR}]' # Wrap colors between %{ %} to avoid weird gaps in autocomplete
+   eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
+done
+eval NC='$reset_color'
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
+
 # Setup language
 export LANG=en_US.UTF-8
+
+echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
 
 #######################
 ### Zedro's Aliases ###
 #######################
-#
-# Local Aliases
-echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
-if [[ $USER == "passunca" ]]; then
-	alias kitty=~/.local/kitty.app/bin/kitty
-fi
 
 # Zmux kickstart
 alias zmux=~/C0D3/z-scripts/zmux-start.sh
 alias xmux=~/C0D3/z-scripts/zmux-kill.sh
+alias zshcow=~/C0D3/z-scripts/zsh-cowsay.sh
 
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
@@ -40,21 +50,21 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
 if command -v eza > /dev/null 2>&1; then
-	echo "=> Running eza! 📊"
+	echo "====> Running ${GREEN}eza${NC}! 📊"
 	alias ls='eza'
 	alias ll='eza -laZ --total-size'
 	alias llg='eza -laZ --total-size --git --git-repos'
 else
-	echo "=> Running ls! "
+	echo "====> Running ${YELLOW}ls${NC}! "
 	alias ll='ls -al --color'
 fi
 
 # Logging
 if command -v bat > /dev/null 2>&1; then
-	echo "=> Running bat! 🦇"
+	echo "====> Running ${GREEN}bat${NC}! 🦇"
 	alias cat='bat'
 else
-	echo "=> Running cat! 😸"
+	echo "====> Running ${YELLOW}cat${NC}! 😸"
 fi
 
 # Obsidian
@@ -62,6 +72,11 @@ alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
+
+# kitty at 42
+if [[ $USER == "passunca" ]]; then
+	alias kitty=~/.local/kitty.app/bin/kitty
+fi
 
 ##########################
 ### Zap Plugin Manager ###
@@ -79,18 +94,21 @@ plug "zap-zsh/sudo"
 plug "web-search"
 plug "zap-zsh/fzf"
 
+# Load Neofetch
+# if command -v neofetch > /dev/null 2>&1; then
+# 	neofetch
+# fi
+if command -v fortune > /dev/null 2>&1 && command -v cowsay > /dev/null 2>&1; then
+	eval "zshcow"
+	# echo "$(fortune | cowsay -dW 30))"
+fi
+
 # Load Starship
 if command -v starship > /dev/null 2>&1; then
     eval "$(starship init zsh)"
 else
     ZSH_THEME="refined"
 fi
-
-# Load Neofetch
-if command -v neofetch > /dev/null 2>&1; then
-	neofetch
-fi
-
 
 
 # Load Version Manager (for Node.js)
