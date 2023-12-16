@@ -63,6 +63,7 @@ disabled = false
 format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
 cherry_pick = '[🍒 PICKING](bold red)'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
+disabled = false
 
 [git_status]
 format = '([\[$ahead_behind$all_status\]]($style) )'
