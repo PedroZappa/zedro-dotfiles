@@ -60,7 +60,7 @@ return {
 			highlight Normal guibg=none
 			highlight NonText guibg=#000000
 			highlight WhichKey guifg=#34eb43
-			highlight WhichKeyFloat guibg=#000000
+			highlight WhichKeyFloat guibg=#000001
 			highlight WhichKeySeparator guifg=#8426ff
 			highlight TelescopeNormal guibg=#000000
 			highlight TelescopeSelection guibg=#674b94 guifg=#000000
