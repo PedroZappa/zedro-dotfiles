@@ -20,6 +20,14 @@ return {
 				delay = 200,
 				reveal = {'close'}
 			},
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Tree 󰹩",
+					text_align = "center",
+					separator = true
+				}
+			}
 		},
 	},
 }

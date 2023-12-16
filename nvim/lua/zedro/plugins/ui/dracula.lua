@@ -82,6 +82,7 @@ return {
 			highlight NvimTreeFolderArrowOpen guifg=#34eb43
 			highlight NvimTreeIndentMarker guifg=#e8eb34
 			highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+			highlight NvimTreeRootFolder guibg=NONE ctermbg=NONE guifg=#69FF94
 			highlight CursorLineNr guifg=#e8eb34
 			highlight NvimTreeLineNr guifg=#34eb43
 			highlight LineNr guifg=#D6ACFF
