@@ -4,7 +4,6 @@ return {
 	config = function()
 		local lualine = require("lualine")
 		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-		local dracula = require("lualine.themes.dracula")
 
 		lualine.setup({
 			icons_enabled = true,
