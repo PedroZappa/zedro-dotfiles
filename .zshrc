@@ -17,9 +17,15 @@ fi
 # Zmux kickstart
 alias zmux=~/C0D3/z-scripts/zmux-start.sh
 alias xmux=~/C0D3/z-scripts/zmux-kill.sh
-#
-# setup lscolors
-# source C0D3/z-scripts/lscolors.sh
+
+# Compiling
+alias ccw='cc -Wall -Wextra -Werror -g'
+
+# 42 Norm Check
+alias nn='norminette'
+# Franinette alias
+alias francinette=~/francinette/tester.sh
+alias fr='francinette'
 
 # git
 alias ga='git add'
@@ -34,23 +40,22 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
 if command -v eza > /dev/null 2>&1; then
-	echo "=> Running eza!"
+	echo "=> Running eza! 📊"
 	alias ls='eza'
 	alias ll='eza -laZ --total-size'
 	alias llg='eza -laZ --total-size --git --git-repos'
 else
-	echo "=> Running ls!"
+	echo "=> Running ls! "
 	alias ll='ls -al --color'
 fi
 
-# Compiling
-alias ccw='cc -Wall -Wextra -Werror -g'
-
-# 42 Norm Check
-alias nn='norminette'
-# Franinette alias
-alias francinette=~/francinette/tester.sh
-alias fr='francinette'
+# Logging
+if command -v bat > /dev/null 2>&1; then
+	echo "=> Running bat! 🦇"
+	alias cat='bat'
+else
+	echo "=> Running cat! 😸"
+fi
 
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
