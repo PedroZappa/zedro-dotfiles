@@ -106,7 +106,7 @@ style = "bold yellow"
 disabled = false
 
 [status]
-format = ' [$symbol$int $signal_name$maybe_int]($style)'
+format = ' [$symbol$int $signal_name]($style)'
 pipestatus_format = '[\[$pipestatus\] => [$symbol$int$common_meaning$signal_name$maybe_int]($style)](bold cyan) '
 pipestatus_separator = '[|](bold cyan)'
 style = 'fg:yellow'
