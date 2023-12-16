@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+vim.g.RTP = vim.split(vim.o.runtimepath, ",")[1]
+vim.g.RC = os.getenv("HOME") .. "/.config/nvim"
+
+vim.cmd("set path=.,**")
+
 vim.o.guifont = "Fira Code Nerd Font:h11"
 -- Set leader and localleader
 vim.g.mapleader = " "
