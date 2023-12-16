@@ -1,25 +1,12 @@
-# Zap Plugin Manager
-[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
-plug "zsh-users/zsh-autosuggestions"
-plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
-plug "zsh-users/zsh-syntax-highlighting"
-plug "hlissner/zsh-autopair"
-plug "zsh-users/zsh-history-substring-search"
-plug "MichaelAquilina/zsh-you-should-use"
-plug "zap-zsh/completions"
-plug "zap-zsh/sudo"
-plug "web-search"
-plug "zap-zsh/fzf"
-
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
-
 # Setup language
 export LANG=en_US.UTF-8
 
-### Zedro's Aliases
+#######################
+### Zedro's Aliases ###
+#######################
 #
 # Local Aliases
 echo "ꔘ ꔘ ꔘ Yo $USER! Welcome to $HOST ꔘ ꔘ ꔘ"
@@ -47,11 +34,12 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
 if command -v eza > /dev/null 2>&1; then
-	echo "Running eza!"
+	echo "=> Running eza!"
 	alias ls='eza'
-	alias ll='eza -la'
+	alias ll='eza -laZ --total-size'
+	alias llg='eza -laZ --total-size --git --git-repos'
 else
-	echo "Running ls!"
+	echo "=> Running ls!"
 	alias ll='ls -al --color'
 fi
 
@@ -70,10 +58,21 @@ alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
 
-# Load Version Manager (for Node.js)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+##########################
+### Zap Plugin Manager ###
+##########################
+[ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
+plug "zsh-users/zsh-autosuggestions"
+plug "zap-zsh/supercharge"
+plug "zap-zsh/zap-prompt"
+plug "zsh-users/zsh-syntax-highlighting"
+plug "hlissner/zsh-autopair"
+plug "zsh-users/zsh-history-substring-search"
+plug "MichaelAquilina/zsh-you-should-use"
+plug "zap-zsh/completions"
+plug "zap-zsh/sudo"
+plug "web-search"
+plug "zap-zsh/fzf"
 
 # Load Starship
 if command -v starship > /dev/null 2>&1; then
@@ -86,3 +85,11 @@ fi
 if command -v neofetch > /dev/null 2>&1; then
 	neofetch
 fi
+
+
+
+# Load Version Manager (for Node.js)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
