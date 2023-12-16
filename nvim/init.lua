@@ -1,8 +1,10 @@
+-- Global options
+require("zedro.core.global")
 -- Options
 require("zedro.core.options")
 -- Key Mappings
 require("zedro.core.mappings")
---Auto Commands
+-- Auto Commands
 require("zedro.core.autocmd")
 -- Lazy Plugin Manager
 require("zedro.lazy")

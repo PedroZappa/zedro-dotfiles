@@ -1,15 +1,9 @@
 local opt = vim.opt
 
-vim.g.RTP = vim.split(vim.o.runtimepath, ",")[1]
-vim.g.RC = os.getenv("HOME") .. "/.config/nvim"
-
-vim.cmd("set path=.,**")
-
-vim.o.guifont = "Fira Code Nerd Font:h11"
--- Set leader and localleader
-vim.g.mapleader = " "
--- vim.g.maplocalleader = "\\"
 -- Options--
+-- set font
+opt.guifont = "Fira Code Nerd Font:h11"
+
 -- Line Numbers
 opt.number = true
 opt.numberwidth = 3
@@ -94,7 +88,7 @@ opt.signcolumn = "yes"
 --     leadmultispace = " ", -- ...but don't show any when they're at the start
 -- }
 -- more defined window border
-vim.opt.fillchars:append({
+opt.fillchars:append({
 	vert = "┃",
 	horiz = "━",
 	horizup = "┻",
@@ -109,11 +103,7 @@ vim.opt.fillchars:append({
 opt.backspace = "indent,eol,start"
 
 -- Time
-vim.opt.updatetime = 50
+opt.updatetime = 50
 
 -- Other
-vim.opt.isfname:append("@-@")
-
--- 42 Header Settings
-vim.g.user42 = 'passunca'
-vim.g.mail42 = 'passunca@student.42porto.com'
+opt.isfname:append("@-@")
