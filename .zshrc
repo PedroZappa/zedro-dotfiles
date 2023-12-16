@@ -32,7 +32,7 @@ alias zmux=~/C0D3/z-scripts/zmux-start.sh
 alias xmux=~/C0D3/z-scripts/zmux-kill.sh
 #
 # setup lscolors
-source C0D3/z-scripts/lscolors.sh
+# source C0D3/z-scripts/lscolors.sh
 
 # git
 alias ga='git add'
@@ -46,7 +46,14 @@ alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
 
 # Navigation
-alias ll='ls -al --color'
+if command -v eza > /dev/null 2>&1; then
+	echo "Running eza!"
+	alias ls='eza'
+	alias ll='eza -la'
+else
+	echo "Running ls!"
+	alias ll='ls -al --color'
+fi
 
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
