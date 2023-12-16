@@ -149,8 +149,9 @@ ln -s ~/.dotfiles/mc/skins/dracula256.ini ~/.local/share/mc/skins/dracula256.ini
 sudo apt install neofetch
 ln -s ~/.dotfiles/neofetch/config.conf ~/.config/neofetch/config.conf
 ```
-#### Config [lsd](https://github.com/lsd-rs/lsd)
+#### Config [bat](https://github.com/sharkdp/bat)
 
 ```shell
-ln -s ~/.dotfiles/lsd/config.yaml ~/.config/lsd/config.yaml
+ln -s ~/.dotfiles/bat/config ~/.config/bat/config
 ```
+
