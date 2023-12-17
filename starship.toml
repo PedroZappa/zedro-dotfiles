@@ -4,8 +4,8 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$directory$git_branch$git_commit$git_status$c$cmd_duration$shell$shlvl
-$jobs$hostname$username$character
+$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
+$jobs$hostname$username $shell $character
 '''
 right_format = "$status${custom.valgrind}$localip$time $battery$os"
 
@@ -31,6 +31,7 @@ threshold = 30
 style = "bold red"
 
 [character]
+format = "$symbol "
 error_symbol = "[❭](bold red)"
 success_symbol = "[❭](bold yellow)"
 vimcmd_symbol = "[❭](bold green)"
@@ -81,9 +82,9 @@ deleted = '  '
 
 [shell]
 format = '[$indicator]($style)'
-fish_indicator = '󰈺 '
-bash_indicator = ' '
-zsh_indicator = ' '
+fish_indicator = '󰈺'
+bash_indicator = ''
+zsh_indicator = ''
 powershell_indicator = '_'
 cmd_indicator = ''
 unknown_indicator = '?sh'
