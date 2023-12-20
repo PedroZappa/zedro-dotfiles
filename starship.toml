@@ -78,7 +78,7 @@ stashed = '📦'
 modified = '📝'
 staged = '[++\($count\)](bold yellow)'
 renamed = '👅'
-deleted = '  ' 
+deleted = ' 󰩺 ' 
 
 [shell]
 format = '[$indicator]($style)'
