@@ -73,13 +73,13 @@ conflicted = '🏳'
 ahead = "🏃${count}"
 behind = "🐢 ×${count}"
 diverged = "🔱 🏃${ahead_count} 🐢 ×${behind_count}"
-up_to_date = '✓'
+up_to_date = '✓[¦](dimmed white)'
 untracked = '🤷'
 stashed = '📦'
 modified = '📝'
 staged = '[++\($count\)](bold yellow)'
 renamed = '👅'
-deleted = '' 
+deleted = ''
 
 [shell]
 format = '[$indicator]($style)'
@@ -91,7 +91,7 @@ cmd_indicator = ''
 unknown_indicator = '?sh'
 style = 'bold yellow'
 disabled = false
- 
+
 [shlvl]
 disabled = false
 format = '[$symbol$shlvl]($style)'
