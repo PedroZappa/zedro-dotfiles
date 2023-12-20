@@ -61,7 +61,8 @@ only_detached = true
 disabled = false
 
 [git_state]
-format = '([\[$conflicted$deleted$renamed$modified$staged$behind\]]($style) )'
+# format = '([\[$conflicted$renamed$modified$staged$behind$deleted\]]($style) )'
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
 cherry_pick = '[🍒 PICKING](bold red)'
 # format = '[\($state( $progress_current of $progress_total)\)]($style) '
 disabled = false
@@ -78,7 +79,7 @@ stashed = '📦'
 modified = '📝'
 staged = '[++\($count\)](bold yellow)'
 renamed = '👅'
-deleted = ' 󰩺 ' 
+deleted = '' 
 
 [shell]
 format = '[$indicator]($style)'
@@ -90,7 +91,7 @@ cmd_indicator = ''
 unknown_indicator = '?sh'
 style = 'bold yellow'
 disabled = false
-
+ 
 [shlvl]
 disabled = false
 format = '[$symbol$shlvl]($style)'
@@ -107,7 +108,7 @@ style = "bold yellow"
 disabled = false
 
 [status]
-format = ' [$symbol$int $signal_name]($style)'
+format = ' [$symbol$int $signal_name]($style) '
 pipestatus_format = '[\[$pipestatus\] => [$symbol$int$common_meaning$signal_name$maybe_int]($style)](bold cyan) '
 pipestatus_separator = '[|](bold cyan)'
 style = 'fg:yellow'
