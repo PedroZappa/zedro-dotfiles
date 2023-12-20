@@ -64,7 +64,10 @@ disabled = false
 # format = '([\[$conflicted$renamed$modified$staged$behind$deleted\]]($style) )'
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 cherry_pick = '[🍒 PICKING](bold red)'
-# format = '[\($state( $progress_current of $progress_total)\)]($style) '
+merge = '[󰘭 MERGING](bold red)'
+rebase = '[󰘭 REBASING](bold red)'
+revert = '[⎌ REVERTING](bold red)'
+bisect = '[󰃻 BISECTING](bold red)'
 disabled = false
 
 [git_status]
@@ -73,7 +76,7 @@ conflicted = '🏳'
 ahead = "🏃${count}"
 behind = "🐢 ×${count}"
 diverged = "🔱 🏃${ahead_count} 🐢 ×${behind_count}"
-up_to_date = '✓[¦](dimmed white)'
+up_to_date = '✓'
 untracked = '🤷'
 stashed = '📦'
 modified = '📝'
