@@ -51,6 +51,7 @@ keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
 keymap.set("n", "<leader>cm", ":Telescope git_commits<CR>", { desc = "Git commits" })
 keymap.set("n", "<leader>gt", ":Telescope git_status<CR>", { desc = "Git status" })
 keymap.set('n', '<leader>gs', ':Git<CR>')
+keymap.set('n', '<leader>gb', ':ToggleBlame virtual<CR>')
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
 -- Markdown Preview
