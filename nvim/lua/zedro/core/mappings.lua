@@ -6,7 +6,7 @@ keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vert
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
 -- Change Permissions
 keymaps.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
-keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null", { desc = "Write Read-only file with sudo" })
+keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>", { desc = "Write Read-only file with sudo" })
 -- Buffers
 keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>", { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
