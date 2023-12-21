@@ -59,6 +59,8 @@ return {
 			colorscheme dracula
 			highlight Normal guibg=none
 			highlight NonText guibg=#000000
+			highlight Search guibg=#34eb34
+			highlight CurSearch guibg=#34eb34
 			highlight WhichKey guifg=#34eb43
 			highlight WhichKeyFloat guibg=#000001
 			highlight WhichKeySeparator guifg=#8426ff
@@ -89,6 +91,5 @@ return {
 			highlight LspFloatWinBorder guifg=#e8eb34
 			highlight LspInfoBorder guifg=#e8eb34
 		]])
-
 	end,
 }
