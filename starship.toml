@@ -83,7 +83,7 @@ modified = '📝'
 staged = '[++\($count\)](bold yellow)'
 renamed = '👅'
 deleted = ''
-
+ 
 [shell]
 format = '[$indicator]($style)'
 fish_indicator = '󰈺'
