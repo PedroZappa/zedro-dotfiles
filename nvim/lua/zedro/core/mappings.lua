@@ -4,6 +4,9 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
+-- Change Permissions
+keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
+keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>", { desc = "Write Read-only file with sudo" })
 -- Buffers
 keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>", { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
@@ -43,8 +46,6 @@ keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NvimTree Toggle" })
 keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 -- Undotree mappings
 keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
--- Oil Mappings
-keymap.set("n", "-", ":Oil --float<CR>", { desc = "Open Parent Directory with Oil" })
 -- Git
 keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
 keymap.set("n", "<leader>cm", ":Telescope git_commits<CR>", { desc = "Git commits" })
