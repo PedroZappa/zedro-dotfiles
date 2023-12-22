@@ -5,7 +5,7 @@
 # Load colors
 autoload colors && colors
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
-   eval $COLOR='$fg_no_bold[${(L)COLOR}]' # Wrap colors between %{ %} to avoid weird gaps in autocomplete
+   eval $COLOR='$fg_no_bold[${(L)COLOR}]'
    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
 done
 eval NC='$reset_color'
