@@ -580,6 +580,8 @@ nnoremap <leader>bd :bd!<CR>
 " Cycle through open buffers
 nnoremap <leader>n :bnext<cr>
 nnoremap <leader>p :bprevious<cr>
+" Save readonly file with sudo
+nnoremap <leader>wf :w !sudo tee % >/dev/null<CR>
 
 " Navigation Controls
 " Resize split windows using arrow keys by pressing:
