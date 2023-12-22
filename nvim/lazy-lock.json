@@ -5,6 +5,7 @@
   "LuaSnip": { "branch": "master", "commit": "954c81b53989097faaff0fabc11c29575288c3e1" },
   "NeoColumn.nvim": { "branch": "main", "commit": "db7695c7c70fcacd290712deef659bca464634ee" },
   "ReplaceWithRegister": { "branch": "master", "commit": "832efc23111d19591d495dc72286de2fb0b09345" },
+  "blame.nvim": { "branch": "main", "commit": "562661972085a273914c8f702b11924f8aa573ea" },
   "bufferline.nvim": { "branch": "main", "commit": "6ecd37e0fa8b156099daedd2191130e083fb1490" },
   "ccc.nvim": { "branch": "main", "commit": "f77b477d9f0b9a28612212b3fc43145f2a5591cc" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
