@@ -61,14 +61,6 @@ else
 	alias ll='ls -al --color'
 fi
 
-# Logging
-if command -v bat > /dev/null 2>&1; then
-	echo "====> Running ${GREEN}bat${NC}! 🦇"
-	alias cat='bat'
-else
-	echo "====> Running ${YELLOW}cat${NC}! 😸"
-fi
-
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 
