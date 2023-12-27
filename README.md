@@ -155,3 +155,9 @@ ln -s ~/.dotfiles/neofetch/config.conf ~/.config/neofetch/config.conf
 ln -s ~/.dotfiles/bat/config ~/.config/bat/config
 ```
 
+#### Config [WeeChat](https://github.com/weechat/weechat)
+
+```shell
+ln -s ~/.dotfiles/weechat/ ~/.config/weechat
+```
+
