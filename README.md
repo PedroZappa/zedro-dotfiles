@@ -158,6 +158,6 @@ ln -s ~/.dotfiles/bat/config ~/.config/bat/config
 #### Config [WeeChat](https://github.com/weechat/weechat)
 
 ```shell
-ln -s ~/.dotfiles/weechat/ ~/.config/weechat
+ln -s ~/.dotfiles/weechat/weechat.conf ~/.config/weechat/weechat.conf
 ```
 
