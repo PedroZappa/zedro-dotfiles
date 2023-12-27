@@ -159,5 +159,9 @@ ln -s ~/.dotfiles/bat/config ~/.config/bat/config
 
 ```shell
 ln -s ~/.dotfiles/weechat/weechat.conf ~/.config/weechat/weechat.conf
+ln -s ~/.dotfiles/weechat/plugins.conf ~/.config/weechat/plugins.conf
+ln -s ~/.dotfiles/weechat/buflist.conf ~/.config/weechat/buflist.conf
+ln -s ~/.dotfiles/weechat/spell.conf ~/.config/weechat/spell.conf
+ln -s ~/.dotfiles/weechat/scripts.conf ~/.config/weechat/scripts.conf
 ```
 
