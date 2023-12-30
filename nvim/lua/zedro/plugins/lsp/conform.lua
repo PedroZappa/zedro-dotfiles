@@ -6,6 +6,7 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        cpp = { "clang-format" },
         javascript = { "prettier" },
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -19,9 +20,10 @@ return {
         graphql = { "prettier" },
         lua = { "stylua" },
         python = { "isort", "black" },
+        bash = { "beautysh" },
       },
     })
-    vim.keymap.set({ "n", "v" }, "<leader>mpf", function()
+    vim.keymap.set({ "n", "v" }, "<leader>pf", function()
       conform.format({
         lsp_fallback = true,
         async = false,

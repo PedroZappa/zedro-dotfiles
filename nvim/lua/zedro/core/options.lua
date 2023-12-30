@@ -26,6 +26,8 @@ opt.smartindent = true
 -- Line Wrapping
 opt.whichwrap = '<,>'
 opt.wrap = false
+-- C Indentation
+opt.cindent = true
 
 -- Windows
 opt.splitbelow = true
