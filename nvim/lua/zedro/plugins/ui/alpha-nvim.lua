@@ -470,7 +470,7 @@ _  /|  / /  __/ /_/ /_ |/ /_  / _  / / / / /
 
     -- Set menu
     dashboard.section.buttons.val = {
-      { type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
+      { type = "text", val = "Z-Dashboard", opts = { hl = "SpecialComment", position = "center" } },
       { type = "padding", val = 1 },
       dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
       dashboard.button("F", "  Find text", ":Telescope live_grep <CR>"),
@@ -478,6 +478,7 @@ _  /|  / /  __/ /_/ /_ |/ /_  / _  / / / / /
       dashboard.button("t", "⎚  Start Screen", ":intro <CR>"),
       dashboard.button("l", "♻   Get Lazy", ":Lazy<CR>"),
       dashboard.button("m", "   Get Mason", ":Mason<CR>"),
+      dashboard.button("p", "   Get Parrot", ":<leader>pl<CR>"),
       dashboard.button("q", "󰩈  Quit", ":qa<CR>"),
     }
     -- Send config to alpha
