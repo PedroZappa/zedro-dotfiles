@@ -199,3 +199,4 @@ set $oldlr  = 0
 
 # used by ptraceme/rptraceme
 set $ptrace_bpnum = 0
+set startup-with-shell off
