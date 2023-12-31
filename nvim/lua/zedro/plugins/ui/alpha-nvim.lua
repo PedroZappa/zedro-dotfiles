@@ -482,7 +482,12 @@ _  /|  / /  __/ /_/ /_ |/ /_  / _  / / / / /
       dashboard.button("p", "  Get Parrot", ":<leader>pl<CR>"),
       dashboard.button("q", "󰩈  Quit", ":qa<CR>"),
     }
+    -- footer
+    -- dashboard.section.footer.val = "Footer Z"
+    dashboard.section.footer.val = "~/Pictures/Born2bePickle.jpg"
+    --
     -- Send config to alpha
     alpha.setup(dashboard.opts)
+	vim.keymap.set("n", "<A-a>", ":Alpha<cr>", { desc = "Open Alpha Dashboard" })
   end,
 }
