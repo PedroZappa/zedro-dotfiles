@@ -168,5 +168,5 @@ ln -s ~/.dotfiles/weechat/scripts.conf ~/.config/weechat/scripts.conf
 #### Config [Spotify-tui](https://github.com/Rigellute/spotify-tui)
 
 ```shell
-ln -s ~/.dotfiles/spotify-tui/ ~/.config/spotify-tui/
+ln -s ~/.dotfiles/spotify-tui ~/.config/spotify-tui
 ```
