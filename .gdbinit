@@ -156,9 +156,9 @@ end
 # source ~/.gdbinit.local
 
 # can't use the color functions because we are using the set command
-if $COLOREDPROMPT == 1
-	set extended-prompt \[\e[0;31m\]gdb$ \[\e[0m\]
-end
+# if $COLOREDPROMPT == 1
+# 	set extended-prompt \[\e[0;31m\]gdb$ \[\e[0m\]
+# end
 
 # Initialize these variables else comparisons will fail for coloring
 # we must initialize all of them at once, 32 and 64 bits, and ARM.
