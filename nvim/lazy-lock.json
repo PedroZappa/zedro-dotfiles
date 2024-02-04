@@ -16,12 +16,15 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "codeium.vim": { "branch": "main", "commit": "04e5f9dfb11d3bbcc28b4685378c1e6d2963fd1e" },
   "conform.nvim": { "branch": "master", "commit": "4588008a7c5b57fbff97fdfb529c059235cdc7ee" },
   "dracula.nvim": { "branch": "main", "commit": "a6cb758d4b182d9f2b7e742910078d94877c1059" },
   "dressing.nvim": { "branch": "master", "commit": "6f212262061a2120e42da0d1e87326e8a41c0478" },
   "friendly-snippets": { "branch": "main", "commit": "b8fae73a479ae0a1c54f5c98fa687ae8a0addc53" },
 =======
+=======
+>>>>>>> Stashed changes
   "codeium.vim": { "branch": "main", "commit": "a31ff444697497438cd2569200ddb4af846cae65" },
   "conform.nvim": { "branch": "master", "commit": "ad2b5ecd907128ed1b66b1cf4bed57902ef836ee" },
   "dracula.nvim": { "branch": "main", "commit": "cadf9a1d873d67a92a76b258715cad91f0c1dbb9" },
@@ -103,6 +106,9 @@
   "pomo.nvim": { "branch": "main", "commit": "bd32d8a696c73d62fc7ccb9be8f8d533883520fc" },
   "popfix": { "branch": "master", "commit": "bf3cc436df63cd535350d5ef1b951c91554d4b01" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "1ed4613437c585eacd5c8827b408e6db8234c3ee" },
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   "telescope-emoji.nvim": { "branch": "master", "commit": "86248d97be84a1ce83f0541500ef9edc99ea2aa1" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "6c921ca12321edaa773e324ef64ea301a1d0da62" },
