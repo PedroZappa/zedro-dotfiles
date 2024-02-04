@@ -89,10 +89,6 @@ plug "web-search"
 plug "zap-zsh/fzf"
 plug "zap-zsh/web-search"
 
-# if command -v fortune > /dev/null 2>&1 && command -v cowsay > /dev/null 2>&1; then
-# 	eval "zshcow"
-# fi
-
 if command -v lolcat > /dev/null 2>&1; then
 	eval "zshcow" | lolcat
 else
