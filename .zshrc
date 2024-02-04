@@ -63,7 +63,6 @@ fi
 
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
-export OBSIDIAN_REST_API_KEY=3d83c7dbcf40132a3ed793dc050b685e625a4ab602d297a3464677a72426118f
 
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
