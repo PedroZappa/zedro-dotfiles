@@ -28,7 +28,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Symlink Dotfiles
         run: | 
-
           echo Symlinking dotfiles to ~/!
           ln -s ~/actions-runner/_work/zedro-dotfiles/ ~/.dotfiles
 
