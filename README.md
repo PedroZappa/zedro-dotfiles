@@ -169,4 +169,6 @@ ln -s ~/.dotfiles/weechat/scripts.conf ~/.config/weechat/scripts.conf
 
 ```shell
 ln -s ~/.dotfiles/spotify-tui ~/.config/spotify-tui
+
+#test
 ```
