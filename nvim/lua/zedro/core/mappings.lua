@@ -13,8 +13,6 @@ keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
 -- Close buffer 
--- mo
-keymap.set("n", "<leader><leader>", "<cmd>so %<CR>", { desc = "Source Neovim" })
 -- Resizing window
 keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
