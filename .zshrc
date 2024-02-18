@@ -14,11 +14,18 @@ eval NC='$reset_color'
 autoload -Uz compinit
 compinit
 
-# Setup language
+#################
+### Setup Env ###
+#################
 export LANG=en_US.UTF-8
 
 export PATH="$HOME/.local/bin:$PATH"
 
+[ -z "$EDITOR" ] && EDITOR=vim
+
+################
+### Greeting ###
+################
 echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
 
 #######################
