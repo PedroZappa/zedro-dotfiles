@@ -3,16 +3,42 @@
 ###############
 
 # Load colors
-autoload colors && colors
+autoload -U colors && colors
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
    eval $COLOR='$fg_no_bold[${(L)COLOR}]'
    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
 done
 eval NC='$reset_color'
 
+# History directory:
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
 # Load and initialise completion system
 autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
 compinit -d "$XDG_CACHE_HOME/zsh/.zshcompdump-$ZSH_VERSION"
+_comp_options+=(globdots)
+
+########################
+### Vim Modec Config ###
+########################
+
+bindkey -v
+export KEYTIMEOUT=7
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -v '^?' backward-delete-char
+
+# ctrl-e: to edit command line in vim
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 ##########################
 ### Zap Plugin Manager ###
@@ -25,7 +51,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "hlissner/zsh-autopair"
 plug "zsh-users/zsh-history-substring-search"
 plug "MichaelAquilina/zsh-you-should-use"
-# plug "zap-zsh/completions"
+plug "zap-zsh/completions"
 plug "zap-zsh/sudo"
 plug "web-search"
 plug "zap-zsh/fzf"
@@ -79,7 +105,6 @@ if command -v zoxide > /dev/null 2>&1; then
 	eval "$(zoxide init --cmd cd zsh)"
 	echo "[Running ${GREEN}zoxide${NC}! 📂]"
 else
-	plug "zap-zsh/completions"
 	echo "[Running ${YELLOW}cd${NC}! 📂]"
 fi
 # ls || eza
