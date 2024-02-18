@@ -14,15 +14,6 @@ eval NC='$reset_color'
 autoload -Uz compinit
 compinit
 
-#################
-### Setup Env ###
-#################
-export LANG=en_US.UTF-8
-
-export PATH="$HOME/.local/bin:$PATH"
-
-[ -z "$EDITOR" ] && EDITOR=vim
-
 ################
 ### Greeting ###
 ################
