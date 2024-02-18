@@ -76,7 +76,7 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 # File system Navigation
 # cd || zoxide
 if command -v zoxide > /dev/null 2>&1; then
-	eval "$(zoxide init zsh)"
+	eval "$(zoxide init --cmd cd zsh)"
 	echo "[Running ${GREEN}zoxide${NC}! 📂]"
 else
 	plug "zap-zsh/completions"
