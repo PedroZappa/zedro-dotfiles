@@ -6,7 +6,7 @@
 #    By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/18 21:05:30 by passunca          #+#    #+#              #
-#    Updated: 2024/02/18 21:14:58 by passunca         ###   ########.fr        #
+#    Updated: 2024/02/18 21:16:43 by passunca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,6 +90,12 @@ plug "web-search"
 plug "zap-zsh/fzf"
 plug "zap-zsh/web-search"
 
+#################
+### Greetings ###
+#################
+
+echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
+
 #######################
 ### Zedro's Aliases ###
 #######################
@@ -138,19 +144,13 @@ else
 	alias ll='ls -al --color'
 fi
 
-
-######################
-### Zedro's Prompt ###
-######################
-
-echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
-
 # Load Cowsay
 if command -v lolcat > /dev/null 2>&1; then
 	eval "zshcow" | lolcat
 else
 	eval "zshcow"
 fi
+
 ############################
 ### Load Starship Prompt ###
 ############################
