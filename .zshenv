@@ -19,7 +19,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="chromium"
-#
+
 # Obsidian
 alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 # Glow Markdown Renderer
