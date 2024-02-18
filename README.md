@@ -38,6 +38,7 @@ ___
 ## Setup [zsh](https://www.zsh.org/)
 
 ```shell
+ln -s ~/.dotfiles/.zshrc ~/.zshenv
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
 
