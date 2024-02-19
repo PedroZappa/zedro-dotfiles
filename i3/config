@@ -199,6 +199,7 @@ bindsym $mod+Shift+x exec --no-startup-id i3lock -c #290652
 
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
+exec_always compton -f
 
 # Load on initialization
 assign [class="Google-chrome"] workspace $ws2
