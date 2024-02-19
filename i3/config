@@ -239,5 +239,5 @@ bar {
 
 # Gaps
 smart_gaps on
-gaps inner 2
-gaps outer 1
+gaps inner 2px
+gaps outer 1px
