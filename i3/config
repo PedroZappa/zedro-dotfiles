@@ -126,8 +126,8 @@ bindsym $mod+a focus parent
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1 RC 󰟪 "
-set $ws2 "2 WEB  "
-set $ws3 "3 DEV  "
+set $ws2 "2 DEV  "
+set $ws3 "3 WEB  "
 set $ws4 "4 OBSIDIAN  "
 set $ws5 "5 SLACK  "
 set $ws6 "6 REFS 󰭎 "
@@ -172,8 +172,8 @@ bindsym $mod+Shift+m mode "move_workspace"
 
 # bind workspaces to Screens
 workspace $ws1 output HDMI-1
-workspace $ws2 output HDMI-0
-workspace $ws3 output HDMI-1
+workspace $ws2 output HDMI-1
+workspace $ws3 output HDMI-0
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
@@ -229,7 +229,7 @@ bindsym $mod+Shift+x exec i3lock -c 290652
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec_always compton -f
-assign [class="Google-chrome"] workspace $ws2
+assign [class="Google-chrome"] workspace $ws3
 assign [class="obsidian"] workspace $ws4
 assign [class="Slack"] workspace $ws5
 exec google-chrome
