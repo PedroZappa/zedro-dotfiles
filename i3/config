@@ -199,7 +199,7 @@ bar {
 }
 
 # Lock Screen Shortcut (color it purple)
-bindsym $mod+Shift+x exec --no-startup-id i3lock -c #290652
+bindsym $mod+Shift+l exec --no-startup-id i3lock -c #290652
 
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
