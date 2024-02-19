@@ -194,8 +194,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Lock Screen Shortcut (color it purple)
+# Lock Screen Shortcut
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c #290652
+# bindsym $mod+Shift+x exec --no-startup-id i3lock -c $bg-color
 
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
@@ -225,6 +226,7 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
         status_command i3status
+		position bottom
 		colors {
 			# background $bg-color
 	    	separator #757575
@@ -235,3 +237,7 @@ bar {
 	}
 }
 
+# Gaps
+smart_gaps on
+gaps inner 2
+gaps outer 1
