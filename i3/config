@@ -160,6 +160,16 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# Define a new mode for moving workspaces
+mode "move_workspace" {
+    bindsym $mod+Shift+o move workspace to output right
+    bindsym $mod+Shift+i move workspace to output left
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+# Bind a key to enter the move_workspace mode
+bindsym $mod+Shift+m mode "move_workspace"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
