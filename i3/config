@@ -201,3 +201,5 @@ bar {
 # Lock Screen Shortcut (color it black)
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
+# Load on initialization
+exec google-chrome
