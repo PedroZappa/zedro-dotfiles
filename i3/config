@@ -198,7 +198,7 @@ bar {
         status_command i3status
 }
 
-# Lock Screen Shortcut (color it black)
+# Lock Screen Shortcut (color it purple)
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c 290652
 
 # Set custom wallpaper
