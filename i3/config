@@ -130,7 +130,7 @@ set $ws2 "2 WEB  "
 set $ws3 "3 DEV  "
 set $ws4 "4 OBSIDIAN  "
 set $ws5 "5 SLACK  "
-set $ws6 "6"
+set $ws6 "6 REFS 󰭎 "
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -172,10 +172,11 @@ bindsym $mod+Shift+m mode "move_workspace"
 
 # bind workspaces to Screens
 workspace $ws1 output HDMI-1
-workspace $ws3 output HDMI-1
 workspace $ws2 output HDMI-0
+workspace $ws3 output HDMI-1
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
+workspace $ws6 output HDMI-0
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
