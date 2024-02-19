@@ -34,7 +34,12 @@ ln -s ~/.dotfiles/.lnav ~/.lnav
 ```
 
 ___
+## Setup i3
+```shell
+ln -s ~/.dotfiles/i3/config ~/.config/i3/config
+```
 
+___
 ## Setup [zsh](https://www.zsh.org/)
 
 ```shell
