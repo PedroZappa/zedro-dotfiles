@@ -195,8 +195,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock Screen Shortcut
-bindsym $mod+Shift+x exec --no-startup-id i3lock -c #290652
-# bindsym $mod+Shift+x exec --no-startup-id i3lock -c $bg-color
+bindsym $mod+Shift+x exec i3lock -c 290652
 
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
@@ -205,7 +204,7 @@ exec_always compton -f
 # Load on initialization
 assign [class="Google-chrome"] workspace $ws2
 assign [class="obsidian"] workspace $ws4
-exec google-chrome 
+exec google-chrome
 
 # Style i3
 # Define colors
