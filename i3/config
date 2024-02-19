@@ -233,6 +233,7 @@ assign [class="Google-chrome"] workspace $ws2
 assign [class="obsidian"] workspace $ws4
 assign [class="slack"] workspace $ws5
 exec google-chrome
+exec slack
 
 # Style i3
 # Define colors
