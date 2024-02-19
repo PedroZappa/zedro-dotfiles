@@ -201,5 +201,8 @@ bar {
 # Lock Screen Shortcut (color it black)
 bindsym $mod+Shift+x exec --no-startup-id i3lock -c 000000
 
+# Set custom wallpaper
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
+
 # Load on initialization
 exec_always google-chrome
