@@ -60,7 +60,7 @@ return {
 			highlight Normal guibg=none
 			highlight NonText guibg=#000000
 			highlight Search guibg=#34eb34
-			highlight CurSearch guibg=#34eb34
+			highlight CurSearch guibg=#34eb34 guifg=#8426ff
 			highlight WhichKey guifg=#34eb43
 			highlight WhichKeyFloat guibg=#000001
 			highlight WhichKeySeparator guifg=#8426ff
