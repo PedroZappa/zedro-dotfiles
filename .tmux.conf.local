@@ -343,9 +343,10 @@ set -g history-limit 10000
 
 # start with mouse mode enabled
 set -g mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
+
+# monitor activity alerts
+setw -g monitor-activity on
+set -g visual-activity on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
