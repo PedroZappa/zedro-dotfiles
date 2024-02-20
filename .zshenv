@@ -2,12 +2,21 @@
 ### Setup Env ###
 #################
 
+# Set language
+export LANG=en_US.UTF-8
+
+# XDG Base Directory Specification
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Set language
-export LANG=en_US.UTF-8
+# Github Repos 
+export REPOS="$HOME/C0D3/"
+export GIT_USER="PedroZappa"
+
+# Dotfiles & Scripts
+export DOTFILES="$HOME/.dotfiles"
+export SCRIPTS="$DOTFILES/scripts"
 
 # Add ~/.local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
@@ -15,10 +24,7 @@ export PATH="$HOME/.local/bin:$PATH"
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-##########################
-### Setup Default Apps ###
-##########################
-
+# Preferred applications
 export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="chromium"
@@ -34,6 +40,15 @@ fi
 
 # CARGO
 . "$HOME/.cargo/env"
+
+###################
+### zsh History ###
+###################
+
+export HISTFILE=$XDG_CACHE_HOME/zsh/history
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTCONTROL=ignorespace
 
 ###################
 ### Clean up ~/ ###
