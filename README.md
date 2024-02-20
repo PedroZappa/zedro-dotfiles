@@ -40,6 +40,13 @@ ln -s ~/.dotfiles/i3/config ~/.config/i3/config
 ```
 
 ___
+## Setup [bash](https://www.gnu.org/software/bash/)
+
+```shell
+ln -s ~/.dotfiles/.bashrc ~/.bashrc
+ln -s ~/.dotfiles/.bash_aliases ~/.bash_aliases
+```
+___
 ## Setup [zsh](https://www.zsh.org/)
 
 ```shell
