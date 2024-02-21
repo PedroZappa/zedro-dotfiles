@@ -5,4 +5,4 @@
 # If process already running, kill it and exit
 pkill -f "entr compiler" && exit
 # Start compiling process
-echo "$1" | entr compiler "$1"
+echo "$1" | entr compile "$1"
