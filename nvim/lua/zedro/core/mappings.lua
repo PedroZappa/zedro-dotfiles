@@ -67,8 +67,8 @@ keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>",
 --
 -- Scripts
 --
-keymap.set("n", "<leader>cmp", ":!setsid autocompiler.sh % &",
-	{ desc = "Run autocompiler.sh Script" })
+keymap.set("n", "<leader>cmp", ":!setsid autocompile.sh % &",
+	{ desc = "Run autocompile.sh Script" })
 
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
