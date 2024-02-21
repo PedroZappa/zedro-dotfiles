@@ -6,13 +6,15 @@ keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vert
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
 -- Change Permissions
 keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
-keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>", { desc = "Write Read-only file with sudo" })
+keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
+	{ desc = "Write Read-only file with sudo" })
 -- Buffers
-keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>", { desc = "Close active buffer" })
+keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>",
+	{ desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
--- Close buffer 
+-- Close buffer
 -- Resizing window
 keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
@@ -29,9 +31,11 @@ keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
 -- Editing
 -- Toggle Relative numbers
-keymap.set("n", "<leader>rl", ":set relativenumber!<CR>", { desc = "Toggle relative numbers" })
+keymap.set("n", "<leader>rl", ":set relativenumber!<CR>",
+	{ desc = "Toggle relative numbers" })
 -- Replace Script
-keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", { desc = "Replace word from whole file" })
+keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+	{ desc = "Replace word from whole file" })
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 -- Clear Highlights
@@ -57,8 +61,14 @@ keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview
 -- nvim-cheat
 keymap.set("n", "<leader>ch", ":Cheat<CR>", { desc = "Cheat Sheet" })
 keymap.set("n", "<leader>cl", ":CheatList<CR>", { desc = "Cheat Sheet List" })
-keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>", { desc = "Cheat Sheet w/out Comments" })
+keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>",
+	{ desc = "Cheat Sheet w/out Comments" })
 
+--
+-- Scripts
+--
+keymap.set("n", "<leader>cmp", ":!setsid autocompiler.sh % &",
+	{ desc = "Run autocompiler.sh Script" })
 
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
