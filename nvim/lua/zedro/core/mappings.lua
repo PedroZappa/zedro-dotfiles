@@ -71,7 +71,8 @@ keymap.set("n", "<leader>mk", ":vertical terminal make<CR>G",
 --
 -- Scripts
 --
-keymap.set("n", "<leader>ccc", ":!setsid autocompile.sh % &<CR>",
+keymap.set("n", "<leader>ccc",
+	":!setsid ~/.dotfiles/scripts/autocompile.sh % &<CR>",
 	{ desc = "Run autocompile.sh Script" })
 
 -- Parrot Crash
