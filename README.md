@@ -31,6 +31,7 @@ git clone https://github.com/PedroZappa/zedro-dotfiles.git ~/.dotfiles
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/.gdbinit ~/.gdbinit
 ln -s ~/.dotfiles/.lnav ~/.lnav
+ln -s ~/.dotfiles/.xsessionrc ~/.xsessionrc
 ```
 
 ___
