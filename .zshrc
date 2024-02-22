@@ -20,7 +20,7 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
    eval $COLOR='$fg_no_bold[${(L)COLOR}]'
    eval BOLD_$COLOR='$fg_bold[${(L)COLOR}]'
 done
-# eval NC='$reset_color'
+eval NC='$reset_color'
 
 # Load and initialise completion system
 autoload -Uz compinit
