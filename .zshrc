@@ -111,6 +111,9 @@ alias nn='norminette'
 alias francinette=~/francinette/tester.sh
 alias fr='francinette'
 
+# Neovim
+alias v='nvim'
+
 # git
 alias ga='git add'
 alias gst='git status'
