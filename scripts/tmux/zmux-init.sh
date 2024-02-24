@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Set Path to Obsidian Vault
-if [[ $USER == "zedr0" ]]; then			# Z-Desk
+if [[ $USER == "zedr0" ]]; then			# DEV-Desk
 	OBSIDIAN_VAULT_PATH="$HOME/Documents/Obsidian/ZedroVault"
 elif [[ $USER == "passunca" ]]; then	# 42
 	OBSIDIAN_VAULT_PATH="$HOME/sgoinfre/Zedro-Vault"
-elif [[ $USER == "zedro" ]]; then		# Z-Mac
+elif [[ $USER == "zedro" ]]; then		# DEV-Mac
 	OBSIDIAN_VAULT_PATH="$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/ZedroVault"
 else
 	echo "ZMUX: Unknown user... you shall not PATH! 😅"
@@ -21,7 +21,7 @@ tmux send-keys		-t RC:1 'cd $HOME/.dotfiles' C-m
 tmux send-keys		-t RC:1 'git pull' C-m
 tmux send-keys		-t RC:2 'glgs' C-m
 tmux send-keys		-t RC:1 'nvim' C-m
-# Create Z-scripts RC window
+# Create z-scripts RC window
 tmux new-window		-t RC:2 -n 'z-scripts'
 tmux send-keys		-t RC:2 'cd $HOME/C0D3/z-scripts' C-m
 tmux send-keys		-t RC:2 'git pull' C-m
@@ -48,9 +48,9 @@ else
 	tmux send-keys	-t RC:4 'htop' C-m 
 fi
 
-# Create Z session
-tmux new-session	-d -s Z
-tmux attach-session -t Z
+# Create DEV session
+tmux new-session	-d -s DEV
+tmux attach-session -t DEV
 
 # Launch a new kitty tab and attach it to the tmux session "RC"
 kitty --hold sh -c "tmux attach -t RC"
