@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    .zshrc                                             :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/18 21:05:30 by passunca          #+#    #+#              #
-#    Updated: 2024/02/18 21:20:08 by passunca         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 ###############
 ### General ###
 ###############
@@ -93,15 +81,18 @@ echo "ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ �
 echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
 echo "ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ"
 
+######################
+### Zedro's Scrpts ###
+######################
+
+alias zmux=~/.dotfiles/scripts/tmux/zmux-start.sh
+alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
+alias zshcow=~/.dotfiles/scripts/zsh/cowsay-fortune.sh
+
 #######################
 ### Zedro's Aliases ###
 #######################
-
-# Tmux kickstart
-alias zmux=~/C0D3/z-scripts/zmux-start.sh
-alias xmux=~/C0D3/z-scripts/zmux-kill.sh
-alias zshcow=~/C0D3/z-scripts/zsh-cowsay.sh
-
+#
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
 
