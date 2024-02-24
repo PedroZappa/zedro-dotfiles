@@ -7,7 +7,7 @@ format = '''
 $directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
 $jobs$hostname$username $shell $character
 '''
-right_format = "$status${custom.valgrind}$localip$time $battery$os"
+right_format = "$status${custom.minitalk}${custom.valgrind}$localip$time $battery$os"
 
 continuation_prompt = '▶▶ '
 # Don't print a new line at the start of the prompt
@@ -295,8 +295,14 @@ symbol = " "
 
 [custom.valgrind]
 when  = "ps aux | grep valgrind | grep -v grep"
-command = "~/C0D3/z-scripts/starship-valgrind.sh"
+command = "~/.dotfiles/scripts/starship/valgrind-pid.sh"
 format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
 style = "dimmed white"
 symbol = "󱗀"
 
+[custom.minitalk]
+when  = "pidof server"
+command = "~/.dotfiles/scripts/starship/minitalk-pid.sh"
+format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
+style = "dimmed white"
+symbol = "󰏶"
