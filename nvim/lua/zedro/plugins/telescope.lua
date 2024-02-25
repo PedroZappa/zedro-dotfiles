@@ -70,6 +70,7 @@ return {
 
 		require("telescope").load_extension("emoji")
 		require("telescope").load_extension("repo")
+		require("telescope").load_extension('harpoon')
 
 		local builtin = require('telescope.builtin')
 		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
