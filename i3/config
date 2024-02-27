@@ -251,10 +251,14 @@ bindsym $mod+Shift+x exec i3lock -c 290652
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec_always compton -f
 assign [class="Google-chrome"] workspace $ws3
+for_window [class="Google-chrome"] layout tabbed
 assign [class="obsidian"] workspace $ws4
 assign [class="Slack"] workspace $ws5
 exec google-chrome
 exec slack
+
+# Exec bindings
+bindsym $mod+b exec google-chrome
 
 # Style i3
 # Define colors
