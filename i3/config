@@ -209,7 +209,7 @@ bindsym $mod+Shift+r restart
 mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
   bindsym l exec i3-msg exit
   bindsym r exec systemctl reboot
-  bindsym s exec systemctl shutdown
+  bindsym s exec systemctl poweroff
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
@@ -274,19 +274,19 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
-		position bottom
-		colors {
-			# background $bg-color
-	    	separator #757575
-			#                  border             background         text
-			focused_workspace  $bg-color          $bg-color          $text-color
-			inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-			urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+	status_command i3status
+	position bottom
+	colors {
+		# background $bg-color
+		separator #757575
+		#                  border             background         text
+		focused_workspace  $bg-color          $bg-color          $text-color
+		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
 	}
 }
 
 # Gaps
-smart_gaps on
+# smart_gaps on
 gaps inner 2px
 gaps outer 1px
