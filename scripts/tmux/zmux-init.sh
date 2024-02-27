@@ -13,6 +13,9 @@ fi
 
 export OBSIDIAN_VAULT_PATH
 
+I3SOCK=$(ls /run/user/1000/i3/ipc-socket.*)
+export I3SOCK
+
 # Create RC session
 tmux new-session	-d -s RC
 # Create .dotfiles RC window
@@ -52,6 +55,8 @@ fi
 tmux new-session	-d -s DEV
 tmux attach-session -t RC:1
 
-# Open terminal on i3 workspace2 and attach to DEV session
-# i3-msg workspace 2
+# Open termina on i3 workspace2 and attach to DEV session
+i3-msg --socket=$I3SOCK exec i3-sensible-terminal
+
+# i4-msg workspace 2; i3-msg exec i3-sensible-terminal
 # tmux attach-session -t DEV
