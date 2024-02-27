@@ -77,7 +77,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -nb '#000000' -nf '#ffffff' -sb '#
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
-bindsym $mod+ccedilla focus right
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
