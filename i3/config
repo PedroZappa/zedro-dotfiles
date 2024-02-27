@@ -250,12 +250,16 @@ bindsym $mod+Shift+x exec i3lock
 # Set custom wallpaper
 exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 exec_always compton -f
+# Exec & Assign applications
+assign [class="obsidian"] workspace $ws4
+exec google-chrome
 assign [class="Google-chrome"] workspace $ws3
 for_window [class="Google-chrome"] layout tabbed
-assign [class="obsidian"] workspace $ws4
-assign [class="Slack"] workspace $ws5
-exec google-chrome
 exec slack
+assign [class="Slack"] workspace $ws5
+# exec kitty
+# assign [class="kitty"] workspace $ws1
+# assign [class="kitty"] workspace $ws2
 
 # Exec bindings
 bindsym $mod+b exec google-chrome

@@ -53,5 +53,5 @@ tmux new-session	-d -s DEV
 tmux attach-session -t RC:1
 
 # Open terminal on i3 workspace2 and attach to DEV session
-i3-msg workspace 2
-tmux attach-session -t DEV
+# i3-msg workspace 2
+# tmux attach-session -t DEV
