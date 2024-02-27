@@ -89,6 +89,12 @@ alias zmux=~/.dotfiles/scripts/tmux/zmux-init.sh
 alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
 alias zshcow=~/.dotfiles/scripts/zsh/cowsay-fortune.sh
 
+################
+### Keyboard ###
+################
+
+eval "setxkbmap us"
+
 #######################
 ### Zedro's Aliases ###
 #######################
