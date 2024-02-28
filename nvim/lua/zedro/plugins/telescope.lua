@@ -31,6 +31,7 @@ return {
 				}
 			},
 			pickers = {
+				initial_mode = "normal",
 				find_files = {
 					hidden = true
 				}
