@@ -1,5 +1,6 @@
 -- Set leader and localleader
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 -- vim.g.maplocalleader = "\\"
 vim.g.RTP = vim.split(vim.o.runtimepath, ",")[1]
 vim.g.RC = os.getenv("HOME") .. "/.config/nvim"
