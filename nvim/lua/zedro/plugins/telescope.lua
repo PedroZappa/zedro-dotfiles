@@ -82,6 +82,8 @@ return {
 		vim.keymap.set('n', '<leader>fe', ":Telescope emoji<CR>", { desc = "Emoji" })
 		vim.keymap.set('n', '<leader>fr', ":Telescope repo list<CR>", { desc = "Repo" })
 		vim.keymap.set('n', '<leader>fn', ":Telescope notify<CR>", { desc = "Notifications in Telescope" })
+		vim.keymap.set("n", "<leader>cm", ":Telescope git_commits<CR>", { desc = "Git commits" })
+		vim.keymap.set("n", "<leader>gt", ":Telescope git_status<CR>", { desc = "Git status" })
 		vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = "[G]o to [D]efinition" })
 		vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = "[G]o to [R]eferences" })
 		vim.keymap.set('n', 'gi', builtin.lsp_implementations, { desc = "[G]o to [I]mplementations" })
