@@ -87,5 +87,8 @@ return {
 		vim.keymap.set('n', 'gd', builtin.lsp_definitions, { desc = "[G]o to [D]efinition" })
 		vim.keymap.set('n', 'gr', builtin.lsp_references, { desc = "[G]o to [R]eferences" })
 		vim.keymap.set('n', 'gi', builtin.lsp_implementations, { desc = "[G]o to [I]mplementations" })
+		vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
+		vim.keymap.set('n', '<leader>ws', builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
+		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame variable" })
 	end,
 }
