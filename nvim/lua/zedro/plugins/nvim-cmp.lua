@@ -13,11 +13,8 @@ return {
 		-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		-- local handlers = require('nvim-autopairs.completion.handlers')
 		local cmp = require("cmp")
-
 		local luasnip = require("luasnip")
-
 		local lspkind = require("lspkind")
-
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
