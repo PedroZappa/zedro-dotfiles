@@ -39,7 +39,7 @@ keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 keymap.set("n", "<leader>rl", ":set relativenumber!<CR>",
 	{ desc = "Toggle relative numbers" })
 -- Replace Script
-keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
+keymap.set("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
 	{ desc = "Replace word from whole file" })
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
