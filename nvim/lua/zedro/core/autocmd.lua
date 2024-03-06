@@ -43,3 +43,8 @@ vim.cmd [[
 	augroup END
 ]]
 
+-- disable IBL plugin on Markdown files
+vim.api.nvim_create_autocmd({"FileType"}, {
+	pattern = {"markdown"},
+	command = "IBLDisable"
+})
