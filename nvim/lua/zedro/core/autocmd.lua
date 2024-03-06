@@ -20,12 +20,6 @@ vim.cmd [[
 	autocmd BufEnter * highlight CursorLine gui=underline
 ]]
 
--- Conceal in Neorg 
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
-	pattern = {"*.norg"},
-	command = "set conceallevel=3"
-})
-
 -- Highlight on yank
 vim.cmd [[
 	augroup YankHighlight
@@ -48,3 +42,10 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 	pattern = {"markdown"},
 	command = "IBLDisable"
 })
+--
+-- Conceal in Neorg 
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+	pattern = {"*.norg"},
+	command = "set conceallevel=3"
+})
+
