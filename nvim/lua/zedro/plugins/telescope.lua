@@ -1,5 +1,6 @@
 return {
-	'nvim-telescope/telescope.nvim', branch = '0.1.x',
+	'nvim-telescope/telescope.nvim',
+	branch = '0.1.x',
 	event = "VeryLazy",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
@@ -12,7 +13,7 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 
-		telescope.setup{
+		telescope.setup {
 			defaults = {
 				layout_strategy = "horizontal",
 				layout_config = {},
@@ -33,7 +34,20 @@ return {
 			pickers = {
 				initial_mode = "normal",
 				find_files = {
-					hidden = true
+					hidden = false,
+					find_command = {
+						"rg",
+						'--no-heading',
+						'--with-filename',
+						'--line-number',
+						'--column',
+						'--smart-case',
+						"--hidden",
+						"--files",
+						"--glob",
+						"!**/.git/*",
+						"-L"
+					}
 				}
 				-- Default configuration for builtin pickers goes here:
 				-- picker_name = {
