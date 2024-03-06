@@ -43,12 +43,12 @@ keymap.set("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Le
 	{ desc = "Replace word from whole file" })
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
--- Clear Highlights
-keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Searching
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
+-- Clear Highlights
+keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- Completion
 -- Turn on/off completion
