@@ -25,7 +25,7 @@ keymap.set("n", "<leader>vs", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>hs", ":split<CR>", { desc = "Horizontal split" })
 
 -- LSP
--- Disable LSP
+-- Disable/Enable LSP
 keymap.set("n", "<leader>ld", ":LspStop<CR>", { desc = "Disable LSP" })
 keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 
@@ -45,6 +45,10 @@ keymap.set("n", "<leader>ss", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Le
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 -- Clear Highlights
 keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
+
+-- Searching
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
 -- Completion
 -- Turn on/off completion
