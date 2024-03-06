@@ -41,6 +41,21 @@ keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing bla
 -- Clear Highlights
 keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
+-- Completion
+-- Turn on/off completion
+-- vim.keymap.set("n", "<leader>p", '<cmd>lua require("cmp").setup { enabled = true }<cr>', { desc = "Enable completion" })
+-- vim.keymap.set(
+--   "n",
+--   "<leader>P",
+--   '<cmd>lua require("cmp").setup { enabled = false }<cr>',
+--   { desc = "Disable completion" }
+-- )
+
+-- Insert Dates
+-- insert the date in my desired configuration
+vim.keymap.set("n", "<leader>d", "<cmd>r!gendate.sh<cr>", { desc = "Insert date" })
+vim.keymap.set("n", "<leader>d2", "<cmd>r!gendate h 1<cr>", { desc = "Insert date h1" })
+vim.keymap.set("n", "<leader>d3", "<cmd>r!gendate h 2<cr>", { desc = "Insert date h2" })
 
 -- Plugins
 -- Nvim-tree mappings
