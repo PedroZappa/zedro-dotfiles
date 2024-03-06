@@ -24,6 +24,11 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 keymap.set("n", "<leader>vs", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>hs", ":split<CR>", { desc = "Horizontal split" })
 
+-- LSP
+-- Disable LSP
+keymap.set("n", "<leader>ld", ":LspStop<CR>", { desc = "Disable LSP" })
+keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
+
 -- Terminals
 -- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
