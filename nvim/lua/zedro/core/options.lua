@@ -11,6 +11,7 @@ opt.relativenumber = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.ruler = true
+opt.linebreak = false
 
 -- Tabs
 opt.tabstop = 4
@@ -43,12 +44,15 @@ opt.cursorline = true
 opt.clipboard = "unnamedplus"
 
 -- Scroll
-opt.scrolloff = 3
-opt.sidescrolloff = 3
+opt.scrolloff = 7
+opt.sidescrolloff = 7
 -- opt.sidescrolloff = 999
 
 -- Fold Marks
 opt.fmr = "{{{,}}}"
+
+-- Spelling
+opt.spell = false
 
 -- Backup
 opt.backup = false
