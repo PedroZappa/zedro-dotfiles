@@ -10,6 +10,10 @@ for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
 done
 eval NC='$reset_color'
 
+##################
+### Completion ###
+##################
+
 # Load and initialise completion system
 autoload -Uz compinit
 zstyle ':completion:*' menu select
@@ -73,9 +77,9 @@ plug "web-search"
 plug "zap-zsh/fzf"
 plug "zap-zsh/web-search"
 
-######################
-### Zedro's Scrpts ###
-######################
+#######################
+### Zedro's Scripts ###
+#######################
 
 # tmux
 alias zmux=~/.dotfiles/scripts/tmux/zmux-init.sh
@@ -104,7 +108,7 @@ eval "setxkbmap us"
 #######################
 ### Zedro's Aliases ###
 #######################
-#
+
 # Compiling
 alias ccw='cc -Wall -Wextra -Werror -g'
 
