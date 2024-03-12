@@ -73,25 +73,27 @@ plug "web-search"
 plug "zap-zsh/fzf"
 plug "zap-zsh/web-search"
 
-#################
-### Greetings ###
-#################
-
-echo "ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ"
-echo "ꔘ ꔘ ꔘ Yo ${CYAN}$USER!${NC} Welcome to ${MAGENTA}$HOST${NC} ꔘ ꔘ ꔘ"
-echo "ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ ꔘ"
-
 ######################
 ### Zedro's Scrpts ###
 ######################
 
+# tmux
 alias zmux=~/.dotfiles/scripts/tmux/zmux-init.sh
 alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
-alias zshcow=~/.dotfiles/scripts/zsh/cowsay-fortune.sh
 
 # Screen Recording
 # kill simplescreenrecorder
 alias kill-screenrec=~/.dotfiles/scripts/i3/kill-screenrec.sh
+
+# lulz
+alias greet=~/.dotfiles/scripts/zsh/zsh-greet.sh
+alias zshcow=~/.dotfiles/scripts/zsh/cowsay-fortune.sh
+
+#################
+### Greetings ###
+#################
+
+greet $HOST
 
 ################
 ### Keyboard ###
