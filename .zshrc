@@ -89,6 +89,10 @@ alias zmux=~/.dotfiles/scripts/tmux/zmux-init.sh
 alias xmux=~/.dotfiles/scripts/tmux/zmux-kill.sh
 alias zshcow=~/.dotfiles/scripts/zsh/cowsay-fortune.sh
 
+# Screen Recording
+# kill simplescreenrecorder
+alias kill-screenrec=~/.dotfiles/scripts/i3/kill-screenrec.sh
+
 ################
 ### Keyboard ###
 ################
