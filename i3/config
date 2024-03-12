@@ -199,7 +199,7 @@ workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
 
-# Screencast
+# Record Screen
 bindsym $mod+Shift+s exec simplescreenrecorder
 
 # reload the configuration file
