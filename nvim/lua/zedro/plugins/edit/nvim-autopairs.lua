@@ -1,7 +1,7 @@
 return {
 	'windwp/nvim-autopairs',
 	event = "InsertEnter",
-	opts = {}, -- this is equalent to setup({}) function
+	-- opts = {}, -- this is equalent to setup({}) function
 	config = function()
 		-- Import nvim-autopairs safely
 		local autopairs_setup, autopairs = pcall(require, "nvim-autopairs")
@@ -31,9 +31,12 @@ return {
 		  return
 		end
 
-		-- Make autopairs and completion work together
-		cmp.event:on(
-			"confirm_done", cmp_autopairs.on_confirm_done()
-		)
+		-- -- Make autopairs and completion work together
+		-- cmp.event:on(
+		-- 	"confirm_done", cmp_autopairs.on_confirm_done()
+		-- )
+
+		-- add option map_cr
+		autopairs.setup({ map_cr = true })
 	end,
 }

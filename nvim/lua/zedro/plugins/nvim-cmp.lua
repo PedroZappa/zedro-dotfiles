@@ -2,8 +2,11 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
+		'neovim/nvim-lspconfig',			-- LSP
 		"hrsh7th/cmp-buffer",				-- source for text in buffer
 		"hrsh7th/cmp-path",				    -- source for file system paths
+		'hrsh7th/cmp-cmdline',				-- source for cmdline
+		'hrsh7th/cmp-omni',				-- source for omnifunc
 		"L3MON4D3/LuaSnip",					-- snippet engine
 		"saadparwaiz1/cmp_luasnip",			-- for autocompletion
 		"rafamadriz/friendly-snippets",		-- useful snippets
@@ -11,6 +14,7 @@ return {
 		-- 'quangnguyen30192/cmp-nvim-tags',	-- nvim-tags
 	},
 	config = function()
+		-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
@@ -18,30 +22,14 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
-			window = {
-				completion = cmp.config.window.bordered(),
-				documentation = cmp.config.window.bordered(),
-			},
-			completion = {
-				completeopt = "menu,menuone,preview,noselect",
-			},
 			snippet = { -- configure how nvim-cmp interacts with snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
 				end,
 			},
-			sources = cmp.config.sources({ -- sources for autocompletion
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- snippets
-				{ name = "buffer" }, -- text within current buffer
-				{ name = "path" }, -- file system paths
-				-- { name = "codeium" }, -- codeium
-			}),
-			formatting = {	-- configure lspkind for vs-code like pictograms in completion menu
-				format = lspkind.cmp_format({
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+			window = {
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
 			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(),
@@ -52,6 +40,23 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),		-- close completion window
 				["<C-y>"] = cmp.mapping.confirm({ select = false }),
 			}),
+			sources = cmp.config.sources({ -- sources for autocompletion
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" }, -- snippets
+				{ name = "buffer" }, -- text within current buffer
+				{ name = "path" }, -- file system paths
+				{ name = "cmdline" }, -- cmdline
+				-- { name = "codeium" }, -- codeium
+			}),
+			completion = {
+				completeopt = "menu,menuone,preview,noselect",
+			},
+			formatting = {	-- configure lspkind for vs-code like pictograms in completion menu
+				format = lspkind.cmp_format({
+					maxwidth = 50,
+					ellipsis_char = "...",
+				}),
+			},
 		})
 	end,
 }
