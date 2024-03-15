@@ -132,6 +132,11 @@ alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
 
+# kitty
+alias icat='kitty +kitten icat'
+alias kdiff='kitty +kitten diff'
+
+
 # File system Navigation
 # cd || zoxide
 if command -v zoxide > /dev/null 2>&1; then
