@@ -341,6 +341,9 @@ tmux_conf_copy_to_os_clipboard=true
 # increase history size
 set -g history-limit 10000
 
+# allow passthrough (to support kitty's escape codes)
+set -g allow-passthrough on
+
 # start with mouse mode enabled
 set -g mouse on
 
