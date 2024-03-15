@@ -2,16 +2,15 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"hrsh7th/cmp-buffer",         -- source for text in buffer
-		"hrsh7th/cmp-path",           -- source for file system paths
-		"L3MON4D3/LuaSnip",           -- snippet engine
-		"saadparwaiz1/cmp_luasnip",   -- for autocompletion
-		"rafamadriz/friendly-snippets", -- useful snippets
-		"onsails/lspkind.nvim",       -- vs-code like pictograms
+		"hrsh7th/cmp-buffer",				-- source for text in buffer
+		"hrsh7th/cmp-path",				    -- source for file system paths
+		"L3MON4D3/LuaSnip",					-- snippet engine
+		"saadparwaiz1/cmp_luasnip",			-- for autocompletion
+		"rafamadriz/friendly-snippets",		-- useful snippets
+		"onsails/lspkind.nvim",				-- vs-code like pictograms
+		-- 'quangnguyen30192/cmp-nvim-tags',	-- nvim-tags
 	},
 	config = function()
-		-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-		-- local handlers = require('nvim-autopairs.completion.handlers')
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
