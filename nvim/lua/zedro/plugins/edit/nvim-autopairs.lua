@@ -17,6 +17,17 @@ return {
 			javascript = { "template_string" }, -- Don't add pairs in JavaScript template_string treesitter nodes
 			java = false, -- Don't check treesitter on Java
 		  },
+		  fast_wrap = {
+			map = "<M-e>",
+			chars = { "{", "[", "(", '"', "'" },
+			pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
+			offset = 0, -- Offset from pattern match
+			end_key = "$",
+			keys = "qwertyuiopzxcvbnmasdfghjkl",
+			check_comma = true,
+			highlight = "PmenuSel",
+			highlight_grey = "LineNr",
+		  }
 		})
 
 		-- Import nvim-autopairs completion functionality safely
@@ -31,12 +42,9 @@ return {
 		  return
 		end
 
-		-- -- Make autopairs and completion work together
-		-- cmp.event:on(
-		-- 	"confirm_done", cmp_autopairs.on_confirm_done()
-		-- )
-
-		-- add option map_cr
-		autopairs.setup({ map_cr = true })
+		-- Make autopairs and completion work together
+		cmp.event:on(
+			"confirm_done", cmp_autopairs.on_confirm_done()
+		)
 	end,
 }
