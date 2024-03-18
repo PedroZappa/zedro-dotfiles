@@ -19,7 +19,7 @@
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "codeium.vim": { "branch": "main", "commit": "bef9cbaa5c19ab85d8048f364bfc0ac8c7ab335d" },
-  "conform.nvim": { "branch": "master", "commit": "46cb8285275a2657de70c07f4ae3f8e6ffc6a075" },
+  "conform.nvim": { "branch": "master", "commit": "41586cbc81b8d344a795264989a3db79d0a27615" },
   "dracula.nvim": { "branch": "main", "commit": "8d8bddb8814c3e7e62d80dda65a9876f97eb699c" },
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
