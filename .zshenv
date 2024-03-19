@@ -41,7 +41,7 @@ if [[ $USER == "passunca" ]]; then
 fi
 
 # CARGO
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
 ###################
 ### zsh History ###
