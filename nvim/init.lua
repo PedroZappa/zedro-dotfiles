@@ -6,5 +6,7 @@ require("zedro.core.options")
 require("zedro.core.mappings")
 -- Auto Commands
 require("zedro.core.autocmd")
+-- Macros
+require("zedro.core.macros")
 -- Lazy Plugin Manager
 require("zedro.lazy")
