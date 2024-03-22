@@ -7,6 +7,9 @@ vim.g.RC = os.getenv("HOME") .. "/.config/nvim"
 
 -- Set PATH
 vim.cmd("set path=.,**")
+-- Spell Path
+vim.g.spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+
 
 -- 42 Header Settings
 vim.g.user42 = 'passunca'

@@ -53,7 +53,7 @@ opt.fmr = "{{{,}}}"
 
 -- Spelling
 opt.spell = true
-vim.opt.spelllang = 'en_us'
+vim.opt.spelllang = 'pt,en'
 
 -- Backup
 opt.backup = false
