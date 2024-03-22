@@ -52,7 +52,8 @@ opt.sidescrolloff = 7
 opt.fmr = "{{{,}}}"
 
 -- Spelling
-opt.spell = false
+opt.spell = true
+vim.opt.spelllang = 'en_us'
 
 -- Backup
 opt.backup = false
