@@ -32,7 +32,7 @@ export TERMINAL="kitty"
 export BROWSER="chromium"
 
 # Obsidian
-alias obsidian=~/bin/Obsidian-1.4.16.AppImage
+# alias obsidian=~/bin/Obsidian-1.4.16.AppImage
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
 # kitty at 42
