@@ -1,8 +1,6 @@
 return {
 	'nvim-telescope/telescope.nvim',
 	branch = '0.1.x',
-	-- commit = "6213322ab56eb27356fdc09a5078e41e3ea7f3bc",
---[[ 	 ]]commit = "76ea9a898d3307244dce3573392dcf2cc38f340f",
 	event = "VeryLazy",
 	dependencies = {
 		'nvim-lua/plenary.nvim',
