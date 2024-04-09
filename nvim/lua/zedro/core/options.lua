@@ -52,7 +52,7 @@ opt.sidescrolloff = 7
 opt.fmr = "{{{,}}}"
 
 -- Spelling
-opt.spell = true
+opt.spell = false
 vim.opt.spelllang = 'pt,en'
 
 -- Backup
