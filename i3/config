@@ -209,15 +209,16 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 # bindsym $mod+Shift+e exec i3-msg exit
-mode "exit: [l]ogout, [r]eboot, [s]hutdown" {
+mode "exit: [l]ogout, [r]eboot, [s]hutdown, [z]suspend" {
   bindsym l exec i3-msg exit
   bindsym r exec systemctl reboot
   bindsym s exec systemctl poweroff
+  bindsym z exec systemctl suspend
   bindsym Escape mode "default"
   bindsym Return mode "default"
 }
 # Bind a key to enter the exit mode
-bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown"
+bindsym $mod+x mode "exit: [l]ogout, [r]eboot, [s]hutdown, [z]suspend"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
