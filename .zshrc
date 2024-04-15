@@ -131,6 +131,7 @@ alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
+alias gm='git merge --stat --log'
 
 # kitty
 alias icat='kitty +kitten icat'
