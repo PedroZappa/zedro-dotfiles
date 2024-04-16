@@ -7,7 +7,7 @@
   "ReplaceWithRegister": { "branch": "master", "commit": "832efc23111d19591d495dc72286de2fb0b09345" },
   "alpha-nvim": { "branch": "main", "commit": "41283fb402713fc8b327e60907f74e46166f4cfd" },
   "baleia.nvim": { "branch": "main", "commit": "fb3aff021b2b64ef820d0230d2c22ebfaf71bb6a" },
-  "blame.nvim": { "branch": "main", "commit": "290efdb0fc8ba7bbe5cc8d1314cf593eb2d436b0" },
+  "blame.nvim": { "branch": "main", "commit": "af34c6c309f0987196b5dbc8e0947fa79c9d0e89" },
   "bufferline.nvim": { "branch": "main", "commit": "64e2c5def50dfd6b6f14d96a45fa3d815a4a1eef" },
   "ccc.nvim": { "branch": "main", "commit": "1283eef5494c092a047baa34ed3e667f3cb2715e" },
   "cloak.nvim": { "branch": "main", "commit": "6e5bcd50bebc5cdb7cd3a00eb3d97ab7c4cc3b94" },
