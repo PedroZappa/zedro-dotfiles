@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    .gdbinit                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: passunca <passunca@student.42porto.com>    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/16 18:32:21 by passunca          #+#    #+#              #
+#    Updated: 2024/01/16 18:32:23 by passunca         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 set auto-load safe-path /
 
 # __________________gdb options_________________
@@ -40,24 +52,24 @@ set auto-load safe-path /
 # macOS version works better with this setting off
 # set startup-with-shell off
 
-set confirm off
-set verbose off
-set history filename ~/.gdb_history
-set history save
-
-# set output-radix 0x10
-# set input-radix 0x10
-
-# These make gdb never pause in its output
-set height 0
-set width 0
-
-set $SHOW_CONTEXT = 1
-set $SHOW_NEST_INSN = 0
-
-set $CONTEXTSIZE_STACK = 6
-set $CONTEXTSIZE_DATA  = 8
-set $CONTEXTSIZE_CODE  = 8
+# set confirm off
+# set verbose off
+# set history filename ~/.gdb_history
+# set history save
+#
+# # set output-radix 0x10
+# # set input-radix 0x10
+#
+# # These make gdb never pause in its output
+# set height 0
+# set width 0
+#
+# set $SHOW_CONTEXT = 1
+# set $SHOW_NEST_INSN = 0
+#
+# set $CONTEXTSIZE_STACK = 6
+# set $CONTEXTSIZE_DATA  = 8
+# set $CONTEXTSIZE_CODE  = 8
 
 # Set 
 # set style enabled
