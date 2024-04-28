@@ -31,9 +31,9 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docks, manageDocks, ToggleStruts(.
 import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat, doCenterFloat)
 import XMonad.Hooks.ServerMode
 import XMonad.Hooks.SetWMName
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.WindowSwallowing
+-- import XMonad.Hooks.StatusBar
+-- import XMonad.Hooks.StatusBar.PP
+-- import XMonad.Hooks.WindowSwallowing
 import XMonad.Hooks.WorkspaceHistory
 
     -- Layouts
@@ -64,7 +64,7 @@ import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
    -- Utilities
 import XMonad.Util.Dmenu
 import XMonad.Util.EZConfig (additionalKeysP, mkNamedKeymap)
-import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack, trayerAboveXmobarEventHook, trayAbovePanelEventHook, trayerPaddingXmobarEventHook, trayPaddingXmobarEventHook, trayPaddingEventHook)
+-- import XMonad.Util.Hacks (windowedFullscreenFixEventHook, javaHack, trayerAboveXmobarEventHook, trayAbovePanelEventHook, trayerPaddingXmobarEventHook, trayPaddingXmobarEventHook, trayPaddingEventHook)
 import XMonad.Util.NamedActions
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.Run (runProcessWithInput, safeSpawn, spawnPipe)
@@ -82,7 +82,7 @@ import XMonad.Util.SpawnOnce
       -- SolarizedDark
       -- SolarizedLight
       -- TomorrowNight
-import Colors.DoomOne
+import Colors.Dracula
 
 myFont :: String
 myFont = "xft:FiraCode Nerd Font Mono:regular:size=9:antialias=true:hinting=true"
@@ -519,11 +519,7 @@ myKeys c =
   , ("M-S-c", addName "Kill focused window"    $ kill1)
   , ("M-S-a", addName "Kill all windows on WS" $ killAll)
   , ("M-S-<Return>", addName "Run prompt"      $ sequence_ [spawn (mySoundPlayer ++ dmenuSound), spawn "~/.local/bin/dm-run"])
-<<<<<<< HEAD
   --, ("M-S-<Return>", addName "Run prompt"      $ sequence_ [spawn (mySoundPlayer ++ dmenuSound), spawn "emacsclient -cF '((visibility . nil))' -e '(emacs-run-launcher)'"])
-=======
-  -- , ("M-S-<Return>", addName "Run prompt"      $ sequence_ [spawn (mySoundPlayer ++ dmenuSound), spawn "emacsclient -cF '((visibility . nil))' -e '(emacs-run-launcher)'"])
->>>>>>> 46223b7f1772cc858e968592611dbfca23f99e85
   , ("M-S-b", addName "Toggle bar show/hide"   $ sendMessage ToggleStruts)
   , ("M-/", addName "DTOS Help"                $ spawn "~/.local/bin/dtos-help")]
 
