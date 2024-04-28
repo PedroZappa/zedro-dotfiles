@@ -198,6 +198,7 @@ workspace $ws3 output HDMI-0
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
+exec --no-startup-id xrandr --output HDMI-1 --auto --right-of HDMI-0 &
 
 # Record Screen
 bindsym $mod+Shift+s exec simplescreenrecorder
