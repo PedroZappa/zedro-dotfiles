@@ -21,6 +21,7 @@ export SCRIPTS="$DOTFILES/scripts"
 # Add ~/.local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 # Add 42's ~/homebrew/bin to PATH
+export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
 # Add ~/.dotfiles/scripts to PATH
 export PATH="$SCRIPTS:$PATH"
 
