@@ -28,7 +28,7 @@ export PATH="$SCRIPTS:$PATH"
 if [[ $USER == "passunca" ]]; then
 	eval "$($HOME/sgoinfre/homebrew/bin:$PATH)"
 elif [[ $USER == "zedr0" ]]; then
-	eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # colored GCC warnings and errors
