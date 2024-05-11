@@ -21,9 +21,15 @@ export SCRIPTS="$DOTFILES/scripts"
 # Add ~/.local/bin to PATH
 export PATH="$HOME/.local/bin:$PATH"
 # Add 42's ~/homebrew/bin to PATH
-export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
+# export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
 # Add ~/.dotfiles/scripts to PATH
 export PATH="$SCRIPTS:$PATH"
+# Add homebrew to PATH
+if [[ $USER == "passunca" ]]; then
+	eval "$($HOME/sgoinfre/homebrew/bin:$PATH)"
+elif [[ $USER == "zedr0" ]]; then
+	eval "$($HOME/.linuxbrew/bin/brew shellenv)"
+fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
