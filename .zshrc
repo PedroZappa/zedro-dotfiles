@@ -173,9 +173,3 @@ if command -v starship > /dev/null 2>&1; then
 else
     ZSH_THEME="refined"
 fi
-
-#####################
-### Homebrew PATH ###
-#####################
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
