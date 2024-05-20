@@ -12,6 +12,17 @@
 
 set auto-load safe-path /
 
+### Commands
+# Valgrind integration
+define mchk
+	monitor leak_check full reachable any
+end
+
+# Custom Commands
+define rfr
+	refresh
+end
+
 # __________________gdb options_________________
 
 # # set to 1 to have ARM target debugging as default, use the "arm" command to switch inside gdb
