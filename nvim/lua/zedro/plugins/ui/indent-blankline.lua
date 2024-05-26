@@ -18,8 +18,8 @@ return {
 			vim.api.nvim_set_hl(0, "DarkPurple", { fg = "#5232a8" })
 		end)
 
-		require("ibl").setup {
-			indent = { highlight = highlight },
-		}
+		-- require("ibl").setup {
+		-- 	indent = { highlight = highlight },
+		-- }
 	end,
 }
