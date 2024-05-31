@@ -1,5 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
+	commit = "3d08501caef2329aba5121b753e903904088f7e6",
 	main = "ibl",
 	lazy = true,
 	event = { "BufReadPre", "BufNewFile" },
@@ -18,8 +19,8 @@ return {
 			vim.api.nvim_set_hl(0, "DarkPurple", { fg = "#5232a8" })
 		end)
 
-		-- require("ibl").setup {
-		-- 	indent = { highlight = highlight },
-		-- }
+		require("ibl").setup {
+			indent = { highlight = highlight },
+		}
 	end,
 }
