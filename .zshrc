@@ -173,3 +173,8 @@ if command -v starship > /dev/null 2>&1; then
 else
     ZSH_THEME="refined"
 fi
+
+#####################################
+### Clear google-chrome ingleton* ###
+#####################################
+rm -rf ~/.config/google-chrome/Singleton*
