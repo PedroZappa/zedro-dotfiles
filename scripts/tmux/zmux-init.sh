@@ -53,7 +53,8 @@ fi
 
 # Create DEV session
 tmux new-session	-d -s DEV
-tmux attach-session -t RC:1
+tmux attach-session -t DEV:1
+tmux new-window		-t DEV:2 -n 'DEBUG'
 
 # Open termina on i3 workspace2 and attach to DEV session
 i3-msg --socket=$I3SOCK exec i3-sensible-terminal
