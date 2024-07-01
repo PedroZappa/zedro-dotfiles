@@ -177,4 +177,6 @@ fi
 #####################################
 ### Clear google-chrome ingleton* ###
 #####################################
-rm -rf ~/.config/google-chrome/Singleton*
+if [[ -f ~/.config/google-chrome/Singleton* ]]; then
+	rm -rf ~/.config/google-chrome/Singleton*
+fi
