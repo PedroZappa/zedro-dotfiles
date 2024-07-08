@@ -27,6 +27,8 @@ export PATH="$SCRIPTS:$PATH"
 # Add homebrew to PATH
 if [[ $USER == "passunca" ]]; then
 	export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
+	export PATH="$HOME/sgoinfre/passunca/homebrew/bin:$PATH"
+	export PATH="$HOME/sgoinfre/passunca/homebrew/sbin:$PATH"
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
