@@ -126,3 +126,5 @@ fi
 if command -v starship > /dev/null 2>&1; then
 	eval "$(starship init bash)"
 fi
+alias m_test='~/Minishell_Tester/start.sh'
+alias reallyshell='~/Minishell_Tester/connect.sh'

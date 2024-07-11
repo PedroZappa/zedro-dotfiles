@@ -120,6 +120,7 @@ alias fr='francinette'
 
 # Neovim
 alias v='nvim'
+alias clear_nvim='rm -rf ~/.local/share/nvim'
 
 # git
 alias ga='git add'
@@ -180,3 +181,6 @@ fi
 if [[ -f ~/.config/google-chrome/Singleton* ]]; then
 	rm -rf ~/.config/google-chrome/Singleton*
 fi
+
+alias m_test=~/Minishell_Tester/start.sh
+alias reallyshell=~/Minishell_Tester/connect.sh
