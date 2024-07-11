@@ -427,7 +427,8 @@ _  /|  / /  __/ /_/ /_ |/ /_  / _  / / / / /
       dashboard.button("-", "󰼙  Get Oil", ":Oil --float<CR>"),
       dashboard.button("l", "  Get Lazy", ":Lazy<CR>"),
       dashboard.button("m", "  Get Mason", ":Mason<CR>"),
-      dashboard.button("p", "  Get Parrot", ":<leader>pl<CR>"),
+      dashboard.button("h", "󰞋  Get Help", ":vertical help<CR>"),
+      dashboard.button("o", "  Get Options", ":vertical options<CR>"),
       dashboard.button("q", "󰩈  Quit", ":qa<CR>"),
     }
     -- footer
