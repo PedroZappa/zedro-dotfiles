@@ -8,5 +8,6 @@ return {
 	},
 	opts = {
 		disable_mouse = false,
+		disabled_keys = {},
 	}
 }
