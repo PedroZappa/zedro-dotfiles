@@ -33,6 +33,10 @@ keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 -- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
+keymap.set("n", "<leader>bm", function()
+  vim.fn.system('bear -- make')
+  vim.cmd('write')
+end, { desc = "Run bare -- make command and write current buffer" })
 
 -- Editing
 -- Toggle Relative numbers
@@ -45,8 +49,8 @@ keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Le
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 
 -- Searching
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
 -- Clear Highlights
 keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
