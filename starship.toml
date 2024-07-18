@@ -300,9 +300,9 @@ format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bo
 style = "dimmed white"
 symbol = "󱗀"
 
-[custom.minitalk]
-when  = "pidof server"
-command = "~/.dotfiles/scripts/starship/minitalk-pid.sh"
-format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
-style = "dimmed white"
-symbol = "󰏶"
+# [custom.minitalk]
+# when  = "pidof server"
+# command = "~/.dotfiles/scripts/starship/minitalk-pid.sh"
+# format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
+# style = "dimmed white"
+# symbol = "󰏶"
