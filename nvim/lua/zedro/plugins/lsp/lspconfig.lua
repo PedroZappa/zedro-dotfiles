@@ -8,22 +8,31 @@ return {
 		{ "williamboman/mason-lspconfig.nvim" },
 	},
 	config = function()
-		local lsp_zero = require("lsp-zero")
-		lsp_zero.extend_lspconfig()
-
-		lsp_zero.on_attach(function(client, bufnr)
+		local lsp = require("lsp-zero")
+		lsp.extend_lspconfig()
+		lsp.on_attach(function(client, bufnr)
 			-- see :help lsp-zero-keybindings
 			-- to learn the available actions
-			lsp_zero.default_keymaps({ buffer = bufnr })
+			lsp.default_keymaps({ buffer = bufnr })
 		end)
+
+
+		local lspconfig = require("lspconfig");
+		lspconfig.clangd.setup({
+			cmd = { "clangd", "--background-index", "--clang-tidy", "--suggest-missing-includes" },
+			init_options = {
+				clangdFileStatus = true,
+				-- clangdFileWatched = true,
+			},
+		})
 
 		require("mason-lspconfig").setup({
 			ensure_installed = { "clangd", "lua_ls" },
 			handlers = {
-				lsp_zero.default_setup,
+				lsp.default_setup,
 				lua_ls = function()
 					-- (Optional) Configure lua language server for neovim
-					local lua_opts = lsp_zero.nvim_lua_ls()
+					local lua_opts = lsp.nvim_lua_ls()
 					require("lspconfig").lua_ls.setup(lua_opts)
 				end,
 			},
