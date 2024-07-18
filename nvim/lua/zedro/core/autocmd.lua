@@ -49,3 +49,13 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 	command = "set conceallevel=3"
 })
 
+-- C files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "c",
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+  end,
+})
