@@ -50,8 +50,8 @@ FILES=(
     ["$HOME/.dotfiles/.gdbinit"]="$HOME/.gdbinit"
 	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.vimrc"]="$HOME/.vimrc"
-    ["$HOME/.dotfiles/nvim"]="$HOME/.config/nvim"
-    ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.config/.tmux.conf.local"
+    ["$HOME/.dotfiles/nvim"]="$HOME/.config/"
+    ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.tmux.conf.local"
     ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
     ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
     ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
@@ -198,6 +198,9 @@ fi
 install_kitty() {
 	echo "Installing kitty Terminal emulator..."
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+	sudo ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
+	ln -s ~/.dotfiles/kitty/dracula.conf ~/.config/kitty/dracula.conf
+	ln -s ~/.dotfiles/kitty/diff.conf ~/.config/kitty/diff.conf
 	echo "kitty installation complete 😻"
 }
 
