@@ -5,7 +5,7 @@ set -euo pipefail
 # -o pipeline : Set the exit status to the last command in the pipeline that failed.
 
 # Dev Environment Setup
-local BREW_PATH="$HOME/.local/bin"
+BREW_PATH="$HOME/.local/bin"
 
 # Check bash version for associative array support
 if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
