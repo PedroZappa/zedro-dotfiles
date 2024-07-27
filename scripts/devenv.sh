@@ -76,8 +76,8 @@ install_brew() {
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
 		# Source zshrc
-		source $ZSHRC
-		echo "Homebrew installation complete. 🖒 "
+		# source $ZSHRC
+		# echo "Homebrew installation complete. 🖒 "
 		# Configure Homebrew
 		if [ -n $(command -v brew) ]; then
 			PREFIX="${HOME}/.local"
