@@ -133,7 +133,7 @@ if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
 fi
 
-# Installiung Kitty
+# Installing Kitty
 install_kitty() {
 	echo "Installing kitty Terminal emulator..."
 	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
