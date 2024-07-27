@@ -5,7 +5,6 @@ set -euo pipefail
 # -o pipeline : Set the exit status to the last command in the pipeline that failed.
 
 # Dev Environment Setup
-BREW_PATH="$HOME/.local/bin"
 
 # Check bash version for associative array support
 if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
@@ -26,6 +25,8 @@ if ! command_exists curl; then
     echo "Error: curl is not installed. Please install curl to proceed." >&2
     exit 1
 fi
+
+BREW_PATH="$HOME/.local/bin"
 
 # Associative array defining source and target FILES
 declare -A FILES
