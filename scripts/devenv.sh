@@ -43,7 +43,7 @@ BREW_PACKAGES=(
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
         brew install "$package"
-        echo "Installed ${BREW_PACKAGES[$package]}"
+        echo "Installed ${BREW_PACKAGES[$package]} 🤙"
     done
 }
 
@@ -58,12 +58,14 @@ install_brew() {
 		# Link Binary to prefered PATH
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
+		# Add Homebrew to PATH
+        cat << 'EOF' >> ~/.zshrc 
+		[ -d "${BREW_PATH}" ] &&
+		export PATH="${BREW_PATH}:$PATH"
+		EOF
 		# Source zshrc
 		source $ZSHRC
-		# Add Homebrew to PATH
-        cat << 'EOF' >> ~/.zshrc [ -d "${BREW_PATH}" ] && export PATH="${BREW_PATH}:$PATH"
-		EOF
-		echo "Homebrew installation complete."
+		echo "Homebrew installation complete. 🖒 "
 		# Ask to install Homebrew packages
         echo "Do you want to install Homebrew packages now? (y/n)"
         read -r install_packages
@@ -78,7 +80,7 @@ install_brew() {
 if ! command -v brew &> /dev/null; then
     install_brew
 else
-    echo "Homebrew is already installed."
+    echo "Homebrew is already installed. 🖒 "
 fi
 
 install_oh_my_tmux() {
@@ -111,7 +113,7 @@ create_symlink() {
     mkdir -p "$(dirname "$DEST")"
     # Create the symlink
     ln -s "$SRC" "$DEST"
-    echo "Created symlink from $SRC to $DEST"
+    echo "Created symlink from $SRC to $DEST" 🖒 
 }
 
 # Create symlinks
