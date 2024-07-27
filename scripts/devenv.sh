@@ -58,14 +58,21 @@ install_brew() {
 		# Link Binary to prefered PATH
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-		# Add Homebrew to PATH
-        cat << 'EOF' >> ~/.zshrc 
-		[ -d "${BREW_PATH}" ] &&
-		export PATH="${BREW_PATH}:$PATH"
-		EOF
 		# Source zshrc
 		source $ZSHRC
 		echo "Homebrew installation complete. 🖒 "
+		# Configure Homebrew
+		if [ -n $(command -v brew) ]; then
+			PREFIX="${HOME}/.local"
+			export HOMEBREW_PREFIX="$PREFIX"
+			export HOMEBREW_CELLAR="$PREFIX/Cellar"
+			export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
+			export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
+			export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
+			export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
+			# export HOMEBREW_NO_ANALYTICS=1
+			# export HOMEBREW_NO_ENV_HINTS=1
+		fi
 		# Ask to install Homebrew packages
         echo "Do you want to install Homebrew packages now? (y/n)"
         read -r install_packages
