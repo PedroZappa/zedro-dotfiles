@@ -99,8 +99,8 @@ install_brew() {
 		# Link Binary to prefered PATH
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-		export PATH="$PATH:$HOME/.local/bin"
-		# echo "Homebrew installation complete. 🖒 "
+		# Add Homebrew to PATH
+		export PATH="$PATH:$BREW_PATH"
 		# Configure Homebrew
 		if [ -n $(command -v brew) ]; then
 			PREFIX="${HOME}/.local"
