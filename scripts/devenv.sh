@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
+# -e : Exit immediately if a command exits with a non-zero status;
+# -u : Treat unset variables as an error and exit;
+# -o pipeline : Set the exit status to the last command in the pipeline that failed.
+
+# Dev Environment Setup
 
 # Check bash version for associative array support
 if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
@@ -7,36 +12,39 @@ if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
     exit 1
 fi
 
-# Define the source and target FILES
+# Associative array defining source and target FILES
 declare -A FILES
 FILES=(
     ["$HOME/.dotfiles/.zshrc"]="$HOME/.zshrc"
     ["$HOME/.dotfiles/.zshenv"]="$HOME/.zshenv"
+	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
+    ["$HOME/.dotfiles/.gdbinit"]="$HOME/.gdbinit"
     ["$HOME/.dotfiles/.vimrc"]="$HOME/.vimrc"
     ["$HOME/.dotfiles/nvim"]="$HOME/.config/nvim"
+    ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.config/.tmux.conf.local"
+    ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
+    ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
 )
 
 create_symlink() {
-    local src=$1
-    local dest=$2
+    local SRC=$1
+    local DEST=$2
 
     # Check if the destination file/directory exists
-    if [ -e "$dest" ]; then
+    if [ -e "$DEST" ]; then
         # If it exists, move it to a backup
-        mv "$dest" "${dest}_bak"
-        echo "Moved existing $dest to ${dest}_bak"
+        mv "$DEST" "${DEST}_bak"
+        echo "Moved existing $DEST to ${DEST}_bak"
     fi
-
     # Create the parent directory if it doesn't exist
-    mkdir -p "$(dirname "$dest")"
-
+    mkdir -p "$(dirname "$DEST")"
     # Create the symlink
-    ln -s "$src" "$dest"
-    echo "Created symlink from $src to $dest"
+    ln -s "$SRC" "$DEST"
+    echo "Created symlink from $SRC to $DEST"
 }
 
 # Iterate over FILES and create symlinks
-for src in "${!FILES[@]}"; do
-    dest=${FILES[$src]}
-    create_symlink "$src" "$dest"
+for SRC in "${!FILES[@]}"; do
+    DEST=${FILES[$SRC]}
+    create_symlink "$SRC" "$DEST"
 done
