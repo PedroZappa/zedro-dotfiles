@@ -12,6 +12,7 @@ if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
     exit 1
 fi
 
+# Ensure git and curl are installed
 command_exists() {
     command -v "$1" &> /dev/null
 }
