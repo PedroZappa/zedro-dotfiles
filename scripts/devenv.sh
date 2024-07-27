@@ -100,9 +100,8 @@ install_brew() {
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
 		# Add Homebrew to PATH
-		export PATH="$PATH:$BREW_PATH"
-		# Configure Homebrew
 		if [ -n $(command -v brew) ]; then
+			export PATH="$PATH:$BREW_PATH"
 			PREFIX="${HOME}/.local"
 			export HOMEBREW_PREFIX="$PREFIX"
 			export HOMEBREW_CELLAR="$PREFIX/Cellar"
