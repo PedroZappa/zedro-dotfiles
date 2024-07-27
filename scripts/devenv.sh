@@ -27,6 +27,7 @@ FILES=(
     ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.config/.tmux.conf.local"
     ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
     ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
+    ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
 )
 
 # Associative array defining Homebrew packages to install
@@ -116,6 +117,13 @@ read -r install_packages
 if [[ "$install_packages" =~ ^[Yy]$ ]]; then
 	install_brew_packages
 fi
+
+# Install zap, zsh's Package Manager
+install_zap() {
+	echo "Installing zap: zsh's Package Manager..."
+	echo "zap installation complete. 🤙"
+}
+# ...
 
 # Install oh-my-tmux
 install_oh_my_tmux() {
