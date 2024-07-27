@@ -40,6 +40,23 @@ BREW_PACKAGES=(
     ["starship"]="Starship"
 )
 
+# clone .dotfiles repository
+clone_dotfiles() {
+	cd "$home"
+	if [ ! -d "$HOME/.dotfiles" ]; then
+		git clone https://github.com/PedroZappa/zedro-dotfiles
+		echo ".dotfiles repository successfully cloned. 󰩑"
+	else
+		echo ".dotfiles repository already exists. 󰩑"
+}
+
+echo "Starting Dev Environment Setup"
+echo "Do you want to clone Zedro's .dotfiles repository? (y/n)"
+read -r response
+if [[ "$response" =~ ^[Yy]$ ]]; then
+	clone_dotfiles
+fi
+
 # Install Homebrew
 install_brew() {
     echo "Homebrew not found. Do you want to install it? (y/n)"
@@ -109,6 +126,7 @@ if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
 fi
 
+# Create symlinks to .dotfiles
 create_symlink() {
     local SRC=$1
     local DEST=$2
@@ -126,7 +144,6 @@ create_symlink() {
     echo "Created symlink from $SRC to $DEST" 🖒 
 }
 
-# Create symlinks
 echo "Do you want to create symlinks to .dotfiles now? (y/n)"
 read -r create_symlinks
 if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
