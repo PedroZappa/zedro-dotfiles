@@ -76,7 +76,7 @@ BREW_PACKAGES=(
 clone_dotfiles() {
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
-		git clone https://github.com/PedroZappa/zedro-dotfiles
+		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
 		echo ".dotfiles repository successfully cloned. 󰩑 "
 	else
 		echo ".dotfiles repository already exists. 󰩑 "
@@ -108,31 +108,27 @@ install_brew() {
             return
         fi
 	fi
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-		# Get Homebrew Package
-        mkdir -p ~/.local/Homebrew &&
-        curl -L https://github.com/Homebrew/brew/tarball/master |
-        tar xz --strip 1 -C ~/.local/Homebrew
-		# Link Binary to prefered PATH
-        mkdir -p ${BREW_PATH} &&
-        ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-		# Add Homebrew to PATH
-		if [ -n $(command -v brew) ]; then
-			export PATH="$PATH:$BREW_PATH"
-			PREFIX="${HOME}/.local"
-			export HOMEBREW_PREFIX="$PREFIX"
-			export HOMEBREW_CELLAR="$PREFIX/Cellar"
-			export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
-			export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
-			export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
-			export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
-			# export HOMEBREW_NO_ANALYTICS=1
-			# export HOMEBREW_NO_ENV_HINTS=1
-			echo "Homebrew env vars configuration complete. 🖒 "
-		fi
-    else
-        echo "Homebrew installation skipped."
-    fi
+	# Get Homebrew Package
+	mkdir -p ~/.local/Homebrew &&
+	curl -L https://github.com/Homebrew/brew/tarball/master |
+	tar xz --strip 1 -C ~/.local/Homebrew
+	# Link Binary to prefered PATH
+	mkdir -p ${BREW_PATH} &&
+	ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
+	# Add Homebrew to PATH
+	if [ -n $(command -v brew) ]; then
+		export PATH="$PATH:$BREW_PATH"
+		PREFIX="${HOME}/.local"
+		export HOMEBREW_PREFIX="$PREFIX"
+		export HOMEBREW_CELLAR="$PREFIX/Cellar"
+		export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
+		export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
+		export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
+		export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
+		# export HOMEBREW_NO_ANALYTICS=1
+		# export HOMEBREW_NO_ENV_HINTS=1
+		echo "Homebrew env vars configuration complete. 🖒 "
+	fi
 }
 
 if ! command -v brew &> /dev/null; then
