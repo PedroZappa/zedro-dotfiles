@@ -140,6 +140,7 @@ fi
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
+		echo "Installing ${BREW_PACKAGES[$package]}... 🮲"
         brew install "$package" --force-bottle
         echo "Installed ${BREW_PACKAGES[$package]} 🤙"
     done
@@ -230,7 +231,7 @@ create_symlink() {
     mkdir -p "$(dirname "$DEST")"
     # Create the symlink
     ln -s "$SRC" "$DEST"
-    echo "Created symlink from $SRC to $DEST" 🖒 
+    echo "Created symlink from $SRC to $DEST" 🖒
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
