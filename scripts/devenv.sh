@@ -30,6 +30,13 @@ if ! command_exists curl; then
     exit 1
 fi
 
+# Express installation
+# Check for --express argument
+EXPRESS_INSTALL=false
+if [[ $# -gt 0 && "$1" == "--express" ]]; then
+    EXPRESS_INSTALL=true
+fi
+
 BREW_PATH="$HOME/.local/bin"
 
 # Associative array defining source and target FILES
@@ -77,20 +84,30 @@ clone_dotfiles() {
 }
 
 echo "Starting Dev Environment Setup"
-echo "Do you want to clone Zedro's .dotfiles repository? (y/n)"
-read -r response
-if [[ "$response" =~ ^[Yy]$ ]]; then
-	if [[ ! -d "$HOME/.dotfiles" ]]; then
-		clone_dotfiles
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+    echo "Do you want to clone Zedro's .dotfiles repository? (y/n)"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+		if [ ! -d "$HOME/.dotfiles" ]; then
+			clone_dotfiles
+		fi
 	else
 		echo ".dotfiles repository already exists. 󰩑 "
-	fi
+    fi
+else
+    clone_dotfiles
 fi
 
 # Install Homebrew
 install_brew() {
-    echo "Homebrew not found. Do you want to install it? (y/n)"
-    read -r response
+	if [[ "$EXPRESS_INSTALL" == false ]]; then
+		echo "Homebrew not found. Do you want to install it? (y/n)"
+		read -r response
+		if [[ ! "$response" =~ ^[Yy]$ ]]; then
+            echo "Homebrew installation skipped."
+            return
+        fi
+	fi
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		# Get Homebrew Package
         mkdir -p ~/.local/Homebrew &&
@@ -136,8 +153,12 @@ install_brew_packages() {
 }
 
 echo "Do you want to install Homebrew packages now? (y/n)"
-read -r install_packages
-if [[ "$install_packages" =~ ^[Yy]$ ]]; then
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	read -r install_packages
+	if [[ "$install_packages" =~ ^[Yy]$ ]]; then
+		install_brew_packages
+	fi
+else
 	install_brew_packages
 fi
 
@@ -148,14 +169,18 @@ install_zap() {
 	echo "zap installation complete. 🤙"
 }
 
-echo "Do you want to install zap now? (y/n)"
-read -r install_zap
-if [[ "$install_zap" =~ ^[Yy]$ ]]; then
-	if [[ ! -d "$ZAP_DIR" ]]; then
-		install_zap
-	else
-		echo "zap already installed. 🤙"
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Do you want to install zap now? (y/n)"
+	read -r install_zap
+	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
+		if [[ ! -d "$ZAP_DIR" ]]; then
+			install_zap
+		else
+			echo "zap already installed. 🤙"
+		fi
 	fi
+else
+	install_zap
 fi
 # Install oh-my-tmux
 install_oh_my_tmux() {
@@ -180,14 +205,18 @@ install_kitty() {
 	echo "kitty installation complete 😻"
 }
 
-echo "Do you want to install kitty now? (y/n)"
-read -r install_kitty
-if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
-	if [ ! -d "$HOME/.local/kitty.app" ]; then
-		install_kitty
-	else
-		echo "kitty is already installed 😻"
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Do you want to install kitty now? (y/n)"
+	read -r install_kitty
+	if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
+		if [[ ! -d "$HOME/.local/kitty.app" ]]; then
+			install_kitty
+		else
+			echo "kitty is already installed 😻"
+		fi
 	fi
+else
+	install_kitty
 fi
 
 # Create symlinks to .dotfiles
@@ -208,9 +237,16 @@ create_symlink() {
     echo "Created symlink from $SRC to $DEST" 🖒 
 }
 
-echo "Do you want to create symlinks to .dotfiles now? (y/n)"
-read -r create_symlinks
-if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Do you want to create symlinks to .dotfiles now? (y/n)"
+	read -r create_symlinks
+	if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
+		for SRC in "${!FILES[@]}"; do
+			DEST=${FILES[$SRC]}
+			create_symlink "$SRC" "$DEST"
+		done
+	fi
+else
 	for SRC in "${!FILES[@]}"; do
 		DEST=${FILES[$SRC]}
 		create_symlink "$SRC" "$DEST"
