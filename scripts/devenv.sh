@@ -38,6 +38,7 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
 fi
 
 BREW_PATH="$HOME/.local/bin"
+ZAP_DIR="$HOME/.local/share/zap"
 
 # Associative array defining source and target FILES
 declare -A FILES
@@ -59,7 +60,6 @@ FILES=(
 # Associative array defining Homebrew packages to install
 declare -A BREW_PACKAGES
 BREW_PACKAGES=(
-	["zsh"]="Zsh"
     ["btop"]="Btop"
     ["lnav"]="Lnav"
     ["lazygit"]="Lazygit"

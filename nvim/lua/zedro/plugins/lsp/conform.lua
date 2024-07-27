@@ -6,6 +6,10 @@ return {
 
     conform.setup({
       formatters_by_ft = {
+        -- c = {
+        --   indent_style = 'tab',
+        --   tab_width = 4,
+        -- },
         cpp = { "clang-format" },
         javascript = { "prettier" },
         typescript = { "prettier" },
