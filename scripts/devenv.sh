@@ -75,6 +75,7 @@ BREW_PACKAGES=(
     ["cowsay"]="Cowsay"
     ["fortune"]="Fortune"
     ["lolcat"]="Lolcat"
+    ["eza"]="eza"
 )
 
 # clone .dotfiles repository
