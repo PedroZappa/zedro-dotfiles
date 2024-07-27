@@ -47,12 +47,12 @@ BREW_PACKAGES=(
 
 # clone .dotfiles repository
 clone_dotfiles() {
-	if [ ! -d "$HOME/.dotfiles" ]; then
+	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles
-		echo ".dotfiles repository successfully cloned. 󰩑"
+		echo ".dotfiles repository successfully cloned. 󰩑 "
 	else
-		echo ".dotfiles repository already exists. 󰩑"
+		echo ".dotfiles repository already exists. 󰩑 "
 }
 
 echo "Starting Dev Environment Setup"
