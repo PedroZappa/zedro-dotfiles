@@ -41,17 +41,6 @@ export EDITOR="nvim"
 export TERMINAL="kitty"
 export BROWSER="chromium"
 
-# Obsidian
-# alias obsidian=~/bin/Obsidian-1.4.16.AppImage
-# Glow Markdown Renderer
-alias glow=~/bin/glow/glow
-# kitty at 42
-if [[ $USER == "passunca" ]]; then
-	alias kitty=~/.local/kitty.app/bin/kitty
-fi
-
-# CARGO
-# . "$HOME/.cargo/env"
 
 ###################
 ### zsh History ###

@@ -134,7 +134,10 @@ alias glgg='git log --graph --oneline --decorate'
 alias glgs='git log --graph --oneline --decorate | head -n 7'
 alias gm='git merge --stat --log'
 
-# kitty
+# kitty at 42
+if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" ]]; then
+	alias kitty=~/.local/kitty.app/bin/kitty
+fi
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
 
@@ -184,3 +187,7 @@ fi
 
 alias m_test=~/Minishell_Tester/start.sh
 alias reallyshell=~/Minishell_Tester/connect.sh
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
