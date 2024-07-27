@@ -41,13 +41,6 @@ BREW_PACKAGES=(
 )
 
 # Install Homebrew
-install_brew_packages() {
-    for package in "${!BREW_PACKAGES[@]}"; do
-        brew install "$package"
-        echo "Installed ${BREW_PACKAGES[$package]} 🤙"
-    done
-}
-
 install_brew() {
     echo "Homebrew not found. Do you want to install it? (y/n)"
     read -r response
@@ -73,13 +66,8 @@ install_brew() {
 			export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
 			# export HOMEBREW_NO_ANALYTICS=1
 			# export HOMEBREW_NO_ENV_HINTS=1
+			echo "Homebrew env vars configuration complete. 🖒 "
 		fi
-		# Ask to install Homebrew packages
-        echo "Do you want to install Homebrew packages now? (y/n)"
-        read -r install_packages
-        if [[ "$install_packages" =~ ^[Yy]$ ]]; then
-            install_brew_packages
-        fi
     else
         echo "Homebrew installation skipped."
     fi
@@ -91,6 +79,21 @@ else
     echo "Homebrew is already installed. 🖒 "
 fi
 
+# Ask to install Homebrew packages
+install_brew_packages() {
+    for package in "${!BREW_PACKAGES[@]}"; do
+        brew install "$package"
+        echo "Installed ${BREW_PACKAGES[$package]} 🤙"
+    done
+}
+
+echo "Do you want to install Homebrew packages now? (y/n)"
+read -r install_packages
+if [[ "$install_packages" =~ ^[Yy]$ ]]; then
+	install_brew_packages
+fi
+
+# Install oh-my-tmux
 install_oh_my_tmux() {
     echo "Installing oh-my-tmux..."
     cd "$HOME"
@@ -100,7 +103,6 @@ install_oh_my_tmux() {
     echo "oh-my-tmux installation complete."
 }
 
-# Install oh-my-tmux
 echo "Do you want to install oh-my-tmux now? (y/n)"
 read -r install_tmux
 if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
