@@ -50,7 +50,7 @@ FILES=(
     ["$HOME/.dotfiles/.gdbinit"]="$HOME/.gdbinit"
 	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.vimrc"]="$HOME/.vimrc"
-    ["$HOME/.dotfiles/nvim"]="$HOME/.config/"
+    ["$HOME/.dotfiles/nvim"]="$HOME/.config/nvim"
     ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.tmux.conf.local"
     ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
     ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
@@ -179,6 +179,33 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 else
 	install_zap
 fi
+
+# Install vim-plug
+install_vim_plug() {
+	echo "Installing vim-plug..."
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# Create vim directories
+	mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
+	# Install color scheme
+	cd ~/.vim/colors
+	curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+	curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
+	echo "vim-plug installation complete."
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Do you want to install vim-plug now? (y/n)"
+	read -r install_vim_plug
+	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
+		install_vim_plug
+	fi
+else
+	install_vim_plug
+fi
+
 # Install oh-my-tmux
 install_oh_my_tmux() {
     echo "Installing oh-my-tmux..."
