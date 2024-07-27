@@ -16,15 +16,24 @@ fi
 # Associative array defining source and target FILES
 declare -A FILES
 FILES=(
+    ["$HOME/.dotfiles/.bashrc"]="$HOME/.bashrc"
+    ["$HOME/.dotfiles/.gitconfig"]="$HOME/.gitconfig"
     ["$HOME/.dotfiles/.zshrc"]="$HOME/.zshrc"
     ["$HOME/.dotfiles/.zshenv"]="$HOME/.zshenv"
-	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.gdbinit"]="$HOME/.gdbinit"
+	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.vimrc"]="$HOME/.vimrc"
     ["$HOME/.dotfiles/nvim"]="$HOME/.config/nvim"
     ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.config/.tmux.conf.local"
     ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
     ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
+)
+
+# Associative array defining Homebrew packages to install
+declare -A BREW_PACKAGES
+BREW_PACKAGES=(
+    ["nvim"]="Neovim"
+    ["btop"]="Btop"
 )
 
 create_symlink() {
@@ -42,6 +51,13 @@ create_symlink() {
     # Create the symlink
     ln -s "$SRC" "$DEST"
     echo "Created symlink from $SRC to $DEST"
+}
+
+install_brew_packages() {
+    for package in "${!BREW_PACKAGES[@]}"; do
+        brew install "$package"
+        echo "Installed ${BREW_PACKAGES[$package]}"
+    done
 }
 
 install_brew() {
@@ -62,6 +78,12 @@ install_brew() {
 		export PATH="${BREW_PATH}:$PATH"
 		EOF
 		echo "Homebrew installation complete."
+		# Ask to install Homebrew packages
+        echo "Do you want to install Homebrew packages now? (y/n)"
+        read -r install_packages
+        if [[ "$install_packages" =~ ^[Yy]$ ]]; then
+            install_brew_packages
+        fi
     else
         echo "Homebrew installation skipped."
     fi
@@ -79,3 +101,5 @@ for SRC in "${!FILES[@]}"; do
     DEST=${FILES[$SRC]}
     create_symlink "$SRC" "$DEST"
 done
+
+echo "${USER} Dev Environment Setup complete."
