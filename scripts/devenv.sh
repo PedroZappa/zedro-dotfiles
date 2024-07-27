@@ -39,23 +39,7 @@ BREW_PACKAGES=(
     ["starship"]="Starship"
 )
 
-create_symlink() {
-    local SRC=$1
-    local DEST=$2
-
-    # Check if the destination file/directory exists
-    if [ -e "$DEST" ]; then
-        # If it exists, move it to a backup
-        mv "$DEST" "${DEST}_bak"
-        echo "Moved existing $DEST to ${DEST}_bak"
-    fi
-    # Create the parent directory if it doesn't exist
-    mkdir -p "$(dirname "$DEST")"
-    # Create the symlink
-    ln -s "$SRC" "$DEST"
-    echo "Created symlink from $SRC to $DEST"
-}
-
+# Install Homebrew
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
         brew install "$package"
@@ -92,17 +76,53 @@ install_brew() {
     fi
 }
 
-# Install Homebrew
 if ! command -v brew &> /dev/null; then
     install_brew
 else
     echo "Homebrew is already installed."
 fi
 
+install_oh_my_tmux() {
+    echo "Installing oh-my-tmux..."
+    cd "$HOME"
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
+    echo "oh-my-tmux installation complete."
+}
+
+# Install oh-my-tmux
+echo "Do you want to install oh-my-tmux now? (y/n)"
+read -r install_tmux
+if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
+    install_oh_my_tmux
+fi
+
+create_symlink() {
+    local SRC=$1
+    local DEST=$2
+
+    # Check if the destination file/directory exists
+    if [ -e "$DEST" ]; then
+        # If it exists, move it to a backup
+        mv "$DEST" "${DEST}_bak"
+        echo "Moved existing $DEST to ${DEST}_bak"
+    fi
+    # Create the parent directory if it doesn't exist
+    mkdir -p "$(dirname "$DEST")"
+    # Create the symlink
+    ln -s "$SRC" "$DEST"
+    echo "Created symlink from $SRC to $DEST"
+}
+
 # Create symlinks
-for SRC in "${!FILES[@]}"; do
-    DEST=${FILES[$SRC]}
-    create_symlink "$SRC" "$DEST"
-done
+echo "Do you want to create symlinks to .dotfiles now? (y/n)"
+read -r create_symlinks
+if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
+	for SRC in "${!FILES[@]}"; do
+		DEST=${FILES[$SRC]}
+		create_symlink "$SRC" "$DEST"
+	done
+fi
 
 echo "${USER} Dev Environment Setup complete."
