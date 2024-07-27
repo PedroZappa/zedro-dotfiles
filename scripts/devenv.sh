@@ -5,6 +5,7 @@ set -euo pipefail
 # -o pipeline : Set the exit status to the last command in the pipeline that failed.
 
 # Dev Environment Setup
+local BREW_PATH="$HOME/.local/bin"
 
 # Check bash version for associative array support
 if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
@@ -43,7 +44,37 @@ create_symlink() {
     echo "Created symlink from $SRC to $DEST"
 }
 
-# Iterate over FILES and create symlinks
+install_brew() {
+    echo "Homebrew not found. Do you want to install it? (y/n)"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+		# Get Homebrew Package
+        mkdir -p ~/.local/Homebrew &&
+        curl -L https://github.com/Homebrew/brew/tarball/master |
+        tar xz --strip 1 -C ~/.local/Homebrew
+		# Link Binary to prefered PATH
+        mkdir -p ${BREW_PATH} &&
+        ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
+		# Source zshrc
+		source $ZSHRC
+		# Add Homebrew to PATH
+        cat << 'EOF' >> ~/.zshrc [ -d "${BREW_PATH}" ] && 
+		export PATH="${BREW_PATH}:$PATH"
+		EOF
+		echo "Homebrew installation complete."
+    else
+        echo "Homebrew installation skipped."
+    fi
+}
+
+# Install Homebrew
+if ! command -v brew &> /dev/null; then
+    install_brew
+else
+    echo "Homebrew is already installed."
+fi
+
+# Create symlinks
 for SRC in "${!FILES[@]}"; do
     DEST=${FILES[$SRC]}
     create_symlink "$SRC" "$DEST"
