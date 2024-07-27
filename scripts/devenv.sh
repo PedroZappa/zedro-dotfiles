@@ -75,7 +75,11 @@ echo "Starting Dev Environment Setup"
 echo "Do you want to clone Zedro's .dotfiles repository? (y/n)"
 read -r response
 if [[ "$response" =~ ^[Yy]$ ]]; then
-	clone_dotfiles
+	if [[ ! -d "$HOME/.dotfiles" ]]; then
+		clone_dotfiles
+	else
+		echo ".dotfiles repository already exists. 󰩑 "
+	fi
 fi
 
 # Install Homebrew
