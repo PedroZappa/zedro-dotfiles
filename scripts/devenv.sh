@@ -4,7 +4,10 @@ set -euo pipefail
 # -u : Treat unset variables as an error and exit;
 # -o pipeline : Set the exit status to the last command in the pipeline that failed.
 
-# Dev Environment Setup
+### Dev Environment Setup
+# Sources:
+# Brew without sudo
+# https://nelsonaloysio.medium.com/installing-homebrew-without-sudo-5e708a929522
 
 # Check bash version for associative array support
 if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
