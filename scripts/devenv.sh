@@ -38,12 +38,16 @@ BREW_PACKAGES=(
     ["nvim"]="Neovim"
     ["rg"]="Ripgrep"
     ["starship"]="Starship"
+    ["atuin"]="Atuin"
+    ["cowsay"]="Cowsay"
+    ["fortune"]="Fortune"
+    ["lolcat"]="Lolcat"
 )
 
 # clone .dotfiles repository
 clone_dotfiles() {
-	cd "$home"
 	if [ ! -d "$HOME/.dotfiles" ]; then
+		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles
 		echo ".dotfiles repository successfully cloned. 󰩑"
 	else
@@ -102,6 +106,9 @@ install_brew_packages() {
         brew install "$package"
         echo "Installed ${BREW_PACKAGES[$package]} 🤙"
     done
+	# List installed Homebrew packages
+	echo "Installed Homebrew packages 🍺:"
+	brew list
 }
 
 echo "Do you want to install Homebrew packages now? (y/n)"
@@ -124,6 +131,23 @@ echo "Do you want to install oh-my-tmux now? (y/n)"
 read -r install_tmux
 if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
+fi
+
+# Installiung Kitty
+install_kitty() {
+	echo "Installing kitty Terminal emulator..."
+	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+	echo "kitty installation complete 😻"
+}
+
+echo "Do you want to install kitty now? (y/n)"
+read -r install_kitty
+if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
+	if [ ! -d "$HOME/.local/kitty.app" ]; then
+		install_kitty
+	else
+		echo "kitty is already installed 😻"
+	fi
 fi
 
 # Create symlinks to .dotfiles
