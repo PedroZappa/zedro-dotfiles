@@ -141,6 +141,8 @@ fi
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
 
+# Glow Markdown Renderer
+alias glow=~/bin/glow/glow
 
 # File system Navigation
 # cd || zoxide
