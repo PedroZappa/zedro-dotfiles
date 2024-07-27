@@ -209,9 +209,11 @@ fi
 # Install oh-my-tmux
 install_oh_my_tmux() {
     echo "Installing oh-my-tmux..."
-    cd "$HOME"
-    git clone https://github.com/gpakosz/.tmux.git
-    ln -s -f .tmux/.tmux.conf
+	if [[ ! -d "$HOME/.tmux" || ! -L "$HOME/.tmux.conf" ]]; then
+		cd "$HOME"
+		git clone https://github.com/gpakosz/.tmux.git
+		ln -s -f .tmux/.tmux.conf
+	fi
     echo "oh-my-tmux installation complete."
 }
 
