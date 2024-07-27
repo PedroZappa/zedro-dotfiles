@@ -53,6 +53,7 @@ clone_dotfiles() {
 		echo ".dotfiles repository successfully cloned. 󰩑 "
 	else
 		echo ".dotfiles repository already exists. 󰩑 "
+	fi
 }
 
 echo "Starting Dev Environment Setup"
