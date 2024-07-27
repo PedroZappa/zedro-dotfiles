@@ -36,6 +36,7 @@ BREW_PACKAGES=(
     ["lnav"]="Lnav"
     ["lazygit"]="Lazygit"
     ["nvim"]="Neovim"
+    ["rg"]="Ripgrep"
     ["starship"]="Starship"
 )
 
