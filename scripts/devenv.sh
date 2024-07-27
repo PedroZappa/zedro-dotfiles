@@ -122,10 +122,19 @@ fi
 # Install zap, zsh's Package Manager
 install_zap() {
 	echo "Installing zap: zsh's Package Manager..."
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 	echo "zap installation complete. 🤙"
 }
-# ...
 
+echo "Do you want to install zap now? (y/n)"
+read -r install_zap
+if [[ "$install_zap" =~ ^[Yy]$ ]]; then
+	if [[ ! -d "$ZAP_DIR" ]]; then
+		install_zap
+	else
+		echo "zap already installed. 🤙"
+	fi
+fi
 # Install oh-my-tmux
 install_oh_my_tmux() {
     echo "Installing oh-my-tmux..."
