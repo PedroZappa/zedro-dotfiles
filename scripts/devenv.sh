@@ -61,8 +61,7 @@ install_brew() {
 		# Source zshrc
 		source $ZSHRC
 		# Add Homebrew to PATH
-        cat << 'EOF' >> ~/.zshrc [ -d "${BREW_PATH}" ] && 
-		export PATH="${BREW_PATH}:$PATH"
+        cat << 'EOF' >> ~/.zshrc [ -d "${BREW_PATH}" ] && export PATH="${BREW_PATH}:$PATH"
 		EOF
 		echo "Homebrew installation complete."
 		# Ask to install Homebrew packages
