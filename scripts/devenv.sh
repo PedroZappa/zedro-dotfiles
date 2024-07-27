@@ -32,8 +32,11 @@ FILES=(
 # Associative array defining Homebrew packages to install
 declare -A BREW_PACKAGES
 BREW_PACKAGES=(
-    ["nvim"]="Neovim"
     ["btop"]="Btop"
+    ["lnav"]="Lnav"
+    ["lazygit"]="Lazygit"
+    ["nvim"]="Neovim"
+    ["starship"]="Starship"
 )
 
 create_symlink() {
