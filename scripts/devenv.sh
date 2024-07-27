@@ -96,9 +96,9 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
 			clone_dotfiles
+		else
+			echo ".dotfiles repository already exists. 󰩑 "
 		fi
-	else
-		echo ".dotfiles repository already exists. 󰩑 "
     fi
 else
     clone_dotfiles
