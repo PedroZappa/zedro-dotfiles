@@ -13,6 +13,20 @@ if [ "${BASH_VERSINFO:-0}" -lt 4 ]; then
     exit 1
 fi
 
+command_exists() {
+    command -v "$1" &> /dev/null
+}
+
+if ! command_exists git; then
+    echo "Error: git is not installed. Please install git to proceed." >&2
+    exit 1
+fi
+
+if ! command_exists curl; then
+    echo "Error: curl is not installed. Please install curl to proceed." >&2
+    exit 1
+fi
+
 # Associative array defining source and target FILES
 declare -A FILES
 FILES=(
