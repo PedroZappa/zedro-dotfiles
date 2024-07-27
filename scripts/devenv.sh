@@ -94,8 +94,7 @@ install_brew() {
 		# Link Binary to prefered PATH
         mkdir -p ${BREW_PATH} &&
         ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-		# Source zshrc
-		# source $ZSHRC
+		export PATH="$PATH:$HOME/.local/bin"
 		# echo "Homebrew installation complete. 🖒 "
 		# Configure Homebrew
 		if [ -n $(command -v brew) ]; then
@@ -124,7 +123,7 @@ fi
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
-        brew install "$package"
+        brew install "$package" --force-bottle
         echo "Installed ${BREW_PACKAGES[$package]} 🤙"
     done
 	# List installed Homebrew packages
