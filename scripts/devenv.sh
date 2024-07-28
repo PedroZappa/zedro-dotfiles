@@ -67,7 +67,7 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
     EXPRESS_INSTALL=true
 fi
 
-echo "${B}${YEL}Installing ${PRP}$USER${D}${YEL}'s dev environment...${D}${GRN}🖳 ${D}"
+echo "${B}${YEL}Installing ${PRP}$USER${YEL}'s dev environment...${D}${GRN}💻${D}"
 echo "${RED}Do you want to express install?${D} ${B}(y/n)${D}"
 read -r response
 if [[ "$response" =~ ^[Yy]$ ]]; then
@@ -233,7 +233,7 @@ install_brew_packages() {
         echo "${YEL}Installed ${GRN}${B}${BREW_PACKAGES[$package]}${D}🍺"
     done
 	# List installed Homebrew packages
-	echo "${YEL}Installed ${PRP}Homebrew ${YEL}packages 🍺:${D}"
+	echo "${YEL}Installed ${GRN}Homebrew ${YEL}packages 🍺:${D}"
 	brew list
 }
 
@@ -259,7 +259,7 @@ install_zap() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to install ${RED}zap, ${D}${PRP}${B}zsh's Package Manager? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}zap, ${PRP}zsh's Package Manager? ${YEL}(y/n)${D}"
 	read -r install_zap
 	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$ZAP_DIR" ]]; then
@@ -267,6 +267,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 		else
 			echo "${YEL}zap already installed. 🤙${D}"
 		fi
+	else
+		echo "${YEL}Skipping ${RED}zap, ${YEL} installation.${D}"
 	fi
 else
 	install_zap
