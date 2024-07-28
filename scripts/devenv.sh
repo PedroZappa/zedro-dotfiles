@@ -202,8 +202,8 @@ uninstall_brew() {
 if [[ "$EXPRESS_INSTALL" == false ]]; then
     echo "${GRN}${B}Homebrew ${PRP}Setup 🍺${D}"
 	echo "${B}Select an option:${D}"
-	echo "(1) Install Homebrew"
-	echo "(2) Uninstall Homebrew"
+	echo "${YEL}(1)${D} Install Homebrew"
+	echo "${YEL}(2)${D} Uninstall Homebrew"
 	read -r option
 
 	case $option in
