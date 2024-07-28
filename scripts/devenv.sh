@@ -139,36 +139,91 @@ else
 fi
 
 # Install Homebrew
+# install_brew() {
+# 	if [[ "$EXPRESS_INSTALL" == false ]]; then
+# 		echo "Homebrew not found. Do you want to install it? (y/n)"
+# 		read -r response
+# 		if [[ ! "$response" =~ ^[Yy]$ ]]; then
+#             echo "Homebrew installation skipped."
+#             return
+#         fi
+# 	fi
+# 	# Get Homebrew Package
+# 	mkdir -p ~/.local/Homebrew &&
+# 	curl -L https://github.com/Homebrew/brew/tarball/master |
+# 	tar xz --strip 1 -C ~/.local/Homebrew
+# 	# Link Binary to prefered PATH
+# 	mkdir -p ${BREW_PATH} &&
+# 	ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
+# 	# Add Homebrew to PATH
+# 	if [ -n $(command -v brew) ]; then
+# 		export PATH="$PATH:$BREW_PATH"
+# 		PREFIX="${HOME}/.local"
+# 		export HOMEBREW_PREFIX="$PREFIX"
+# 		export HOMEBREW_CELLAR="$PREFIX/Cellar"
+# 		export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
+# 		export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
+# 		export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
+# 		export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
+# 		# export HOMEBREW_NO_ANALYTICS=1
+# 		# export HOMEBREW_NO_ENV_HINTS=1
+# 		echo "Homebrew env vars configuration complete. 🖒 "
+# 	fi
+# }
 install_brew() {
-	if [[ "$EXPRESS_INSTALL" == false ]]; then
-		echo "Homebrew not found. Do you want to install it? (y/n)"
-		read -r response
-		if [[ ! "$response" =~ ^[Yy]$ ]]; then
+    if [[ "$EXPRESS_INSTALL" == false ]]; then
+        echo "Homebrew not found. Do you want to install it? (y/n)"
+        read -r response
+        if [[ ! "$response" =~ ^[Yy]$ ]]; then
             echo "Homebrew installation skipped."
             return
         fi
-	fi
-	# Get Homebrew Package
-	mkdir -p ~/.local/Homebrew &&
-	curl -L https://github.com/Homebrew/brew/tarball/master |
-	tar xz --strip 1 -C ~/.local/Homebrew
-	# Link Binary to prefered PATH
-	mkdir -p ${BREW_PATH} &&
-	ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-	# Add Homebrew to PATH
-	if [ -n $(command -v brew) ]; then
-		export PATH="$PATH:$BREW_PATH"
-		PREFIX="${HOME}/.local"
-		export HOMEBREW_PREFIX="$PREFIX"
-		export HOMEBREW_CELLAR="$PREFIX/Cellar"
-		export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
-		export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
-		export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
-		export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
-		# export HOMEBREW_NO_ANALYTICS=1
-		# export HOMEBREW_NO_ENV_HINTS=1
-		echo "Homebrew env vars configuration complete. 🖒 "
-	fi
+        
+        # Prompt user to choose installation method
+        echo "Choose Homebrew installation method:"
+        echo "(1) Custom Installation"
+        echo "(2) Official Installation Script"
+        read -r install_method
+        
+        case $install_method in
+            1)
+                # Custom Installation Code
+                mkdir -p ~/.local/Homebrew &&
+                curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.local/Homebrew
+                
+                # Link Binary to preferred PATH
+                mkdir -p ${BREW_PATH} &&
+                ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
+                
+                # Add Homebrew to PATH
+                if [ -n $(command -v brew) ]; then
+                    export PATH="$PATH:$BREW_PATH"
+                    PREFIX="${HOME}/.local"
+                    export HOMEBREW_PREFIX="$PREFIX"
+                    export HOMEBREW_CELLAR="$PREFIX/Cellar"
+                    export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
+                    export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
+                    export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
+                    export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
+                    # Uncomment these lines if you want to disable analytics and environment hints
+                    # export HOMEBREW_NO_ANALYTICS=1
+                    # export HOMEBREW_NO_ENV_HINTS=1
+                    echo "Homebrew env vars configuration complete. 🖒 "
+                fi
+                ;;
+            2)
+                # Official Installation Script
+                /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+                echo "Homebrew installed using official script."
+                ;;
+            *)
+                echo "Invalid option selected. Exiting..."
+                return 1
+                ;;
+        esac
+    else
+        echo "Express install mode enabled. Skipping Homebrew installation prompt."
+    fi
 }
 
 if ! command -v brew &> /dev/null; then
