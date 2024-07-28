@@ -153,7 +153,7 @@ install_brew() {
         fi
         # Prompt user to choose installation method
         echo "Choose Homebrew installation method:"
-        echo "(1) Custom Installation"
+        echo "(1) Custom Installation @${BREW_PATH}"
         echo "(2) Official Installation Script"
         read -r install_method
         case $install_method in
