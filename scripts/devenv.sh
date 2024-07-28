@@ -68,7 +68,7 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
 fi
 
 echo "${B}${YEL}Installing ${PRP}$USER${YEL}'s dev environment...${D}${GRN}💻${D}"
-echo "${RED}Do you want to express install?${D} ${B}(y/n)${D}"
+echo "${B}${RED}Do you want to express install?${D} ${B}(y/n)${D}"
 read -r response
 if [[ "$response" =~ ^[Yy]$ ]]; then
 	EXPRESS_INSTALL=true
@@ -120,7 +120,7 @@ clone_dotfiles() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${PRP}Do you want to clone Zedro's .dotfiles repository? ${YEL}(y/n)${D}"
+    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
@@ -237,7 +237,7 @@ install_brew_packages() {
 	brew list
 }
 
-echo "${PRP}${B}Do you want to install Homebrew packages? 🍻 ${YEL}(y/n)${D}"
+echo "${PRP}${B}Do you want to install ${GRN}Homebrew${PRP} packages? 🍻 ${YEL}(y/n)${D}"
 if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_packages
 	if [[ "$install_packages" =~ ^[Yy]$ ]]; then
