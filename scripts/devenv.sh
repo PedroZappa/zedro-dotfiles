@@ -421,4 +421,4 @@ else
 	done
 fi
 
-echo "${B}${GRN}󰄬 ${PRP}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
+echo "${B}${GRN}󰄬 ${PRP}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}💻${D}"
