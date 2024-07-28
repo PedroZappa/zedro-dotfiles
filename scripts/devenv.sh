@@ -42,9 +42,6 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
     EXPRESS_INSTALL=true
 fi
 
-BREW_PATH="$HOME/.local/bin"
-ZAP_DIR="$HOME/.local/share/zap"
-
 # Associative array defining source and target FILES
 declare -A FILES
 FILES=(
@@ -104,6 +101,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
 			clone_dotfiles
+		else
+			echo ".dotfiles skipped."
 		fi
     fi
 else
@@ -151,37 +150,8 @@ else
 fi
 
 # Install Homebrew
-# install_brew() {
-# 	if [[ "$EXPRESS_INSTALL" == false ]]; then
-# 		echo "Homebrew not found. Do you want to install it? (y/n)"
-# 		read -r response
-# 		if [[ ! "$response" =~ ^[Yy]$ ]]; then
-#             echo "Homebrew installation skipped."
-#             return
-#         fi
-# 	fi
-# 	# Get Homebrew Package
-# 	mkdir -p ~/.local/Homebrew &&
-# 	curl -L https://github.com/Homebrew/brew/tarball/master |
-# 	tar xz --strip 1 -C ~/.local/Homebrew
-# 	# Link Binary to prefered PATH
-# 	mkdir -p ${BREW_PATH} &&
-# 	ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-# 	# Add Homebrew to PATH
-# 	if [ -n $(command -v brew) ]; then
-# 		export PATH="$PATH:$BREW_PATH"
-# 		PREFIX="${HOME}/.local"
-# 		export HOMEBREW_PREFIX="$PREFIX"
-# 		export HOMEBREW_CELLAR="$PREFIX/Cellar"
-# 		export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
-# 		export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
-# 		export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
-# 		export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
-# 		# export HOMEBREW_NO_ANALYTICS=1
-# 		# export HOMEBREW_NO_ENV_HINTS=1
-# 		echo "Homebrew env vars configuration complete. 🖒 "
-# 	fi
-# }
+BREW_PATH="$HOME/.local/bin"
+
 install_brew() {
     if [[ "$EXPRESS_INSTALL" == false ]]; then
         echo "Homebrew not found. Do you want to install it? (y/n)"
@@ -267,6 +237,8 @@ else
 fi
 
 # Install zap, zsh's Package Manager
+ZAP_DIR="$HOME/.local/share/zap"
+
 install_zap() {
 	echo "Installing zap: zsh's Package Manager..."
 	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
