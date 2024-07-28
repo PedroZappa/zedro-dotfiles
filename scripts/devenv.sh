@@ -108,6 +108,7 @@ BREW_PACKAGES=(
     ["fortune"]="Fortune"
     ["lolcat"]="Lolcat"
     ["eza"]="Eza"
+    ["zoxide"]="Zoxide"
 )
 
 clone_dotfiles() {
