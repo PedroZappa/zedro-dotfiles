@@ -75,17 +75,6 @@ BREW_PACKAGES=(
     ["eza"]="Eza"
 )
 
-# # clone .dotfiles repository
-# clone_dotfiles() {
-# 	if [[ ! -d "$HOME/.dotfiles" ]]; then
-# 		cd "$HOME"
-# 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
-# 		echo ".dotfiles repository successfully cloned. 󰩑 "
-# 	else
-# 		echo ".dotfiles repository already exists. 󰩑 "
-# 	fi
-# }
-
 clone_dotfiles() {
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
@@ -162,38 +151,19 @@ install_brew() {
             echo "Homebrew installation skipped."
             return
         fi
-        
         # Prompt user to choose installation method
         echo "Choose Homebrew installation method:"
         echo "(1) Custom Installation"
         echo "(2) Official Installation Script"
         read -r install_method
-        
         case $install_method in
             1)
-                # Custom Installation Code
+                # Custom Installation
                 mkdir -p ~/.local/Homebrew &&
                 curl -L https://github.com/Homebrew/brew/tarball/master | tar xz --strip 1 -C ~/.local/Homebrew
-                
                 # Link Binary to preferred PATH
                 mkdir -p ${BREW_PATH} &&
                 ln -s ~/.local/Homebrew/bin/brew ${BREW_PATH}
-                
-                # Add Homebrew to PATH
-                if [ -n $(command -v brew) ]; then
-                    export PATH="$PATH:$BREW_PATH"
-                    PREFIX="${HOME}/.local"
-                    export HOMEBREW_PREFIX="$PREFIX"
-                    export HOMEBREW_CELLAR="$PREFIX/Cellar"
-                    export HOMEBREW_REPOSITORY="$PREFIX/Homebrew"
-                    export PATH="$PREFIX/bin:$PREFIX/sbin${PATH+:$PATH}"
-                    export MANPATH="$PREFIX/share/man${MANPATH+:$MANPATH}:"
-                    export INFOPATH="$PREFIX/share/info:${INFOPATH:-}"
-                    # Uncomment these lines if you want to disable analytics and environment hints
-                    # export HOMEBREW_NO_ANALYTICS=1
-                    # export HOMEBREW_NO_ENV_HINTS=1
-                    echo "Homebrew env vars configuration complete. 🖒 "
-                fi
                 ;;
             2)
                 # Official Installation Script
@@ -210,11 +180,49 @@ install_brew() {
     fi
 }
 
-if ! command -v brew &> /dev/null; then
-    install_brew
-else
-    echo "Homebrew is already installed. 🖒 "
+uninstall_brew() {
+    if [[ -d "$HOME/.local/Homebrew" ]]; then
+        echo "Custom Homebrew installation found. Uninstalling..."
+        rm -rf "$HOME/.local/Homebrew"
+        rm -f "${BREW_PATH}/brew"
+        echo "Custom Homebrew uninstalled."
+    elif command -v brew &> /dev/null; then
+        echo "Homebrew installed using official script found. Uninstalling..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+        echo "Homebrew uninstalled."
+    else
+        echo "No Homebrew installation found."
+    fi
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Choose an option:"
+	echo "(1) Install Homebrew"
+	echo "(2) Uninstall Homebrew"
+	read -r choice
+
+	case $choice in
+		1)
+			if ! command -v brew &> /dev/null; then
+				install_brew
+			else
+				echo "Homebrew is already installed. 🖒 "
+			fi
+			;;
+		2)
+			uninstall_brew
+			;;
+		*)
+			echo "Invalid option selected. Exiting..."
+			;;
+	esac
 fi
+
+# if ! command -v brew &> /dev/null; then
+#     install_brew
+# else
+#     echo "Homebrew is already installed. 🖒 "
+# fi
 
 # Ask to install Homebrew packages
 install_brew_packages() {
