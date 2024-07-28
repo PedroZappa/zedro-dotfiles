@@ -156,8 +156,8 @@ install_brew() {
         fi
         # Prompt user to choose installation method
         echo "${B}Choose Homebrew installation method:${D}"
-        echo "(1) Custom Installation @ ${BREW_PATH}"
-		echo "(2) Official Installation Script (requires sudo)"
+        echo "${YEL}(1)${D} Custom Installation @ ${BREW_PATH}"
+		echo "${YEL}(2)${D} Official Installation Script (requires sudo)"
         read -r install_method
         case $install_method in
             1)
