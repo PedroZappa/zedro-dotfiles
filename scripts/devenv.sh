@@ -78,14 +78,26 @@ BREW_PACKAGES=(
     ["eza"]="Eza"
 )
 
-# clone .dotfiles repository
+# # clone .dotfiles repository
+# clone_dotfiles() {
+# 	if [[ ! -d "$HOME/.dotfiles" ]]; then
+# 		cd "$HOME"
+# 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
+# 		echo ".dotfiles repository successfully cloned. 󰩑 "
+# 	else
+# 		echo ".dotfiles repository already exists. 󰩑 "
+# 	fi
+# }
+
 clone_dotfiles() {
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
 		echo ".dotfiles repository successfully cloned. 󰩑 "
 	else
-		echo ".dotfiles repository already exists. 󰩑 "
+		cd "$HOME/.dotfiles"
+		git pull origin master
+		echo ".dotfiles repository up to date. 󰩑 "
 	fi
 }
 
