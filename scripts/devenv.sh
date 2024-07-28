@@ -94,10 +94,6 @@ clone_dotfiles() {
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
 		echo ".dotfiles repository successfully cloned. 󰩑 "
-	else
-		cd "$HOME/.dotfiles"
-		git pull origin master
-		echo ".dotfiles repository up to date. 󰩑 "
 	fi
 }
 
@@ -109,7 +105,9 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
 			clone_dotfiles
 		else
-			echo ".dotfiles repository already exists. 󰩑 "
+			cd "$HOME/.dotfiles"
+			git pull origin master
+			echo ".dotfiles repository up to date. 󰩑 "
 		fi
     fi
 else
