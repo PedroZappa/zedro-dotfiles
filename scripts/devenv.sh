@@ -221,12 +221,6 @@ else
 	install_brew
 fi
 
-# if ! command -v brew &> /dev/null; then
-#     install_brew
-# else
-#     echo "Homebrew is already installed. 🖒 "
-# fi
-
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
