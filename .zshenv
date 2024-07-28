@@ -31,6 +31,8 @@ if [[ $USER == "passunca" ]]; then
 	export PATH="$HOME/sgoinfre/passunca/homebrew/sbin:$PATH"
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [[ $USER == "Zedro" ]]; then
+	export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # colored GCC warnings and errors
