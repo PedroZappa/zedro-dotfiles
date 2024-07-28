@@ -153,8 +153,8 @@ install_brew() {
         fi
         # Prompt user to choose installation method
         echo "Choose Homebrew installation method:"
-        echo "(1) Custom Installation @${BREW_PATH}"
-        echo "(2) Official Installation Script"
+        echo "(1) Custom Installation @ ${BREW_PATH}"
+		echo "(2) Official Installation Script (requires sudo)"
         read -r install_method
         case $install_method in
             1)
@@ -168,6 +168,8 @@ install_brew() {
             2)
                 # Official Installation Script
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+				sudo apt-get install build-essential
+				brew install gcc
                 echo "Homebrew installed using official script."
                 ;;
             *)
