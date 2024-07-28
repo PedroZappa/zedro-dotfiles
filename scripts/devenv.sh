@@ -104,14 +104,16 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
 			clone_dotfiles
-		else
-			cd "$HOME/.dotfiles"
-			git pull origin master
-			echo ".dotfiles repository up to date. 󰩑 "
 		fi
     fi
 else
-    clone_dotfiles
+	if [ ! -d "$HOME/.dotfiles" ]; then
+		clone_dotfiles
+	else
+		cd "$HOME/.dotfiles"
+		git pull origin master
+		echo ".dotfiles repository up to date. 󰩑 "
+	fi
 fi
 
 # Get FiraCode font
