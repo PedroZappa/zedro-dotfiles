@@ -216,6 +216,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 			echo "Invalid option selected. Exiting..."
 			;;
 	esac
+else
+	install_brew
 fi
 
 # if ! command -v brew &> /dev/null; then
