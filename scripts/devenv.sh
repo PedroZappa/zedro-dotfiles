@@ -120,7 +120,7 @@ clone_dotfiles() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${BLU}Do you want to clone Zedro's .dotfiles repository? ${YEL}(y/n)${D}"
+    echo "${B}${PRP}Do you want to clone Zedro's .dotfiles repository? ${YEL}(y/n)${D}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
@@ -148,7 +148,7 @@ BREW_PATH="$HOME/.local/bin"
 
 install_brew() {
     if [[ "$EXPRESS_INSTALL" == false ]]; then
-        echo "${RED}Homebrew not found. ${BLU}Do you want to install it? ${YEL}(y/n)${D}"
+        echo "${RED}Homebrew not found. ${PRP}Do you want to install it? ${YEL}(y/n)${D}"
         read -r response
         if [[ ! "$response" =~ ^[Yy]$ ]]; then
             echo "Homebrew installation skipped."
@@ -200,7 +200,7 @@ uninstall_brew() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${GRN}${B}Homebrew ${BLU}Setup 🍺${D}"
+    echo "${GRN}${B}Homebrew ${PRP}Setup 🍺${D}"
 	echo "${B}Select an option:${D}"
 	echo "(1) Install Homebrew"
 	echo "(2) Uninstall Homebrew"
@@ -237,7 +237,7 @@ install_brew_packages() {
 	brew list
 }
 
-echo "${BLU}${B}Do you want to install Homebrew packages? 🍻 ${YEL}(y/n)${D}"
+echo "${PRP}${B}Do you want to install Homebrew packages? 🍻 ${YEL}(y/n)${D}"
 if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_packages
 	if [[ "$install_packages" =~ ^[Yy]$ ]]; then
@@ -259,7 +259,7 @@ install_zap() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${BLU}${B}Do you want to install ${RED}zap, ${D}${BLU}${B}zsh's Package Manager? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}zap, ${D}${PRP}${B}zsh's Package Manager? ${YEL}(y/n)${D}"
 	read -r install_zap
 	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$ZAP_DIR" ]]; then
@@ -289,7 +289,7 @@ install_vim_plug() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${BLU}${B}Do you want to install ${RED}vim-plug ${BLU}vim's package manager? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}vim-plug ${PRP}vim's package manager? ${YEL}(y/n)${D}"
 	read -r install_vim_plug
 	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
 		install_vim_plug
@@ -311,7 +311,7 @@ install_oh_my_tmux() {
     echo "${YEL}${B}oh-my-tmux installation complete.${PRP} 󰩑 ${D}"
 }
 
-echo "${BLU}${B}Do you want to install ${RED}oh-my-tmux${BLU} config? ${YEL}(y/n)${D}"
+echo "${PRP}${B}Do you want to install ${RED}oh-my-tmux${PRP} config? ${YEL}(y/n)${D}"
 read -r install_tmux
 if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
@@ -328,7 +328,7 @@ install_kitty() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${BLU}${B}Do you want to install ${RED}kitty ${BLU}terminal emulator}? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}kitty ${PRP}terminal emulator}? ${YEL}(y/n)${D}"
 	read -r install_kitty
 	if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$HOME/.local/kitty.app" ]]; then
@@ -366,7 +366,7 @@ get_firacode() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${BLU}${B}Do you want to install ${RED}FiraCode ${BLU}font? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}FiraCode ${PRP}font? ${YEL}(y/n)${D}"
 	read -r install_firacode
 	if [[ "$install_firacode" =~ ^[Yy]$ ]]; then
 		get_firacode
@@ -394,7 +394,7 @@ create_symlink() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${BLU}${B}Do you want to create symlinks to ${RED}.dotfiles${BLU} repository? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to create symlinks to ${RED}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
 	read -r create_symlinks
 	if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
 		for SRC in "${!FILES[@]}"; do
@@ -409,4 +409,4 @@ else
 	done
 fi
 
-echo "${GRN}󰄬 ${BLU}${B}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
+echo "${GRN}󰄬 ${PRP}${B}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
