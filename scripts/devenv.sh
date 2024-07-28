@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+# set -euo pipefail
 # -e : Exit immediately if a command exits with a non-zero status;
 # -u : Treat unset variables as an error and exit;
 # -o pipeline : Set the exit status to the last command in the pipeline that failed.
@@ -18,6 +18,7 @@ MAG=$(tput setaf 5)
 CYA=$(tput setaf 6)
 WHI=$(tput setaf 7)
 GRE=$(tput setaf 8)
+PRP=$(tput setaf 99)
 BRED=$(tput setaf 9)
 BGRN=$(tput setaf 10)
 BYEL=$(tput setaf 11)
@@ -27,7 +28,6 @@ BCYA=$(tput setaf 14)
 BWHI=$(tput setaf 15)
 D=$(tput sgr0)
 BEL=$(tput bel)
-CLR=$(tput el 1)
 
 ### Dev Environment Setup
 # Sources:
@@ -67,12 +67,14 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
     EXPRESS_INSTALL=true
 fi
 
-echo "${B}Installing dev environment...${D}${GRN}🖳 ${D}"
-echo "Do you want to express install? (y/n)"
+echo "${B}${YEL}Installing ${PRP}$USER${D}${YEL}'s dev environment...${D}${GRN}🖳 ${D}"
+echo "${RED}Do you want to express install?${D} ${B}(y/n)${D}"
 read -r response
 if [[ "$response" =~ ^[Yy]$ ]]; then
 	EXPRESS_INSTALL=true
-	echo "Express installing... 🚀"
+	echo "${B}${YEL}Express installing...${D} 🚀"
+else
+	echo "${YEL}Express installation skipped. ${D}"
 fi
 
 # Associative array defining source and target FILES
@@ -112,12 +114,12 @@ clone_dotfiles() {
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
-		echo ".dotfiles repository successfully cloned. 󰩑 "
+		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
 	fi
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "Do you want to clone Zedro's .dotfiles repository? (y/n)"
+    echo "${B}${BLU}Do you want to clone Zedro's .dotfiles repository? ${YEL}(y/n)${D}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
@@ -125,8 +127,10 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 		else
 			cd "$HOME/.dotfiles"
 			git pull
-			echo ".dotfiles repository up to date. 󰩑 "
+			echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
 		fi
+	else
+		echo "${YEL}.dotfiles cloning skipped.${D}"
     fi
 else
 	if [ ! -d "$HOME/.dotfiles" ]; then
@@ -134,7 +138,7 @@ else
 	else
 		cd "$HOME/.dotfiles"
 		git pull
-		echo ".dotfiles repository up to date. 󰩑 "
+		echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
 	fi
 fi
 
@@ -143,14 +147,14 @@ BREW_PATH="$HOME/.local/bin"
 
 install_brew() {
     if [[ "$EXPRESS_INSTALL" == false ]]; then
-        echo "Homebrew not found. Do you want to install it? (y/n)"
+        echo "${RED}Homebrew not found. ${BLU}Do you want to install it? ${YEL}(y/n)${D}"
         read -r response
         if [[ ! "$response" =~ ^[Yy]$ ]]; then
             echo "Homebrew installation skipped."
             return
         fi
         # Prompt user to choose installation method
-        echo "Choose Homebrew installation method:"
+        echo "${B}Choose Homebrew installation method:${D}"
         echo "(1) Custom Installation @ ${BREW_PATH}"
 		echo "(2) Official Installation Script (requires sudo)"
         read -r install_method
@@ -168,7 +172,7 @@ install_brew() {
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 				sudo apt-get install build-essential
 				brew install gcc
-                echo "Homebrew installed using official script."
+                echo "${YEL}Homebrew installed using ${PRP}official script.${D}"
                 ;;
             *)
                 echo "Invalid option selected. Continuing..."
@@ -176,43 +180,44 @@ install_brew() {
                 ;;
         esac
     else
-        echo "Express install mode enabled. Skipping Homebrew installation prompt."
+        echo "${YEL}Express install mode enabled. Skipping Homebrew installation prompt.${D}"
     fi
 }
 
 uninstall_brew() {
 	if [[ -f "${BREW_PATH}/brew" ]]; then
-        echo "Custom Homebrew installation found. Uninstalling..."
+        echo "${YEL}Custom Homebrew installation found. ${PRP}Uninstalling...${D}"
         rm -f "${BREW_PATH}/brew"
-        echo "Custom Homebrew uninstalled."
+        echo "${YEL}Custom Homebrew uninstalled.${D}"
     elif command -v brew &> /dev/null; then
-        echo "Homebrew installed using official script found. Uninstalling..."
+        echo "${YEL}Homebrew installed using official script found. ${PRP}Uninstalling...${D}"
         rm -f "/home/linuxbrew/.linuxbrew/bin/brew"
-        echo "Homebrew uninstalled."
+        echo "${YEL}Homebrew uninstalled.${D}"
     else
-        echo "No Homebrew installation found."
+        echo "${YEL}No Homebrew installation found. ${PRP}Continuing...${D}"
     fi
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Choose an option:"
+    echo "${GRN}${B}Homebrew ${BLU}Setup 🍺${D}"
+	echo "${B}Select an option:${D}"
 	echo "(1) Install Homebrew"
 	echo "(2) Uninstall Homebrew"
-	read -r choice
+	read -r option
 
-	case $choice in
+	case $option in
 		1)
 			if ! command -v brew &> /dev/null; then
 				install_brew
 			else
-				echo "Homebrew is already installed. 🖒 "
+				echo "${GRN}Homebrew ${YEL}is already installed. ${PRP}🖒 ${D}"
 			fi
 			;;
 		2)
 			uninstall_brew
 			;;
 		*)
-			echo "Invalid option selected. Exiting..."
+			echo "${YEL}Invalid option selected. ${B}Continuing...${D}"
 			;;
 	esac
 else
@@ -222,20 +227,22 @@ fi
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
-		echo "Installing ${BREW_PACKAGES[$package]}..."
+		echo "${YEL}Installing ${GRN}${B}${BREW_PACKAGES[$package]}${D}${YEL}...${D}"
         brew install "$package" --force-bottle
-        echo "Installed ${BREW_PACKAGES[$package]} 🍺"
+        echo "${YEL}Installed ${GRN}${B}${BREW_PACKAGES[$package]}${D}🍺"
     done
 	# List installed Homebrew packages
-	echo "Installed Homebrew packages 🍺:"
+	echo "${YEL}Installed ${PRP}Homebrew ${YEL}packages 🍺:${D}"
 	brew list
 }
 
-echo "Do you want to install Homebrew packages? 🍻 (y/n)"
+echo "${BLU}${B}Do you want to install Homebrew packages? 🍻 ${YEL}(y/n)${D}"
 if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_packages
 	if [[ "$install_packages" =~ ^[Yy]$ ]]; then
 		install_brew_packages
+	else
+		echo "${YEL}Skipping ${GRN}${B}Homebrew ${D}${YEL}packages installation.${D}"
 	fi
 else
 	install_brew_packages
@@ -245,19 +252,19 @@ fi
 ZAP_DIR="$HOME/.local/share/zap"
 
 install_zap() {
-	echo "Installing zap: zsh's Package Manager..."
+	echo "${YEL}Installing ${B}${RED}zap${D}: ${YEL}zsh's Package Manager...${D}"
 	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 	echo "zap installation complete. 🤙"
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to install zap now? (y/n)"
+	echo "${BLU}${B}Do you want to install ${RED}zap, ${D}${BLU}${B}zsh's Package Manager? ${YEL}(y/n)${D}"
 	read -r install_zap
 	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$ZAP_DIR" ]]; then
 			install_zap
 		else
-			echo "zap already installed. 🤙"
+			echo "${YEL}zap already installed. 🤙${D}"
 		fi
 	fi
 else
@@ -266,7 +273,7 @@ fi
 
 # Install vim-plug
 install_vim_plug() {
-	echo "Installing vim-plug..."
+	echo "${YEL}Installing ${PRP}vim-plug${YEL}...${D}"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -277,11 +284,11 @@ install_vim_plug() {
 	cd ~/.vim/colors
 	curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
 	curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
-	echo "vim-plug installation complete."
+	echo "${PRP}vim-plug ${YEL}installation complete. 🤙${D}"
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to install vim-plug now? (y/n)"
+	echo "${BLU}${B}Do you want to install ${RED}vim-plug ${BLU}vim's package manager? ${YEL}(y/n)${D}"
 	read -r install_vim_plug
 	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
 		install_vim_plug
@@ -292,18 +299,18 @@ fi
 
 # Install oh-my-tmux
 install_oh_my_tmux() {
-    echo "Installing oh-my-tmux..."
+    echo "${YEL}Installing oh-my-tmux...${D}"
 	if [[ ! -d "$HOME/.tmux" || ! -L "$HOME/.tmux.conf" ]]; then
 		cd "$HOME"
 		git clone https://github.com/gpakosz/.tmux.git
 		ln -s -f .tmux/.tmux.conf
 	else
-		echo "oh-my-tmux already installed. 󰩑 "
+		echo "${YEL}oh-my-tmux already installed. ${PRP} 󰩑 ${D}"
 	fi
-    echo "oh-my-tmux installation complete."
+    echo "${YEL}${B}oh-my-tmux installation complete.${PRP} 󰩑 ${D}"
 }
 
-echo "Do you want to install oh-my-tmux now? (y/n)"
+echo "${BLU}${B}Do you want to install ${RED}oh-my-tmux${BLU} config? ${YEL}(y/n)${D}"
 read -r install_tmux
 if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
@@ -316,17 +323,17 @@ install_kitty() {
 	ln -s ~/.local/kitty.app/bin/kitty /usr/local/bin/
 	ln -s ~/.dotfiles/kitty/dracula.conf ~/.config/kitty/dracula.conf
 	ln -s ~/.dotfiles/kitty/diff.conf ~/.config/kitty/diff.conf
-	echo "kitty installation complete 😻"
+	echo "${YEL}${B}kitty installation complete 😻${D}"
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to install kitty now? (y/n)"
+	echo "${BLU}${B}Do you want to install ${RED}kitty ${BLU}terminal emulator}? ${YEL}(y/n)${D}"
 	read -r install_kitty
 	if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$HOME/.local/kitty.app" ]]; then
 			install_kitty
 		else
-			echo "kitty is already installed 😻"
+			echo "${YEL}kitty is already installed 😻${D}"
 		fi
 	fi
 else
@@ -344,21 +351,21 @@ get_firacode() {
 	if [ ! -d "$FONT_DIR" ]; then
 		mkdir -p "$FONT_DIR"
 	fi
-	echo "Downloading $FONT_NAME Nerd Font..."
+	echo "${YEL}Downloading $FONT_NAME Nerd Font...${D}"
 	wget -qO "$TEMP_DIR/$FONT_NAME.zip" "$FONT_URL"
-	echo "Unzipping the font..."
+	echo "${YEL}Unzipping the font...${D}"
 	unzip -q "$TEMP_DIR/$FONT_NAME.zip" -d "$TEMP_DIR"
-	echo "Installing the font..."
+	echo "${YEL}Installing the font...${D}"
 	mv "$TEMP_DIR"/*.ttf "$FONT_DIR/"
-	echo "Updating the font cache..."
+	echo "${YEL}Updating the font cache...${D}"
 	fc-cache -fV
 	# Clean up
 	rm -rf "$TEMP_DIR"
-	echo "$FONT_NAME Nerd Font installed successfully!"
+	echo "${PRP}$FONT_NAME ${YEL}Nerd Font installed successfully! 🤙${D}"
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to install FiraCode font now? (y/n)"
+	echo "${BLU}${B}Do you want to install ${RED}FiraCode ${BLU}font? ${YEL}(y/n)${D}"
 	read -r install_firacode
 	if [[ "$install_firacode" =~ ^[Yy]$ ]]; then
 		get_firacode
@@ -376,17 +383,17 @@ create_symlink() {
     if [ -e "$DEST" ]; then
         # If it exists, move it to a backup
         mv "$DEST" "${DEST}_bak"
-        echo "Moved existing $DEST to ${DEST}_bak"
+        echo "${YEL}Moved existing ${PRP}$DEST ${YEL}to ${PRP}${DEST}_bak${D}"
     fi
     # Create the parent directory if it doesn't exist
     mkdir -p "$(dirname "$DEST")"
     # Create the symlink
     ln -s "$SRC" "$DEST"
-    echo "Created symlink from $SRC to $DEST" 🖒
+    echo "${YEL}Created symlink from ${PRP}$SRC ${YEL}to ${PRP}$DEST${D}"
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to create symlinks to .dotfiles now? (y/n)"
+	echo "${BLU}${B}Do you want to create symlinks to ${RED}.dotfiles${BLU} repository? ${YEL}(y/n)${D}"
 	read -r create_symlinks
 	if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
 		for SRC in "${!FILES[@]}"; do
@@ -401,4 +408,4 @@ else
 	done
 fi
 
-echo "${USER} Dev Environment Setup complete."
+echo "${GRN}󰄬 ${BLU}${B}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
