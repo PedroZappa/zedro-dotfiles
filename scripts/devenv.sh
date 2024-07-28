@@ -106,40 +106,6 @@ else
 	fi
 fi
 
-# Get FiraCode font
-FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
-FONT_DIR="$HOME/.local/share/fonts"
-TEMP_DIR="$(mktemp -d)"
-FONT_NAME="FiraCode"
-
-get_firacode() {
-	# Create temporary directory
-	if [ ! -d "$FONT_DIR" ]; then
-		mkdir -p "$FONT_DIR"
-	fi
-	echo "Downloading $FONT_NAME Nerd Font..."
-	wget -qO "$TEMP_DIR/$FONT_NAME.zip" "$FONT_URL"
-	echo "Unzipping the font..."
-	unzip -q "$TEMP_DIR/$FONT_NAME.zip" -d "$TEMP_DIR"
-	echo "Installing the font..."
-	mv "$TEMP_DIR"/*.ttf "$FONT_DIR/"
-	echo "Updating the font cache..."
-	fc-cache -fV
-	# Clean up
-	rm -rf "$TEMP_DIR"
-	echo "$FONT_NAME Nerd Font installed successfully!"
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "Do you want to install FiraCode font now? (y/n)"
-	read -r install_firacode
-	if [[ "$install_firacode" =~ ^[Yy]$ ]]; then
-		get_firacode
-	fi
-else
-	get_firacode
-fi
-
 # Install Homebrew
 BREW_PATH="$HOME/.local/bin"
 
@@ -333,6 +299,40 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	fi
 else
 	install_kitty
+fi
+
+# Get FiraCode font
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
+FONT_DIR="$HOME/.local/share/fonts"
+TEMP_DIR="$(mktemp -d)"
+FONT_NAME="FiraCode"
+
+get_firacode() {
+	# Create temporary directory
+	if [ ! -d "$FONT_DIR" ]; then
+		mkdir -p "$FONT_DIR"
+	fi
+	echo "Downloading $FONT_NAME Nerd Font..."
+	wget -qO "$TEMP_DIR/$FONT_NAME.zip" "$FONT_URL"
+	echo "Unzipping the font..."
+	unzip -q "$TEMP_DIR/$FONT_NAME.zip" -d "$TEMP_DIR"
+	echo "Installing the font..."
+	mv "$TEMP_DIR"/*.ttf "$FONT_DIR/"
+	echo "Updating the font cache..."
+	fc-cache -fV
+	# Clean up
+	rm -rf "$TEMP_DIR"
+	echo "$FONT_NAME Nerd Font installed successfully!"
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "Do you want to install FiraCode font now? (y/n)"
+	read -r install_firacode
+	if [[ "$install_firacode" =~ ^[Yy]$ ]]; then
+		get_firacode
+	fi
+else
+	get_firacode
 fi
 
 # Create symlinks to .dotfiles
