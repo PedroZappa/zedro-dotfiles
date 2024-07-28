@@ -197,6 +197,7 @@ uninstall_brew() {
     else
         echo "${YEL}No Homebrew installation found. ${PRP}Continuing...${D}"
     fi
+	install_brew
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
