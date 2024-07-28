@@ -198,16 +198,16 @@ fi
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
-		echo "Installing ${BREW_PACKAGES[$package]}... 🮲"
+		echo "Installing ${BREW_PACKAGES[$package]}..."
         brew install "$package" --force-bottle
-        echo "Installed ${BREW_PACKAGES[$package]} 🤙"
+        echo "Installed ${BREW_PACKAGES[$package]} 🍺"
     done
 	# List installed Homebrew packages
 	echo "Installed Homebrew packages 🍺:"
 	brew list
 }
 
-echo "Do you want to install Homebrew packages now? (y/n)"
+echo "Do you want to install Homebrew packages? 🍻 (y/n)"
 if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_packages
 	if [[ "$install_packages" =~ ^[Yy]$ ]]; then
