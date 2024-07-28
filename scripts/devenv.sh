@@ -42,6 +42,13 @@ if [[ $# -gt 0 && "$1" == "--express" ]]; then
     EXPRESS_INSTALL=true
 fi
 
+echo "Installing dev environment... 🚀"
+echo "Do you want to express install? (y/n)"
+read -r response
+if [[ "$response" =~ ^[Yy]$ ]]; then
+	EXPRESS_INSTALL=true
+fi
+
 # Associative array defining source and target FILES
 declare -A FILES
 FILES=(
