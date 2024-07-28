@@ -205,6 +205,7 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	echo "${YEL}Checking if Homebrew is installed...${D}"
 	if ! -n $(which brew); then
 		echo "$(which brew)"
+	fi
 	echo "${B}Select an option:${D}"
 	echo "${YEL}(1)${D} Install Homebrew"
 	echo "${YEL}(2)${D} Uninstall Homebrew"
