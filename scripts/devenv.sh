@@ -268,7 +268,7 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 			echo "${YEL}zap already installed. 🤙${D}"
 		fi
 	else
-		echo "${YEL}Skipping ${RED}zap, ${YEL} installation.${D}"
+		echo "${YEL}Skipping ${RED}zap, ${YEL}installation.${D}"
 	fi
 else
 	install_zap
@@ -295,6 +295,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_vim_plug
 	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
 		install_vim_plug
+	else
+		echo "${YEL}Skipping ${RED}vim-plug ${YEL}installation.${D}"
 	fi
 else
 	install_vim_plug
@@ -317,6 +319,8 @@ echo "${PRP}${B}Do you want to install ${RED}oh-my-tmux${PRP} config? ${YEL}(y/n
 read -r install_tmux
 if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
     install_oh_my_tmux
+else
+	echo "${YEL}Skipping ${RED}oh-my-tmux ${YEL}installation.${D}"
 fi
 
 # Installing Kitty
@@ -338,6 +342,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 		else
 			echo "${YEL}kitty is already installed 😻${D}"
 		fi
+	else
+		echo "${YEL}Skipping ${RED}kitty ${YEL}installation.${D}"
 	fi
 else
 	install_kitty
@@ -372,6 +378,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	read -r install_firacode
 	if [[ "$install_firacode" =~ ^[Yy]$ ]]; then
 		get_firacode
+	else
+		echo "${YEL}Skipping ${RED}FiraCode ${YEL}font installation.${D}"
 	fi
 else
 	get_firacode
@@ -403,6 +411,8 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 			DEST=${FILES[$SRC]}
 			create_symlink "$SRC" "$DEST"
 		done
+	else
+		echo "${YEL}Skipping ${GRN}symlink ${YEL}creation.${D}"
 	fi
 else
 	for SRC in "${!FILES[@]}"; do
@@ -411,4 +421,4 @@ else
 	done
 fi
 
-echo "${GRN}󰄬 ${PRP}${B}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
+echo "${B}${GRN}󰄬 ${PRP}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}🖳 ${D}"
