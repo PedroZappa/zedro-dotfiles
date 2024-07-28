@@ -103,7 +103,7 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 			clone_dotfiles
 		else
 			cd "$HOME/.dotfiles"
-			git pull origin master
+			git pull
 			echo ".dotfiles repository up to date. 󰩑 "
 		fi
     fi
@@ -112,7 +112,7 @@ else
 		clone_dotfiles
 	else
 		cd "$HOME/.dotfiles"
-		git pull origin master
+		git pull
 		echo ".dotfiles repository up to date. 󰩑 "
 	fi
 fi
