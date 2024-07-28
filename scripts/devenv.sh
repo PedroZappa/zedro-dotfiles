@@ -203,7 +203,7 @@ uninstall_brew() {
 if [[ "$EXPRESS_INSTALL" == false ]]; then
     echo "${GRN}${B}Homebrew ${PRP}Setup 🍺${D}"
 	echo "${YEL}Checking if Homebrew is installed...${D}"
-	if ! -n $(which brew); then
+	if ! $(which brew); then
 		echo "$(which brew)"
 	fi
 	echo "${B}Select an option:${D}"
