@@ -102,7 +102,9 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
 			clone_dotfiles
 		else
-			echo ".dotfiles skipped."
+			cd "$HOME/.dotfiles"
+			git pull origin master
+			echo ".dotfiles repository up to date. 󰩑 "
 		fi
     fi
 else
