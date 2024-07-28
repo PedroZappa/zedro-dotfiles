@@ -171,7 +171,7 @@ install_brew() {
                 echo "Homebrew installed using official script."
                 ;;
             *)
-                echo "Invalid option selected. Exiting..."
+                echo "Invalid option selected. Continuing..."
                 return 1
                 ;;
         esac
