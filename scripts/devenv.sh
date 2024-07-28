@@ -229,7 +229,7 @@ install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
 		echo "${YEL}Installing ${GRN}${B}${BREW_PACKAGES[$package]}${D}${YEL}...${D}"
         brew install "$package" --force-bottle
-        echo "${YEL}Installed ${GRN}${B}${BREW_PACKAGES[$package]}${D}🍺"
+        echo "${YEL}Installed ${GRN}${B}${BREW_PACKAGES[$package]}${D} 🍺"
     done
 	# List installed Homebrew packages
 	echo "${YEL}Installed ${GRN}Homebrew ${YEL}packages 🍺:${D}"
