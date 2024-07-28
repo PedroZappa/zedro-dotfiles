@@ -148,12 +148,6 @@ BREW_PATH="$HOME/.local/bin"
 
 install_brew() {
     if [[ "$EXPRESS_INSTALL" == false ]]; then
-        echo "${RED}Homebrew not found. ${PRP}Do you want to install it? ${YEL}(y/n)${D}"
-        read -r response
-        if [[ ! "$response" =~ ^[Yy]$ ]]; then
-            echo "Homebrew installation skipped."
-            return
-        fi
         # Prompt user to choose installation method
         echo "${B}${YEL}Choose ${GRN}Homebrew ${YEL}installation method:${D}"
         echo "${YEL}(1)${D} Custom Installation @ ${BREW_PATH}"
