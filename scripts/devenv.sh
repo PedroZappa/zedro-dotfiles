@@ -181,9 +181,8 @@ install_brew() {
 }
 
 uninstall_brew() {
-    if [[ -d "$HOME/.local/bin/Homebrew" ]]; then
+	if [[ -f "${BREW_PATH}/brew" ]]; then
         echo "Custom Homebrew installation found. Uninstalling..."
-        rm -rf "$HOME/.local/bin/Homebrew"
         rm -f "${BREW_PATH}/brew"
         echo "Custom Homebrew uninstalled."
     elif command -v brew &> /dev/null; then
