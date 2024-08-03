@@ -138,6 +138,7 @@ alias gm='git merge --stat --log'
 if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
+alias k='kitty --start-as=fullscreen'
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
 
