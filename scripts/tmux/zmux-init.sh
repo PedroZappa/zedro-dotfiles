@@ -21,6 +21,13 @@ export I3SOCK
 SESH1="RC"
 SESH2="DEV"
 
+# Command line argument for working directory
+if [[ $# -gt 0 ]]; then
+    DEV_DIR=$1
+else
+    DEV_DIR=$HOME  # Default directory if none is provided
+fi
+
 # Create RC session
 tmux new-session	-d -s $SESH1
 # Create .dotfiles RC window
@@ -53,13 +60,17 @@ fi
 tmux new-session	-d -s $SESH2
 # Create Working Project window
 tmux rename-window	-t DEV:1 '...'
+tmux send-keys		-t DEV:1 'cd '$DEV_DIR C-m
 # Create Debug window
 tmux new-window		-t DEV:2 -n 'DEBUG'
 tmux split-window	-t DEV:2 -h
+tmux send-keys		-t DEV:2 'cd '$DEV_DIR C-m
+tmux send-keys		-t DEV:2.1 'cd '$DEV_DIR C-m
 tmux resize-pane	-L 120
 
 # Create SYNC window
 tmux new-window		-t DEV:3 -n 'SYNC'
+tmux send-keys		-t DEV:3 'cd '$DEV_DIR C-m
 
 # Attach to DEV session
 tmux attach-session -t DEV:1
