@@ -116,4 +116,4 @@ tmux send-keys		-t DEV:3 'cd '$DEV_DIR C-m
 # Attach to DEV session
 tmux attach-session -t DEV:1
 
-echo ${YEL}ZMUX${D}${PRP}: Dev Env Destroyed!${D} 💣
+echo ${YEL}ZMUX${D}${PRP}: Dev Env ${RED}Destroyed!${D} 💣
