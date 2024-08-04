@@ -24,37 +24,37 @@ tmux send-keys		-t RC:1 'cd $HOME/.dotfiles' C-m
 tmux send-keys		-t RC:1 'git pull' C-m
 tmux send-keys		-t RC:2 'glgs' C-m
 tmux send-keys		-t RC:1 'nvim' C-m
-# Create z-scripts RC window
-tmux new-window		-t RC:2 -n 'z-scripts'
-tmux send-keys		-t RC:2 'cd $HOME/C0D3/z-scripts' C-m
-tmux send-keys		-t RC:2 'git pull' C-m
-tmux send-keys		-t RC:2 'glgs' C-m
-tmux send-keys		-t RC:2 'nvim' C-m
 # Create obsidian RC window
-tmux new-window		-t RC:3 -n 'obsidian' -c $OBSIDIAN_VAULT_PATH
-tmux send-keys		-t RC:3 'cd '$OBSIDIAN_VAULT_PATH C-m
+tmux new-window		-t RC:2 -n 'obsidian' -c $OBSIDIAN_VAULT_PATH
+tmux send-keys		-t RC:2 'cd '$OBSIDIAN_VAULT_PATH C-m
 if command -v eza &> /dev/null; then
-	tmux send-keys	-t RC:3 'eza -al' C-m
+	tmux send-keys	-t RC:2 'eza -al' C-m
 else
-	tmux send-keys		-t RC:3 'll' C-m
+	tmux send-keys		-t RC:2 'll' C-m
 fi
-tmux split-window	-t RC:3 -h 
-tmux send-keys		-t RC:3 'cd '$OBSIDIAN_VAULT_PATH C-m
-tmux send-keys		-t RC:3 'git pull' C-m
-tmux send-keys		-t RC:2 'glgs' C-m
-tmux send-keys		-t RC:3 'obsidian' C-m
+tmux split-window	-t RC:2 -h 
+tmux send-keys		-t RC:2 'cd '$OBSIDIAN_VAULT_PATH C-m
+tmux send-keys		-t RC:2 'git pull' C-m
+tmux send-keys		-t RC:2 'obsidian' C-m
 # Create Monitoring RC window
-tmux new-window		-t RC:4 -n 'ztop'
+tmux new-window		-t RC:3 -n 'ztop'
 if command -v btop &> /dev/null; then
-	tmux send-keys	-t RC:4 'btop' C-m
+	tmux send-keys	-t RC:3 'btop' C-m
 else
-	tmux send-keys	-t RC:4 'htop' C-m 
+	tmux send-keys	-t RC:3 'htop' C-m 
 fi
 
 # Create DEV session
 tmux new-session	-d -s DEV
-tmux attach-session -t DEV:1
+# Create Working Project window
+tmux new-window		-t DEV:1 -n '...'
+# Create Debug window
 tmux new-window		-t DEV:2 -n 'DEBUG'
+# Create SYNC window
+tmux new-window		-t DEV:3 -n 'SYNC'
+
+# Attach to DEV session
+tmux attach-session -t DEV:1
 
 # Open termina on i3 workspace2 and attach to DEV session
 i3-msg --socket=$I3SOCK exec i3-sensible-terminal
