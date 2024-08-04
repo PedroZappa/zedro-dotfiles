@@ -17,8 +17,12 @@ export OBSIDIAN_VAULT_PATH
 I3SOCK=$(ls /run/user/1000/i3/ipc-socket.*)
 export I3SOCK
 
+# Session Name variables
+SESH1="RC"
+SESH2="DEV"
+
 # Create RC session
-tmux new-session	-d -s RC
+tmux new-session	-d -s $SESH1
 # Create .dotfiles RC window
 tmux rename-window	-t RC:1 '.dotfiles'
 tmux send-keys		-t RC:1 'cd $HOME/.dotfiles' C-m
@@ -46,7 +50,7 @@ else
 fi
 
 # Create DEV session
-tmux new-session	-d -s DEV
+tmux new-session	-d -s $SESH2
 # Create Working Project window
 tmux rename-window	-t DEV:1 '...'
 # Create Debug window
