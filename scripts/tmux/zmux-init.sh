@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# set -euo pipefail
 
 # Set Path to Obsidian Vault
 if [[ $USER == "zedr0" ]]; then			# DEV-Desk
@@ -47,9 +48,12 @@ fi
 # Create DEV session
 tmux new-session	-d -s DEV
 # Create Working Project window
-tmux new-window		-t DEV:1 -n '...'
+tmux rename-window	-t DEV:1 '...'
 # Create Debug window
 tmux new-window		-t DEV:2 -n 'DEBUG'
+tmux split-window	-t DEV:2 -h
+tmux resize-pane	-L 120
+
 # Create SYNC window
 tmux new-window		-t DEV:3 -n 'SYNC'
 
@@ -57,7 +61,7 @@ tmux new-window		-t DEV:3 -n 'SYNC'
 tmux attach-session -t DEV:1
 
 # Open termina on i3 workspace2 and attach to DEV session
-i3-msg --socket=$I3SOCK exec i3-sensible-terminal
+# i3-msg --socket=$I3SOCK exec i3-sensible-terminal
 
 # i4-msg workspace 2; i3-msg exec i3-sensible-terminal
 # tmux attach-session -t DEV
