@@ -22,17 +22,20 @@ return {
       handlers = {
         lsp.default_setup,
         lua_ls = function()
+          -- (Optional) Configure lua language server for neovim
+          local lua_opts = lsp.nvim_lua_ls()
+          require("lspconfig").lua_ls.setup(lua_opts)
+        end,
+		clangd = function()
           require("lspconfig").clangd.setup({
             cmd = { "clangd", "--background-index", "--clang-tidy", "--suggest-missing-includes" },
 			init_options = {
 			  clangdFileStatus = true,
 			  -- clangdFileWatched = true,
 			},
+			filetypes = { "c", "h", "hpp", "cpp", "objc", "objcpp" },
           })
-          -- (Optional) Configure lua language server for neovim
-          local lua_opts = lsp.nvim_lua_ls()
-          require("lspconfig").lua_ls.setup(lua_opts)
-        end,
+		end,
 		pyright = function()
 			require("lspconfig").pyright.setup({})
 		end
