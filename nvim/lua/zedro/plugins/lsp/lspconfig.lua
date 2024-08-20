@@ -28,12 +28,28 @@ return {
         end,
 		clangd = function()
           require("lspconfig").clangd.setup({
-            cmd = { "clangd", "--background-index", "--clang-tidy", "--suggest-missing-includes" },
+            cmd = { "clangd",
+				"--background-index",
+				"--clang-tidy",
+				"--suggest-missing-includes",
+			},
 			init_options = {
 			  clangdFileStatus = true,
 			  -- clangdFileWatched = true,
 			},
 			filetypes = { "c", "h", "hpp", "cpp", "objc", "objcpp" },
+			cmd_env = {
+				CXXFLAGS = "-I/sgoinfre/homebrew/include",
+				LDFLAGS = "-L/sgoinfre/homebrew/lib"
+			},
+			settings = {
+				clangd = {
+					arguments = {
+						"--compile-commands-dir=build",
+						"--extra-arg=-I/path/to/custom/include"
+					},
+				}
+			}
           })
 		end,
 		pyright = function()
