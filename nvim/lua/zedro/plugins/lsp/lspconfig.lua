@@ -16,6 +16,8 @@ return {
       lsp.default_keymaps({ buffer = bufnr })
     end)
 
+	local project_include_dir = vim.loop.cwd() .. "/include"
+
     require('mason').setup({})
     require("mason-lspconfig").setup({
       ensure_installed = { "clangd", "lua_ls" },
@@ -29,27 +31,25 @@ return {
 		clangd = function()
           require("lspconfig").clangd.setup({
             cmd = { "clangd",
+				"--compile-commands-dir=" .. vim.loop.cwd(),
 				"--background-index",
 				"--clang-tidy",
 				"--suggest-missing-includes",
 			},
 			init_options = {
-			  clangdFileStatus = true,
-			  -- clangdFileWatched = true,
+				clangdFileStatus = true,
+				additionalIncludes = { project_include_dir },
+			    -- clangdFileWatched = true,
+				fallbackFlags = {
+					"-I" .. vim.loop.cwd() .. "/include", -- Custom include path
+					"-I/usr/local/include", -- System-wide include
+				}
 			},
 			filetypes = { "c", "h", "hpp", "cpp", "objc", "objcpp" },
 			cmd_env = {
 				CXXFLAGS = "-I/sgoinfre/homebrew/include",
 				LDFLAGS = "-L/sgoinfre/homebrew/lib"
 			},
-			settings = {
-				clangd = {
-					arguments = {
-						"--compile-commands-dir=build",
-						"--extra-arg=-I/path/to/custom/include"
-					},
-				}
-			}
           })
 		end,
 		pyright = function()
