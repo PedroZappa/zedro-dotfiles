@@ -336,10 +336,15 @@ tmux_conf_copy_to_os_clipboard=true
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
+#
 
+set -g default-terminal "tmux-256color"
+set -ga terminal-overrides ',xterm-256color:Tc'
+set-option -sa terminal-features ',kitty:RGB'
+set -g default-shell /usr/bin/zsh
 
 # increase history size
-set -g history-limit 10000
+set -g history-limit 50000
 
 # allow passthrough (to support kitty's escape codes)
 set -g allow-passthrough on
@@ -350,14 +355,6 @@ set -g mouse on
 # monitor activity alerts
 setw -g monitor-activity on
 set -g visual-activity on
-
-# force Vi mode
-#   really you should export VISUAL or EDITOR environment variable, see manual
-set -g status-keys vi
-set -g mode-keys vi
-
-# Improve responsivewness in vim
-set-option -sg escape-time 11
 
 # Enable copy-pastei (needs xclip to be installed)
 set-option -s set-clipboard off
@@ -384,11 +381,23 @@ bind r source-file ~/.tmux.conf
 # if you don't want Oh my tmux! to alter a binding, use #!important
 # bind c new-window -c '#{pane_current_path}' #!important
 
+# Status Line Config
 # move status line to top
 set -g status-position top
 
+# VIM integration
+# force Vi mode
+#   really you should export VISUAL or EDITOR environment variable, see manual
+set -g status-keys vi
+set -g mode-keys vi
+set -g xterm-keys on
 
-# vim integration
+# Improve responsiveness in vim
+set -g focus-events on
+set-option -sg escape-time 11
+
+### KEY MAPPINGS
+
 # Smart pane switching with awareness of Vim splits.
 # See: https://github.com/christoomey/vim-tmux-navigator
 is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
@@ -403,17 +412,33 @@ if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
 if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
-#moving between panes
+# moving between panes
 bind-key -T copy-mode-vi 'C-h' select-pane -L
 bind-key -T copy-mode-vi 'C-j' select-pane -D
 bind-key -T copy-mode-vi 'C-k' select-pane -U
 bind-key -T copy-mode-vi 'C-l' select-pane -R
 bind-key -T copy-mode-vi 'C-\' select-pane -l
 
-set-option -sa terminal-features ',kitty:RGB'
+# Tmux Utility Bindings
+bind-key -n F8 command-prompt -I "#W" "rename-window '%%'"
+bind-key -n F7 command-prompt "find-window '%%'"
+bind-key -n F10 setw synchronize-panes
+bind-key -n F11 resize-pane -Z
+bind-key -n F12 kill-pane
+bind-key -n C-PageDown next-window
+bind-key -n C-PageUp previous-window
+bind-key -n S-Left resize-pane -L
+bind-key -n S-Right resize-pane -R
+bind-key -n S-Up resize-pane -U
+bind-key -n S-Down resize-pane -D
+bind-key -n M-PageUp switch-client -p
+bind-key -n M-PageDown switch-client -n
 
-# Yazi integration
-set -g allow-passthrough on
+# Utility Bindings
+bind -n M-b popup -d '#{pane_current_path}' -E -h 95% -w 95% -x 100% "btop"
+
+bind -n M-\; copy-mode
+bind -n M-s switch-client -l
 
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
@@ -490,6 +515,18 @@ set -g @mode_indicator_copy_prompt ' YANK '
 set -g @plugin 'thewtex/tmux-mem-cpu-load'
 #set -g status-interval 2
 #set -g status-right '#[fg=green]#($~/.tmux/plugins/mem-cpu-load/tmux-mem-cpu-load --colors --powerline-right --interval 2)#[default]'
+
+set -g @plugin 'omerxx/tmux-sessionx'
+set -g @sessionx-bind 'o'
+set -g @sessionx-x-path '~/.dotfiles/tmux-sessionx'
+set -g @sessionx-custom-paths '~/C0D3'
+set -g @sessionx-custom-paths-subdirectories 'true'
+set -g @sessionx-filter-current 'false'
+# set -g @sessionx-window-mode 'on'
+set -g @sessionx-tree-mode 'on'
+set -g @sessionx-zoxide-mode 'on'
+set -g @sessionx-prompt " "
+set -g @sessionx-pointer " ▶"
 
 # -- custom variables ----------------------------------------------------------
 
