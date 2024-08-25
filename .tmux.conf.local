@@ -356,6 +356,9 @@ set -g visual-activity on
 set -g status-keys vi
 set -g mode-keys vi
 
+# Improve responsivewness in vim
+set-option -sg escape-time 11
+
 # Enable copy-pastei (needs xclip to be installed)
 set-option -s set-clipboard off
 bind P paste-buffer
