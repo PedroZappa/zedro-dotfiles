@@ -24,10 +24,6 @@ export PATH="$HOME/.local/bin:$PATH"
 # export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
 # Add ~/.dotfiles/scripts to PATH
 export PATH="$SCRIPTS:$PATH"
-BREW_PATH=$(cat << 'EOF'
-echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
-EOF
-)
 # Add homebrew to PATH
 if [[ $USER == "passunca" ]]; then
 	export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
@@ -36,12 +32,7 @@ if [[ $USER == "passunca" ]]; then
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ $USER == "zedro" ]]; then
-	if [ ! grep -q "$BREW_PATH" .zshrc ]; then
-		(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.zshrc)
-		eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	fi
-	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-	export PATH="/home/linuxbrew/.linuxbrew/Homebrew:$PATH"
+	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # colored GCC warnings and errors
