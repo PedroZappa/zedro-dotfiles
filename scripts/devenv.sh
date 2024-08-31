@@ -45,20 +45,6 @@ command_exists() {
     command -v "$1" &> /dev/null
 }
 
-if ! command_exists git; then
-    echo "Error: git is not installed. Please install git to proceed." >&2
-    exit 1
-fi
-
-if ! command_exists curl; then
-    echo "Error: curl is not installed. Please install curl to proceed." >&2
-    exit 1
-fi
-
-if ! command_exists wget; then
-	echo "Error: wget is not installed. Please install wget to proceed." >&2
-	exit 1
-fi
 
 # Express installation
 # Check for --express argument
@@ -92,6 +78,10 @@ SYSTEM_PACKAGES=(
 
 # Install System Packages
 install_system_packages() {
+	if ! sudo -n true 2>/dev/null; then
+        echo "${RED}Error: You do not have sudo privileges. Exiting...${D}" >&2
+        exit 1
+    fi
     for package in "${!SYSTEM_PACKAGES[@]}"; do
         if ! command_exists "$package"; then
             echo "${YEL}Installing system package ${GRN}${B}${SYSTEM_PACKAGES[$package]}${D}${YEL}...${D}"
@@ -274,6 +264,20 @@ else
 	echo "${YEL}Skipping ${RED}oh-my-tmux ${YEL}installation.${D}"
 fi
 
+if ! command_exists git; then
+    echo "Error: git is not installed. Please install git to proceed." >&2
+    exit 1
+fi
+
+if ! command_exists curl; then
+    echo "Error: curl is not installed. Please install curl to proceed." >&2
+    exit 1
+fi
+
+if ! command_exists wget; then
+	echo "Error: wget is not installed. Please install wget to proceed." >&2
+	exit 1
+fi
 
 # Install Homebrew
 BREW_PATH="$HOME/.local/bin"
