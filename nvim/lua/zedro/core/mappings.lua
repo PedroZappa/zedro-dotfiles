@@ -42,9 +42,38 @@ end, { desc = "Run bare -- make command and write current buffer" })
 -- Toggle Relative numbers
 keymap.set("n", "<leader>rl", ":set relativenumber!<CR>",
 	{ desc = "Toggle relative numbers" })
--- Replace Script
+-- Replace Scripts
 keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
 	{ desc = "Replace word from whole file" })
+
+local function replace_symbol_in_workspace()
+  local old_symbol = vim.fn.input("Replace symbol: ")
+  if old_symbol == "" then
+    print("No symbol provided!")
+    return
+  end
+  local new_symbol = vim.fn.input("With: ")
+  if new_symbol == "" then
+    print("No replacement provided!")
+    return
+  end
+
+  local file_pattern = vim.fn.input("Files: (eg. **/*.c) ")
+  if file_pattern == "" then
+	print("No file pattern provided!")
+	return
+  end
+
+  vim.cmd(":args " .. file_pattern)
+
+  vim.cmd(":argdo %s/\\<" .. old_symbol .. "\\>/" .. new_symbol .. "/gc | update")
+
+  -- Print a message confirming completion
+  print("Replaced '" .. old_symbol .. "' with '" .. new_symbol .. "' in the workspace.")
+end
+vim.keymap.set("n", "<leader>srs", replace_symbol_in_workspace,
+	{ desc = "Replace symbol in workspace" })
+
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 
