@@ -80,6 +80,7 @@ fi
 # Install System Packages
 declare -A SYSTEM_PACKAGES
 SYSTEM_PACKAGES=(
+	["build-essential"]="Build Essential"
 	["curl"]="Curl"
 	["git"]="Git"
 	["vim"]="Vim"
@@ -295,7 +296,6 @@ install_brew() {
             2)
                 # Official Installation Script
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-				sudo apt-get install build-essential
                 echo "${YEL}Homebrew installed using ${PRP}official script.${D}"
                 ;;
             *)
