@@ -80,8 +80,36 @@ fi
 # Install System Packages
 declare -A SYSTEM_PACKAGES
 SYSTEM_PACKAGES=(
+	["curl"]="Curl"
+	["git"]="Git"
+	["vim"]="Vim"
 	["zsh"]="Zsh"
+	["tmux"]="Tmux"
 )
+
+# Install System Packages
+install_system_packages() {
+    for package in "${!SYSTEM_PACKAGES[@]}"; do
+        if ! command_exists "$package"; then
+            echo "${YEL}Installing system package ${GRN}${B}${SYSTEM_PACKAGES[$package]}${D}${YEL}...${D}"
+            sudo apt-get install -y "$package"
+        else
+            echo "${GRN}${SYSTEM_PACKAGES[$package]}${YEL} is already installed.${D}"
+        fi
+    done
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+    echo "${PRP}${B}Do you want to install the required system packages? ${YEL}(y/n)${D}"
+    read -r install_sys_packages
+    if [[ "$install_sys_packages" =~ ^[Yy]$ ]]; then
+        install_system_packages
+    else
+        echo "${YEL}Skipping system package installation.${D}"
+    fi
+else
+    install_system_packages
+fi
 
 # Associative array defining source and target FILES
 declare -A FILES
@@ -100,24 +128,6 @@ FILES=(
     ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
 )
 
-# Associative array defining Homebrew packages to install
-declare -A BREW_PACKAGES
-BREW_PACKAGES=(
-    ["btop"]="Btop"
-    ["lnav"]="Lnav"
-    ["lazygit"]="Lazygit"
-    ["nvim"]="Neovim"
-    ["rg"]="Ripgrep"
-    ["starship"]="Starship"
-    ["atuin"]="Atuin"
-    ["cowsay"]="Cowsay"
-    ["fortune"]="Fortune"
-    ["lolcat"]="Lolcat"
-    ["eza"]="Eza"
-    ["zoxide"]="Zoxide"
-    ["atuin"]="Ztuin"
-    ["fzf"]="Fzf"
-)
 
 # Clone .dotfiles
 clone_dotfiles() {
@@ -187,6 +197,81 @@ else
 		create_symlink "$SRC" "$DEST"
 	done
 fi
+
+# Install zap, zsh's Package Manager
+ZAP_DIR="$HOME/.local/share/zap"
+
+install_zap() {
+	echo "${YEL}Installing ${B}${RED}zap${D}: ${YEL}zsh's Package Manager...${D}"
+	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+	echo "zap installation complete. 🤙"
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "${PRP}${B}Do you want to install ${RED}zap, ${PRP}zsh's Package Manager? ${YEL}(y/n)${D}"
+	read -r install_zap
+	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
+		if [[ ! -d "$ZAP_DIR" ]]; then
+			install_zap
+		else
+			echo "${YEL}zap already installed. 🤙${D}"
+		fi
+	else
+		echo "${YEL}Skipping ${RED}zap, ${YEL}installation.${D}"
+	fi
+else
+	install_zap
+fi
+
+# Install vim-plug
+install_vim_plug() {
+	echo "${YEL}Installing ${PRP}vim-plug${YEL}...${D}"
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	# Create vim directories
+	mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
+	# Install color scheme
+	cd ~/.vim/colors
+	curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+	curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
+	echo "${PRP}vim-plug ${YEL}installation complete. 🤙${D}"
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "${PRP}${B}Do you want to install ${RED}vim-plug ${PRP}vim's package manager? ${YEL}(y/n)${D}"
+	read -r install_vim_plug
+	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
+		install_vim_plug
+	else
+		echo "${YEL}Skipping ${RED}vim-plug ${YEL}installation.${D}"
+	fi
+else
+	install_vim_plug
+fi
+
+# Install oh-my-tmux
+install_oh_my_tmux() {
+	if [[ ! -d "$HOME/.tmux" || ! -L "$HOME/.tmux.conf" ]]; then
+		echo "${YEL}Installing oh-my-tmux...${D}"
+		cd "$HOME"
+		git clone https://github.com/gpakosz/.tmux.git
+		ln -s -f .tmux/.tmux.conf
+		echo "${YEL}${B}oh-my-tmux installation complete.${PRP} 󰩑 ${D}"
+	else
+		echo "${YEL}oh-my-tmux already installed. ${PRP} 󰩑 ${D}"
+	fi
+}
+
+echo "${PRP}${B}Do you want to install ${RED}oh-my-tmux${PRP} config? ${YEL}(y/n)${D}"
+read -r install_tmux
+if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
+    install_oh_my_tmux
+else
+	echo "${YEL}Skipping ${RED}oh-my-tmux ${YEL}installation.${D}"
+fi
+
 
 # Install Homebrew
 BREW_PATH="$HOME/.local/bin"
@@ -268,6 +353,25 @@ else
 	install_brew
 fi
 
+# Associative array defining Homebrew packages to install
+declare -A BREW_PACKAGES
+BREW_PACKAGES=(
+    ["btop"]="Btop"
+    ["lnav"]="Lnav"
+    ["lazygit"]="Lazygit"
+    ["nvim"]="Neovim"
+    ["rg"]="Ripgrep"
+    ["starship"]="Starship"
+    ["atuin"]="Atuin"
+    ["cowsay"]="Cowsay"
+    ["fortune"]="Fortune"
+    ["lolcat"]="Lolcat"
+    ["eza"]="Eza"
+    ["zoxide"]="Zoxide"
+    ["atuin"]="Ztuin"
+    ["fzf"]="Fzf"
+)
+
 # Ask to install Homebrew packages
 install_brew_packages() {
     for package in "${!BREW_PACKAGES[@]}"; do
@@ -290,80 +394,6 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	fi
 else
 	install_brew_packages
-fi
-
-# Install zap, zsh's Package Manager
-ZAP_DIR="$HOME/.local/share/zap"
-
-install_zap() {
-	echo "${YEL}Installing ${B}${RED}zap${D}: ${YEL}zsh's Package Manager...${D}"
-	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
-	echo "zap installation complete. 🤙"
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to install ${RED}zap, ${PRP}zsh's Package Manager? ${YEL}(y/n)${D}"
-	read -r install_zap
-	if [[ "$install_zap" =~ ^[Yy]$ ]]; then
-		if [[ ! -d "$ZAP_DIR" ]]; then
-			install_zap
-		else
-			echo "${YEL}zap already installed. 🤙${D}"
-		fi
-	else
-		echo "${YEL}Skipping ${RED}zap, ${YEL}installation.${D}"
-	fi
-else
-	install_zap
-fi
-
-# Install vim-plug
-install_vim_plug() {
-	echo "${YEL}Installing ${PRP}vim-plug${YEL}...${D}"
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	# Create vim directories
-	mkdir -p ~/.vim ~/.vim/autoload ~/.vim/backup ~/.vim/colors ~/.vim/plugged
-	# Install color scheme
-	cd ~/.vim/colors
-	curl -o molokai.vim https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
-	curl -o dracula.vim https://raw.githubusercontent.com/dracula/vim/210e0961b9bd765b5b46a84d0631271ee8e6af64/colors/dracula.vim
-	echo "${PRP}vim-plug ${YEL}installation complete. 🤙${D}"
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to install ${RED}vim-plug ${PRP}vim's package manager? ${YEL}(y/n)${D}"
-	read -r install_vim_plug
-	if [[ "$install_vim_plug" =~ ^[Yy]$ ]]; then
-		install_vim_plug
-	else
-		echo "${YEL}Skipping ${RED}vim-plug ${YEL}installation.${D}"
-	fi
-else
-	install_vim_plug
-fi
-
-# Install oh-my-tmux
-install_oh_my_tmux() {
-	if [[ ! -d "$HOME/.tmux" || ! -L "$HOME/.tmux.conf" ]]; then
-		echo "${YEL}Installing oh-my-tmux...${D}"
-		cd "$HOME"
-		git clone https://github.com/gpakosz/.tmux.git
-		ln -s -f .tmux/.tmux.conf
-		echo "${YEL}${B}oh-my-tmux installation complete.${PRP} 󰩑 ${D}"
-	else
-		echo "${YEL}oh-my-tmux already installed. ${PRP} 󰩑 ${D}"
-	fi
-}
-
-echo "${PRP}${B}Do you want to install ${RED}oh-my-tmux${PRP} config? ${YEL}(y/n)${D}"
-read -r install_tmux
-if [[ "$install_tmux" =~ ^[Yy]$ ]]; then
-    install_oh_my_tmux
-else
-	echo "${YEL}Skipping ${RED}oh-my-tmux ${YEL}installation.${D}"
 fi
 
 # Installing Kitty
