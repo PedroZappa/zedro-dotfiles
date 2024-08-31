@@ -377,6 +377,7 @@ fi
 declare -A BREW_PACKAGES
 BREW_PACKAGES=(
 	["readline"]="readline"
+    ["unzip"]="unzip"
     ["btop"]="Btop"
     ["lnav"]="Lnav"
     ["lazygit"]="Lazygit"
