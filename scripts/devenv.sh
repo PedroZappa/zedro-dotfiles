@@ -42,9 +42,11 @@ fi
 
 # Ensure git, curl and wget are installed
 command_exists() {
-    command -v "$1" &> /dev/null
+    if [ ! command -v "$1" &> /dev/null ]; then
+        echo "${RED}Error: You do not have ${command} installed, Exiting...${D}" >&2
+        exit 1
+	fi
 }
-
 
 # Express installation
 # Check for --express argument
@@ -123,6 +125,10 @@ FILES=(
 
 # Clone .dotfiles
 clone_dotfiles() {
+	if ! git -n true 2>/dev/null; then
+        echo "${RED}Error: You do not have git installed. Exiting...${D}" >&2
+        exit 1
+    fi
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
@@ -221,6 +227,11 @@ fi
 
 # Install vim-plug
 install_vim_plug() {
+	if ! curl -n true 2>/dev/null || ! vim -n true 2>/dev/null; then
+        echo "${RED}Error: You do not have vim installed, Exiting...${D}" >&2
+        exit 1
+    fi
+
 	echo "${YEL}Installing ${PRP}vim-plug${YEL}...${D}"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
