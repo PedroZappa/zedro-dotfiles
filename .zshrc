@@ -191,8 +191,6 @@ fi
 alias m_test=~/Minishell_Tester/start.sh
 alias reallyshell=~/Minishell_Tester/connect.sh
 
-. "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
