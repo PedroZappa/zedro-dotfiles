@@ -376,6 +376,7 @@ fi
 # Associative array defining Homebrew packages to install
 declare -A BREW_PACKAGES
 BREW_PACKAGES=(
+	["readline"]="readline"
     ["btop"]="Btop"
     ["lnav"]="Lnav"
     ["lazygit"]="Lazygit"
