@@ -142,7 +142,6 @@ install_brew() {
                 # Official Installation Script
                 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 				sudo apt-get install build-essential
-				brew install gcc
                 echo "${YEL}Homebrew installed using ${PRP}official script.${D}"
                 ;;
             *)
