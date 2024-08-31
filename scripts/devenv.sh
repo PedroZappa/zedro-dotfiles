@@ -445,10 +445,10 @@ else
 fi
 
 # Get FiraCode font
-FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
+FONT_NAME="FiraCode"
 FONT_DIR="$HOME/.local/share/fonts"
 TEMP_DIR="$(mktemp -d)"
-FONT_NAME="FiraCode"
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/FiraCode.zip"
 
 is_gui_environment() {
     if command -v xset &> /dev/null && xset q &> /dev/null; then
