@@ -785,7 +785,7 @@ set statusline+=\ %F\ %M\ %Y\ %R
 " gitgutter status
 set statusline+=%{GitStatus()}
 " Codeium Status
-set statusline+=\ \|\ \{…\}%3{codeium#GetStatusString()}
+" set statusline+=\ \|\ \{…\}%3{codeium#GetStatusString()}
 " Use a divider to separate the left side from the right side.
 set statusline+=%=
 " Status line right side.
