@@ -448,6 +448,14 @@ FONT_DIR="$HOME/.local/share/fonts"
 TEMP_DIR="$(mktemp -d)"
 FONT_NAME="FiraCode"
 
+is_gui_environment() {
+    if command -v xset &> /dev/null && xset q &> /dev/null; then
+        return 0  # GUI environment detected
+    else
+        return 1  # No GUI environment
+    fi
+}
+
 get_firacode() {
 	# Create temporary directory
 	if [ ! -d "$FONT_DIR" ]; then
@@ -459,8 +467,12 @@ get_firacode() {
 	unzip -q "$TEMP_DIR/$FONT_NAME.zip" -d "$TEMP_DIR"
 	echo "${YEL}Installing the font...${D}"
 	mv "$TEMP_DIR"/*.ttf "$FONT_DIR/"
-	echo "${YEL}Updating the font cache...${D}"
-	fc-cache -fV
+	if is_gui_environment; then
+        echo "${YEL}Updating the font cache...${D}"
+        fc-cache -fV
+    else
+        echo "${YEL}No GUI environment detected, skipping font cache update.${D}"
+    fi
 	# Clean up
 	rm -rf "$TEMP_DIR"
 	echo "${PRP}$FONT_NAME ${YEL}Nerd Font installed successfully! 🤙${D}"
