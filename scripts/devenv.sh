@@ -119,6 +119,75 @@ BREW_PACKAGES=(
     ["fzf"]="Fzf"
 )
 
+# Clone .dotfiles
+clone_dotfiles() {
+	if [[ ! -d "$HOME/.dotfiles" ]]; then
+		cd "$HOME"
+		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
+		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
+	fi
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+		if [ ! -d "$HOME/.dotfiles" ]; then
+			clone_dotfiles
+		else
+			cd "$HOME/.dotfiles"
+			git pull
+			echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
+		fi
+	else
+		echo "${YEL}.dotfiles cloning skipped.${D}"
+    fi
+else
+	if [ ! -d "$HOME/.dotfiles" ]; then
+		clone_dotfiles
+	else
+		cd "$HOME/.dotfiles"
+		git pull
+		echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
+	fi
+fi
+
+# Create symlinks to .dotfiles
+create_symlink() {
+    local SRC=$1
+    local DEST=$2
+
+    # Check if the destination file/directory exists
+    if [ -e "$DEST" ]; then
+        # If it exists, move it to a backup
+        mv "$DEST" "${DEST}_bak"
+        echo "${YEL}Moved existing ${PRP}$DEST ${YEL}to ${PRP}${DEST}_bak${D}"
+    fi
+    # Create the parent directory if it doesn't exist
+    mkdir -p "$(dirname "$DEST")"
+    # Create the symlink
+    ln -s "$SRC" "$DEST"
+    echo "${YEL}Created symlink from ${GRN}$SRC ${YEL}to ${PRP}$DEST${D}"
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+	echo "${PRP}${B}Do you want to create symlinks to ${RED}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
+	read -r create_symlinks
+	if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
+		for SRC in "${!FILES[@]}"; do
+			DEST=${FILES[$SRC]}
+			create_symlink "$SRC" "$DEST"
+		done
+	else
+		echo "${YEL}Skipping ${GRN}symlink ${YEL}creation.${D}"
+	fi
+else
+	for SRC in "${!FILES[@]}"; do
+		DEST=${FILES[$SRC]}
+		create_symlink "$SRC" "$DEST"
+	done
+fi
+
 # Install Homebrew
 BREW_PATH="$HOME/.local/bin"
 
@@ -357,75 +426,6 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	fi
 else
 	get_firacode
-fi
-
-# Clone .dotfiles
-clone_dotfiles() {
-	if [[ ! -d "$HOME/.dotfiles" ]]; then
-		cd "$HOME"
-		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
-		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
-	fi
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
-    read -r response
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-		if [ ! -d "$HOME/.dotfiles" ]; then
-			clone_dotfiles
-		else
-			cd "$HOME/.dotfiles"
-			git pull
-			echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
-		fi
-	else
-		echo "${YEL}.dotfiles cloning skipped.${D}"
-    fi
-else
-	if [ ! -d "$HOME/.dotfiles" ]; then
-		clone_dotfiles
-	else
-		cd "$HOME/.dotfiles"
-		git pull
-		echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
-	fi
-fi
-
-# Create symlinks to .dotfiles
-create_symlink() {
-    local SRC=$1
-    local DEST=$2
-
-    # Check if the destination file/directory exists
-    if [ -e "$DEST" ]; then
-        # If it exists, move it to a backup
-        mv "$DEST" "${DEST}_bak"
-        echo "${YEL}Moved existing ${PRP}$DEST ${YEL}to ${PRP}${DEST}_bak${D}"
-    fi
-    # Create the parent directory if it doesn't exist
-    mkdir -p "$(dirname "$DEST")"
-    # Create the symlink
-    ln -s "$SRC" "$DEST"
-    echo "${YEL}Created symlink from ${GRN}$SRC ${YEL}to ${PRP}$DEST${D}"
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to create symlinks to ${RED}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
-	read -r create_symlinks
-	if [[ "$create_symlinks" =~ ^[Yy]$ ]]; then
-		for SRC in "${!FILES[@]}"; do
-			DEST=${FILES[$SRC]}
-			create_symlink "$SRC" "$DEST"
-		done
-	else
-		echo "${YEL}Skipping ${GRN}symlink ${YEL}creation.${D}"
-	fi
-else
-	for SRC in "${!FILES[@]}"; do
-		DEST=${FILES[$SRC]}
-		create_symlink "$SRC" "$DEST"
-	done
 fi
 
 echo "${B}${GRN}󰄬 ${PRP}${USER}${YEL}'s Dev Environment Setup complete. ${GRN}💻${D}"
