@@ -82,16 +82,11 @@ if command -v eza &> /dev/null; then
 else
 	tmux send-keys		-t RC:2 'll' C-m
 fi
-tmux split-window	-t RC:2 -h 
-tmux send-keys		-t RC:2 'cd '$OBSIDIAN_VAULT_PATH C-m
-tmux send-keys		-t RC:2 'git pull' C-m
-tmux send-keys		-t RC:2 'obsidian' C-m
-# Create Monitoring RC window
-tmux new-window		-t RC:3 -n 'ztop'
-if command -v btop &> /dev/null; then
-	tmux send-keys	-t RC:3 'btop' C-m
-else
-	tmux send-keys	-t RC:3 'htop' C-m 
+if command -v obsidian &> /dev/null; then
+	tmux split-window	-t RC:2 -h 
+	tmux send-keys		-t RC:2 'cd '$OBSIDIAN_VAULT_PATH C-m
+	tmux send-keys		-t RC:2 'git pull' C-m
+	tmux send-keys		-t RC:2 'obsidian' C-m
 fi
 
 # Create DEV session
