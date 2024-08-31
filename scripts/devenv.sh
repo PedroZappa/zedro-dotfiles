@@ -81,7 +81,9 @@ fi
 declare -A SYSTEM_PACKAGES
 SYSTEM_PACKAGES=(
 	["build-essential"]="Build Essential"
+	["cmake"]="cmake"
 	["curl"]="Curl"
+	["wget"]="Wget"
 	["git"]="Git"
 	["vim"]="Vim"
 	["zsh"]="Zsh"
@@ -128,7 +130,6 @@ FILES=(
     ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
     ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
 )
-
 
 # Clone .dotfiles
 clone_dotfiles() {
@@ -368,7 +369,7 @@ BREW_PACKAGES=(
     ["lolcat"]="Lolcat"
     ["eza"]="Eza"
     ["zoxide"]="Zoxide"
-    ["atuin"]="Ztuin"
+    ["atuin"]="Atuin"
     ["fzf"]="Fzf"
 )
 
