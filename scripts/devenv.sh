@@ -194,6 +194,10 @@ fi
 ZAP_DIR="$HOME/.local/share/zap"
 
 install_zap() {
+	if ! zsh -n true 2>/dev/null; then
+        echo "${RED}Error: You do not have zsh installed, Exiting...${D}" >&2
+        exit 1
+    fi
 	echo "${YEL}Installing ${B}${RED}zap${D}: ${YEL}zsh's Package Manager...${D}"
 	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 	echo "zap installation complete. 🤙"
