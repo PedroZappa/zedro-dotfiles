@@ -32,9 +32,8 @@ if [[ $USER == "passunca" ]]; then
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ $USER == "zedro" ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	# export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-	# export PATH="/home/linuxbrew/.linuxbrew/Homebrew:$PATH"
+	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+	export PATH="/home/linuxbrew/.linuxbrew/Homebrew:$PATH"
 	export PATH="$HOME/.local/bin:$PATH"
 	export PATH="$HOME/.local/Homebrew/bin:$PATH"
 fi
