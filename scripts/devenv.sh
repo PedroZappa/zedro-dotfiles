@@ -77,6 +77,12 @@ else
 	echo "${YEL}Express installation skipped. ${D}"
 fi
 
+# Install System Packages
+declare -A SYSTEM_PACKAGES
+SYSTEM_PACKAGES=(
+	["zsh"]="Zsh"
+)
+
 # Associative array defining source and target FILES
 declare -A FILES
 FILES=(
@@ -112,38 +118,6 @@ BREW_PACKAGES=(
     ["atuin"]="Ztuin"
     ["fzf"]="Fzf"
 )
-
-clone_dotfiles() {
-	if [[ ! -d "$HOME/.dotfiles" ]]; then
-		cd "$HOME"
-		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
-		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
-	fi
-}
-
-if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
-    read -r response
-    if [[ "$response" =~ ^[Yy]$ ]]; then
-		if [ ! -d "$HOME/.dotfiles" ]; then
-			clone_dotfiles
-		else
-			cd "$HOME/.dotfiles"
-			git pull
-			echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
-		fi
-	else
-		echo "${YEL}.dotfiles cloning skipped.${D}"
-    fi
-else
-	if [ ! -d "$HOME/.dotfiles" ]; then
-		clone_dotfiles
-	else
-		cd "$HOME/.dotfiles"
-		git pull
-		echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
-	fi
-fi
 
 # Install Homebrew
 BREW_PATH="$HOME/.local/bin"
@@ -384,6 +358,39 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
 	fi
 else
 	get_firacode
+fi
+
+# Clone .dotfiles
+clone_dotfiles() {
+	if [[ ! -d "$HOME/.dotfiles" ]]; then
+		cd "$HOME"
+		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
+		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
+	fi
+}
+
+if [[ "$EXPRESS_INSTALL" == false ]]; then
+    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
+    read -r response
+    if [[ "$response" =~ ^[Yy]$ ]]; then
+		if [ ! -d "$HOME/.dotfiles" ]; then
+			clone_dotfiles
+		else
+			cd "$HOME/.dotfiles"
+			git pull
+			echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
+		fi
+	else
+		echo "${YEL}.dotfiles cloning skipped.${D}"
+    fi
+else
+	if [ ! -d "$HOME/.dotfiles" ]; then
+		clone_dotfiles
+	else
+		cd "$HOME/.dotfiles"
+		git pull
+		echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
+	fi
 fi
 
 # Create symlinks to .dotfiles
