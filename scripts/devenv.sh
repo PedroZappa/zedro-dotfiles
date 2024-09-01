@@ -164,10 +164,6 @@ choose_dotfiles() {
 
 # Clone .dotfiles
 clone_dotfiles() {
-	if ! git -n true 2>/dev/null; then
-        echo "${RED}Error: You do not have git installed. Exiting...${D}" >&2
-        exit 1
-    fi
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
 		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
