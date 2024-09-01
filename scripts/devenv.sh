@@ -95,7 +95,7 @@ install_system_packages() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to install the required ${GRN}${B}System Packages${D)}? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install the required ${GRN}${B}System Packages${D}? ${YEL}(y/n)${D}"
     read -r install_sys_packages
     if [[ "$install_sys_packages" =~ ^[Yy]$ ]]; then
         install_system_packages
