@@ -4,6 +4,7 @@ local keymap = vim.keymap -- for conciseness
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
+vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 -- Change Permissions
 keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
 keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
