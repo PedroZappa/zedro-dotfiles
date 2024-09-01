@@ -123,6 +123,8 @@ FILES=(
     ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
 )
 
+ZEDRO_DOTFILES_SSH_URL="git@github.com:PedroZappa/zedro-dotfiles.git "
+
 # Prompt to choose between Zedro's dotfiles or custom folder
 choose_dotfiles() {
     echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository or use a custom folder?${D}"
@@ -133,7 +135,7 @@ choose_dotfiles() {
     case $dotfiles_choice in
         1)
             if [[ ! -d "$HOME/.dotfiles" ]]; then
-                clone_dotfiles
+                clone_dotfiles "$ZEDRO_DOTFILES_SSH_URL"
             else
                 cd "$HOME/.dotfiles"
                 git pull
@@ -143,17 +145,11 @@ choose_dotfiles() {
         2)
             echo "${YEL}Please provide the path to your custom .dotfiles folder:${D}"
             read -r custom_dotfiles_path
-            if [[ -d "$custom_dotfiles_path" ]]; then
-                FILES=()
-                for file in "$custom_dotfiles_path"/*; do
-                    dest_file="$HOME/.$(basename "$file")"
-                    FILES["$file"]="$dest_file"
-                done
-                echo "${YEL}Using custom .dotfiles from ${PRP}$custom_dotfiles_path${D}"
-            else
-                echo "${RED}Error: The provided path does not exist. Exiting...${D}" >&2
+            if [[ -z "$custom_dotfiles_path" ]]; then
+				echo "${RED}Error: No SSH link provided. Exiting...${D}" >&2
                 exit 1
             fi
+			clone_dotfiles "$custom_dotfiles_path"
             ;;
         *)
             echo "${RED}Invalid option selected. Exiting...${D}" >&2
@@ -166,7 +162,7 @@ choose_dotfiles() {
 clone_dotfiles() {
 	if [[ ! -d "$HOME/.dotfiles" ]]; then
 		cd "$HOME"
-		git clone https://github.com/PedroZappa/zedro-dotfiles ./.dotfiles
+		git clone "$1" ./.dotfiles
 		echo "${YEL}.dotfiles repository successfully cloned. ${PRP}󰩑 ${D}"
 	fi
 }
