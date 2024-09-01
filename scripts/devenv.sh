@@ -169,7 +169,7 @@ clone_dotfiles() {
 
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${PRP}Do you want to clone a ${YEL}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
+    echo "${B}${PRP}Do you want to clone a ${RED}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
