@@ -461,7 +461,7 @@ install_kitty() {
 }
 
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-	echo "${PRP}${B}Do you want to install ${RED}kitty ${PRP}terminal emulator}? ${YEL}(y/n)${D}"
+	echo "${PRP}${B}Do you want to install ${RED}kitty ${PRP}terminal emulator${D}? ${YEL}(y/n)${D}"
 	read -r install_kitty
 	if [[ "$install_kitty" =~ ^[Yy]$ ]]; then
 		if [[ ! -d "$HOME/.local/kitty.app" ]]; then
