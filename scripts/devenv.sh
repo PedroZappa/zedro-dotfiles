@@ -123,6 +123,45 @@ FILES=(
     ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
 )
 
+# Prompt to choose between Zedro's dotfiles or custom folder
+choose_dotfiles() {
+    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository or use a custom folder?${D}"
+    echo "${YEL}(1) Clone Zedro's .dotfiles${D}"
+    echo "${YEL}(2) Use custom folder${D}"
+    read -r dotfiles_choice
+
+    case $dotfiles_choice in
+        1)
+            if [[ ! -d "$HOME/.dotfiles" ]]; then
+                clone_dotfiles
+            else
+                cd "$HOME/.dotfiles"
+                git pull
+                echo "${YEL}.dotfiles repository up to date. ${PRP}󰩑 ${D}"
+            fi
+            ;;
+        2)
+            echo "${YEL}Please provide the path to your custom .dotfiles folder:${D}"
+            read -r custom_dotfiles_path
+            if [[ -d "$custom_dotfiles_path" ]]; then
+                FILES=()
+                for file in "$custom_dotfiles_path"/*; do
+                    dest_file="$HOME/.$(basename "$file")"
+                    FILES["$file"]="$dest_file"
+                done
+                echo "${YEL}Using custom .dotfiles from ${PRP}$custom_dotfiles_path${D}"
+            else
+                echo "${RED}Error: The provided path does not exist. Exiting...${D}" >&2
+                exit 1
+            fi
+            ;;
+        *)
+            echo "${RED}Invalid option selected. Exiting...${D}" >&2
+            exit 1
+            ;;
+    esac
+}
+
 # Clone .dotfiles
 clone_dotfiles() {
 	if ! git -n true 2>/dev/null; then
@@ -136,12 +175,13 @@ clone_dotfiles() {
 	fi
 }
 
+
 if [[ "$EXPRESS_INSTALL" == false ]]; then
-    echo "${B}${PRP}Do you want to clone ${YEL}Zedro${PRP}'s .dotfiles repository? ${YEL}(y/n)${D}"
+    echo "${B}${PRP}Do you want to clone a ${YEL}.dotfiles${PRP} repository? ${YEL}(y/n)${D}"
     read -r response
     if [[ "$response" =~ ^[Yy]$ ]]; then
 		if [ ! -d "$HOME/.dotfiles" ]; then
-			clone_dotfiles
+			choose_dotfiles
 		else
 			cd "$HOME/.dotfiles"
 			git pull
@@ -152,7 +192,7 @@ if [[ "$EXPRESS_INSTALL" == false ]]; then
     fi
 else
 	if [ ! -d "$HOME/.dotfiles" ]; then
-		clone_dotfiles
+		choose_dotfiles
 	else
 		cd "$HOME/.dotfiles"
 		git pull
