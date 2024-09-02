@@ -128,20 +128,3 @@
 # fi
 # alias m_test='~/Minishell_Tester/start.sh'
 # alias reallyshell='~/Minishell_Tester/connect.sh'
-
-# Add homebrew to PATH
-if [[ $USER == "passunca" ]]; then
-	export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
-	export PATH="$HOME/sgoinfre/passunca/homebrew/bin:$PATH"
-	export PATH="$HOME/sgoinfre/passunca/homebrew/sbin:$PATH"
-elif [[ $USER == "zedr0" ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ $USER == "Zedro" ]]; then
-	export PATH="$HOME/.local/bin:$PATH"
-	export PATH="$HOME/.local/Homebrew/bin:$PATH"
-fi
-
-. "$HOME/.atuin/bin/env"
-
-[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
