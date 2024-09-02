@@ -409,6 +409,7 @@ fi
 declare -A BREW_PACKAGES
 BREW_PACKAGES=(
 	["readline"]="readline"
+	["node"]="node"
     ["unzip"]="unzip"
     ["btop"]="Btop"
     ["lnav"]="Lnav"
