@@ -69,6 +69,7 @@ fi
 declare -A SYSTEM_PACKAGES
 SYSTEM_PACKAGES=(
 	["build-essential"]="Build Essential"
+	["libreadline-dev"]="Libreadline Dev"
 	["cmake"]="cmake"
 	["curl"]="Curl"
 	["wget"]="Wget"
