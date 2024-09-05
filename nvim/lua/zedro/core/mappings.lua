@@ -67,7 +67,7 @@ local function replace_symbol_in_workspace()
 
   vim.cmd(":args " .. file_pattern)
 
-  vim.cmd(":argdo %s/\\<" .. old_symbol .. "\\>/" .. new_symbol .. "/gc | update")
+  vim.api.nvim_exec2(":argdo %s/\\<" .. old_symbol .. "\\>/" .. new_symbol .. "/gc | update", { output = true })
 
   -- Print a message confirming completion
   print("Replaced '" .. old_symbol .. "' with '" .. new_symbol .. "' in the workspace.")
