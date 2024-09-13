@@ -29,6 +29,7 @@ if [[ $USER == "passunca" ]]; then
 	export PATH="$HOME/sgoinfre/homebrew/bin:$PATH"
 	export PATH="$HOME/sgoinfre/passunca/homebrew/bin:$PATH"
 	export PATH="$HOME/sgoinfre/passunca/homebrew/sbin:$PATH"
+	export PATH="$HOME/sgoinfre/rust/build/x86_64-unknown-linux-gnu/stage0/bin:$PATH"
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ $USER == "zedro" ]]; then
