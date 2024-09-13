@@ -184,9 +184,7 @@ fi
 #####################################
 ### Clear google-chrome Singleton* ###
 #####################################
-if [[ -f ~/.config/google-chrome/Singleton* ]]; then
-	rm -rf ~/.config/google-chrome/Singleton*
-fi
+rm -rf ~/.config/google-chrome/Singleton*
 
 alias m_test=~/Minishell_Tester/start.sh
 alias reallyshell=~/Minishell_Tester/connect.sh
