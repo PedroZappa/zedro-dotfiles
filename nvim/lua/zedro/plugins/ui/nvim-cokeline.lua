@@ -73,7 +73,7 @@ return {
 					fg = function() return get_hex('Normal', 'fg') end
 				},
 				{
-					text = function(buffer) return '  ' .. buffer.index .. ". " end,
+					text = function(buffer) return ' ' .. buffer.index .. ". " end,
 					fg = green,
 				},
 				{
@@ -104,7 +104,7 @@ return {
 					italic = true
 				},
 				{
-					text = function(buffer) return buffer.filename .. '   ' end,
+					text = function(buffer) return buffer.filename .. ' ' end,
 					fg = get_name_fg_color,
 					style = 'bold',
 					bold = function(buffer) return buffer.is_focused end
@@ -116,7 +116,7 @@ return {
 					end
 				},
 				{
-					text = '  ',
+					text = ' ',
 				},
 			},
 		})
