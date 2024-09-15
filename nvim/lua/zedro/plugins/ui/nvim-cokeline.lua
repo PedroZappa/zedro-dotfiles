@@ -7,6 +7,8 @@ return {
 	},
 	config = function()
 		local get_hex = require('cokeline.hlgroups').get_hl_attr
+		local purple = '#BD93F9'
+		local green = '#50fa7b'
 		-- Function to get diagnostic severity for a buffer
 		local get_max_diagnostic_severity = function(buffer)
 			local diagnostics = vim.diagnostic.get(buffer.number)
@@ -48,13 +50,30 @@ return {
 				end,
 				bg = 'NONE',
 			},
+			sidebar = {
+				filetype = { 'NvimTree' },
+				components = {
+					{
+						text = function(buf)
+							return ' ' .. buf.filetype
+						end,
+						fg = purple,
+						bg = function() return get_hex('NvimTreeNormal', 'bg') end,
+						bold = true,
+					},
+				}
+			},
 			components = {
 				{
 					text = function(buffer) return (buffer.index ~= 1) and '▏' or '' end,
 					fg = function() return get_hex('Normal', 'fg') end
 				},
 				{
-					text = function(buffer) return '   ' .. buffer.devicon.icon end,
+					text = function(buffer) return ' ' .. buffer.index .. "." end,
+					fg = green,
+				},
+				{
+					text = function(buffer) return ' ' .. buffer.devicon.icon end,
 					fg = function(buffer) return buffer.devicon.color end,
 				},
 				{
