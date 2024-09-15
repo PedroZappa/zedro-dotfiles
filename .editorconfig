@@ -1,5 +1,24 @@
 root = true
 
+[*]
+indent_style = space
+indent_size = 2
+
+[*.{sh,html,md}]
+indent_size = 4
+
+[*.{c,h,cpp,hpp}]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+continuation_indent = 4
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+tab_width = 4
+continuation_indent = 4
+
 ################################################################################
 ################################################################################
 # see https://github.com/CppCXY/EmmyLuaCodeStyle
