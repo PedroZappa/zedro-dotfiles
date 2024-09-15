@@ -43,32 +43,14 @@ return {
 				return buffer.is_focused and get_hex('Normal', 'fg') or get_hex('Comment', 'fg')
 			end
 		end
-		-- Function to get the last two directories of the current working directory
-		local get_deepest_dir = function()
-			local cwd = vim.fn.getcwd()
-			-- Split the cwd into directories
-			local dirs = {}
-			for dir in string.gmatch(cwd, "[^/]+") do
-				table.insert(dirs, dir)
-			end
-			-- Get the last two directories
-			local count = #dirs
-			if count >= 1 then
-				return '../' .. dirs[count - 1] .. '/' .. dirs[count]
-			elseif count == 1 then
-				return '../' .. dirs[count]
-			else
-				return cwd -- In case it's just a root directory or something else
-			end
-		end
 
 		require('cokeline').setup({
 			default_hl = {
 				fg = function(buffer)
 					return
 						buffer.is_focused
-						and get_hex('Normal', 'fg')
-						or get_hex('Comment', 'fg')
+						and purple
+						or get_name_fg_color(buffer)
 				end,
 				bg = 'NONE',
 			},
@@ -91,7 +73,7 @@ return {
 					fg = function() return get_hex('Normal', 'fg') end
 				},
 				{
-					text = function(buffer) return ' ' .. buffer.index .. ".  " end,
+					text = function(buffer) return '  ' .. buffer.index .. ". " end,
 					fg = green,
 				},
 				{
@@ -103,7 +85,7 @@ return {
 					end,
 					fg = function(buffer)
 						return
-							(is_picking_focus() and green)
+							(is_picking_focus() and purple)
 							or (is_picking_close() and purple)
 							or buffer.devicon.color
 					end,
@@ -117,10 +99,6 @@ return {
 					end
 				},
 				{
-				-- {
-				-- 	text = function(buffer) return ' ' .. buffer.devicon.icon end,
-				-- 	fg = function(buffer) return buffer.devicon.color end,
-				-- },
 					text = function(buffer) return buffer.unique_prefix end,
 					fg = get_hex('Comment', 'fg'),
 					italic = true
