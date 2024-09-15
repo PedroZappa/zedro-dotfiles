@@ -25,20 +25,6 @@ return {
 				lsp_zero.default_setup,
 				lua_ls = function()
 					require('lspconfig').lua_ls.setup({
-						settings = {
-							Lua = {
-								format = {
-									enable = true,
-									defaultConfig = {
-										indent_style = "space",
-										indent_size = 2
-									}
-								},
-								diagnostics = {
-									globals = { "vim" }
-								}
-							}
-						},
 						on_init = function(client)
 							local uv = vim.uv or vim.loop
 							local path = client.workspace_folders[1].name
