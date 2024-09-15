@@ -43,6 +43,24 @@ return {
 				return buffer.is_focused and get_hex('Normal', 'fg') or get_hex('Comment', 'fg')
 			end
 		end
+		-- Function to get the last two directories of the current working directory
+		local get_deepest_dir = function()
+			local cwd = vim.fn.getcwd()
+			-- Split the cwd into directories
+			local dirs = {}
+			for dir in string.gmatch(cwd, "[^/]+") do
+				table.insert(dirs, dir)
+			end
+			-- Get the last two directories
+			local count = #dirs
+			if count >= 1 then
+				return '../' .. dirs[count - 1] .. '/' .. dirs[count]
+			elseif count == 1 then
+				return '../' .. dirs[count]
+			else
+				return cwd -- In case it's just a root directory or something else
+			end
+		end
 
 		require('cokeline').setup({
 			default_hl = {
@@ -59,7 +77,7 @@ return {
 				components = {
 					{
 						text = function(buf)
-							return ' ' .. buf.filetype
+							return '   🌳  ' .. buf.filetype
 						end,
 						fg = purple,
 						bg = function() return get_hex('NvimTreeNormal', 'bg') end,
