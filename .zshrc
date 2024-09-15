@@ -185,7 +185,9 @@ fi
 #####################################
 ### Clear google-chrome Singleton* ###
 #####################################
-rm -rf ~/.config/google-chrome/Singleton*
+if [[ $USER == "passunca" ]]; then
+  rm -rf ~/.config/google-chrome/Singleton*
+fi
 
 alias m_test=~/Minishell_Tester/start.sh
 alias reallyshell=~/Minishell_Tester/connect.sh

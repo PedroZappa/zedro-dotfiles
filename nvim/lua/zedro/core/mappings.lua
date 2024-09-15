@@ -112,6 +112,8 @@ keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" }
 -- Git
 keymap.set("n", "<leader>gg", ":LazyGit<CR>", { desc = "LazyGit" })
 keymap.set('n', '<leader>gs', ':Git<CR>')
+keymap.set('n', '<leader>gb', ':Gitsigns toggle_current_line_blame<CR>')
+keymap.set('n', '<leader>gv', ':BlameToggle virtual<CR>')
 -- vim-maximizer
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>", { desc = "Toggle Maximizer" })
 -- Markdown Preview

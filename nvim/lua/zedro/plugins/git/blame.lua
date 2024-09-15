@@ -23,5 +23,4 @@ return {
         close = { "<esc>", "q" },
     }
   },
-  vim.keymap.set('n', '<leader>gb', ':BlameToggle virtual<CR>')
 }
