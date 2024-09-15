@@ -6,9 +6,14 @@ return {
 		"stevearc/resession.nvim" -- Optional, for persistent history
 	},
 	config = function()
+		-- Buffer Pickers
+		local is_picking_focus = require('cokeline.mappings').is_picking_focus
+		local is_picking_close = require('cokeline.mappings').is_picking_close
+		-- Colors
 		local get_hex = require('cokeline.hlgroups').get_hl_attr
 		local purple = '#BD93F9'
 		local green = '#50fa7b'
+
 		-- Function to get diagnostic severity for a buffer
 		local get_max_diagnostic_severity = function(buffer)
 			local diagnostics = vim.diagnostic.get(buffer.number)
@@ -22,7 +27,6 @@ return {
 
 			return max_severity
 		end
-
 		-- Function to determine the color based on diagnostics
 		local get_name_fg_color = function(buffer)
 			local severity = get_max_diagnostic_severity(buffer)
@@ -69,14 +73,36 @@ return {
 					fg = function() return get_hex('Normal', 'fg') end
 				},
 				{
-					text = function(buffer) return ' ' .. buffer.index .. "." end,
+					text = function(buffer) return ' ' .. buffer.index .. ".  " end,
 					fg = green,
 				},
 				{
-					text = function(buffer) return ' ' .. buffer.devicon.icon end,
-					fg = function(buffer) return buffer.devicon.color end,
+					text = function(buffer)
+						return
+							(is_picking_focus() or is_picking_close())
+							and buffer.pick_letter .. ' '
+							or buffer.devicon.icon
+					end,
+					fg = function(buffer)
+						return
+							(is_picking_focus() and green)
+							or (is_picking_close() and purple)
+							or buffer.devicon.color
+					end,
+					italic = function()
+						return
+							(is_picking_focus() or is_picking_close())
+					end,
+					bold = function()
+						return
+							(is_picking_focus() or is_picking_close())
+					end
 				},
 				{
+				-- {
+				-- 	text = function(buffer) return ' ' .. buffer.devicon.icon end,
+				-- 	fg = function(buffer) return buffer.devicon.color end,
+				-- },
 					text = function(buffer) return buffer.unique_prefix end,
 					fg = get_hex('Comment', 'fg'),
 					italic = true
@@ -98,5 +124,10 @@ return {
 				},
 			},
 		})
-	end
+
+		-- Mappings
+		vim.keymap.set("n", "<leader>bp", function()
+			require('cokeline.mappings').pick("focus")
+		end, { desc = "Pick a buffer to focus" })
+	end,
 }
