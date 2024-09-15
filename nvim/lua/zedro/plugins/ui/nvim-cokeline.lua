@@ -69,8 +69,13 @@ return {
       },
       components = {
         {
-          text = function(buffer) return (buffer.index ~= 1) and '▏' or ' ' end,
-          fg = function() return get_hex('Normal', 'fg') end
+          text = '⫼',
+          align = 'right',
+          fg = purple,
+        },
+        {
+          text = function(buffer) return (buffer.index ~= 1) and '⫼ ' or '  ' end,
+          fg = purple,
         },
         {
           text = function(buffer) return buffer.index .. '. ' end,
