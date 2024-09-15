@@ -44,6 +44,30 @@ return {
 								lua_opts.settings.Lua
 							)
 						end,
+            settings = {
+              Lua = {
+                format = {
+                  enable = true,
+                  defaultConfig = {
+                    tab_width = 2,
+                    indent_style = "space",
+                    indent_width = 2,
+                    continuation_indent = 2,
+                  },
+                },
+                diagnostics = {
+                  globals = { "vim" },
+                },
+                workspace = {
+                  library = {
+                    [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                    [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                  },
+                  maxPreload = 100000,
+                  preloadFileSize = 10000,
+                },
+              },
+            },
 					})
 				end,
 				clangd = function()
