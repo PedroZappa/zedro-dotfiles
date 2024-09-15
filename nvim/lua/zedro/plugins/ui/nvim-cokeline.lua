@@ -74,7 +74,8 @@ return {
           fg = purple,
         },
         {
-          text = function(buffer) return (buffer.index ~= 1) and '⫼ ' or '  ' end,
+          -- text = function(buffer) return (buffer.index ~= 1) and '⫼ ' or '  ' end,
+          text = '  ',
           fg = purple,
         },
         {
