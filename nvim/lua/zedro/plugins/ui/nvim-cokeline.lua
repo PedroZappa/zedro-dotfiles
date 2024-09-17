@@ -13,6 +13,7 @@ return {
     local get_hex = require('cokeline.hlgroups').get_hl_attr
     local purple = '#BD93F9'
     local green = '#50fa7b'
+    local yellow = '#F1FA8C'
 
     -- Function to get diagnostic severity for a buffer
     local get_max_diagnostic_severity = function(buffer)
@@ -123,7 +124,7 @@ return {
               return '  '
             end
           end,
-          fg = green,
+          fg = yellow,
         },
         {
           text = '󰖭',
