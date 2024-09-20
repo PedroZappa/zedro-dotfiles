@@ -4,7 +4,7 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
   },
   build = ":TSUpdate",
-  config = function()
+  config = function ()
     local configs = require("nvim-treesitter.configs")
 
     configs.setup({
@@ -59,7 +59,7 @@ return {
           -- mapping query_strings to modes.
           selection_modes = {
             ["@parameter.outer"] = "v", -- charwise
-            ["@function.outer"] = "v", -- linewise
+            ["@function.outer"] = "v",  -- linewise
             ["@class.outer"] = "<c-v>", -- blockwise
           },
           include_surrounding_whitespace = true,

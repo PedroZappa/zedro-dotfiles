@@ -222,3 +222,5 @@ set $oldlr  = 0
 
 # used by ptraceme/rptraceme
 set $ptrace_bpnum = 0
+
+# source ~/.gef-2024.06.py
