@@ -130,20 +130,20 @@ return {
         },
         -- If you don't want to use these columns, you can set `enabled = false` for each of them individually
         type = {
-          enabled = true,
+          enabled = false,
           required_width = 30, -- min width of window required to show this column
         },
         file_size = {
           enabled = true,
-          required_width = 60, -- min width of window required to show this column
+          required_width = 30, -- min width of window required to show this column
         },
         last_modified = {
           enabled = true,
-          required_width = 80, -- min width of window required to show this column
+          required_width = 60, -- min width of window required to show this column
         },
         created = {
           enabled = true,
-          required_width = 100, -- min width of window required to show this column
+          required_width = 80, -- min width of window required to show this column
         },
         symlink_target = {
           enabled = true,
