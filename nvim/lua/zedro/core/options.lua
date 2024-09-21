@@ -29,6 +29,7 @@ opt.whichwrap = '<,>'
 opt.wrap = false
 -- C Indentation
 opt.cindent = true
+-- opt.breakindent = true
 
 -- Windows
 opt.splitbelow = true
