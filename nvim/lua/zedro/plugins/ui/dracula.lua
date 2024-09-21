@@ -90,6 +90,8 @@ return {
 			highlight LineNr guifg=#D6ACFF
 			highlight LspFloatWinBorder guifg=#e8eb34
 			highlight LspInfoBorder guifg=#e8eb34
+      hi TreesitterContextBottom gui=underline guisp=Grey
+      hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
 		]])
 	end,
 }
