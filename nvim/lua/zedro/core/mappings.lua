@@ -8,10 +8,10 @@ vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diag
 -- Change Permissions
 keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
 keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
-	{ desc = "Write Read-only file with sudo" })
+  { desc = "Write Read-only file with sudo" })
 -- Buffers
 keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>",
-	{ desc = "Close active buffer" })
+  { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
@@ -34,7 +34,7 @@ keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 -- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 
-keymap.set("n", "<leader>bm", function()
+keymap.set("n", "<leader>bm", function ()
   vim.fn.system('bear -- make')
   vim.cmd('write')
 end, { desc = "Run bare -- make command and write current buffer" })
@@ -42,10 +42,13 @@ end, { desc = "Run bare -- make command and write current buffer" })
 -- Editing
 -- Toggle Relative numbers
 keymap.set("n", "<leader>rl", ":set relativenumber!<CR>",
-	{ desc = "Toggle relative numbers" })
+  { desc = "Toggle relative numbers" })
+-- Move text up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Replace Scripts
 keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-	{ desc = "Replace word from whole file" })
+  { desc = "Replace word from whole file" })
 
 local function replace_symbol_in_workspace()
   local old_symbol = vim.fn.input("Replace symbol: ")
@@ -61,8 +64,8 @@ local function replace_symbol_in_workspace()
 
   local file_pattern = vim.fn.input("Files: (eg. **/*.c) ")
   if file_pattern == "" then
-	print("No file pattern provided!")
-	return
+    print("No file pattern provided!")
+    return
   end
 
   vim.cmd(":args " .. file_pattern)
@@ -73,7 +76,15 @@ local function replace_symbol_in_workspace()
   print("Replaced '" .. old_symbol .. "' with '" .. new_symbol .. "' in the workspace.")
 end
 vim.keymap.set("n", "<leader>srs", replace_symbol_in_workspace,
-	{ desc = "Replace symbol in workspace" })
+  { desc = "Replace symbol in workspace" })
+--
+-- GREATEST MAPPING EVER : djunho
+-- preserves the buffer when pasting over a highlighted selection
+vim.keymap.set("x", "<leader>p", [["_dP]])
+-- THE OTHER GREATEST MAPPING EVER : asbjornHaland
+-- Yank to the clipboard
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
@@ -104,9 +115,6 @@ vim.keymap.set("n", "<leader>d3", "<cmd>r!gendate h 2<cr>", { desc = "Insert dat
 vim.keymap.set("n", "<leader>b", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in Browser" })
 
 -- Plugins
--- Nvim-tree mappings
-keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>", { desc = "NvimTree Toggle" })
-keymap.set("n", "<leader>e", ":NvimTreeFocus<CR>", { desc = "NvimTree Focus" })
 -- Undotree mappings
 keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Undotree Toggle" })
 -- Git
@@ -122,26 +130,26 @@ keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview
 keymap.set("n", "<leader>ch", ":Cheat<CR>", { desc = "Cheat Sheet" })
 keymap.set("n", "<leader>cl", ":CheatList<CR>", { desc = "Cheat Sheet List" })
 keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>",
-	{ desc = "Cheat Sheet w/out Comments" })
+  { desc = "Cheat Sheet w/out Comments" })
 
 -- compiling
 keymap.set("n", "<leader>mk", ":vertical terminal make<CR>G",
-	{ desc = "Run Make on current dir" });
+  { desc = "Run Make on current dir" });
 
 --
 -- Scripts
 --
 keymap.set("n", "<leader>ccc",
-	":!setsid ~/.dotfiles/scripts/autocompile.sh % &<CR>",
-	{ desc = "Run autocompile.sh Script" })
+  ":!setsid ~/.dotfiles/scripts/autocompile.sh % &<CR>",
+  { desc = "Run autocompile.sh Script" })
 
 -- Parrot Crash
 keymap.set("n", "<leader>pl",
-	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
-	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR><C-w>2h" ..
-	":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>" ..
-	":term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>",
-	{ desc = "Parrot Party!!!" }
+  ":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:vs<CR>" ..
+  ":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR><C-w>2h" ..
+  ":term curl parrot.live<CR>:set nonu<CR>:set nornu<CR>:spl<CR>" ..
+  ":term curl parrot.live<CR>:set winbar=\"\"<CR>:set nonu<CR>:set nornu<CR>",
+  { desc = "Parrot Party!!!" }
 )
 -- Summon Pet
 keymap.set("n", "<leader>sp", ":PetsNew Z", { desc = "Summon Pet" })
