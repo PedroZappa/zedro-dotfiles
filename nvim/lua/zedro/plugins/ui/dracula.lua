@@ -61,6 +61,8 @@ return {
     vim.cmd([[
 			colorscheme dracula
 			highlight Normal guibg=none
+      highlight NormalFloat guibg=none guifg=#111111
+			highlight FloatBorder guifg=#e8eb34 guibg=#000000
 			highlight NonText guibg=#000000
 			highlight Search guibg=#34eb34
 			highlight CurSearch guibg=#34eb34 guifg=#8426ff
@@ -76,7 +78,6 @@ return {
 			highlight TermCursor guifg=#34eb43
 			highlight NormalFloat guibg=#000000
 			highlight WinSeparator guifg=#8426ff guibg=#000000
-			highlight FloatBorder guifg=#e8eb34 guibg=#000000
 			highlight NotifyBackground guibg=#000000
 			highlight NoiceCmdlinePopupBorder guifg=#34eb43
 			highlight NoiceCmdlineIcon guifg=#e6e600
@@ -92,6 +93,7 @@ return {
 			highlight NvimTreeLineNr guifg=#34eb43
 			highlight LineNr guifg=#D6ACFF
 			highlight LspFloatWinBorder guifg=#e8eb34
+			highlight LspFloatBorder guifg=#e8eb34
 			highlight LspInfoBorder guifg=#e8eb34
       hi TreesitterContextBottom gui=underline guisp=Grey
       hi TreesitterContextLineNumberBottom gui=underline guisp=Grey

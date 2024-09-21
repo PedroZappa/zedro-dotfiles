@@ -101,6 +101,7 @@ return {
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
+        { name = "codeium" }, -- codeium
         -- { name = "cmdline" }, -- cmdline
         {
           name = 'tags',
@@ -117,7 +118,6 @@ return {
             current_buffer_only = false,
           },
         },
-        { name = "codeium" }, -- codeium
       }),
       confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
@@ -142,6 +142,7 @@ return {
             luasnip  = "[Snippet]",
             buffer   = "[Buffer]",
             path     = "[Path]",
+            codeium  = "[Codeium]",
             -- cmdline  = "[Cmdline]",
             tags     = "[Tags]",
           })[entry.source.name]
