@@ -46,7 +46,7 @@ return {
         "filesystem",
         "buffers",
         "git_status",
-        -- "document_symbols",
+        "document_symbols",
       },
       source_selector = {
         winbar = true,
@@ -340,5 +340,6 @@ return {
     vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
     keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })
+    keymap.set("n", "<leader>ts", ":Neotree document_symbols<cr>", { desc = "Get Document Symbols NeoTree" })
   end
 }
