@@ -159,11 +159,11 @@ return {
       end
     end
 
-    require("telescope").load_extension("emoji")
-    require("telescope").load_extension("repo")
-    require("telescope").load_extension('harpoon')
-    pcall(require('telescope').load_extension, 'fzf')
-    pcall(require("telescope").load_extension, "live_grep_args")
+    pcall(require("telescope").load_extension("emoji"))
+    pcall(require("telescope").load_extension("repo"))
+    pcall(require("telescope").load_extension('harpoon'))
+    pcall(require('telescope').load_extension('fzf'))
+    pcall(require("telescope").load_extension("live_grep_args"))
 
     local builtin = require('telescope.builtin')
     local lga     = require('telescope').extensions.live_grep_args.live_grep_arg
