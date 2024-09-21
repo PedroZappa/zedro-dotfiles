@@ -56,7 +56,6 @@ opt.fmr = "{{{,}}}"
 opt.spell = false
 vim.opt.spelllang = 'pt,en'
 -- Show nine spell checking candidates at most
-vim.opt.spellsuggest = best,9
 
 -- Backup
 opt.backup = false
