@@ -1,4 +1,5 @@
 {
+  "42-NorminetteNvim": { "branch": "main", "commit": "3323222e0785863b329a0250e2e4e62ed94c3e43" },
   "42header": { "branch": "master", "commit": "9f51db5cc483951e257aece66f1f4ce3b14cdab1" },
   "Comment.nvim": { "branch": "master", "commit": "e30b7f2008e52442154b66f7c519bfd2f1e32acb" },
   "FTerm.nvim": { "branch": "master", "commit": "d1320892cc2ebab472935242d9d992a2c9570180" },
