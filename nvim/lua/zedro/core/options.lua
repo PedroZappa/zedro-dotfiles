@@ -6,7 +6,7 @@ opt.guifont = "Fira Code Nerd Font:h11"
 
 -- Line Numbers
 opt.number = true
-opt.numberwidth = 3
+opt.numberwidth = 1
 opt.relativenumber = true
 opt.ignorecase = true
 opt.smartcase = true
@@ -29,7 +29,7 @@ opt.whichwrap = '<,>'
 opt.wrap = false
 -- C Indentation
 opt.cindent = true
--- opt.breakindent = true
+-- opt.breakindent = false
 
 -- Windows
 opt.splitbelow = true
@@ -55,6 +55,8 @@ opt.fmr = "{{{,}}}"
 -- Spelling
 opt.spell = false
 vim.opt.spelllang = 'pt,en'
+-- Show nine spell checking candidates at most
+vim.opt.spellsuggest = best,9
 
 -- Backup
 opt.backup = false
@@ -71,6 +73,9 @@ opt.virtualedit = "block"
 
 -- Inc Command
 opt.inccommand = "split"
+
+-- Set completeopt to have a better completion experience
+vim.opt.completeopt = 'menuone,noselect'
 
 -- LSP
 vim.g.bulitin_lsp = true
