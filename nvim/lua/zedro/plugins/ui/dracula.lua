@@ -97,7 +97,7 @@ return {
       hi TreesitterContextBottom gui=underline guisp=Grey
       hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
       hi NeoTreeBufferNumber guifg=#e8eb34
-      hi NeoTreeCursorLine guifg=#8426ff guibg=#000000 gui=underline
+      hi NeoTreeCursorLine guifg=#34eb43 guibg=#000000 gui=underline
       hi NeoTreeTabActive guifg=#e8eb34 gui=bold
       hi NeoTreeTabSeparatorActive guibg=#8426ff guifg=#000000
       hi NeoTreeRootName guifg=#34eb43 gui=bold,italic
@@ -105,6 +105,8 @@ return {
       hi NeoTreeSignColumn guifg=#e8eb34
       hi NeoTreeFileIcon guifg=green gui=bold
       hi NeoTreeDotfile guifg=#6272a4
+      hi NeoTreeGitUnstaged guifg=#8426ff
+      hi NeoTreeGitModified guifg=#8426ff
 			hi NeoCodeiumLabel guibg=#34eb43 guifg=#000000
 		]])
   end,

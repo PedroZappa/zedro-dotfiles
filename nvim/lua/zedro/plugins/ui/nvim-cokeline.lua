@@ -56,11 +56,11 @@ return {
         bg = 'NONE',
       },
       sidebar = {
-        filetype = { 'NeoTree' },
+        filetype = { 'neo-tree' },
         components = {
           {
             text = function(buf)
-              return '   🌳  ' .. buf.filetype
+              return '🌳  🌳  🌳  🌳  Z-TreeZ  🌳  🌳  🌳  🌳'
             end,
             fg = purple,
             bg = function() return get_hex('NvimTreeNormal', 'bg') end,
@@ -71,7 +71,7 @@ return {
       components = {
         {
           text = '⫼',
-          align = 'right',
+          align = 'center',
           fg = purple,
         },
         {
