@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = 'zedro.plugins' },
 	{ import = 'zedro.plugins.ui' },
+	{ import = 'zedro.plugins.ai' },
 	{ import = 'zedro.plugins.edit' },
 	{ import = 'zedro.plugins.git' },
 	{ import = 'zedro.plugins.lsp' },

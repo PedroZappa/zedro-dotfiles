@@ -61,7 +61,6 @@ return {
     vim.cmd([[
 			colorscheme dracula
 			highlight Normal guibg=none
-      highlight NormalFloat guibg=none guifg=#111111
 			highlight FloatBorder guifg=#e8eb34 guibg=#000000
 			highlight NonText guibg=#000000
 			highlight Search guibg=#34eb34
