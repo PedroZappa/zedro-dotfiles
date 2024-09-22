@@ -113,12 +113,6 @@ keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 --   { desc = "Disable completion" }
 -- )
 
--- Insert Dates
--- insert the date in my desired configuration
-vim.keymap.set("n", "<leader>d", "<cmd>r!gendate.sh<cr>", { desc = "Insert date" })
-vim.keymap.set("n", "<leader>d2", "<cmd>r!gendate h 1<cr>", { desc = "Insert date h1" })
-vim.keymap.set("n", "<leader>d3", "<cmd>r!gendate h 2<cr>", { desc = "Insert date h2" })
-
 -- Open in Browser
 vim.keymap.set("n", "<leader>b", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in Browser" })
 
