@@ -105,6 +105,7 @@ return {
       hi NeoTreeSignColumn guifg=#e8eb34
       hi NeoTreeFileIcon guifg=green gui=bold
       hi NeoTreeDotfile guifg=#6272a4
+			hi NeoCodeiumLabel guibg=#34eb43 guifg=#000000
 		]])
   end,
 }
