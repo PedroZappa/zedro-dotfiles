@@ -150,7 +150,7 @@ return {
     --   maximum_width = 50,
     --   render = "default",
     --   stages = "fade_in_slide_out",
-    --   timeout = 1000,
+    --   timeout = 500,
     --   top_down = true,
     -- })
   end,
