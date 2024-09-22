@@ -52,6 +52,18 @@ opt.sidescrolloff = 7
 -- Fold Marks
 opt.fmr = "{{{,}}}"
 
+-- Enable folding by indentation (use different method if needed)
+vim.opt.foldmethod = "indent"
+
+-- Automatically open all folds when a file is opened
+vim.opt.foldlevelstart = 99
+
+-- Configure fold options
+vim.opt.foldenable = true         -- Enable folding
+vim.opt.foldlevel = 99            -- Open most folds by default
+vim.opt.foldnestmax = 10          -- Maximum fold nesting
+vim.opt.foldminlines = 1          -- Minimum number of lines for a fold
+
 -- Spelling
 opt.spell = false
 vim.opt.spelllang = 'pt,en'

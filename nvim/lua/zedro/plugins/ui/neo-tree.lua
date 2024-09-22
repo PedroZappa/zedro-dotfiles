@@ -58,13 +58,6 @@ return {
           handler = function ()
             vim.opt_local.number = true
             vim.opt_local.relativenumber = true
-            -- Highlight the line numbers with green color
-            -- vim.cmd("highlight LineNr guifg=#34eb43") -- For GUI/truecolor
-            -- vim.cmd("highlight LineNr ctermfg=#34eb43") -- For terminal
-            --
-            -- -- Highlight relative numbers with green color
-            -- vim.cmd("highlight CursorLineNr guifg=#e8eb34")
-            -- vim.cmd("highlight CursorLineNr ctermfg=#e8eb34")
           end
         },
       },

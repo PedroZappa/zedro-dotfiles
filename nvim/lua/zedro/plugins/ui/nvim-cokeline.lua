@@ -56,7 +56,7 @@ return {
         bg = 'NONE',
       },
       sidebar = {
-        filetype = { 'NvimTree' },
+        filetype = { 'NeoTree' },
         components = {
           {
             text = function(buf)
@@ -78,10 +78,6 @@ return {
           -- text = function(buffer) return (buffer.index ~= 1) and '⫼ ' or '  ' end,
           text = '  ',
           fg = purple,
-        },
-        {
-          text = function(buffer) return buffer.index .. '. ' end,
-          fg = green,
         },
         {
           text = function(buffer)
