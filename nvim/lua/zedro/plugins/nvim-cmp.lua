@@ -129,6 +129,7 @@ return {
       },
       completion = {
         completeopt = "menu,menuone,preview,noselect",
+        -- autocomplete = false,
       },
       formatting = { -- configure lspkind for vs-code like pictograms in completion menu
         fields = { "kind", "abbr", "menu" },
@@ -150,7 +151,7 @@ return {
         end,
       },
     })
-    --
+
     -- `/` cmdline setup.
     cmp.setup.cmdline('/', {
       mapping = cmp.mapping.preset.cmdline(),
@@ -167,6 +168,5 @@ return {
         { name = 'cmdline' }
       })
     })
-    
   end,
 }
