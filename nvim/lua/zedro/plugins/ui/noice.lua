@@ -146,8 +146,8 @@ return {
     --     WARN = " "
     --   },
     --   level = 1,
-    --   minimum_width = 50,
-    --   maximum_width = 30,
+    --   minimum_width = 30,
+    --   maximum_width = 50,
     --   render = "default",
     --   stages = "fade_in_slide_out",
     --   timeout = 1000,
