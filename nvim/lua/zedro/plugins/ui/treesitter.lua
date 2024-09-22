@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
+    -- "nvim-treesitter/nvim-treesitter-refactor", -- Provides "got to def" capabilities 
   },
   build = ":TSUpdate",
   config = function ()

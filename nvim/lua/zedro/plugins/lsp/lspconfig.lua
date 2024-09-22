@@ -27,13 +27,7 @@ return {
       { "╰", "LspFloatBorder" },
       { "│", "LspFloatBorder" },
     }
-    -- Set custom border style and color for LSP floating windows (including hover)
-    vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-      vim.lsp.handlers.hover,
-      {
-        border = "rounded", -- Set border style: single, double, rounded, etc.
-      }
-    )
+
     require('mason').setup({})
     require("mason-lspconfig").setup({
       ensure_installed = { "clangd", "lua_ls" },

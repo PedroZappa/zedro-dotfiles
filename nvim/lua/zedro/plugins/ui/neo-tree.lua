@@ -52,6 +52,22 @@ return {
         winbar = true,
         statusline = false
       },
+      event_handlers = {
+        {
+          event = "neo_tree_buffer_enter",
+          handler = function ()
+            vim.opt_local.number = true
+            vim.opt_local.relativenumber = true
+            -- Highlight the line numbers with green color
+            -- vim.cmd("highlight LineNr guifg=#34eb43") -- For GUI/truecolor
+            -- vim.cmd("highlight LineNr ctermfg=#34eb43") -- For terminal
+            --
+            -- -- Highlight relative numbers with green color
+            -- vim.cmd("highlight CursorLineNr guifg=#e8eb34")
+            -- vim.cmd("highlight CursorLineNr ctermfg=#e8eb34")
+          end
+        },
+      },
       close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
       popup_border_style = "rounded",
       enable_git_status = true,
@@ -109,7 +125,7 @@ return {
           highlight = "NeoTreeModified",
         },
         name = {
-          trailing_slash = false,
+          trailing_slash = true,
           use_git_status_colors = true,
           highlight = "NeoTreeFileName",
         },
