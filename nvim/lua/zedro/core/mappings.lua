@@ -1,29 +1,47 @@
 local keymap = vim.keymap -- for conciseness
+
 -- General Mappings --
--- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap.set(({ "n", "v" }), "<Space>", "<Nop>", { silent = true })
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
-vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 -- Diagnostic keymaps
+vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+-- Clear search highlights
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- Change Permissions
 keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
 keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
   { desc = "Write Read-only file with sudo" })
+
 -- Buffers
+-- Save & Close
+keymap.set("n", "<leader>wa", ":wqa<cr>", { desc = "save and close all" })
+keymap.set("n", "<leader>wq", ":wq<cr>", { desc = "save and close all" })
+keymap.set("i", "jk", "<Esc>", { desc = "esc and save" })
+keymap.set("n", "<leader>w", ":wall<CR>", { desc = "save all" })
+keymap.set("n", "qq", "@a", { desc = "close all" })
+keymap.set("n", "qf", ":q!<cr>", { desc = "close current bufferall without saving" })
+keymap.set(
+  "n",
+  "<leader>tf",
+  ":!touch %<cr>",
+  { silent = true, noremap = true, desc = "touch file to reload observers" }
+)
+keymap.set("n", "<leader>_", "5<c-w>-", { remap = true, silent = false })
+keymap.set("n", "<leader>+", "5<c-w>+", { remap = true, silent = false })
 keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>",
   { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
 keymap.set("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
--- Close buffer
+
+-- Windows
 -- Resizing window
 keymap.set("n", "<C-up>", "<C-w>+", { desc = "Up" })
 keymap.set("n", "<C-down>", "<C-w>-", { desc = "Down" })
@@ -32,6 +50,15 @@ keymap.set("n", "<C-right>", "<C-w><", { desc = "Right" })
 -- Splitting windows
 keymap.set("n", "<leader>vs", ":vsplit<CR>", { desc = "Vertical split" })
 keymap.set("n", "<leader>hs", ":split<CR>", { desc = "Horizontal split" })
+-- Navigation
+keymap.set("n", "<c-u>", "<c-u>zz", { desc = "Page Up and Center Cursor" })
+keymap.set("n", "<c-d>", "<c-d>zz", { desc = "Page Down and Center Cursor" })
+keymap.set("n", "<BS>", "^", { desc = "Move to first non-whitespace char of line" })
+keymap.set("v", "<S-PageDown>", ":m '>+1<CR>gv=gv", { desc = "Move Line Down in Visual Mode" })
+keymap.set("v", "<S-PageUp>", ":m '<-2<CR>gv=gv", { desc = "Move Line Up in Visual Mode" })
+-- Navigate Search Results
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
 
 -- LSP
 -- Disable/Enable LSP
@@ -41,6 +68,13 @@ keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 -- Terminals
 -- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
+keymap.set("t", "<C-h>", "<C-\\><C-n><C-h>", { noremap = true, silent = true })
+keymap.set("t", "<C-j>", "<C-\\><C-n><C-j>", { noremap = true, silent = true })
+keymap.set("t", "<C-k>", "<C-\\><C-n><C-k>", { noremap = true, silent = true })
+keymap.set("t", "<C-l>", "<C-\\><C-n><C-l>", { noremap = true, silent = true })
+keymap.set("t", "<A-m>", "<C-\\><C-n><A-m>", { noremap = true, silent = true })
+keymap.set("n", "<leader>Tsv", ":vsp term://", { desc = "Open terminal", noremap = true, silent = false })
+keymap.set("n", "<leader>Tsh", ":sp term://", { desc = "Open terminal", noremap = true, silent = false })
 
 keymap.set("n", "<leader>bm", function ()
   vim.fn.system('bear -- make')
@@ -51,10 +85,22 @@ end, { desc = "Run bare -- make command and write current buffer" })
 -- Toggle Relative numbers
 keymap.set("n", "<leader>rl", ":set relativenumber!<CR>",
   { desc = "Toggle relative numbers" })
+-- Selecting
+keymap.set("n", "<leader>L", "vg_", { desc = "select to end of line" })
+keymap.set("n", "<leader>sa", "ggVG", { desc = "Select all" })
+keymap.set("n", "<leader>sap", "ggVGp", { desc = "Select all & paste" })
+keymap.set("n", "<leader>gp", "`[v`]", { desc = "Select last pasted text" })
+-- Remap for dealing with word wrap
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 -- Move text up and down
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
--- Replace Scripts
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Inserting
+keymap.set("i", "<C-n>", "<C-e><C-o>A;<ESC>", { desc = "insert semicolon at the end of the line" })
+-- Join
+keymap.set("n", "J", "mzJ`z", { desc = "Join lines w/out spaces" })
+-- Search & Replace Scripts
 keymap.set("n", "<leader>sr", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
   { desc = "Replace word from whole file" })
 
@@ -69,37 +115,55 @@ local function replace_symbol_in_workspace()
     print("No replacement provided!")
     return
   end
-
   local file_pattern = vim.fn.input("Files: (eg. **/*.c) ")
   if file_pattern == "" then
     print("No file pattern provided!")
     return
   end
-
   vim.cmd(":args " .. file_pattern)
-
   vim.api.nvim_exec2(":argdo %s/\\<" .. old_symbol .. "\\>/" .. new_symbol .. "/gc | update", { output = true })
-
   -- Print a message confirming completion
   print("Replaced '" .. old_symbol .. "' with '" .. new_symbol .. "' in the workspace.")
 end
-vim.keymap.set("n", "<leader>srs", replace_symbol_in_workspace,
+keymap.set("n", "<leader>srs", replace_symbol_in_workspace,
   { desc = "Replace symbol in workspace" })
---
+
+-- Quote Toggler
+keymap.set("n", "<leader>tq", function()
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.fn.col "."
+  local new_line = line:gsub("(['\"`])(.-[^\\])%1", function(q, content)
+    if q == "'" then
+      return '"' .. content .. '"'
+    elseif q == '"' then
+      return "`" .. content .. "`"
+    else
+      return "'" .. content .. "'"
+    end
+  end)
+  vim.api.nvim_set_current_line(new_line)
+  vim.fn.cursor(vim.fn.line ".", col)
+end, { desc = "Toggle quote style" })
+
+-- PATH OPERATIONS --
+vim.keymap.set(
+  "n",
+  "<leader>cpf",
+  ':let @+ = expand("%:p")<cr>:lua print("Copied path to: " .. vim.fn.expand("%:p"))<cr>',
+  { desc = "Copy current file name and path", silent = false }
+)
+
 -- GREATEST MAPPING EVER : djunho
 -- preserves the buffer when pasting over a highlighted selection
-vim.keymap.set("x", "<leader>p", [["_dP]])
+keymap.set("x", "<leader>p", [["_dP]])
 -- THE OTHER GREATEST MAPPING EVER : asbjornHaland
 -- Yank to the clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+keymap.set({"n", "v"}, "<leader>y", [["+y]])
+keymap.set("n", "<leader>Y", [["+Y]])
 
 -- Trim Trailing blanks
 keymap.set("n", "<leader>trm", ":%s/\\s\\+$//e<CR>", { desc = "Trim trailing blanks" })
 
--- Searching
-keymap.set("n", "n", "nzzzv")
-keymap.set("n", "N", "Nzzzv")
 -- Clear Highlights
 keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 
@@ -114,7 +178,7 @@ keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 -- )
 
 -- Open in Browser
-vim.keymap.set("n", "<leader>b", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in Browser" })
+keymap.set("n", "<leader>b", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in Browser" })
 
 -- Plugins
 -- Undotree mappings
