@@ -195,4 +195,21 @@ alias reallyshell=~/Minishell_Tester/connect.sh
 eval "$(atuin init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
+# Define a function to run fzf
+fzf-file-widget() {
+  LBUFFER="${LBUFFER}$(fzf)"
+  local ret=$?
+  zle reset-prompt
+  return $ret
+}
+
+# Create a ZLE widget for the function
+zle -N fzf-file-widget
+
+# Bind the widget to a key combination (e.g., Ctrl+F)
+bindkey '^F' fzf-file-widget
+
 source <(fzf --zsh)
+# Set up fzf key bindings and fuzzy completion
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
