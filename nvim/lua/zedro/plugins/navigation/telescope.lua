@@ -156,12 +156,6 @@ return {
       return text
     end
 
-    local changeText = function (func)
-      return function ()
-        func({ default_text = getText() })
-      end
-    end
-
     pcall(require("telescope").load_extension("emoji"))
     pcall(require("telescope").load_extension("repo"))
     pcall(require("telescope").load_extension('harpoon'))
@@ -170,6 +164,12 @@ return {
 
     local builtin = require('telescope.builtin')
     local lga     = require('telescope').extensions.live_grep_args.live_grep_arg
+
+    local changeText = function (func)
+      return function ()
+        func({ default_text = getText() })
+      end
+    end
 
     -- Builtin keymaps
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
