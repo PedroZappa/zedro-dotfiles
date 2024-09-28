@@ -118,6 +118,7 @@ FILES=(
     ["$HOME/.dotfiles/.vimrc"]="$HOME/.vimrc"
     ["$HOME/.dotfiles/nvim"]="$HOME/.config/nvim"
     ["$HOME/.dotfiles/.editorconfig"]="$HOME/.editorconfig"
+    ["$HOME/.dotfiles/.clang-format"]="$HOME/.clang-format"
 	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.tmux.conf.local"
     ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
