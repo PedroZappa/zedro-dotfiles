@@ -105,8 +105,8 @@ return {
         },
         {
           elements = {
-            { id = "repl",        size = 0.60 },
-            { id = "console",     size = 0.40 },
+            { id = "repl",    size = 0.60 },
+            { id = "console", size = 0.40 },
           },
           size = 0.25,
           position = "bottom",
@@ -206,7 +206,29 @@ return {
       end
       -- Prompt user for program and arguments
       local program = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-      local args = vim.split(vim.fn.input("Arguments: ", vim.fn.getcwd() .. "/"), " ")
+
+      -- Ask if arguments are in a file or should be entered as a string
+      local arg_source = vim.fn.input("Load arguments from file (f) or enter as string (s)? ")
+      local args = {}
+
+      if arg_source:lower() == "f" then
+        -- Load arguments from file
+        local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
+        local file = io.open(arg_file, "r")
+        if file then
+          for line in file:lines() do
+            table.insert(args, line)
+          end
+          file:close()
+        else
+          print("Failed to open arguments file")
+          return
+        end
+      else
+        -- Enter arguments as a string
+        local arg_string = vim.fn.input("Enter arguments (space-separated): ")
+        args = vim.split(arg_string, " ")
+      end
 
       local config = {
         type = adapter_type,
