@@ -135,8 +135,7 @@ return {
     end
 
     return {
-      { '<A-\\>',     dap.continue,          desc = 'DAP: Start/Continue' },
-      { '<leader>dr', start_dap_with_args,   desc = 'DAP: Start with args' },
+      { '<A-\\>',     start_dap_with_args,   desc = 'DAP: Start with args' },
       { '<F2>',       dap.step_into,         desc = 'DAP: Step Into' },
       { '<F3>',       dap.step_over,         desc = 'DAP: Step Over' },
       { '<F4>',       dap.step_out,          desc = 'DAP: Step Out' },
