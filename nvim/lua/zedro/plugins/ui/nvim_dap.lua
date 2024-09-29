@@ -92,6 +92,27 @@ return {
 
     -- UI : see |:help nvim-dap-ui|
     ui.setup({
+      layouts = {
+        {
+          elements = {
+            { id = "scopes",      size = 0.50 },
+            { id = "breakpoints", size = 0.10 },
+            { id = "stacks",      size = 0.30 },
+            { id = "watches",     size = 0.10 },
+          },
+          size = 80,
+          position = "left",
+        },
+        {
+          elements = {
+            { id = "repl",        size = 0.60 },
+            { id = "console",     size = 0.40 },
+          },
+          size = 0.25,
+          position = "bottom",
+        },
+      },
+
       icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
       controls = {
         icons = {
@@ -106,6 +127,7 @@ return {
           disconnect = "⏏",
         },
       },
+
     })
     require("nvim-dap-virtual-text").setup({
       -- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
