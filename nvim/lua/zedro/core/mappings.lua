@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 -- Clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- Change Permissions
-keymap.set("n", "<leader>xx", ":!chmod +x %<CR>", { desc = "Make file executable" })
+keymap.set("n", "<leader>cx", ":!chmod +x %<CR>", { desc = "Make file executable" })
 keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
   { desc = "Write Read-only file with sudo" })
 
@@ -66,7 +66,6 @@ keymap.set("n", "<leader>ld", ":LspStop<CR>", { desc = "Disable LSP" })
 keymap.set("n", "<leader>le", ":LspStart<CR>", { desc = "Enable LSP" })
 
 -- Terminals
--- Exit terminal
 keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal" })
 keymap.set("t", "<C-h>", "<C-\\><C-n><C-h>", { noremap = true, silent = true })
 keymap.set("t", "<C-j>", "<C-\\><C-n><C-j>", { noremap = true, silent = true })
@@ -75,6 +74,11 @@ keymap.set("t", "<C-l>", "<C-\\><C-n><C-l>", { noremap = true, silent = true })
 keymap.set("t", "<A-m>", "<C-\\><C-n><A-m>", { noremap = true, silent = true })
 keymap.set("n", "<leader>Tsv", ":vsp term://", { desc = "Open terminal", noremap = true, silent = false })
 keymap.set("n", "<leader>Tsh", ":sp term://", { desc = "Open terminal", noremap = true, silent = false })
+-- Exec Command lines
+keymap.set("n", "<leader>ex", ":.w !bash -e<CR>", { desc = "Execute current line and output to command line" })
+keymap.set("n", "<leader>eX", ":%w !bash -e<CR>", { desc = "Execute all lines and output to command line" })
+keymap.set("n", "<leader>el", ":.!bash -e<CR>", { desc = "Execute current line & replace w/ result", noremap = true, silent = false })
+keymap.set("n", "<leader>eL", ":% !bash %<CR>", { desc = "Execute all lines & replace w/ result" })
 
 keymap.set("n", "<leader>bm", function ()
   vim.fn.system('bear -- make')

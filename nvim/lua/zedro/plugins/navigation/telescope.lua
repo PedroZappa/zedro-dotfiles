@@ -133,6 +133,12 @@ return {
       }
     }
 
+    pcall(require("telescope").load_extension("emoji"))
+    pcall(require("telescope").load_extension("repo"))
+    pcall(require("telescope").load_extension('harpoon'))
+    pcall(require('telescope').load_extension('fzf'))
+    pcall(require("telescope").load_extension("live_grep_args"))
+
     -- Get the text if selected or the text searched. Otherwise return '' (default behavior)
     local function getText()
       local text = ''
@@ -155,12 +161,6 @@ return {
 
       return text
     end
-
-    pcall(require("telescope").load_extension("emoji"))
-    pcall(require("telescope").load_extension("repo"))
-    pcall(require("telescope").load_extension('harpoon'))
-    pcall(require('telescope').load_extension('fzf'))
-    pcall(require("telescope").load_extension("live_grep_args"))
 
     local builtin = require('telescope.builtin')
     local lga     = require('telescope').extensions.live_grep_args.live_grep_arg
