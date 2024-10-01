@@ -248,10 +248,10 @@ return {
         vim.keymap.del("n", "<C-s>")
         vim.keymap.del("n", "<C-n>")
         vim.keymap.del("n", "<C-p>")
-        vim.keymap.del("n", "<C-P>")
+        -- vim.keymap.del("n", "<C-P>")
         vim.keymap.del("n", "<C-r>")
         vim.keymap.del("n", "<C-\\>")
-        vim.keymap.del("n", "<C-B>")
+        -- vim.keymap.del("n", "<C-B>")
         vim.keymap.del("n", "<leader>dgb")
         vim.keymap.del("n", "<leader>d?")
       end
