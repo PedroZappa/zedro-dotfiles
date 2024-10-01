@@ -218,7 +218,7 @@ return {
 
       if dap_keys_enabled then
         -- Enable DAP keymaps
-        vim.keymap.set("n", "<C-`>", dap.continue, { desc = "DAP: Continue" })
+        vim.keymap.set("n", "<C-~>", dap.continue, { desc = "DAP: Continue" })
         vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
         vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
         vim.keymap.set("n", "<C-P>", dap.step_out, { desc = "DAP: Step Out" })
@@ -233,7 +233,7 @@ return {
         end, { desc = "DAP: Evaluate expression under cursor" })
       else
         -- Disable DAP keymaps
-        vim.keymap.del("n", "<C-`>")
+        vim.keymap.del("n", "<C-~>")
         vim.keymap.del("n", "<C-s>")
         vim.keymap.del("n", "<C-n>")
         vim.keymap.del("n", "<C-p>")

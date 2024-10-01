@@ -96,7 +96,7 @@ tmux rename-window	-t DEV:1 "$PROJECT_NAME"
 tmux send-keys		-t DEV:1 'cd '$DEV_DIR C-m
 tmux send-keys		-t DEV:1 '' C-m
 # Create Debug window
-tmux new-window		-t DEV:2 -n 'DEBUG'
+tmux new-window		-t DEV:2 -n 'GDB'
 tmux split-window	-t DEV:2 -h
 tmux send-keys		-t DEV:2 'cd '$DEV_DIR C-m
 tmux send-keys		-t DEV:2.1 'cd '$DEV_DIR C-m
@@ -105,7 +105,7 @@ tmux send-keys		-t DEV:2.1 ":e .vgdbinit" C-m
 tmux send-keys		-t DEV:2.1 ":split .gdbinit" C-m
 tmux resize-pane	-L 160
 # Create SYNC window
-tmux new-window		-t DEV:3 -n 'SYNC'
+tmux new-window		-t DEV:3 -n 'DAP'
 tmux send-keys		-t DEV:3 'cd '$DEV_DIR C-m
 
 # Attach to DEV session
