@@ -10,6 +10,9 @@ vim.cmd("set path=.,**")
 -- Spell Path
 vim.g.spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
 
+-- Node.js Settings
+vim.g.node_host_prog = '~/.nvm/versions/node/v20.11.1/bin/node'
+vim.cmd("let $PATH = '/path/to/node/bin:' . $PATH")
 
 -- 42 Header Settings
 vim.g.user42 = 'passunca'
