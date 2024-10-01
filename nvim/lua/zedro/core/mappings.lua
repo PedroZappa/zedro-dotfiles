@@ -182,7 +182,7 @@ keymap.set("n", "<Esc>", ":nohl<CR>", { desc = "Clear search highlights" })
 -- )
 
 -- Open in Browser
-keymap.set("n", "<leader>b", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in Browser" })
+keymap.set("n", "<leader>W", ":lua vim.ui.open(vim.fn.expand('%'))<CR>", { desc = "Open in [W]eb Browser" })
 
 -- Plugins
 -- Undotree mappings

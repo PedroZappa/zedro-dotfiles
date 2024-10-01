@@ -168,25 +168,7 @@ return {
       return nil
     end
 
-    -- require("dapui").float_element(get_element_id_at_cursor())
-
-    -- Event Listeners
-    dap.listeners.before.attach.dapui_config = function()
-      ui.open()
-    end
-    dap.listeners.before.launch.dapui_config = function()
-      ui.open()
-    end
-    dap.listeners.before.event_terminated.dapui_config = function()
-      ui.close()
-    end
-    dap.listeners.before.event_exited.dapui_config = function()
-      ui.close()
-    end
-  end,
-  keys = function(_, keys)
-    local dap = require("dap")
-    local dapui = require("dapui")
+    -- require("ui").float_element(get_element_id_at_cursor())
 
     -- Run DAP w/ args function
     local function start_dap_with_args()
@@ -239,33 +221,62 @@ return {
       }
       dap.run(config)
     end
+    local dap_keys_enabled = false
 
-    return {
-      { "<A-\\>",    start_dap_with_args,   desc = "DAP: Start with args" },
-      { "<C-`>",     dap.continue,          desc = "DAP: Continue" },
-      { "<C-s>",     dap.step_into,         desc = "DAP: Step Into" },
-      { "<C-n>",     dap.step_over,         desc = "DAP: Step Over" },
-      { "<C-B>",     dap.step_out,          desc = "DAP: Step Out" },
-      { "<C-p>",     dap.step_back,         desc = "DAP: Step Back" },
-      { "<C-r>",     dap.restart,           desc = "DAP: Restart" },
-      { "<C-\\>",    dapui.toggle,          desc = "DAP: Check last session results" },
-      { "<leader>b", dap.toggle_breakpoint, desc = "DAP: Toggle breakpoint" },
-      {
-        "<leader>B",
-        function()
+    local function toggle_dap_keys()
+      dap_keys_enabled = not dap_keys_enabled
+
+      if dap_keys_enabled then
+        -- Enable DAP keymaps
+        vim.keymap.set("n", "<C-`>", dap.continue, { desc = "DAP: Continue" })
+        vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
+        vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
+        vim.keymap.set("n", "<C-P>", dap.step_out, { desc = "DAP: Step Out" })
+        vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
+        vim.keymap.set("n", "<C-r>", dap.restart, { desc = "DAP: Restart" })
+        vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
+        vim.keymap.set("n", "<leader>B", function()
           dap.set_breakpoint(vim.fn.input("DAP: Breakpoint condition: "))
-        end,
-        { desc = "DAP: Set breakpoint" },
-      },
-      { "<leader>gb", dap.run_to_cursor, desc = "DAP: Run to cursor" },
-      {
-        "<leader>?",
-        function()
-          require("dapui").eval(nil, { enter = true })
-        end,
-        { desc = "DAP: Evaluate expression under cursor" },
-      },
-      unpack(keys),
-    }
+        end, { desc = "DAP: Set breakpoint" })
+        vim.keymap.set("n", "<leader>dgb", dap.run_to_cursor, { desc = "DAP: Run to cursor" })
+        vim.keymap.set("n", "<leader>d?", function()
+          ui.eval(nil, { enter = true })
+        end, { desc = "DAP: Evaluate expression under cursor" })
+      else
+        -- Disable DAP keymaps
+        vim.keymap.del("n", "<C-`>")
+        vim.keymap.del("n", "<C-s>")
+        vim.keymap.del("n", "<C-n>")
+        vim.keymap.del("n", "<C-p>")
+        vim.keymap.del("n", "<C-P>")
+        vim.keymap.del("n", "<C-r>")
+        vim.keymap.del("n", "<C-\\>")
+        vim.keymap.del("n", "<C-B>")
+        vim.keymap.del("n", "<leader>dgb")
+        vim.keymap.del("n", "<leader>d?")
+      end
+    end
+
+    -- Event Listeners
+    dap.listeners.before.attach.dapui_config = function()
+      ui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      ui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      toggle_dap_keys()
+      ui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      toggle_dap_keys()
+      ui.close()
+    end
+    dap.listeners.after.event_initialized["dapui_config"] = function()
+      toggle_dap_keys()
+    end
+    -- Global DAP keybinds
+    vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
+    vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
   end,
 }
