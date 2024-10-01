@@ -9,7 +9,7 @@ return {
     {
       's1n7ax/nvim-window-picker',
       version = '2.*',
-      config = function ()
+      config = function()
         require 'window-picker'.setup({
           filter_rules = {
             include_current_win = false,
@@ -26,7 +26,7 @@ return {
       end,
     },
   },
-  config = function ()
+  config = function()
     -- If you want icons for diagnostic errors, you'll need to define them somewhere:
     vim.fn.sign_define("DiagnosticSignError",
       { text = " ", texthl = "DiagnosticSignError" })
@@ -55,7 +55,7 @@ return {
       event_handlers = {
         {
           event = "neo_tree_buffer_enter",
-          handler = function ()
+          handler = function()
             vim.opt_local.number = true
             vim.opt_local.relativenumber = true
           end
@@ -97,7 +97,7 @@ return {
           folder_closed = "",
           folder_open = "",
           folder_empty = "󰜌",
-          provider = function (icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
+          provider = function(icon, node, state) -- default icon provider utilizes nvim-web-devicons if available
             if node.type == "file" or node.type == "terminal" then
               local success, web_devicons = pcall(require, "nvim-web-devicons")
               local name = node.type == "terminal" and "terminal" or node.name
@@ -346,7 +346,31 @@ return {
       }
     })
     local keymap = vim.keymap
-    vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+    vim.api.nvim_create_augroup("NeoCodeiumToggle", { clear = true })
+    vim.api.nvim_create_autocmd("FileType", {
+      group = "NeoCodeiumToggle",
+      pattern = "neo-tree",
+      callback = function()
+        vim.cmd("NeoCodeium disable")
+      end,
+    })
+    vim.api.nvim_create_autocmd("BufLeave", {
+      group = "NeoCodeiumToggle",
+      pattern = "*",
+      callback = function()
+        if vim.bo.filetype == "neo-tree" then
+          vim.schedule(function()
+            if vim.bo.filetype ~= "neo-tree" then
+              vim.cmd("NeoCodeium enable")
+            end
+          end)
+        end
+      end,
+    })
+    vim.keymap.set('n', '\\', function()
+      vim.cmd('Neotree reveal')
+      vim.cmd('NeoCodeium disable')
+    end, { noremap = true, silent = true })
     keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>n", ":Neotree reveal<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })

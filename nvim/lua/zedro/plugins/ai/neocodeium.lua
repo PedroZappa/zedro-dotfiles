@@ -1,6 +1,6 @@
 return {
   "monkoose/neocodeium",
-  event = "VeryLazy",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local neocodeium = require("neocodeium")
     neocodeium.setup({
@@ -29,7 +29,8 @@ return {
       filter = function(bufnr)
         -- Check if the buffer is a neo-tree buffer
         local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
-        if filetype == "neo-tree" or fyletype == "Nui-tree-popup" then
+        if filetype == "neo-tree" or fyletype == "Nui" then
+          vim.cmd("Neocodeium disable")
           return false
         end
         return true
