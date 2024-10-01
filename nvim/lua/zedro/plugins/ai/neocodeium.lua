@@ -1,7 +1,7 @@
 return {
   "monkoose/neocodeium",
   event = "VeryLazy",
-  config = function ()
+  config = function()
     local neocodeium = require("neocodeium")
     neocodeium.setup({
       -- If `false`, then would not start codeium server (disabled state)
@@ -26,7 +26,14 @@ return {
       -- Set to a function that returns `true` if a buffer should be enabled
       -- and `false` if the buffer should be disabled
       -- You can still enable disabled by this option buffer with `:NeoCodeium enable_buffer`
-      filter = function (bufnr) return true end,
+      filter = function(bufnr)
+        -- Check if the buffer is a neo-tree buffer
+        local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+        if filetype == "neo-tree" or fyletype == "Nui-tree-popup" then
+          return false
+        end
+        return true
+      end,
       -- Set to `false` to disable suggestions in buffers with specific filetypes
       -- You can still enable disabled by this option buffer with `:NeoCodeium enable_buffer`
       filetypes = {
@@ -37,24 +44,25 @@ return {
       },
       -- List of directories and files to detect workspace root directory for Codeium chat
       root_dir = { ".bzr", ".git", ".hg", ".svn", "_FOSSIL_", "package.json" }
+
     })
     -- Keybinds
-    vim.keymap.set("i", "<C-g>", function ()
+    vim.keymap.set("i", "<C-g>", function()
       require("neocodeium").accept()
     end)
-    vim.keymap.set("i", "<C-w>", function ()
+    vim.keymap.set("i", "<C-w>", function()
       require("neocodeium").accept_word()
     end)
-    vim.keymap.set("i", "<C-l>", function ()
+    vim.keymap.set("i", "<C-l>", function()
       require("neocodeium").accept_line()
     end)
-    vim.keymap.set("i", "<C-e>", function ()
+    vim.keymap.set("i", "<C-e>", function()
       require("neocodeium").cycle_or_complete()
     end)
-    vim.keymap.set("i", "<C-r>", function ()
+    vim.keymap.set("i", "<C-r>", function()
       require("neocodeium").cycle_or_complete(-1)
     end)
-    vim.keymap.set("i", "<C-x>", function ()
+    vim.keymap.set("i", "<C-x>", function()
       require("neocodeium").clear()
     end)
   end,
