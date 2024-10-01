@@ -196,20 +196,10 @@ return {
       if arg_source:lower() == "f" then
         -- Load arguments from file
         local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
-        local file = io.open(arg_file, "r")
-        if file then
-          for line in file:lines() do
-            table.insert(args, line)
-          end
-          file:close()
-        else
-          print("Failed to open arguments file")
-          return
-        end
+        table.insert(args, arg_file)
       else
-        -- Enter arguments as a string
-        local arg_string = vim.fn.input("Enter arguments (space-separated): ")
-        args = vim.split(arg_string, " ")
+        local arg_str = vim.fn.input("Arguments: ")
+        args = vim.split(arg_str, " ")
       end
 
       local config = {
@@ -234,7 +224,6 @@ return {
         vim.keymap.set("n", "<C-P>", dap.step_out, { desc = "DAP: Step Out" })
         vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
         vim.keymap.set("n", "<C-r>", dap.restart, { desc = "DAP: Restart" })
-        vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
         vim.keymap.set("n", "<leader>B", function()
           dap.set_breakpoint(vim.fn.input("DAP: Breakpoint condition: "))
         end, { desc = "DAP: Set breakpoint" })
@@ -250,7 +239,7 @@ return {
         vim.keymap.del("n", "<C-p>")
         -- vim.keymap.del("n", "<C-P>")
         vim.keymap.del("n", "<C-r>")
-        vim.keymap.del("n", "<C-\\>")
+        -- vim.keymap.del("n", "<C-\\>")
         -- vim.keymap.del("n", "<C-B>")
         vim.keymap.del("n", "<leader>dgb")
         vim.keymap.del("n", "<leader>d?")
@@ -278,5 +267,6 @@ return {
     -- Global DAP keybinds
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
     vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
+    vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
   end,
 }
