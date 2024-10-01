@@ -27,7 +27,7 @@ return {
     -- DAP Packages Setup
     require("mason-nvim-dap").setup({
       automatic_installation = true, -- Attempts to set reasonable defaults
-      ensure_installed = { "codelldm", "bash-debug-adapter" },
+      ensure_installed = { "codelldm", "bash" },
       -- see :help mason-nvim-dap on how to create custom handlers
       handlers = {},
     })
@@ -42,6 +42,7 @@ return {
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
+        stopOnEntry = true,
         stopAtBeginningOfMainSubprogram = true,
       },
       {
