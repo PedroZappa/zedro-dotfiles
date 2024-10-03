@@ -1,4 +1,4 @@
 return {
   'neoclide/coc.nvim',
-  branch = 'release'
+  branch = 'release',
 }

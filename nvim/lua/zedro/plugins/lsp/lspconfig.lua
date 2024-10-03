@@ -7,10 +7,10 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
     { "williamboman/mason-lspconfig.nvim" },
   },
-  config = function ()
+  config = function()
     local lsp_zero = require("lsp-zero")
     lsp_zero.extend_lspconfig()
-    lsp_zero.on_attach(function (client, bufnr)
+    lsp_zero.on_attach(function(client, bufnr)
       -- see :help lsp-zero-keybindings
       -- to learn the available actions
       lsp_zero.default_keymaps({ buffer = bufnr })
@@ -33,15 +33,15 @@ return {
       ensure_installed = { "clangd", "lua_ls" },
       handlers = {
         lsp_zero.default_setup,
-        lua_ls = function ()
+        lua_ls = function()
           require('lspconfig').lua_ls.setup({
-            on_init = function (client)
+            on_init = function(client)
               local uv = vim.uv or vim.loop
               local path = client.workspace_folders[1].name
 
               -- Don't do anything if there is a project local config
               if uv.fs_stat(path .. '/.luarc.json')
-                or uv.fs_stat(path .. '/.luarc.jsonc')
+                  or uv.fs_stat(path .. '/.luarc.jsonc')
               then
                 return
               end
@@ -80,7 +80,7 @@ return {
             },
           })
         end,
-        clangd = function ()
+        clangd = function()
           require("lspconfig").clangd.setup({
             cmd = { "clangd",
               "--compile-commands-dir=" .. vim.loop.cwd(),
@@ -104,8 +104,21 @@ return {
             },
           })
         end,
-        pyright = function ()
-          require("lspconfig").pyright.setup({})
+        pyright = function()
+          require("lspconfig").pyright.setup({
+            cmd = { "pyright-langserver", "--stdio" },
+            filetypes = { "python" },
+            settings = {
+              python = {
+                analysis = {
+                  autoSearchPaths = true,
+                  diagnosticMode = "openFilesOnly",
+                  useLibraryCodeForTypes = true
+                }
+              }
+            }
+
+          })
         end
       },
     })
@@ -119,7 +132,7 @@ return {
 
     -- lsp_attach is where you enable features that only work
     -- if there is a language server active in the file
-    local lsp_attach = function (client, bufnr)
+    local lsp_attach = function(client, bufnr)
       local opts = { buffer = bufnr }
       local actions = require "telescope.actions"
       local actions_state = require "telescope.actions.state"
@@ -170,12 +183,12 @@ return {
       vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
       vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
       vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-      vim.keymap.set("n", "<leader>lc", function ()
+      vim.keymap.set("n", "<leader>lc", function()
         local lc_opts = {
           finder = finders.new_oneshot_job(cmd, {}),
           sorter = sorters.get_generic_fuzzy_sorter({}),
 
-          attach_mappings = function (prompt_bufnr, map)
+          attach_mappings = function(prompt_bufnr, map)
             map("i", "<CR>", enter)
             map("i", "<C-j>", next_color)
             map("i", "<C-k>", prev_color)
