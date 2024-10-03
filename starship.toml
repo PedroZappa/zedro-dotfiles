@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$virtualenv$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
+$virtualenv$directory$git_branch$git_commit$git_status$c$cmd_duration$python$shlvl
 $jobs$hostname$username $shell $character
 '''
 right_format = "$status${custom.minitalk}${custom.valgrind}$localip$time $battery$os"
@@ -287,7 +287,7 @@ detect_extensions = ['py']
 detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
 detect_folders = []
 pyenv_version_name = true
-pyenv_prefix = "pyenv "
+pyenv_prefix = ""
 style = "bold yellow"
 
 [rlang]
