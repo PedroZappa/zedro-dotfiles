@@ -235,10 +235,6 @@ fi
 ZAP_DIR="$HOME/.local/share/zap"
 
 install_zap() {
-	if ! zsh -n true 2>/dev/null; then
-        echo "${RED}Error: You do not have zsh installed, Exiting...${D}" >&2
-        exit 1
-    fi
 	echo "${YEL}Installing ${B}${RED}zap${D}: ${YEL}zsh's Package Manager...${D}"
 	zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 	echo "zap installation complete. 🤙"
@@ -262,11 +258,6 @@ fi
 
 # Install vim-plug
 install_vim_plug() {
-	if ! curl -n true 2>/dev/null || ! vim -n true 2>/dev/null; then
-        echo "${RED}Error: You do not have vim installed, Exiting...${D}" >&2
-        exit 1
-    fi
-
 	echo "${YEL}Installing ${PRP}vim-plug${YEL}...${D}"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
