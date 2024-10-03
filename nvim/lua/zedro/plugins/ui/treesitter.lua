@@ -19,6 +19,7 @@ return {
         "html",
         "markdown",
         "make",
+        "http"
       },
       sync_install = false,
       -- Automatically install missing parsers when entering buffer

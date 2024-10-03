@@ -17,3 +17,8 @@ vim.cmd("let $PATH = '/path/to/node/bin:' . $PATH")
 -- 42 Header Settings
 vim.g.user42 = 'passunca'
 vim.g.mail42 = 'passunca@student.42porto.com'
+
+-- Rest.nvim
+vim.g.rest_nvim = {
+    -- ...
+}

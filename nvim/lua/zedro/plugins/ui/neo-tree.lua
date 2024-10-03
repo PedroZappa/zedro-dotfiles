@@ -346,31 +346,7 @@ return {
       }
     })
     local keymap = vim.keymap
-    vim.api.nvim_create_augroup("NeoCodeiumToggle", { clear = true })
-    vim.api.nvim_create_autocmd("FileType", {
-      group = "NeoCodeiumToggle",
-      pattern = "neo-tree",
-      callback = function()
-        vim.cmd("NeoCodeium disable")
-      end,
-    })
-    vim.api.nvim_create_autocmd("BufLeave", {
-      group = "NeoCodeiumToggle",
-      pattern = "*",
-      callback = function()
-        if vim.bo.filetype == "neo-tree" then
-          vim.schedule(function()
-            if vim.bo.filetype ~= "neo-tree" then
-              vim.cmd("NeoCodeium enable")
-            end
-          end)
-        end
-      end,
-    })
-    vim.keymap.set('n', '\\', function()
-      vim.cmd('Neotree reveal')
-      vim.cmd('NeoCodeium disable')
-    end, { noremap = true, silent = true })
+    keymap.set('n', '\\', ":Neotree reveal<cr>", { desc = "Open NeoTree" })
     keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>n", ":Neotree reveal<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })

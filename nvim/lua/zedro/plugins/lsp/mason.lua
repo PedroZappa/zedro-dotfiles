@@ -107,6 +107,7 @@ return {
           require("lspconfig").pyright.setup({
             cmd = { "pyright-langserver", "--stdio" },
             filetypes = { "python" },
+            single_file_support = true,
             settings = {
               python = {
                 analysis = {

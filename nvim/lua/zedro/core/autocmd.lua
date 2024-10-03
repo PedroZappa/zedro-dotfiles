@@ -6,7 +6,7 @@
 -- vim.api.nvim_exec([[
 -- 	augroup filetype_vim
 -- 		autocmd!
--- 		autocmd FileType txt 
+-- 		autocmd FileType txt
 -- 		call WordProcessor()
 -- 	augroup END
 -- ]], false)
@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd({"FileType"}, {
 	command = "IBLDisable"
 })
 --
--- Conceal in Neorg 
+-- Conceal in Neorg
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 	pattern = {"*.norg"},
 	command = "set conceallevel=3"
