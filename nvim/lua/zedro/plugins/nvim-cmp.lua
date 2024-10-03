@@ -98,11 +98,12 @@ return {
       sources = cmp.config.sources({ -- sources for autocompletion
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
+        { name = "lsp_kind" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
         { name = "codeium" }, -- codeium
-        -- { name = "cmdline" }, -- cmdline
+        { name = "cmdline" }, -- cmdline
         {
           name = 'tags',
           option = {
@@ -140,6 +141,7 @@ return {
           vim_item.menu = ({
             nvim_lsp = "[lsp]",
             nvim_lua = "[nvim_lua]",
+            lspkind  = "[lspkind]",
             luasnip  = "[Snippet]",
             buffer   = "[Buffer]",
             path     = "[Path]",
