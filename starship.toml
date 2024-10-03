@@ -4,7 +4,7 @@
 # https://starship.rs/config/#prompt
 # Default Prompt for reference
 format = '''
-$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
+$virtualenv$directory$git_branch$git_commit$git_status$c$cmd_duration$shlvl
 $jobs$hostname$username $shell $character
 '''
 right_format = "$status${custom.minitalk}${custom.valgrind}$localip$time $battery$os"
@@ -280,6 +280,15 @@ symbol = " "
 
 [python]
 symbol = " "
+format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+# format = '[($virtualenv )]($style)'
+version_format = 'v${raw}'
+detect_extensions = ['py']
+detect_files = ['.python-version', 'Pipfile', '__init__.py', 'pyproject.toml', 'requirements.txt', 'setup.py', 'tox.ini']
+detect_folders = []
+pyenv_version_name = true
+pyenv_prefix = "pyenv "
+style = "bold yellow"
 
 [rlang]
 symbol = "󰟔 "
