@@ -37,5 +37,7 @@ return {
         timeout_ms = 500,
       })
     end, { desc = "Make file or range PRETTY (v/n mode)" })
+  -- Format Python
+    vim.keymap.set({ "n", "v" }, "<leader>fmp", ":silent !black %<CR>", { desc = "Make file or range PRETTY (v/n mode)" })
   end,
 }

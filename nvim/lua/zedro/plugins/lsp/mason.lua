@@ -10,7 +10,39 @@ return {
     local mason = require("mason")                     -- import mason
     local mason_lspconfig = require("mason-lspconfig") -- import mason-lspconfig
     local mason_tool_installer = require("mason-tool-installer")
+    -- Python virtual env detection
+    local util = require("lspconfig/util")
+    local path = util.path
 
+    local function file_exists(name)
+      local f = io.open(name, "r")
+      if f ~= nil then
+        io.close(f)
+        return true
+      else return false end
+    end
+
+    local function get_python_path(workspace)
+      -- Use activated virtualenv.
+      if vim.env.VIRTUAL_ENV then
+        return path.join(vim.env.VIRTUAL_ENV, "bin", "python")
+      end
+      -- Find and use virtualenv in workspace directory.
+      for _, pattern in ipairs({ "*", ".*" }) do
+        local match = vim.fn.glob(path.join(workspace, pattern, "pyvenv.cfg"))
+        if match ~= "" then
+          return path.join(path.dirname(match), "bin", "python")
+        end
+      end
+      local default_venv_path = path.join(vim.env.HOME, "virtualenvs", "nvim-venv", "bin", "python")
+      if file_exists(default_venv_path) then
+        return default_venv_path
+      end
+      -- Fallback to system Python.
+      return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+    end
+
+    -- Setup
     mason.setup({
       ui = {
         icons = {
@@ -116,8 +148,10 @@ return {
                   useLibraryCodeForTypes = true
                 }
               }
-            }
-
+            },
+            before_init = function(_, config)
+              config.settings.python.pythonPath = get_python_path(config.root_dir)
+            end,
           })
         end
       },
