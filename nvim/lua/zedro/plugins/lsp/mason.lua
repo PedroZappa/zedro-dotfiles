@@ -140,9 +140,6 @@ return {
             cmd = { "pyright-langserver", "--stdio" },
             filetypes = { "python" },
             single_file_support = false,
-            -- root_dir = function()
-            --   return vim.fn.cwd()
-            -- end,
             settings = {
               python = {
                 analysis = {
@@ -157,14 +154,6 @@ return {
             end,
           })
         end,
-        -- ast_grep = function()
-        --   require("lspconfig").ast_grep.setup({
-        --     cmd = { "astgrep", "lsp" },
-        --     filetypes = { "python" },
-        --     root_pattern = { 'sgconfig.yaml', 'sgconfig.yml' },
-        --     single_file_support = false,
-        --   })
-        -- end,
       },
     })
 

@@ -146,7 +146,7 @@ return {
             buffer   = "[Buffer]",
             path     = "[Path]",
             codeium  = "[Codeium]",
-            -- cmdline  = "[Cmdline]",
+            cmdline  = "[Cmdline]",
             tags     = "[Tags]",
           })[entry.source.name]
           return vim_item

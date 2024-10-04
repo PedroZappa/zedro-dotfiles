@@ -20,7 +20,7 @@ return {
         markdown = { "prettier" },
         graphql = { "prettier" },
         lua = { "stylua" },
-        python = { "isort", "black" },
+        python = { "black" },
         bash = { "beautysh" },
       },
       -- Set this to change the default values when calling conform.format()

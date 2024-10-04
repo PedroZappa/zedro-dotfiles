@@ -2,6 +2,7 @@ return {
   "mfussenegger/nvim-dap",
   event = "VeryLazy",
   dependencies = {
+    -- UI
     "rcarriga/nvim-dap-ui",
     "theHamsta/nvim-dap-virtual-text",
     -- Dependency for ASIO
@@ -12,7 +13,11 @@ return {
     -- Telescope integration
     "nvim-telescope/telescope-dap.nvim",
     -- Language specific
-    -- 'mfussenegger/nvim-dap-python',
+    'mfussenegger/nvim-dap-python',
+    {
+      'Joakker/lua-json5',
+      build = './install.sh'
+    }
   },
   config = function()
     local dap_ok, dap = pcall(require, "dap")
@@ -21,16 +26,42 @@ return {
       return
     end
     require("dap").set_log_level("INFO") -- Helps when configuring DAP, see logs with :DapShowLog
-
     local ui = require("dapui")
-
+    local widgets = require('dap.ui.widgets')
+    -- JSON5 Compatibility
+    require('dap.ext.vscode').json_decode = require('json5').parse
     -- DAP Packages Setup
+    -- https://github.com/jay-babu/mason-nvim-dap.nvim
     require("mason-nvim-dap").setup({
       automatic_installation = true, -- Attempts to set reasonable defaults
-      ensure_installed = { "codelldm", "bash" },
+      ensure_installed = { "codelldm", "cppdbg", "bash", "python" },
       -- see :help mason-nvim-dap on how to create custom handlers
-      handlers = {},
+      handlers = {
+        function(config)
+          -- all sources with no handler get passed here
+
+          -- Keep original functionality
+          require('mason-nvim-dap').default_setup(config)
+        end,
+        python = function(config)
+          config.adapters = {
+            type = "executable",
+            command = "/usr/bin/python3",
+            args = {
+              "-m",
+              "debugpy.adapter",
+            },
+          }
+          require('mason-nvim-dap').default_setup(config)
+        end,
+      },
     })
+    -- `python -m debugpy --version` must work in the shell
+    require("dap-python").setup("python")
+    -- require('dap-python').test_runner = 'pytest'
+    -- require('dap-python').resolve_python = function()
+    --   return '/absolute/path/to/python'
+    -- end
 
     -- Adapter Configurations
     dap.configurations.cpp = {
@@ -90,7 +121,20 @@ return {
         terminalKind = "integrated",
       },
     }
-
+    -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+    dap.configurations.python = {
+      type = "python",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      python = { "/usr/bin/python", "-E" },
+      cwd = "${workspaceFolder}",
+      console = "integratedTerminal",
+      env = { "zedro" },
+      logToFile = true,
+      showReturnValue = true,
+      stopOnEntry = true,
+    }
     -- UI : see |:help nvim-dap-ui|
     ui.setup({
       layouts = {
@@ -101,7 +145,7 @@ return {
             { id = "stacks",      size = 0.30 },
             { id = "watches",     size = 0.10 },
           },
-          size = 80,
+          size = 50,
           position = "left",
         },
         {
@@ -219,31 +263,39 @@ return {
 
       if dap_keys_enabled then
         -- Enable DAP keymaps
-        vim.keymap.set("n", "<C-~>", dap.continue, { desc = "DAP: Continue" })
+        vim.keymap.set("n", "<C-C>", dap.continue, { desc = "DAP: Continue" })
         vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
         vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
         vim.keymap.set("n", "<C-P>", dap.step_out, { desc = "DAP: Step Out" })
         vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
         vim.keymap.set("n", "<C-r>", dap.restart, { desc = "DAP: Restart" })
         vim.keymap.set("n", "<leader>B", function()
-          dap.set_breakpoint(vim.fn.input("DAP: Breakpoint condition: "))
-        end, { desc = "DAP: Set breakpoint" })
+          dap.set_breakpoint(nil, nil, vim.fn.input("DAP: Breakpoint condition: "))
+        end, { desc = "DAP: Set breakpoint w/ message" })
         vim.keymap.set("n", "<leader>dgb", dap.run_to_cursor, { desc = "DAP: Run to cursor" })
         vim.keymap.set("n", "<leader>d?", function()
           ui.eval(nil, { enter = true })
         end, { desc = "DAP: Evaluate expression under cursor" })
+        vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "DAP: Run last" })
+        vim.keymap.set("n", "v", function() widgets.hover() end)
+        vim.keymap.set("n", "v", function() widgets.preview() end)
+        vim.keymap.set("n", "<leader>df", function() widgets.center_float(widgets.frames) end)
+        vim.keymap.set("n", "<leader>ds", function() widgets.center_float(widgets.scopes) end)
       else
         -- Disable DAP keymaps
-        vim.keymap.del("n", "<C-~>")
+        vim.keymap.del("n", "<C-C>")
         vim.keymap.del("n", "<C-s>")
         vim.keymap.del("n", "<C-n>")
         vim.keymap.del("n", "<C-p>")
         -- vim.keymap.del("n", "<C-P>")
         vim.keymap.del("n", "<C-r>")
         -- vim.keymap.del("n", "<C-\\>")
-        -- vim.keymap.del("n", "<C-B>")
+        vim.keymap.del("n", "<leader>B")
         vim.keymap.del("n", "<leader>dgb")
         vim.keymap.del("n", "<leader>d?")
+        vim.keymap.del("n", "<leader>dl")
+        vim.keymap.del("n", "<leader>df")
+        vim.keymap.del("n", "<leader>ds")
       end
     end
 
@@ -266,8 +318,15 @@ return {
       toggle_dap_keys()
     end
     -- Global DAP keybinds
+    vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
+    vim.keymap.set("n", "<leader>tdp", toggle_dap_keys, { desc = "DAP: Toggle DAP keybinds" })
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
     vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
-    vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
+    vim.keymap.set("n", "<leader>pdb", ":lua require('dap-python').test_method()<CR>",
+      { desc = "DAP: Debug python method" })
+    vim.keymap.set("n", "<leader>pdc", ":lua require('dap-python').test_class()<CR>",
+      { desc = "DAP: Debug python class" })
+    vim.keymap.set("n", "<leader>pds", ":lua require('dap-python').debug_selection()<CR>",
+      { desc = "DAP: Debug python selection" })
   end,
 }

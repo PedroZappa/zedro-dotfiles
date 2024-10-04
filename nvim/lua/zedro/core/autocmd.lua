@@ -37,6 +37,12 @@ vim.cmd [[
 	augroup END
 ]]
 
+-- DAP
+-- Autocompletion
+vim.cmd [[
+  au FileType dap-repl lua require('dap.ext.autocompl').attach()
+]]
+
 -- disable IBL plugin on Markdown files
 vim.api.nvim_create_autocmd({"FileType"}, {
 	pattern = {"markdown"},
