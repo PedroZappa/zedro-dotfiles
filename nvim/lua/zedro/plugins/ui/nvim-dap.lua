@@ -75,10 +75,7 @@ return {
     dap.adapters.python = {
       type = "executable",
       command = "python3",
-      args = {
-        "-m",
-        "debugpy.adapter",
-      },
+      args = { "-m", "debugpy.adapter" },
     }
 
     table.insert(dap.configurations.cpp, {
@@ -333,9 +330,11 @@ return {
 
     -- Event Listeners
     dap.listeners.before.attach.dapui_config = function()
+      toggle_dap_keys()
       ui.open()
     end
     dap.listeners.before.launch.dapui_config = function()
+      toggle_dap_keys()
       ui.open()
     end
     dap.listeners.before.event_terminated.dapui_config = function()
