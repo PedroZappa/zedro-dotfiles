@@ -22,3 +22,6 @@ vim.g.mail42 = 'passunca@student.42porto.com'
 vim.g.rest_nvim = {
     -- ...
 }
+
+-- Python Settings
+vim.g.python3_host_prog = '/usr/bin/python3'

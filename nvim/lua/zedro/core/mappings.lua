@@ -217,7 +217,7 @@ keymap.set("n", "<leader>cl", ":CheatList<CR>", { desc = "Cheat Sheet List" })
 keymap.set("n", "<leader>cwc", ":CheatWithoutComments<CR>",
   { desc = "Cheat Sheet w/out Comments" })
 
--- compiling
+-- compilin
 keymap.set("n", "<leader>mk", ":vertical terminal make<CR>G",
   { desc = "Run Make on current dir" });
 

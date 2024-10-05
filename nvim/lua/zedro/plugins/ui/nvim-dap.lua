@@ -56,15 +56,18 @@ return {
         end,
       },
     })
-    -- `python -m debugpy --version` must work in the shell
-    require("dap-python").setup("python")
-    -- require('dap-python').test_runner = 'pytest'
-    -- require('dap-python').resolve_python = function()
-    --   return '/absolute/path/to/python'
-    -- end
 
     -- Adapter Configurations
-    dap.configurations.cpp = {
+    dap.adapters.python = {
+      type = "executable",
+      command = "python",
+      args = {
+        "-m",
+        "debugpy.adapter",
+      },
+    }
+
+    table.insert(dap.configurations.cpp, {
       {
         name = "Launch",
         type = "codelldb",
@@ -99,8 +102,8 @@ return {
         end,
         cwd = "${workspaceFolder}",
       },
-    }
-    dap.configurations.sh = {
+    })
+    table.insert(dap.configurations.sh, {
       {
         type = "bashdb",
         request = "launch",
@@ -120,21 +123,24 @@ return {
         env = {},
         terminalKind = "integrated",
       },
-    }
+    })
     -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-    dap.configurations.python = {
+    table.insert(dap.configurations.python, {
       type = "python",
       request = "launch",
-      name = "Launch file",
+      name = "Launch file (zedro)",
       program = "${file}",
       python = { "/usr/bin/python", "-E" },
+      pytonPath = function()
+        return 'python'
+      end,
       cwd = "${workspaceFolder}",
       console = "integratedTerminal",
-      env = { "zedro" },
       logToFile = true,
       showReturnValue = true,
       stopOnEntry = true,
-    }
+    })
+
     -- UI : see |:help nvim-dap-ui|
     ui.setup({
       layouts = {
@@ -316,6 +322,7 @@ return {
       ui.close()
     end
     dap.listeners.after.event_initialized["dapui_config"] = function()
+      ui.open()
       toggle_dap_keys()
     end
     -- Global DAP keybinds
