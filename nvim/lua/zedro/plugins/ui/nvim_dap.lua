@@ -223,6 +223,7 @@ return {
         c = "codelldb",
         cpp = "codelldb",
         bash = "bash-debug-adapter",
+        python = "debugpy",
         -- Add more mappings as needed
       }
       -- Get the debug adapter type for the current filetype
@@ -322,11 +323,28 @@ return {
     vim.keymap.set("n", "<leader>tdp", toggle_dap_keys, { desc = "DAP: Toggle DAP keybinds" })
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
     vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
-    -- vim.keymap.set("n", "<leader>pdb", ":lua require('dap-python').test_method()<CR>",
-    --   { desc = "DAP: Debug python method" })
-    -- vim.keymap.set("n", "<leader>pdc", ":lua require('dap-python').test_class()<CR>",
-    --   { desc = "DAP: Debug python class" })
-    -- vim.keymap.set("n", "<leader>pds", ":lua require('dap-python').debug_selection()<CR>",
-    --   { desc = "DAP: Debug python selection" })
+    vim.keymap.set("n", '<leader>pdo', function()
+      if vim.bo.filetype == 'python' then
+        vim.api.nvim_command('PyrightOrganizeImports')
+      end
+    end, { desc = "DAP: Organize Imports" })
+
+    vim.keymap.set("n", '<leader>pdc', function()
+      if vim.bo.filetype == 'python' then
+        require('dap-python').test_class();
+      end
+    end, { desc = "DAP: Debug python class" })
+
+    vim.keymap.set("n", '<leader>tm', function()
+      if vim.bo.filetype == 'python' then
+        require('dap-python').test_method();
+      end
+    end, { desc = "DAP: Debug python method" })
+
+    vim.keymap.set("n", '<leader>pds', function()
+      if vim.bo.filetype == 'python' then
+        require('dap-python').debug_selection();
+      end
+    end, { desc = "DAP: Debug python selection" })
   end,
 }

@@ -19,7 +19,9 @@ return {
       if f ~= nil then
         io.close(f)
         return true
-      else return false end
+      else
+        return false
+      end
     end
 
     local function get_python_path(workspace)
@@ -53,8 +55,26 @@ return {
       },
     })
 
+    mason_tool_installer.setup({
+      ensure_installed = {
+        "prettier", -- prettier formatter
+        "stylua",   -- lua formatter
+        "eslint_d", -- js linter
+        "black",    -- python formatter
+        "isort",    -- python import sorter
+        "debugpy",  -- python debugger
+      },
+    })
+    vim.api.nvim_command('MasonToolsInstall')
+
     mason_lspconfig.setup({
-      ensure_installed = { "clangd", "lua_ls" },
+      ensure_installed = {
+        "clangd",
+        "lua_ls",
+        "jsonls",                    -- json
+        "html",                      -- html
+        "pyright",                   -- python
+      },
       automatic_installation = true, -- not the same as ensure_installed
       handlers = {
         -- this first function is the "default handler"
@@ -154,14 +174,6 @@ return {
             end,
           })
         end,
-      },
-    })
-
-    mason_tool_installer.setup({
-      ensure_installed = {
-        "prettier", -- prettier formatter
-        "stylua",   -- lua formatter
-        "eslint_d", -- js linter
       },
     })
   end,
