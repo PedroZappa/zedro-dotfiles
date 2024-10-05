@@ -5,7 +5,7 @@ return {
     local precognition = require("precognition")
 
     precognition.setup({
-      startVisible = true,
+      startVisible = false,
       showBlankVirtLine = true,
       highlightColor = { link = "Comment" },
       hints = {

@@ -83,7 +83,7 @@ return {
 
     table.insert(dap.configurations.cpp, {
       {
-        name = "Launch (cpp)",
+        name = "(codelldb) Launch",
         type = "codelldb",
         request = "launch",
         program = function()
@@ -94,7 +94,7 @@ return {
         stopAtBeginningOfMainSubprogram = true,
       },
       {
-        name = "Select and attach to process (cpp)",
+        name = "(codelldb) Select and attach to process",
         type = "codelldb",
         request = "attach",
         program = function()
@@ -115,6 +115,17 @@ return {
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
+      },
+      {
+        name = "(gdb) Launch",
+        type = "gdb",
+        request = "launch",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = true,
+        stopAtBeginningOfMainSubprogram = true,
       },
     })
     table.insert(dap.configurations.sh, {
@@ -341,7 +352,7 @@ return {
     end
     -- Global DAP keybinds
     vim.keymap.set("n", "<C-\\>", ui.toggle, { desc = "DAP: Check last session results" })
-    vim.keymap.set("n", "<leader>tdp", toggle_dap_keys, { desc = "DAP: Toggle DAP keybinds" })
+    vim.keymap.set("n", "<leader>tdk", toggle_dap_keys, { desc = "DAP: Toggle DAP keybinds" })
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
     vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
     vim.keymap.set("n", '<leader>pdo', function()
