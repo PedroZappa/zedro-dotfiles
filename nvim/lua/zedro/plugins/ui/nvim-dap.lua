@@ -139,21 +139,21 @@ return {
       },
     })
     -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-    -- table.insert(dap.configurations.python, {
-    --   type = "python",
-    --   request = "launch",
-    --   name = "Launch file (zedro)",
-    --   program = "${file}",
-    --   python = { "/usr/bin/python", "-E" },
-    --   pytonPath = function()
-    --     return 'python3'
-    --   end,
-    --   cwd = "${workspaceFolder}",
-    --   console = "integratedTerminal",
-    --   logToFile = true,
-    --   showReturnValue = true,
-    --   stopOnEntry = true,
-    -- })
+    table.insert(dap.configurations.python, {
+      type = "python",
+      request = "launch",
+      name = "Launch file (zedro)",
+      program = "${file}",
+      python = { "/usr/bin/python", "-E" },
+      pytonPath = function()
+        return 'python3'
+      end,
+      cwd = "${workspaceFolder}",
+      console = "integratedTerminal",
+      logToFile = true,
+      showReturnValue = true,
+      stopOnEntry = true,
+    })
 
     -- UI : see |:help nvim-dap-ui|
     ui.setup({
@@ -356,7 +356,7 @@ return {
       end
     end, { desc = "DAP: Debug python class" })
 
-    vim.keymap.set("n", '<leader>tm', function()
+    vim.keymap.set("n", '<leader>pdm', function()
       if vim.bo.filetype == 'python' then
         require('dap-python').test_method();
       end
