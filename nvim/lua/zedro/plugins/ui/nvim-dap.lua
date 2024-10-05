@@ -166,7 +166,7 @@ return {
     })
 
     -- UI : see |:help nvim-dap-ui|
-    vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'Character', linehl = '', numhl = '' })
     ui.setup({
       layouts = {
         {
