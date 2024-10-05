@@ -13,7 +13,19 @@ return {
     -- Telescope integration
     "nvim-telescope/telescope-dap.nvim",
     -- Language specific
-    'mfussenegger/nvim-dap-python',
+    {
+      'mfussenegger/nvim-dap-python',
+      ft = 'python',
+      dependencies = {
+        -- https://github.com/mfussenegger/nvim-dap
+        'mfussenegger/nvim-dap',
+        "rcarriga/nvim-dap-ui",
+      },
+      config = function(_, opts)
+        local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+        require('dap-python').setup(path)
+      end
+    },
     {
       'Joakker/lua-json5',
       build = './install.sh'
@@ -28,6 +40,8 @@ return {
     require("dap").set_log_level("INFO") -- Helps when configuring DAP, see logs with :DapShowLog
     local ui = require("dapui")
     local widgets = require('dap.ui.widgets')
+    require('dap-python').setup('python')
+
     -- JSON5 Compatibility
     require('dap.ext.vscode').json_decode = require('json5').parse
     -- DAP Packages Setup
@@ -60,7 +74,7 @@ return {
     -- Adapter Configurations
     dap.adapters.python = {
       type = "executable",
-      command = "python",
+      command = "python3",
       args = {
         "-m",
         "debugpy.adapter",
@@ -69,7 +83,7 @@ return {
 
     table.insert(dap.configurations.cpp, {
       {
-        name = "Launch",
+        name = "Launch (cpp)",
         type = "codelldb",
         request = "launch",
         program = function()
@@ -80,7 +94,7 @@ return {
         stopAtBeginningOfMainSubprogram = true,
       },
       {
-        name = "Select and attach to process",
+        name = "Select and attach to process (cpp)",
         type = "codelldb",
         request = "attach",
         program = function()
@@ -93,7 +107,7 @@ return {
         cwd = "${workspaceFolder}",
       },
       {
-        name = "Attach to gdbserver :1234",
+        name = "Attach to codelldb :1234",
         type = "codelldb",
         request = "attach",
         target = "localhost:1234",
@@ -107,7 +121,7 @@ return {
       {
         type = "bashdb",
         request = "launch",
-        name = "Launch file",
+        name = "Launch Bash file",
         showDebugOutput = true,
         pathBashdb = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
         pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
@@ -125,21 +139,21 @@ return {
       },
     })
     -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-    table.insert(dap.configurations.python, {
-      type = "python",
-      request = "launch",
-      name = "Launch file (zedro)",
-      program = "${file}",
-      python = { "/usr/bin/python", "-E" },
-      pytonPath = function()
-        return 'python'
-      end,
-      cwd = "${workspaceFolder}",
-      console = "integratedTerminal",
-      logToFile = true,
-      showReturnValue = true,
-      stopOnEntry = true,
-    })
+    -- table.insert(dap.configurations.python, {
+    --   type = "python",
+    --   request = "launch",
+    --   name = "Launch file (zedro)",
+    --   program = "${file}",
+    --   python = { "/usr/bin/python", "-E" },
+    --   pytonPath = function()
+    --     return 'python3'
+    --   end,
+    --   cwd = "${workspaceFolder}",
+    --   console = "integratedTerminal",
+    --   logToFile = true,
+    --   showReturnValue = true,
+    --   stopOnEntry = true,
+    -- })
 
     -- UI : see |:help nvim-dap-ui|
     ui.setup({
