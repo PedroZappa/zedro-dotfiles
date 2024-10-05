@@ -86,7 +86,7 @@ return {
       vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
       vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
       vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-      vim.keymap.set({ 'n', 'x' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+      vim.keymap.set({ 'n', 'x', 'v' }, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
       vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
       vim.keymap.set("n", "<leader>lc", function()
         local lc_opts = {
@@ -106,6 +106,11 @@ return {
 
         pickers.new(dropdown, lc_opts):find()
       end, { desc = "[L]sp [C]onfig" })
+      vim.keymap.set('n', '<leader>gl', '<cmd>lua vim.diagnostic.open_float()<CR>')
+      vim.keymap.set('n', '<leader>gdp', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+      vim.keymap.set('n', '<leader>gdn', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+      vim.keymap.set('n', '<leader>tds', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+      vim.keymap.set('i', '<C-Space>', '<cmd>lua vim.lsp.buf.completion()<CR>')
     end
 
     lsp_zero.extend_lspconfig({

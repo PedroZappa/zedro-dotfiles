@@ -3,7 +3,9 @@ local opt = vim.opt
 -- Options--
 -- set font
 opt.guifont = "Fira Code Nerd Font:h11"
-
+vim.diagnostic.config {
+  float = { border = "rounded" }, -- add border to diagnostic popups
+}
 -- Line Numbers
 opt.number = true
 opt.numberwidth = 1
@@ -18,7 +20,7 @@ opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = false
--- Buffer tabs 
+-- Buffer tabs
 opt.showtabline = 2
 -- opt.winbar = '=%=%k %r %h %m %f %w'
 -- Indentation
@@ -53,16 +55,17 @@ opt.sidescrolloff = 7
 opt.fmr = "{{{,}}}"
 
 -- Enable folding by indentation (use different method if needed)
-vim.opt.foldmethod = "indent"
+vim.opt.foldmethod = "expr"
 
 -- Automatically open all folds when a file is opened
 vim.opt.foldlevelstart = 99
 
 -- Configure fold options
-vim.opt.foldenable = true         -- Enable folding
-vim.opt.foldlevel = 99            -- Open most folds by default
-vim.opt.foldnestmax = 10          -- Maximum fold nesting
-vim.opt.foldminlines = 1          -- Minimum number of lines for a fold
+vim.opt.foldenable = true                   -- Enable folding
+vim.opt.foldlevel = 99                      -- Open most folds by default
+vim.opt.foldnestmax = 10                    -- Maximum fold nesting
+vim.opt.foldminlines = 1                    -- Minimum number of lines for a fold
+opt.foldexpr = "nvim_treesitter#foldexpr()" -- Utilize Treesitter folds
 
 -- Spelling
 opt.spell = false
@@ -113,14 +116,14 @@ opt.signcolumn = "yes"
 -- }
 -- more defined window border
 opt.fillchars:append({
-	vert = "┃",
-	horiz = "━",
-	horizup = "┻",
-	horizdown = "┳",
-	vertleft = "┫",
-	vertright = "┣",
-	verthoriz = "╋",
-	diff = "╱",
+  vert = "┃",
+  horiz = "━",
+  horizup = "┻",
+  horizdown = "┳",
+  vertleft = "┫",
+  vertright = "┣",
+  verthoriz = "╋",
+  diff = "╱",
 })
 
 -- Backspace

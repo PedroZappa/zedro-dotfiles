@@ -278,7 +278,7 @@ return {
         end, { desc = "DAP: Evaluate expression under cursor" })
         vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "DAP: Run last" })
         vim.keymap.set("n", "v", function() widgets.hover() end)
-        vim.keymap.set("n", "v", function() widgets.preview() end)
+        -- vim.keymap.set("n", "v", function() widgets.preview() end)
         vim.keymap.set("n", "<leader>df", function() widgets.center_float(widgets.frames) end)
         vim.keymap.set("n", "<leader>ds", function() widgets.center_float(widgets.scopes) end)
       else
@@ -322,11 +322,11 @@ return {
     vim.keymap.set("n", "<leader>tdp", toggle_dap_keys, { desc = "DAP: Toggle DAP keybinds" })
     vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: Toggle breakpoint" })
     vim.keymap.set("n", "<A-\\>", start_dap_with_args, { desc = "DAP: Start w/ Args" })
-    vim.keymap.set("n", "<leader>pdb", ":lua require('dap-python').test_method()<CR>",
-      { desc = "DAP: Debug python method" })
-    vim.keymap.set("n", "<leader>pdc", ":lua require('dap-python').test_class()<CR>",
-      { desc = "DAP: Debug python class" })
-    vim.keymap.set("n", "<leader>pds", ":lua require('dap-python').debug_selection()<CR>",
-      { desc = "DAP: Debug python selection" })
+    -- vim.keymap.set("n", "<leader>pdb", ":lua require('dap-python').test_method()<CR>",
+    --   { desc = "DAP: Debug python method" })
+    -- vim.keymap.set("n", "<leader>pdc", ":lua require('dap-python').test_class()<CR>",
+    --   { desc = "DAP: Debug python class" })
+    -- vim.keymap.set("n", "<leader>pds", ":lua require('dap-python').debug_selection()<CR>",
+    --   { desc = "DAP: Debug python selection" })
   end,
 }

@@ -2,22 +2,37 @@ local keymap = vim.keymap -- for conciseness
 
 -- General Mappings --
 keymap.set(({ "n", "v" }), "<Space>", "<Nop>", { silent = true })
+keymap.set("n", "gx", ":!open <c-r><c-a><CR>") -- open URL under cursor
+
 -- Get Help
 keymap.set("n", "<leader>h", ":vertical help ", { desc = "Get Help on..." })
 keymap.set("n", "<leadeo", ":vert options<CR>", { desc = "Open Options in a vertical split" })
 keymap.set("n", "<leader>mas", ":Man ascii<CR>", { desc = "Get ASCII Man Page" })
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+---- Quickfix keymaps
+-- vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+keymap.set("n", "<leader>qo", ":copen<CR>", { desc = "[Q]uickfix : list [O]pen" })
+keymap.set("n", "<leader>qf", ":cfirst<CR>", { desc = "[Q]uickfix : jump to [F]irst list item" })
+keymap.set("n", "<leader>qn", ":cnext<CR>", { desc = "[Q]uickfix : jump to [N]ext list item" })
+keymap.set("n", "<leader>qp", ":cprev<CR>", { desc = "[Q]uickfix : jump to [P]rev list item" })
+keymap.set("n", "<leader>ql", ":clast<CR>", { desc = "[Q]uickfix : jump to [L]ast list item" })
+keymap.set("n", "<leader>qc", ":cclose<CR>", { desc = "[Q]uickfix : [C]lose" })
 -- Clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- Change Permissions
 keymap.set("n", "<leader>cx", ":!chmod +x %<CR>", { desc = "Make file executable" })
 keymap.set("n", "<leader>wf", ":w !sudo tee % >/dev/null<CR>",
   { desc = "Write Read-only file with sudo" })
+-- Diff keymaps
+keymap.set("n", "<leader>dp", ":diffput<CR>", { desc = "DIFF : put diff from current to other" })
+keymap.set("n", "<leader>dg", ":diffget 1<CR>", { desc = "DIFF : get diff from left (local) during merge" })
+keymap.set("n", "<leader>dr", ":diffget 3<CR>", { desc = "DIFF : get diff from right (remote) during merge" })
+keymap.set("n", "<leader>d]", "]c", { desc = "DIFF : next diff hunk" })
+keymap.set("n", "<leader>d[", "[c", { desc = "DIFF : previous diff hunk" })
 
 -- Buffers
 -- Save & Close
@@ -35,7 +50,7 @@ keymap.set(
 )
 keymap.set("n", "<leader>_", "5<c-w>-", { remap = true, silent = false })
 keymap.set("n", "<leader>+", "5<c-w>+", { remap = true, silent = false })
-keymap.set("n", "<leader>q", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>",
+keymap.set("n", "<C-q>", ":bp<bar>sp<bar>bn<bar>bd<CR><CR>",
   { desc = "Close active buffer" })
 keymap.set("n", "<leader>xs", ":clo<CR>", { desc = "Close split" })
 keymap.set("n", "<tab>", ":bnext<CR>", { desc = "Next buffer" })
