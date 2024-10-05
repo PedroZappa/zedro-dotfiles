@@ -144,9 +144,9 @@ return {
       request = "launch",
       name = "Launch file (zedro)",
       program = "${file}",
-      python = { "/usr/bin/python", "-E" },
+      python = { "/usr/bin/python3", "-E" },
       pytonPath = function()
-        return 'python3'
+        return '/usr/bin/python3'
       end,
       cwd = "${workspaceFolder}",
       console = "integratedTerminal",
