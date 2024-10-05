@@ -37,6 +37,8 @@ return {
       print("nvim-dap not installed!")
       return
     end
+    dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
+    dap.defaults.fallback.focus_terminal = true
     require("dap").set_log_level("INFO") -- Helps when configuring DAP, see logs with :DapShowLog
     local ui = require("dapui")
     local widgets = require('dap.ui.widgets')
@@ -153,7 +155,7 @@ return {
       name = "Launch file (zedro)",
       program = "${file}",
       python = { "/usr/bin/python3", "-E" },
-      pytonPath = function()
+      pythonPath = function()
         return '/usr/bin/python3'
       end,
       cwd = "${workspaceFolder}",
@@ -164,6 +166,7 @@ return {
     })
 
     -- UI : see |:help nvim-dap-ui|
+    vim.fn.sign_define('DapBreakpoint', { text = '🛑', texthl = '', linehl = '', numhl = '' })
     ui.setup({
       layouts = {
         {
@@ -295,7 +298,7 @@ return {
         vim.keymap.set("n", "<C-C>", dap.continue, { desc = "DAP: Continue" })
         vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
         vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
-        vim.keymap.set("n", "<C-P>", dap.step_out, { desc = "DAP: Step Out" })
+        vim.keymap.set("n", "<C-o>", dap.step_out, { desc = "DAP: Step Out" })
         vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
         vim.keymap.set("n", "<C-r>", dap.restart, { desc = "DAP: Restart" })
         vim.keymap.set("n", "<leader>B", function()
@@ -315,7 +318,7 @@ return {
         vim.keymap.del("n", "<C-C>")
         vim.keymap.del("n", "<C-s>")
         vim.keymap.del("n", "<C-n>")
-        vim.keymap.del("n", "<C-p>")
+        vim.keymap.del("n", "<C-o>")
         -- vim.keymap.del("n", "<C-P>")
         vim.keymap.del("n", "<C-r>")
         -- vim.keymap.del("n", "<C-\\>")
