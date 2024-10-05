@@ -15,11 +15,11 @@ return {
         if conda_env == nil then
           return ""
         else
-          return string.format(" %s (conda)", conda_env)
+          return string.format("%s (conda)", conda_env)
         end
       else
         local venv_name = vim.fn.fnamemodify(venv_path, ':t')
-        return string.format(" %s (venv)", venv_name)
+        return string.format("%s (venv)", venv_name)
       end
     end
 
@@ -45,7 +45,9 @@ return {
       },
       sections = {
         -- Left side
-        lualine_a = { 'mode' },
+        lualine_a = {
+          { 'mode' },
+        },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
         lualine_c = {
           {
@@ -53,6 +55,7 @@ return {
             cond = require("noice").api.statusline.mode.has,
             color = { fg = "#ff9e64" },
           },
+          { virtual_env },
         },
         -- Right side
         lualine_x = {
@@ -63,7 +66,7 @@ return {
           },
           { "encoding" },
           { "fileformat" },
-          { virtual_env, "filetype" },
+          { "filetype" },
         },
         lualine_y = { 'progress' },
         lualine_z = { 'location' },
