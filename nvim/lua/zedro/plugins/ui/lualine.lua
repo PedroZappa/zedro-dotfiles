@@ -55,7 +55,7 @@ return {
             cond = require("noice").api.statusline.mode.has,
             color = { fg = "#ff9e64" },
           },
-          { virtual_env },
+          { virtual_env, color = { fg = "#e8eb34" } },
         },
         -- Right side
         lualine_x = {
