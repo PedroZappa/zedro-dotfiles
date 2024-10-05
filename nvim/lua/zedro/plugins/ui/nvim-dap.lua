@@ -173,8 +173,9 @@ return {
           elements = {
             { id = "scopes",      size = 0.50 },
             { id = "breakpoints", size = 0.10 },
-            { id = "stacks",      size = 0.30 },
-            { id = "watches",     size = 0.10 },
+            { id = "stacks",      size = 0.25 },
+            -- { id = "threads",     size = 0.10 },
+            { id = "watches",     size = 0.15 },
           },
           size = 50,
           position = "left",
@@ -333,11 +334,9 @@ return {
 
     -- Event Listeners
     dap.listeners.before.attach.dapui_config = function()
-      toggle_dap_keys()
       ui.open()
     end
     dap.listeners.before.launch.dapui_config = function()
-      toggle_dap_keys()
       ui.open()
     end
     dap.listeners.before.event_terminated.dapui_config = function()
