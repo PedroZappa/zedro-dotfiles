@@ -22,7 +22,7 @@ return {
       --   mode = function(str)
       --     return "\\<" .. str
       --   end,
-      mode = "exact",
+      mode = "fuzzy",
       -- behave like `incsearch`
       incremental = false,
       -- Excluded filetypes and custom window filters
@@ -56,9 +56,9 @@ return {
       -- add pattern to search register
       register = false,
       -- clear highlight after jump
-      nohlsearch = false,
+      nohlsearch = true,
       -- automatically jump when there is only one match
-      autojump = false,
+      autojump = true,
       -- You can force inclusive/exclusive jumps by setting the
       -- `inclusive` option. By default it will be automatically
       -- set based on the mode.
@@ -93,9 +93,9 @@ return {
       -- Enable this to use rainbow colors to highlight labels
       -- Can be useful for visualizing Treesitter ranges.
       rainbow = {
-        enabled = false,
+        enabled = true,
         -- number between 1 and 9
-        shade = 5,
+        shade = 9,
       },
       -- With `format`, you can change how the label is rendered.
       -- Should return a list of `[text, highlight]` tuples.
@@ -142,7 +142,7 @@ return {
       search = {
         -- when `true`, flash will be activated during regular search by default.
         -- You can always toggle when searching with `require("flash").toggle()`
-        enabled = false,
+        enabled = true,
         highlight = { backdrop = false },
         jump = { history = true, register = true, nohlsearch = true },
         search = {
@@ -173,7 +173,7 @@ return {
         -- hide after jump when not using jump labels
         autohide = false,
         -- show jump labels
-        jump_labels = false,
+        jump_labels = true,
         -- set to `false` to use the current line only
         multi_line = true,
         -- When using jump labels, don't use these keys
@@ -258,7 +258,6 @@ return {
       motion = false,
     },
   },
-  -- stylua: ignore
   keys = {
     { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
     { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
