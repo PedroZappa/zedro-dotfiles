@@ -4,6 +4,7 @@ return {
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
+    local ranger_nvim = require("ranger-nvim")
 
     local ascii = {
       [[
@@ -423,6 +424,7 @@ _  /|  / /  __/ /_/ /_ |/ /_  / _  / / / / /
       dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
       dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
       dashboard.button("F", "  Find text", ":Telescope live_grep <CR>"),
+      dashboard.button("r", "󱣱  Find w/ Ranger", ":Ranger<CR>"),
       dashboard.button("t", "⎚  Start Screen", ":intro <CR>"),
       dashboard.button("-", "󰼙  Get Oil", ":Oil --float<CR>"),
       dashboard.button("l", "  Get Lazy", ":Lazy<CR>"),

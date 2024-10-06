@@ -419,6 +419,7 @@ BREW_PACKAGES=(
     ["zoxide"]="Zoxide"
     ["atuin"]="Atuin"
     ["fzf"]="Fzf"
+    ["ranger"]="Ranger"
 )
 
 # Ask to install Homebrew packages
