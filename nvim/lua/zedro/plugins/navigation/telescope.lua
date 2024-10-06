@@ -11,12 +11,14 @@ return {
     'nvim-telescope/telescope-live-grep-args.nvim',
     { 'rcarriga/nvim-notify',                     branch = "master" },
     { "LinArcX/telescope-ports.nvim" },
+    'axkirillov/easypick.nvim'
   },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local open_with_trouble = require("trouble.sources.telescope").open
     local live_grep_arg_actions = require("telescope-live-grep-args.actions")
+    local easypick = require("easypick")
 
     telescope.setup {
       defaults = {
@@ -143,6 +145,28 @@ return {
       }
     }
 
+    local cmd_list = [[
+<< EOF
+:Lazy
+:Telescope find_files
+:Mason
+:Git blame
+:!ls -al
+EOF
+]]
+    easypick.setup({
+      pickers = {
+        { -- create a "command palette" style picker that executes vim commands
+          name = "command_palette",
+          command = "cat " .. cmd_list,
+          -- pass a pre-configured action that runs the command
+          action = easypick.actions.nvim_commandf("%s"),
+          -- you can specify any theme you want, but the dropdown looks good for this example =)
+          opts = require('telescope.themes').get_dropdown({})
+        }
+      },
+    })
+
     pcall(require("telescope").load_extension("emoji"))
     pcall(require("telescope").load_extension("repo"))
     pcall(require("telescope").load_extension('harpoon'))
@@ -185,6 +209,7 @@ return {
 
     -- Builtin keymaps
     vim.keymap.set('n', '<leader>tc', ":Telescope commands<CR>", { desc = "Search [T]elescope commands" })
+    vim.keymap.set('n', '<leader>ep', ":Easypick<CR>", { desc = "Search [T]elescope [E]asypick pickers" })
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
     vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Grep string" })
