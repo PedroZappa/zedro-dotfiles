@@ -13,7 +13,7 @@ return {
     "rcarriga/nvim-notify",
     'stevearc/dressing.nvim',
   },
-  config = function ()
+  config = function()
     local rounded_border_style = {
       top_left = "╭",
       top = "─",
@@ -57,12 +57,74 @@ return {
         view = "notify",
       },
       lsp = {
+        progress = {
+          enabled = true,
+          -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
+          -- See the section on formatting for more details on how to customize.
+          --- @type NoiceFormat|string
+          format = "lsp_progress",
+          --- @type NoiceFormat|string
+          format_done = "lsp_progress_done",
+          throttle = 1000 / 30, -- frequency to update lsp progress message
+          view = "mini",
+        },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         -- hover = false,
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true,
+        },
+        hover = {
+          enabled = true,
+          silent = false, -- set to true to not show a message if hover is not available
+          view = nil,     -- when nil, use defaults from documentation
+          ---@type NoiceViewOptions
+          opts = {},      -- merged with defaults from documentation
+        },
+        signature = {
+          enabled = true,
+          auto_open = {
+            enabled = true,
+            trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+            luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+            throttle = 50,  -- Debounce lsp signature help request by 50ms
+          },
+          view = nil,       -- when nil, use defaults from documentation
+          ---@type NoiceViewOptions
+          opts = {},        -- merged with defaults from documentation
+        },
+        message = {
+          -- Messages shown by lsp servers
+          enabled = true,
+          view = "notify",
+          opts = {},
+        },
+        -- defaults for hover and signature help
+        documentation = {
+          view = "hover",
+          ---@type NoiceViewOptions
+          opts = {
+            lang = "markdown",
+            replace = true,
+            render = "plain",
+            format = { "{message}" },
+            win_options = { concealcursor = "n", conceallevel = 3 },
+          },
+        },
+      },
+      markdown = {
+        hover = {
+          ["|(%S-)|"] = vim.cmd.help,                   -- vim help links
+          ["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
+        },
+        highlights = {
+          ["|%S-|"] = "@text.reference",
+          ["@%S+"] = "@parameter",
+          ["^%s*(Parameters:)"] = "@text.title",
+          ["^%s*(Return:)"] = "@text.title",
+          ["^%s*(See also:)"] = "@text.title",
+          ["{%S-}"] = "@parameter",
         },
       },
       health = {
@@ -156,7 +218,7 @@ return {
         notification = "%T",
         notification_history = "%FT%T"
       },
-      timeout = 300,
+      timeout = 200,
       top_down = false,
     })
   end,
