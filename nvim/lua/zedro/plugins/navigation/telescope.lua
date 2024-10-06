@@ -9,6 +9,8 @@ return {
     "nvim-tree/nvim-web-devicons",
     'cljoly/telescope-repo.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
+    { 'rcarriga/nvim-notify',                     branch = "master" },
+    { "LinArcX/telescope-ports.nvim" },
   },
   config = function()
     local telescope = require("telescope")
@@ -147,6 +149,7 @@ return {
     pcall(require('telescope').load_extension('fzf'))
     pcall(require("telescope").load_extension("live_grep_args"))
     pcall(require('telescope').load_extension('dap'))
+    pcall(require('telescope').load_extension('ports'))
 
     -- Get the text if selected or the text searched. Otherwise return '' (default behavior)
     local function getText()
@@ -181,6 +184,7 @@ return {
     end
 
     -- Builtin keymaps
+    vim.keymap.set('n', '<leader>tc', ":Telescope commands<CR>", { desc = "Search [T]elescope commands" })
     vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Find files" })
     vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = "Live grep" })
     vim.keymap.set('n', '<leader>fc', builtin.grep_string, { desc = "Grep string" })
