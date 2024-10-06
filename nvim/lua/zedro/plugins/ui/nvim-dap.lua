@@ -320,7 +320,7 @@ return {
         vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
         vim.keymap.set("n", "<C-o>", dap.step_out, { desc = "DAP: Step Out" })
         vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
-        vim.keymap.set("n", "<C-r>", dap.restart, { desc = "DAP: Restart" })
+        vim.keymap.set("n", "<leader>rd", dap.restart, { desc = "DAP: Restart" })
         vim.keymap.set("n", "<leader>B", function()
           dap.set_breakpoint(nil, nil, vim.fn.input("DAP: Breakpoint condition: "))
         end, { desc = "DAP: Set breakpoint w/ message" })
