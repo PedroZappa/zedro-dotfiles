@@ -356,6 +356,6 @@ return {
     keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>n", ":Neotree reveal<cr>", { desc = "Toggle NeoTree " })
     keymap.set("n", "<leader>gn", ":Neotree float git_status git_base=main<cr>", { desc = "Get Git Status NeoTree" })
-    keymap.set("n", "<leader>ts", ":Neotree document_symbols<cr>", { desc = "Get Document Symbols NeoTree" })
+    keymap.set("n", "<leader>tds", ":Neotree document_symbols<cr>", { desc = "Get Document Symbols NeoTree" })
   end
 }
