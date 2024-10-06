@@ -81,7 +81,12 @@ return {
             color = { fg = "#111111" },
           },
         },
-        lualine_x = { 'location', color = { fg = "#111111" }, },
+        lualine_x = {
+          {
+            'location',
+            color = { fg = "#111111" },
+          }
+        },
         lualine_y = {},
         lualine_z = {}
       },
