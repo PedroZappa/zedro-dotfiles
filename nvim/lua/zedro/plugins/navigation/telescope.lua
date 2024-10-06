@@ -10,7 +10,7 @@ return {
     'cljoly/telescope-repo.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
   },
-  config = function ()
+  config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local open_with_trouble = require("trouble.sources.telescope").open
@@ -44,8 +44,8 @@ return {
           vertical = {
             mirror = true,
           },
-          width = 0.9,
-          height = 0.9,
+          width = 0.8,
+          height = 0.8,
           preview_cutoff = 120,
         },
         file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -110,7 +110,7 @@ return {
       },
       extensions = {
         emoji = {
-          action = function (emoji)
+          action = function(emoji)
             -- argument emoji is a table.
             -- {name="", value="", cagegory="", description=""}
 
@@ -131,6 +131,13 @@ return {
             },
           },
         },
+        fzf = {
+          fuzzy = true,                   -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true,    -- override the file sorter
+          case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
+        }
       }
     }
 
@@ -164,11 +171,11 @@ return {
       return text
     end
 
-    local builtin = require('telescope.builtin')
-    local lga     = require('telescope').extensions.live_grep_args.live_grep_arg
+    local builtin    = require('telescope.builtin')
+    local lga        = require('telescope').extensions.live_grep_args.live_grep_arg
 
-    local changeText = function (func)
-      return function ()
+    local changeText = function(func)
+      return function()
         func({ default_text = getText() })
       end
     end
@@ -196,7 +203,7 @@ return {
     vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, { desc = "[D]ocument [S]ymbols" })
     vim.keymap.set('n', '<leader>ws', builtin.lsp_dynamic_workspace_symbols, { desc = "[W]orkspace [S]ymbols" })
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame variable" })
-    -- DAP bindings 
+    -- DAP bindings
     vim.keymap.set('n', '<leader>dc', telescope.extensions.dap.commands, { desc = "[D]AP : [c]ommands" })
     vim.keymap.set('n', '<leader>dC', telescope.extensions.dap.configurations, { desc = "[D]AP : [C]onfigurations" })
     vim.keymap.set('n', '<leader>db', telescope.extensions.dap.list_breakpoints, { desc = "[D]AP : List [B]reakpoints" })
