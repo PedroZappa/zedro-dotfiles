@@ -14,6 +14,7 @@ return {
     local telescope = require("telescope")
     local actions = require("telescope.actions")
     local open_with_trouble = require("trouble.sources.telescope").open
+    local live_grep_arg_actions = require("telescope-live-grep-args.actions")
 
     telescope.setup {
       defaults = {
@@ -66,7 +67,7 @@ return {
             ["q"] = actions.close,
             ["-"] = actions.file_split,
             ["|"] = actions.file_vsplit,
-            ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
+            ["<C-k>"] = live_grep_arg_actions.quote_prompt(),
             ["<C-t>"] = open_with_trouble,
           },
           i = {

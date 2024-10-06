@@ -77,10 +77,11 @@ return {
         lualine_c = {
           {
             'filename',
-            path = 4 -- 0: Just the filename
+            path = 1, -- 0: Just the filename
+            color = { fg = "#111111" },
           },
         },
-        lualine_x = { 'location' },
+        lualine_x = { 'location', color = { fg = "#111111" }, },
         lualine_y = {},
         lualine_z = {}
       },
