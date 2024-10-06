@@ -264,6 +264,25 @@ return {
         print("No debug adapter for filetype: " .. filetype)
         return
       end
+      -- Check for makefile in the current working directory
+      local makefile_exists = vim.fn.filereadable("makefile") == 1 or vim.fn.filereadable("Makefile") == 1
+      if makefile_exists then
+        -- Run make command
+        local make_result = vim.fn.system("make")
+        print(make_result)
+
+        -- Check if make was successful
+        if vim.v.shell_error ~= 0 then
+          print("Make command failed. Do you want to continue? (y/n)")
+          local continue = vim.fn.input(""):lower()
+          if continue ~= "y" then
+            print("Debugging cancelled.")
+            return
+          end
+        end
+      else
+        print("No makefile found in the current directory. Skipping make command.")
+      end
       -- Prompt user for program and arguments
       local program = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
 
