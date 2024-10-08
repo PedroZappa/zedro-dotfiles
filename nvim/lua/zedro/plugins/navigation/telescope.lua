@@ -9,7 +9,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     'cljoly/telescope-repo.nvim',
     'nvim-telescope/telescope-live-grep-args.nvim',
-    { 'rcarriga/nvim-notify',                     branch = "master" },
+    -- { 'rcarriga/nvim-notify',                     branch = "master" },
     { "LinArcX/telescope-ports.nvim" },
     'axkirillov/easypick.nvim'
   },

@@ -10,7 +10,7 @@ return {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+    -- "rcarriga/nvim-notify",
     'stevearc/dressing.nvim',
   },
   config = function()
@@ -197,29 +197,7 @@ return {
       -- },
     })
     -- Setup notify for noice
-    vim.notify = require("notify")
+    -- vim.notify = require("notify")
 
-    require("notify").setup({
-      background_colour = "#000000",
-      fps = 30,
-      icons = {
-        DEBUG = " ",
-        ERROR = " ",
-        INFO = "🛈 ",
-        TRACE = "✎",
-        WARN = " "
-      },
-      level = 1,
-      minimum_width = 30,
-      maximum_width = 50,
-      render = "compact",
-      stages = "fade_in_slide_out",
-      time_formats = {
-        notification = "%T",
-        notification_history = "%FT%T"
-      },
-      timeout = 200,
-      top_down = false,
-    })
   end,
 }

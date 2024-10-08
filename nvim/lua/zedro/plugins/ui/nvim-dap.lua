@@ -21,8 +21,12 @@ return {
         'mfussenegger/nvim-dap',
         "rcarriga/nvim-dap-ui",
       },
-      config = function(_, opts)
-        local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      -- config = function(_, opts)
+      --   local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      --   require('dap-python').setup(path)
+      -- end
+      config = function()
+        local path = vim.fn.getcwd() .. '/.venv/bin/python'
         require('dap-python').setup(path)
       end
     },
@@ -59,26 +63,70 @@ return {
           -- Keep original functionality
           require('mason-nvim-dap').default_setup(config)
         end,
-        python = function(config)
-          config.adapters = {
-            type = "executable",
-            command = "/usr/bin/python3",
-            args = {
-              "-m",
-              "debugpy.adapter",
-            },
-          }
-          require('mason-nvim-dap').default_setup(config)
-        end,
       },
     })
 
     -- Adapter Configurations
+    dap.adapters.gdb = {
+      type = 'executable',
+      command = 'gdb',
+      args = { '--quiet', '--interpreter=dap' }
+    }
     dap.adapters.python = {
       type = "executable",
       command = "python3",
       args = { "-m", "debugpy.adapter" },
     }
+
+    -- Language Configurations
+    -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Interpreters.html
+    -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html
+    table.insert(dap.configurations.c, {
+      {
+        name = 'Run executable (GDB)',
+        type = 'gdb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+        program = function()
+          local path = vim.fn.input({
+            prompt = 'Path to executable: ',
+            default = vim.fn.getcwd() .. '/',
+            completion = 'file',
+          })
+
+          return (path and path ~= '') and path or dap.ABORT
+        end,
+      },
+      {
+        name = 'Run executable with arguments (GDB)',
+        type = 'gdb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+        program = function()
+          local path = vim.fn.input({
+            prompt = 'Path to executable: ',
+            default = vim.fn.getcwd() .. '/',
+            completion = 'file',
+          })
+
+          return (path and path ~= '') and path or dap.ABORT
+        end,
+        args = function()
+          local args_str = vim.fn.input({
+            prompt = 'Arguments: ',
+          })
+          return vim.split(args_str, ' +')
+        end,
+      },
+      {
+        name = 'Attach to process (GDB)',
+        type = 'gdb',
+        request = 'attach',
+        processId = require('dap.utils').pick_process,
+      },
+    })
 
     table.insert(dap.configurations.cpp, {
       {
@@ -127,6 +175,7 @@ return {
         stopAtBeginningOfMainSubprogram = true,
       },
     })
+
     table.insert(dap.configurations.sh, {
       {
         type = "bashdb",
@@ -148,22 +197,60 @@ return {
         terminalKind = "integrated",
       },
     })
-    -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+
     table.insert(dap.configurations.python, {
+      -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
       type = "python",
       request = "launch",
-      name = "Launch file (zedro)",
+      name = "Launch file (zedro-py)",
       program = "${file}",
-      python = { "/usr/bin/python3", "-E" },
+      module = function()
+        local path = vim.fn.input({}, vim.fn.getcwd() .. '/', 'file')
+        return (path and path ~= '') and path or dap.ABORT
+      end,
       pythonPath = function()
         return '/usr/bin/python3'
       end,
-      cwd = "${workspaceFolder}",
+      cwd = function()
+        return vim.fn.getcwd()
+      end,
       console = "integratedTerminal",
       logToFile = true,
       showReturnValue = true,
-      stopOnEntry = true,
+      -- stopOnEntry = true,
     })
+    -- local function getpid()
+    --   local pid = require('dap.utils').pick_process({ filter = 'python' })
+    --   if type(pid) == 'thread' then
+    --     -- returns a coroutine.create due to it being run from fzf-lua ui.select
+    --     -- start the coroutine and wait for `coroutine.resume` (user selection)
+    --     coroutine.resume(pid)
+    --     pid = coroutine.yield(pid)
+    --   end
+    --
+    --   return pid
+    -- end
+    -- table.insert(dap.configurations.python, 4, {
+    --   type = 'python',
+    --   request = 'attach',
+    --   name = 'Attach to process',
+    --   connect = function()
+    --     -- https://github.com/microsoft/debugpy/#attaching-to-a-running-process-by-id
+    --     local port = 5678
+    --     local pid = getpid()
+    --     local out = vim.fn.systemlist({
+    --       python_prefix .. python_bin,
+    --       '-m',
+    --       'debugpy',
+    --       '--listen',
+    --       'localhost:' .. tostring(port),
+    --       '--pid',
+    --       tostring(pid),
+    --     })
+    --     assert(vim.v.shell_error == 0, table.concat(out, '\n'))
+    --     return { port = port }
+    --   end,
+    -- })
 
     -- UI : see |:help nvim-dap-ui|
     vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'Character', linehl = '', numhl = '' })
@@ -340,12 +427,13 @@ return {
         vim.keymap.del("n", "<C-n>")
         vim.keymap.del("n", "<C-o>")
         -- vim.keymap.del("n", "<C-P>")
-        vim.keymap.del("n", "<C-r>")
+        -- vim.keymap.del("n", "<C-r>")
         -- vim.keymap.del("n", "<C-\\>")
         vim.keymap.del("n", "<leader>B")
         vim.keymap.del("n", "<leader>dgb")
         vim.keymap.del("n", "<leader>d?")
         vim.keymap.del("n", "<leader>dl")
+        vim.keymap.del("n", "<leader>rd")
         vim.keymap.del("n", "<leader>df")
         vim.keymap.del("n", "<leader>ds")
       end
