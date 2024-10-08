@@ -204,10 +204,10 @@ return {
       request = "launch",
       name = "Launch file (zedro-py)",
       program = "${file}",
-      module = function()
-        local path = vim.fn.input({}, vim.fn.getcwd() .. '/', 'file')
-        return (path and path ~= '') and path or dap.ABORT
-      end,
+      -- module = function()
+      --   local path = vim.fn.input({}, vim.fn.getcwd() .. '/', 'file')
+      --   return (path and path ~= '') and path or dap.ABORT
+      -- end,
       pythonPath = function()
         return '/usr/bin/python3'
       end,
