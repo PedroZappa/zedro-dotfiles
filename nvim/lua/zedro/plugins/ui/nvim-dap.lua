@@ -66,6 +66,48 @@ return {
       },
     })
 
+    local function toggle_dap_keys()
+      dap_keys_enabled = not dap_keys_enabled
+
+      if dap_keys_enabled then
+        -- Enable DAP keymaps
+        vim.keymap.set("n", "<C-C>", dap.continue, { desc = "DAP: Continue" })
+        vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
+        vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
+        vim.keymap.set("n", "<C-o>", dap.step_out, { desc = "DAP: Step Out" })
+        vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
+        vim.keymap.set("n", "<leader>rd", dap.restart, { desc = "DAP: Restart" })
+        vim.keymap.set("n", "<leader>B", function()
+          dap.set_breakpoint(nil, nil, vim.fn.input("DAP: Breakpoint condition: "))
+        end, { desc = "DAP: Set breakpoint w/ message" })
+        vim.keymap.set("n", "<leader>dgb", dap.run_to_cursor, { desc = "DAP: Run to cursor" })
+        vim.keymap.set("n", "<leader>d?", function()
+          ui.eval(nil, { enter = true })
+        end, { desc = "DAP: Evaluate expression under cursor" })
+        vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "DAP: Run last" })
+        vim.keymap.set("n", "v", function() widgets.hover() end)
+        -- vim.keymap.set("n", "v", function() widgets.preview() end)
+        vim.keymap.set("n", "<leader>df", function() widgets.center_float(widgets.frames) end)
+        vim.keymap.set("n", "<leader>ds", function() widgets.center_float(widgets.scopes) end)
+      else
+        -- Disable DAP keymaps
+        vim.keymap.del("n", "<C-C>")
+        vim.keymap.del("n", "<C-s>")
+        vim.keymap.del("n", "<C-n>")
+        vim.keymap.del("n", "<C-o>")
+        -- vim.keymap.del("n", "<C-P>")
+        -- vim.keymap.del("n", "<C-r>")
+        -- vim.keymap.del("n", "<C-\\>")
+        vim.keymap.del("n", "<leader>B")
+        vim.keymap.del("n", "<leader>dgb")
+        vim.keymap.del("n", "<leader>d?")
+        vim.keymap.del("n", "<leader>dl")
+        vim.keymap.del("n", "<leader>rd")
+        vim.keymap.del("n", "<leader>df")
+        vim.keymap.del("n", "<leader>ds")
+      end
+    end
+
     -- Adapter Configurations
     dap.adapters.gdb = {
       type = 'executable',
@@ -119,6 +161,7 @@ return {
             local arg_str = vim.fn.input("Arguments: ")
             args = vim.split(arg_str, " ")
           end
+          toggle_dap_keys()
         end,
       },
       {
@@ -127,19 +170,34 @@ return {
         request = 'attach',
         processId = require('dap.utils').pick_process,
       },
-    }
-
-    dap.configurations.cpp  = {
       {
-        name = "(codelldb) Launch",
-        type = "codelldb",
-        request = "launch",
+        name = 'Run executable with arguments (codelldb)',
+        type = 'codelldb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
         program = function()
-          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+          local path = vim.fn.input({
+            prompt = 'Path to executable: ',
+            default = vim.fn.getcwd() .. '/',
+            completion = 'file',
+          })
+          toggle_dap_keys()
+          return (path and path ~= '') and path or dap.ABORT
         end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = true,
-        stopAtBeginningOfMainSubprogram = true,
+        args = function()
+          local arg_source = vim.fn.input("Load arguments from file (f) or enter as string (s)? ")
+          local args = {}
+
+          if arg_source:lower() == "f" then
+            -- Load arguments from file
+            local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
+            table.insert(args, arg_file)
+          else
+            local arg_str = vim.fn.input("Arguments: ")
+            args = vim.split(arg_str, " ")
+          end
+        end,
       },
       {
         name = "(codelldb) Select and attach to process",
@@ -164,9 +222,58 @@ return {
         end,
         cwd = "${workspaceFolder}",
       },
+    }
+
+    dap.configurations.cpp  = {
       {
-        name = "(gdb) Launch",
-        type = "gdb",
+        name = 'Run executable (GDB)',
+        type = 'gdb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+        program = function()
+          return dap_utils.pick_file(exec_opts)
+        end,
+      },
+      {
+        name = 'Run executable with arguments (GDB)',
+        type = 'gdb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+        program = function()
+          local path = vim.fn.input({
+            prompt = 'Path to executable: ',
+            default = vim.fn.getcwd() .. '/',
+            completion = 'file',
+          })
+
+          return (path and path ~= '') and path or dap.ABORT
+        end,
+        args = function()
+          local arg_source = vim.fn.input("Load arguments from file (f) or enter as string (s)? ")
+          local args = {}
+
+          if arg_source:lower() == "f" then
+            -- Load arguments from file
+            local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
+            table.insert(args, arg_file)
+          else
+            local arg_str = vim.fn.input("Arguments: ")
+            args = vim.split(arg_str, " ")
+          end
+          toggle_dap_keys()
+        end,
+      },
+      {
+        name = 'Attach to process (GDB)',
+        type = 'gdb',
+        request = 'attach',
+        processId = require('dap.utils').pick_process,
+      },
+      {
+        name = "(codelldb) Launch",
+        type = "codelldb",
         request = "launch",
         program = function()
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
@@ -174,6 +281,59 @@ return {
         cwd = "${workspaceFolder}",
         stopOnEntry = true,
         stopAtBeginningOfMainSubprogram = true,
+      },
+      {
+        name = 'Run executable with arguments (codelldb)',
+        type = 'codelldb',
+        request = 'launch',
+        -- This requires special handling of 'run_last', see
+        -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
+        program = function()
+          local path = vim.fn.input({
+            prompt = 'Path to executable: ',
+            default = vim.fn.getcwd() .. '/',
+            completion = 'file',
+          })
+
+          return (path and path ~= '') and path or dap.ABORT
+        end,
+        args = function()
+          local arg_source = vim.fn.input("Load arguments from file (f) or enter as string (s)? ")
+          local args = {}
+
+          if arg_source:lower() == "f" then
+            -- Load arguments from file
+            local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
+            table.insert(args, arg_file)
+          else
+            local arg_str = vim.fn.input("Arguments: ")
+            args = vim.split(arg_str, " ")
+          end
+          toggle_dap_keys()
+        end,
+      },
+      {
+        name = "(codelldb) Select and attach to process",
+        type = "codelldb",
+        request = "attach",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        pid = function()
+          local name = vim.fn.input("Executable name (filter): ")
+          return require("dap.utils").pick_process({ filter = name })
+        end,
+        cwd = "${workspaceFolder}",
+      },
+      {
+        name = "Attach to codelldb :1234",
+        type = "codelldb",
+        request = "attach",
+        target = "localhost:1234",
+        program = function()
+          return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        end,
+        cwd = "${workspaceFolder}",
       },
     }
 
@@ -397,48 +557,6 @@ return {
       dap.run(config)
     end
     local dap_keys_enabled = false
-
-    local function toggle_dap_keys()
-      dap_keys_enabled = not dap_keys_enabled
-
-      if dap_keys_enabled then
-        -- Enable DAP keymaps
-        vim.keymap.set("n", "<C-C>", dap.continue, { desc = "DAP: Continue" })
-        vim.keymap.set("n", "<C-s>", dap.step_into, { desc = "DAP: Step Into" })
-        vim.keymap.set("n", "<C-n>", dap.step_over, { desc = "DAP: Step Over" })
-        vim.keymap.set("n", "<C-o>", dap.step_out, { desc = "DAP: Step Out" })
-        vim.keymap.set("n", "<C-p>", dap.step_back, { desc = "DAP: Step Back" })
-        vim.keymap.set("n", "<leader>rd", dap.restart, { desc = "DAP: Restart" })
-        vim.keymap.set("n", "<leader>B", function()
-          dap.set_breakpoint(nil, nil, vim.fn.input("DAP: Breakpoint condition: "))
-        end, { desc = "DAP: Set breakpoint w/ message" })
-        vim.keymap.set("n", "<leader>dgb", dap.run_to_cursor, { desc = "DAP: Run to cursor" })
-        vim.keymap.set("n", "<leader>d?", function()
-          ui.eval(nil, { enter = true })
-        end, { desc = "DAP: Evaluate expression under cursor" })
-        vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "DAP: Run last" })
-        vim.keymap.set("n", "v", function() widgets.hover() end)
-        -- vim.keymap.set("n", "v", function() widgets.preview() end)
-        vim.keymap.set("n", "<leader>df", function() widgets.center_float(widgets.frames) end)
-        vim.keymap.set("n", "<leader>ds", function() widgets.center_float(widgets.scopes) end)
-      else
-        -- Disable DAP keymaps
-        vim.keymap.del("n", "<C-C>")
-        vim.keymap.del("n", "<C-s>")
-        vim.keymap.del("n", "<C-n>")
-        vim.keymap.del("n", "<C-o>")
-        -- vim.keymap.del("n", "<C-P>")
-        -- vim.keymap.del("n", "<C-r>")
-        -- vim.keymap.del("n", "<C-\\>")
-        vim.keymap.del("n", "<leader>B")
-        vim.keymap.del("n", "<leader>dgb")
-        vim.keymap.del("n", "<leader>d?")
-        vim.keymap.del("n", "<leader>dl")
-        vim.keymap.del("n", "<leader>rd")
-        vim.keymap.del("n", "<leader>df")
-        vim.keymap.del("n", "<leader>ds")
-      end
-    end
 
     -- Event Listeners
     dap.listeners.before.attach.dapui_config = function()
