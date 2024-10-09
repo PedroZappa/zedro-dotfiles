@@ -128,10 +128,8 @@ return {
         processId = require('dap.utils').pick_process,
       },
     }
-    table.insert(dap.configurations.c, {
-    })
 
-    table.insert(dap.configurations.cpp, {
+    dap.configurations.cpp  = {
       {
         name = "(codelldb) Launch",
         type = "codelldb",
@@ -177,9 +175,9 @@ return {
         stopOnEntry = true,
         stopAtBeginningOfMainSubprogram = true,
       },
-    })
+    }
 
-    table.insert(dap.configurations.sh, {
+    dap.configurations.sh = {
       {
         type = "bashdb",
         request = "launch",
@@ -199,9 +197,9 @@ return {
         env = {},
         terminalKind = "integrated",
       },
-    })
+    }
 
-    table.insert(dap.configurations.python, {
+    dap.configurations.python = {
       -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
       type = "python",
       request = "launch",
@@ -221,7 +219,7 @@ return {
       logToFile = true,
       showReturnValue = true,
       -- stopOnEntry = true,
-    })
+    }
     -- local function getpid()
     --   local pid = require('dap.utils').pick_process({ filter = 'python' })
     --   if type(pid) == 'thread' then
