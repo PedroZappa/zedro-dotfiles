@@ -81,7 +81,7 @@ return {
     -- Language Configurations
     -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Interpreters.html
     -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html
-    table.insert(dap.configurations.c, {
+    dap.configurations.c = {
       {
         name = 'Run executable (GDB)',
         type = 'gdb',
@@ -89,13 +89,7 @@ return {
         -- This requires special handling of 'run_last', see
         -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
         program = function()
-          local path = vim.fn.input({
-            prompt = 'Path to executable: ',
-            default = vim.fn.getcwd() .. '/',
-            completion = 'file',
-          })
-
-          return (path and path ~= '') and path or dap.ABORT
+          return dap_utils.pick_file(exec_opts)
         end,
       },
       {
@@ -114,10 +108,17 @@ return {
           return (path and path ~= '') and path or dap.ABORT
         end,
         args = function()
-          local args_str = vim.fn.input({
-            prompt = 'Arguments: ',
-          })
-          return vim.split(args_str, ' +')
+          local arg_source = vim.fn.input("Load arguments from file (f) or enter as string (s)? ")
+          local args = {}
+
+          if arg_source:lower() == "f" then
+            -- Load arguments from file
+            local arg_file = vim.fn.input("Path to arguments file: ", vim.fn.getcwd() .. "/", "file")
+            table.insert(args, arg_file)
+          else
+            local arg_str = vim.fn.input("Arguments: ")
+            args = vim.split(arg_str, " ")
+          end
         end,
       },
       {
@@ -126,6 +127,8 @@ return {
         request = 'attach',
         processId = require('dap.utils').pick_process,
       },
+    }
+    table.insert(dap.configurations.c, {
     })
 
     table.insert(dap.configurations.cpp, {
