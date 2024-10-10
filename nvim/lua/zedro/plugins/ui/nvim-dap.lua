@@ -198,59 +198,60 @@ return {
       },
     })
 
-    table.insert(dap.configurations.python, {
-      -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
-      type = "python",
-      request = "launch",
-      name = "Launch file (zedro-py)",
-      program = "${file}",
-      -- module = function()
-      --   local path = vim.fn.input({}, vim.fn.getcwd() .. '/', 'file')
-      --   return (path and path ~= '') and path or dap.ABORT
-      -- end,
-      pythonPath = function()
-        return '/usr/bin/python3'
-      end,
-      cwd = function()
-        return vim.fn.getcwd()
-      end,
-      console = "integratedTerminal",
-      logToFile = true,
-      showReturnValue = true,
-      -- stopOnEntry = true,
-    })
-    -- local function getpid()
-    --   local pid = require('dap.utils').pick_process({ filter = 'python' })
-    --   if type(pid) == 'thread' then
-    --     -- returns a coroutine.create due to it being run from fzf-lua ui.select
-    --     -- start the coroutine and wait for `coroutine.resume` (user selection)
-    --     coroutine.resume(pid)
-    --     pid = coroutine.yield(pid)
-    --   end
-    --
-    --   return pid
-    -- end
-    -- table.insert(dap.configurations.python, 4, {
-    --   type = 'python',
-    --   request = 'attach',
-    --   name = 'Attach to process',
-    --   connect = function()
-    --     -- https://github.com/microsoft/debugpy/#attaching-to-a-running-process-by-id
-    --     local port = 5678
-    --     local pid = getpid()
-    --     local out = vim.fn.systemlist({
-    --       python_prefix .. python_bin,
-    --       '-m',
-    --       'debugpy',
-    --       '--listen',
-    --       'localhost:' .. tostring(port),
-    --       '--pid',
-    --       tostring(pid),
-    --     })
-    --     assert(vim.v.shell_error == 0, table.concat(out, '\n'))
-    --     return { port = port }
+    -- table.insert(dap.configurations.python, {
+    --   -- https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
+    --   type = "python",
+    --   request = "launch",
+    --   name = "Launch file (zedro-py)",
+    --   program = "${file}",
+    --   -- module = function()
+    --   --   local path = vim.fn.input({}, vim.fn.getcwd() .. '/', 'file')
+    --   --   return (path and path ~= '') and path or dap.ABORT
+    --   -- end,
+    --   pythonPath = function()
+    --     return '/usr/bin/python3'
     --   end,
+    --   cwd = function()
+    --     return vim.fn.getcwd()
+    --   end,
+    --   console = "integratedTerminal",
+    --   logToFile = true,
+    --   showReturnValue = true,
+    --   -- stopOnEntry = true,
     -- })
+    local function getpid()
+      local pid = require('dap.utils').pick_process({ filter = 'python' })
+      if type(pid) == 'thread' then
+        -- returns a coroutine.create due to it being run from fzf-lua ui.select
+        -- start the coroutine and wait for `coroutine.resume` (user selection)
+        coroutine.resume(pid)
+        pid = coroutine.yield(pid)
+      end
+
+      return pid
+    end
+    table.insert(dap.configurations.python, 4, {
+      type = 'python',
+      request = 'attach',
+      name = 'Attach to process',
+      connect = function()
+        -- https://github.com/microsoft/debugpy/#attaching-to-a-running-process-by-id
+        local port = 5678
+        local pid = getpid()
+        local out = vim.fn.systemlist({
+          python_prefix .. python_bin,
+          '-m',
+          'debugpy',
+          '--listen',
+          'localhost:' .. tostring(port),
+          '--pid',
+          tostring(pid),
+        })
+        assert(vim.v.shell_error == 0, table.concat(out, '\n'))
+        return { port = port }
+      end,
+      logToFile = true,
+    })
 
     -- UI : see |:help nvim-dap-ui|
     vim.fn.sign_define('DapBreakpoint', { text = '●', texthl = 'Character', linehl = '', numhl = '' })

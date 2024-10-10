@@ -136,7 +136,7 @@ alias glgs='git log --graph --oneline --decorate | head -n 7'
 alias gm='git merge --stat --log'
 
 # kitty at 42
-if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" ]]; then
+if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" || $USER == "zedro" ]]; then
 	alias kitty=~/.local/kitty.app/bin/kitty
 fi
 alias k='kitty --start-as=fullscreen'
@@ -166,11 +166,11 @@ else
 fi
 
 # Load Cowsay
-if command -v lolcat > /dev/null 2>&1; then
-	eval "zshcow" | lolcat
-else
-	eval "zshcow"
-fi
+# if command -v lolcat > /dev/null 2>&1; then
+# 	eval "zshcow" | lolcat
+# else
+# 	eval "zshcow"
+# fi
 
 ############################
 ### Load Starship Prompt ###
@@ -211,5 +211,5 @@ bindkey '^F' fzf-file-widget
 
 source <(fzf --zsh)
 # Set up fzf key bindings and fuzzy completion
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/completion.zsh
