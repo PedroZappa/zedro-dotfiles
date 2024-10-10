@@ -1,3 +1,7 @@
+-- Lazy Plugin Manager
+require("zedro.lazy")
+
+-- Core
 -- Global options
 require("zedro.core.global")
 -- Options
@@ -8,5 +12,3 @@ require("zedro.core.mappings")
 require("zedro.core.autocmd")
 -- Macros
 require("zedro.core.macros")
--- Lazy Plugin Manager
-require("zedro.lazy")
