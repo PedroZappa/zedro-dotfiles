@@ -11,7 +11,8 @@ return {
     'nvim-telescope/telescope-live-grep-args.nvim',
     -- { 'rcarriga/nvim-notify',                     branch = "master" },
     { "LinArcX/telescope-ports.nvim" },
-    'axkirillov/easypick.nvim'
+    'axkirillov/easypick.nvim',
+    'dapc11/telescope-yaml.nvim'
   },
   config = function()
     local telescope = require("telescope")
@@ -174,6 +175,7 @@ EOF
     pcall(require("telescope").load_extension("live_grep_args"))
     pcall(require('telescope').load_extension('dap'))
     pcall(require('telescope').load_extension('ports'))
+    pcall(require('telescope').load_extension('telescope-yaml'))
 
     -- Get the text if selected or the text searched. Otherwise return '' (default behavior)
     local function getText()
