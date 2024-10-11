@@ -171,7 +171,7 @@ symbol = " "
 
 [c]
 symbol = " "
-format = '[via](bold dimmed white) [$name $version]($style) '
+format = '[via](bold dimmed white) [$symbol$name $version]($style) '
 commands = [[ 'cc', '--version' ], [ 'gcc', '--version' ], [ 'clang', '--version' ]]
 
 [conda]
@@ -182,6 +182,11 @@ symbol = " "
 
 [docker_context]
 symbol = " "
+
+[custom.dockerfile]
+detect_files = ["Dockerfile"] # can specify filters but wildcards are not supported
+format = "[ 🐋](blue bold)"
+symbol = "🐋"
 
 [elixir]
 symbol = " "
@@ -230,6 +235,7 @@ symbol = " "
 
 [nodejs]
 symbol = " "
+format = '\[[$symbol($version)]($style)\]'
 
 [os.symbols]
 Alpaquita = " "
@@ -308,6 +314,12 @@ command = "~/.dotfiles/scripts/starship/valgrind-pid.sh"
 format = "[⟪ ](bold red)[$symbol]($style) [$output](dimmed underline)[ ⟫](bold red) "
 style = "dimmed white"
 symbol = "󱗀"
+
+# kubernetes
+[kubernetes]
+symbol = "⛵ "
+style = "bold dimmed green"
+disabled = false
 
 # [custom.minitalk]
 # when  = "pidof server"
