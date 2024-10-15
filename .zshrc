@@ -2,6 +2,9 @@
 ### General ###
 ###############
 
+# Correct wrong spellings
+setopt correct
+
 # Load colors
 autoload -U colors && colors
 for COLOR in RED GREEN YELLOW BLUE MAGENTA CYAN BLACK WHITE; do
