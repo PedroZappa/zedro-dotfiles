@@ -125,7 +125,7 @@ alias fr='francinette'
 alias v='nvim'
 alias vc='vim | lolcat'
 alias clear_nvim='rm -rf ~/.local/share/nvim'
-
+ 
 # git
 alias ga='git add'
 alias gst='git status'
@@ -161,7 +161,8 @@ fi
 if command -v eza > /dev/null 2>&1; then
 	echo "[Running ${GREEN}eza${NC}! 📊]"
 	alias ls='eza'
-	alias ll='eza -laZ --total-size'
+	alias ll='ls -al'
+	alias llx='eza -laZ --total-size'
 	alias llg='eza -laZ --total-size --git --git-repos'
 else
 	echo "[Running ${YELLOW}ls${NC}! ]"
