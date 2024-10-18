@@ -17,7 +17,7 @@ local function button(sc, txt, hl, keybind, keybind_opts)
     position       = "center",
     shortcut       = sc,
     cursor         = 5,
-    width          = 50,
+    width          = 33,
     align_shortcut = "right",
     hl_shortcut    = hl,
   }
@@ -380,7 +380,7 @@ local ol = {                              -- occupied lines
   message         = #footer.val,          -- CONST: because of padding at the bottom
   length_buttons  = #buttons.val * 2 - 1, -- CONST: it calculate the number that buttons will occupy
   neovim_lines    = 2,                    -- CONST: 2 of command line, 1 of the top bar
-  padding_between = 3,                    -- STATIC: can be set to anything, padding between keybinds and header
+  padding_between = 5,                    -- STATIC: can be set to anything, padding between keybinds and header
 }
 
 local left_terminal_value = vim.api.nvim_get_option('lines') -
