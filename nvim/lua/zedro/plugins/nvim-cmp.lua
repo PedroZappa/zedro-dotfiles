@@ -103,7 +103,7 @@ return {
         { name = "buffer" },  -- text within current buffer
         { name = "path" },    -- file system paths
         { name = "codeium" }, -- codeium
-        { name = "cmdline" }, -- cmdline
+        -- { name = "cmdline" }, -- cmdline
         {
           name = 'tags',
           option = {
