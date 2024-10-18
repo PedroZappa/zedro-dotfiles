@@ -20,12 +20,9 @@ require("lazy").setup({
     { import = 'zedro.plugins.edit' },
     { import = 'zedro.plugins.git' },
     { import = 'zedro.plugins.lsp' },
-    { import = 'zedro.plugins.navigation' },
+    { import = 'zedro.plugins.nav' },
   },
   {
-    install = {
-      colorscheme = { "dracula" },
-    },
     checker = {
       enabled = true,
       notify = false,
@@ -33,6 +30,6 @@ require("lazy").setup({
     -- Initialize lazy with dynamic loading of anything in the plugins directory
     change_detection = {
       enabled = true, -- automatically check for config file changes and reload the ui
-      notify = false, -- turn off notifications whenever plugin changes are made
+      notify = true, -- turn off notifications whenever plugin changes are made
     },
   })
