@@ -16,7 +16,7 @@ return {
       lsp_zero.default_keymaps({ buffer = bufnr })
     end)
 
-    local project_include_dir = vim.loop.cwd() .. "/include"
+    -- local project_include_dir = vim.loop.cwd() .. "/include"
     local custom_border = {
       { "╭", "LspFloatBorder" },
       { "─", "LspFloatBorder" },

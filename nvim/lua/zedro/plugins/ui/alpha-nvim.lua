@@ -346,6 +346,8 @@ local footer = {
   -- Which returns one to three lines, being each divided by a line break.
   -- Or just an array: { "I see you:", "Above you." }
   val  = {
+    "",
+    "",
     "Neovim " .. get_neovim_version(),
     "󰟪'ed by Zedro",
   },
