@@ -49,7 +49,7 @@ return {
     require('dap-python').setup('python')
 
     -- JSON5 Compatibility
-    require('dap.ext.vscode').json_decode = require('json5').parse
+    -- require('dap.ext.vscode').json_decode = require('json5').parse
     -- DAP Packages Setup
     -- https://github.com/jay-babu/mason-nvim-dap.nvim
     require("mason-nvim-dap").setup({
