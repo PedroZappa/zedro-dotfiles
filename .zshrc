@@ -132,11 +132,11 @@ else
 fi
 
 # Load Cowsay
-# if command -v lolcat > /dev/null 2>&1; then
-# 	eval "zshcow" | lolcat
-# else
-# 	eval "zshcow"
-# fi
+if command -v lolcat > /dev/null 2>&1; then
+	eval "zshcow" | lolcat
+else
+	eval "zshcow"
+fi
 
 ############################
 ### Load Starship Prompt ###

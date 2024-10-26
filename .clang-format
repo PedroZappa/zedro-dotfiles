@@ -83,7 +83,7 @@ BinPackParameters: false
 # BreakBeforeBraces (BraceBreakingStyle)
 # The brace breaking style to use.
 # BS_Allman (in configuration: Allman) Always break before braces.
-BreakBeforeBraces: Allman
+BreakBeforeBraces: Attach
 
 # BreakBeforeTernaryOperators (bool)
 # If true, ternary operators will be placed after line breaks.
