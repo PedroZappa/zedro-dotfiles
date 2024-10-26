@@ -23,12 +23,12 @@ return {
 			dimensions= dimensions,
 			border = 'rounded',
 		})
-		vim.keymap.set('n', '<A-t>', function()
+		vim.keymap.set('n', '<leader>tt', function()
 			htop:toggle()
 		end)
 		--
 		-- Basic keybindings
-		vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-		vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+		vim.keymap.set('n', '<leader>tt', '<CMD>lua require("FTerm").toggle()<CR>')
+		vim.keymap.set('t', '<leader>tt', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 	end,
 }
