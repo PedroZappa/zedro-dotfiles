@@ -121,10 +121,10 @@ FILES=(
     ["$HOME/.dotfiles/.clang-format"]="$HOME/.clang-format"
 	["$HOME/.dotfiles/starship.toml"]="$HOME/.config/starship.toml"
     ["$HOME/.dotfiles/.tmux.conf.local"]="$HOME/.tmux.conf.local"
-    ["$HOME/.dotfiles/kitty/kitty.conf"]="$HOME/.config/kitty/kitty.conf"
-    ["$HOME/.dotfiles/btop/btop.conf"]="$HOME/.config/btop/btop.conf"
-    ["$HOME/.dotfiles/atuin/config.toml"]="$HOME/.config/atuin/config.toml"
-    ["$HOME/.dotfiles/hypr"]="$HOME/.config/hypr"
+    ["$HOME/.dotfiles/kitty/"]="$HOME/.config/"
+    ["$HOME/.dotfiles/btop/"]="$HOME/.config/"
+    ["$HOME/.dotfiles/atuin/"]="$HOME/.config/"
+    ["$HOME/.dotfiles/hypr"]="$HOME/.config/"
 )
 
 ZEDRO_DOTFILES_SSH_URL="git@github.com:PedroZappa/zedro-dotfiles.git "
