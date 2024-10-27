@@ -134,14 +134,14 @@ return {
       },
       file_size = {
         enabled = true,
-        required_width = 30, -- min width of window required to show this column
+        required_width = 10, -- min width of window required to show this column
       },
       last_modified = {
-        enabled = true,
+        enabled = false,
         required_width = 60, -- min width of window required to show this column
       },
       created = {
-        enabled = true,
+        enabled = false,
         required_width = 80, -- min width of window required to show this column
       },
       symlink_target = {
