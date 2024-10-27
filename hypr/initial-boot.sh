@@ -11,7 +11,7 @@ wallpaper=$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified
 waybar_style="$HOME/.config/waybar/style/[Colored] Chroma Glow.css"
 kvantum_theme="Catppuccin-Mocha"
 color_scheme="prefer-dark"
-gtk_theme="Andromeda-dark"
+gtk_theme="Yaru-magenta-dark"
 icon_theme="Flat-Remix-Blue-Dark"
 cursor_theme="Bibata-Modern-Ice"
 
