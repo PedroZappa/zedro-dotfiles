@@ -425,5 +425,6 @@ return {
     if (options ~= nil) then
       require("alpha").setup(options)
     end
+    vim.keymap.set('n', '<leader>a', ':Alpha<CR>', { silent = true, desc = "Open Alpha dashboard" })
   end
 }
