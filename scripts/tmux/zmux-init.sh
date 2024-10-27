@@ -73,7 +73,7 @@ tmux new-session	-d -s $SESH1
 tmux rename-window	-t RC:1 '.dotfiles'
 tmux send-keys		-t RC:1 'cd $HOME/.dotfiles' C-m
 tmux send-keys		-t RC:1 'git pull' C-m
-tmux send-keys		-t RC:1 $EDITOR C-m
+# tmux send-keys		-t RC:1 $EDITOR C-m
 # Create obsidian RC window
 tmux new-window		-t RC:2 -n 'obsidian' -c $OBSIDIAN_VAULT_PATH
 tmux send-keys		-t RC:2 'cd '$OBSIDIAN_VAULT_PATH C-m
