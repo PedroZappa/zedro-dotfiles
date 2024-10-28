@@ -56,12 +56,12 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 })
 
 -- C files
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "c",
-  callback = function()
-    vim.bo.expandtab = false
-    vim.bo.tabstop = 4
-    vim.bo.shiftwidth = 4
-    vim.bo.softtabstop = 4
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "c",
+--   callback = function()
+--     vim.bo.expandtab = false
+--     vim.bo.tabstop = 2
+--     vim.bo.shiftwidth = 2
+--     vim.bo.softtabstop = 2
+--   end,
+-- })

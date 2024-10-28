@@ -8,7 +8,3 @@ end
 
 -- Create a user command that calls the wrapWithHtmlTag function
 vim.api.nvim_create_user_command('WrapWithHtmlTag', wrapWithHtmlTag, {})
-
-
-
-

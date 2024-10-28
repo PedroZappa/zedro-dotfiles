@@ -15,10 +15,11 @@ opt.smartcase = true
 opt.ruler = true
 opt.linebreak = false
 
--- Tabs
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.shiftwidth = 4
+-- Tab
+local tab_width = 2
+opt.tabstop = tab_width
+opt.softtabstop = tab_width
+opt.shiftwidth = tab_width
 opt.expandtab = false
 -- Buffer tabs
 opt.showtabline = 2
@@ -41,6 +42,7 @@ opt.equalalways = false
 -- Cursor
 opt.cursorcolumn = true
 opt.cursorline = true
+opt.formatoptions:remove("o")
 -- opt.colorcolumn = '80';  -- Overriden for NeoColumn
 
 -- sync with system Clipboard (through + register)

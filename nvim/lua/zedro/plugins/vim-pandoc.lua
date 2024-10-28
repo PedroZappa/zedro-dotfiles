@@ -1,5 +1,5 @@
 return {
-	"vim-pandoc/vim-pandoc",
-	"vim-pandoc/vim-pandoc-syntax",
-	lazy = true,
+	-- "vim-pandoc/vim-pandoc",
+	-- "vim-pandoc/vim-pandoc-syntax",
+	-- lazy = true,
 }

@@ -44,6 +44,7 @@ return {
       italic_comment = true,     -- default false
       -- overrides the default highlights with table see `:h synIDattr`
       overrides = {},
+
       -- You can use overrides as table like this
       -- overrides = {
       --   NonText = { fg = "white" }, -- set NonText fg to white
@@ -60,40 +61,40 @@ return {
     -- Load colorscheme
     vim.cmd([[
 			colorscheme dracula
-			highlight Normal guibg=none
-			highlight FloatBorder guifg=#e8eb34 guibg=#000000
-			highlight NonText guibg=#000000
-			highlight Search guibg=#34eb34
-			highlight CurSearch guibg=#34eb34 guifg=#8426ff
-			highlight WhichKey guifg=#34eb43
-			highlight WhichKeyFloat guibg=#000001
-			highlight WhichKeySeparator guifg=#8426ff
-			highlight TelescopeNormal guibg=#000000
-			highlight TelescopeSelection guibg=#674b94 guifg=#000000
-			highlight TelescopePreviewBorder guifg=#34eb43
-			highlight TelescopeResultsBorder guifg=#34eb43
-			highlight TelescopePromptBorder guifg=#34eb43
-			highlight TelescopeBorder guifg=#e6e600
-			highlight TermCursor guifg=#34eb43
-			highlight NormalFloat guibg=#000000
-			highlight WinSeparator guifg=#8426ff guibg=#000000
-			highlight NotifyBackground guibg=#000000
-			highlight NoiceCmdlinePopupBorder guifg=#34eb43
-			highlight NoiceCmdlineIcon guifg=#e6e600
-			highlight BufferLineFill guibg=#000000
-			highlight StatusLine guibg=#000000
-			highlight NvimTreeWinSeparator guifg=#8426ff guibg=#000000
-			highlight NvimTreeFolderArrowClosed guifg=#34eb43
-			highlight NvimTreeFolderArrowOpen guifg=#34eb43
-			highlight NvimTreeIndentMarker guifg=#e8eb34
-			highlight NvimTreeNormal guibg=NONE ctermbg=NONE
-			highlight NvimTreeRootFolder guibg=NONE ctermbg=NONE guifg=#69FF94
-			highlight CursorLineNr guifg=#e8eb34
-			highlight NvimTreeLineNr guifg=#34eb43
-			highlight LineNr guifg=#D6ACFF
-			highlight LspFloatWinBorder guifg=#e8eb34
-			highlight LspFloatBorder guifg=#e8eb34
-			highlight LspInfoBorder guifg=#e8eb34
+			hi Normal guibg=none
+			hi FloatBorder guifg=#e8eb34 guibg=#000000
+			hi NonText guibg=#000000
+			hi Search guibg=#34eb34
+			hi CurSearch guibg=#34eb34 guifg=#8426ff
+			hi WhichKey guifg=#34eb43
+			hi WhichKeyFloat guibg=#000001
+			hi WhichKeySeparator guifg=#8426ff
+			hi TelescopeNormal guibg=#000000
+			hi TelescopeSelection guibg=#674b94 guifg=#000000
+			hi TelescopePreviewBorder guifg=#34eb43
+			hi TelescopeResultsBorder guifg=#34eb43
+			hi TelescopePromptBorder guifg=#34eb43
+			hi TelescopeBorder guifg=#e6e600
+			hi TermCursor guifg=#34eb43
+			hi NormalFloat guibg=#000000
+			hi WinSeparator guifg=#8426ff guibg=#000000
+			hi NotifyBackground guibg=#000000
+			hi NoiceCmdlinePopupBorder guifg=#34eb43
+			hi NoiceCmdlineIcon guifg=#e6e600
+			hi BufferLineFill guibg=#000000
+			hi StatusLine guibg=#000000
+			hi NvimTreeWinSeparator guifg=#8426ff guibg=#000000
+			hi NvimTreeFolderArrowClosed guifg=#34eb43
+			hi NvimTreeFolderArrowOpen guifg=#34eb43
+			hi NvimTreeIndentMarker guifg=#e8eb34
+			hi NvimTreeNormal guibg=NONE ctermbg=NONE
+			hi NvimTreeRootFolder guibg=NONE ctermbg=NONE guifg=#69FF94
+			hi CursorLineNr guifg=#e8eb34
+			hi NvimTreeLineNr guifg=#34eb43
+			hi LineNr guifg=#D6ACFF
+			hi LspFloatWinBorder guifg=#e8eb34
+			hi LspFloatBorder guifg=#e8eb34
+			hi LspInfoBorder guifg=#e8eb34
       hi TreesitterContextBottom gui=underline guisp=Grey
       hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
       hi NeoTreeBufferNumber guifg=#e8eb34

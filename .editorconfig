@@ -8,13 +8,25 @@ indent_size = 2
 [*.{sh,html,md}]
 indent_size = 4
 
-[*.{c,h,cpp,hpp}]
+[*.{c,h}]
 indent_style = tab
 indent_size = 4
 tab_width = 4
 continuation_indent = 4
 
+[*.{cpp,hpp}]
+indent_style = tab
+indent_size = 2
+tab_width = 2
+continuation_indent = 2
+
 [Makefile]
+indent_style = tab
+indent_size = 2
+tab_width = 2
+continuation_indent = 2
+
+[*.{py,go}]
 indent_style = tab
 indent_size = 2
 tab_width = 2
