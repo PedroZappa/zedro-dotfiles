@@ -1,7 +1,7 @@
 return {
   'Mofiqul/dracula.nvim',
   priority = 1000, -- Make sure it loads before all other plugins
-  config = function ()
+  config = function()
     local dracula = require("dracula")
     dracula.setup({
       styles = {
@@ -35,15 +35,64 @@ return {
         black = "#191A21",
       },
       -- show the '~' characters after the end of buffers
-      show_end_of_buffer = true, -- default false
+      show_end_of_buffer = true,    -- default false
       -- use transparent background
-      transparent_bg = true,     -- default false
+      transparent_bg = true,        -- default false
       -- set custom lualine background color
       lualine_bg_color = "#000000", -- default nil
       -- set italic comment
-      italic_comment = true,     -- default false
+      italic_comment = true,        -- default false
       -- overrides the default highlights with table see `:h synIDattr`
-      overrides = {},
+      overrides = {
+        Normal = { bg = "NONE" },
+        FloatBorder = { fg = "#e8eb34", bg = "#000000" },
+        NonText = { bg = "#000000" },
+        Search = { bg = "#34eb34" },
+        CurSearch = { bg = "#34eb34", fg = "#8426ff" },
+        WhichKey = { fg = "#34eb43" },
+        WhichKeyFloat = { bg = "#000001" },
+        WhichKeySeparator = { fg = "#8426ff" },
+        TelescopeNormal = { bg = "#000000" },
+        TelescopeSelection = { bg = "#674b94", fg = "#000000" },
+        TelescopePreviewBorder = { fg = "#34eb43" },
+        TelescopeResultsBorder = { fg = "#34eb43" },
+        TelescopePromptBorder = { fg = "#34eb43" },
+        TelescopeBorder = { fg = "#e6e600" },
+        TermCursor = { fg = "#34eb43" },
+        NormalFloat = { bg = "#000000" },
+        WinSeparator = { fg = "#8426ff", bg = "#000000" },
+        NotifyBackground = { bg = "#000000" },
+        NoiceCmdlinePopupBorder = { fg = "#34eb43" },
+        NoiceCmdlineIcon = { fg = "#e6e600" },
+        BufferLineFill = { bg = "#000000" },
+        StatusLine = { bg = "#000000" },
+        NvimTreeWinSeparator = { fg = "#8426ff", bg = "#000000" },
+        NvimTreeFolderArrowClosed = { fg = "#34eb43" },
+        NvimTreeFolderArrowOpen = { fg = "#34eb43" },
+        NvimTreeIndentMarker = { fg = "#e8eb34" },
+        NvimTreeNormal = { bg = "NONE", ctermbg = "NONE" },
+        NvimTreeRootFolder = { bg = "NONE", ctermbg = "NONE", fg = "#69FF94" },
+        CursorLineNr = { fg = "#e8eb34" },
+        NvimTreeLineNr = { fg = "#34eb43" },
+        LineNr = { fg = "#D6ACFF" },
+        LspFloatWinBorder = { fg = "#e8eb34" },
+        LspFloatBorder = { fg = "#e8eb34" },
+        LspInfoBorder = { fg = "#e8eb34" },
+        TreesitterContextBottom = { underline = true, sp = "Grey" },
+        TreesitterContextLineNumberBottom = { underline = true, sp = "Grey" },
+        NeoTreeBufferNumber = { fg = "#e8eb34" },
+        NeoTreeCursorLine = { fg = "#34eb43", bg = "#000000", underline = true },
+        NeoTreeTabActive = { fg = "#e8eb34", bold = true },
+        NeoTreeTabSeparatorActive = { bg = "#8426ff", fg = "#000000" },
+        NeoTreeRootName = { fg = "#34eb43", bold = true, italic = true },
+        NeoTreeIndentMarker = { fg = "#e8eb34" },
+        NeoTreeSignColumn = { fg = "#e8eb34" },
+        NeoTreeFileIcon = { fg = "green", bold = true },
+        NeoTreeDotfile = { fg = "#6272a4" },
+        NeoTreeGitUnstaged = { fg = "#8426ff" },
+        NeoTreeGitModified = { fg = "#8426ff" },
+        NeoCodeiumLabel = { bg = "#34eb43", fg = "#000000" },
+      }
 
       -- You can use overrides as table like this
       -- overrides = {
@@ -59,56 +108,6 @@ return {
       -- end,
     })
     -- Load colorscheme
-    vim.cmd([[
-			colorscheme dracula
-			hi Normal guibg=none
-			hi FloatBorder guifg=#e8eb34 guibg=#000000
-			hi NonText guibg=#000000
-			hi Search guibg=#34eb34
-			hi CurSearch guibg=#34eb34 guifg=#8426ff
-			hi WhichKey guifg=#34eb43
-			hi WhichKeyFloat guibg=#000001
-			hi WhichKeySeparator guifg=#8426ff
-			hi TelescopeNormal guibg=#000000
-			hi TelescopeSelection guibg=#674b94 guifg=#000000
-			hi TelescopePreviewBorder guifg=#34eb43
-			hi TelescopeResultsBorder guifg=#34eb43
-			hi TelescopePromptBorder guifg=#34eb43
-			hi TelescopeBorder guifg=#e6e600
-			hi TermCursor guifg=#34eb43
-			hi NormalFloat guibg=#000000
-			hi WinSeparator guifg=#8426ff guibg=#000000
-			hi NotifyBackground guibg=#000000
-			hi NoiceCmdlinePopupBorder guifg=#34eb43
-			hi NoiceCmdlineIcon guifg=#e6e600
-			hi BufferLineFill guibg=#000000
-			hi StatusLine guibg=#000000
-			hi NvimTreeWinSeparator guifg=#8426ff guibg=#000000
-			hi NvimTreeFolderArrowClosed guifg=#34eb43
-			hi NvimTreeFolderArrowOpen guifg=#34eb43
-			hi NvimTreeIndentMarker guifg=#e8eb34
-			hi NvimTreeNormal guibg=NONE ctermbg=NONE
-			hi NvimTreeRootFolder guibg=NONE ctermbg=NONE guifg=#69FF94
-			hi CursorLineNr guifg=#e8eb34
-			hi NvimTreeLineNr guifg=#34eb43
-			hi LineNr guifg=#D6ACFF
-			hi LspFloatWinBorder guifg=#e8eb34
-			hi LspFloatBorder guifg=#e8eb34
-			hi LspInfoBorder guifg=#e8eb34
-      hi TreesitterContextBottom gui=underline guisp=Grey
-      hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
-      hi NeoTreeBufferNumber guifg=#e8eb34
-      hi NeoTreeCursorLine guifg=#34eb43 guibg=#000000 gui=underline
-      hi NeoTreeTabActive guifg=#e8eb34 gui=bold
-      hi NeoTreeTabSeparatorActive guibg=#8426ff guifg=#000000
-      hi NeoTreeRootName guifg=#34eb43 gui=bold,italic
-      hi NeoTreeIndentMarker guifg=#e8eb34
-      hi NeoTreeSignColumn guifg=#e8eb34
-      hi NeoTreeFileIcon guifg=green gui=bold
-      hi NeoTreeDotfile guifg=#6272a4
-      hi NeoTreeGitUnstaged guifg=#8426ff
-      hi NeoTreeGitModified guifg=#8426ff
-			hi NeoCodeiumLabel guibg=#34eb43 guifg=#000000
-		]])
+    vim.cmd("colorscheme dracula")
   end,
 }
