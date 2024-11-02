@@ -90,6 +90,7 @@ alias clear_nvim='rm -rf ~/.local/share/nvim'
  
 # git
 alias ga='git add'
+alias gap='git add -p'
 alias gst='git status'
 alias gc='git commit -m'
 alias gp='git push'

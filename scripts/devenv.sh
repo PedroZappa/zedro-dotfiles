@@ -125,6 +125,8 @@ FILES=(
     ["$HOME/.dotfiles/btop/"]="$HOME/.config/"
     ["$HOME/.dotfiles/atuin/"]="$HOME/.config/"
     ["$HOME/.dotfiles/hypr"]="$HOME/.config/"
+    ["$HOME/.dotfiles/nushell/env.nu"]="$HOME/.config/nushell/"
+    ["$HOME/.dotfiles/nushell"]="$HOME/.config/nushell/"
 )
 
 ZEDRO_DOTFILES_SSH_URL="git@github.com:PedroZappa/zedro-dotfiles.git "
