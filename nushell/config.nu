@@ -961,18 +961,7 @@ alias kdiff = kitty +kitten diff
 alias glow = ~/bin/glow/glow
 
 # File system Navigation
-
-# ls || eza
-if (which eza | is-empty) == false {
-    echo "[Running (ansi green)eza(ansi reset)! 📊]"
-    alias ls = eza
-    alias ll = ls -al
-    alias llx = eza -laZ --total-size
-    alias llg = eza -laZ --total-size --git --git-repos
-} else {
-    echo "[Running (ansi yellow)ls(ansi reset)! ]"
-    alias ll = ls -al
-}
+alias ll = ls -la
 
 # Load Cowsay
 if (which lolcat | is-empty) == false {
