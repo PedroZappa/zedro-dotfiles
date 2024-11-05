@@ -5,6 +5,10 @@
 # Set language
 export LANG=en_US.UTF-8
 
+# Set compiler
+export CC=clang
+export CXX=clang++
+
 # XDG Base Directory Specification
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
