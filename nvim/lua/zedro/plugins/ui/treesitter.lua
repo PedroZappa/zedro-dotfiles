@@ -4,6 +4,7 @@ return {
     -- "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/nvim-treesitter-context",
     -- "nvim-treesitter/nvim-treesitter-refactor", -- Provides "got to def" capabilities 
+    { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
   },
   build = ":TSUpdate",
   config = function ()
