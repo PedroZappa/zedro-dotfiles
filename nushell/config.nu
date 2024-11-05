@@ -897,12 +897,89 @@ $env.config = {
     ]
 }
 
-alias v = nvim
+# tmux
+alias zmux = ~/.dotfiles/scripts/tmux/zmux-init.sh
+alias xmux = ~/.dotfiles/scripts/tmux/zmux-kill.sh
 
+# Screen Recording
+# kill simplescreenrecorder
+alias kill-screenrec = ~/.dotfiles/scripts/i3/kill-screenrec.sh
+
+# lulz
+alias greet = ~/.dotfiles/scripts/zsh/zsh-greet.sh
+alias zshcow = ~/.dotfiles/scripts/zsh/cowsay-fortune.sh
+
+#################
+### Greetings ###
+#################
+
+# greet $nu.env.HOSTNAME
+
+################
+### Keyboard ###
+################
+
+run-external "setxkbmap" "us"
+
+#######################
+### Zedro's Aliases ###
+#######################
+
+# Compiling
+alias ccw = cc -Wall -Wextra -Werror -g
+
+# 42 Norm Check
+alias nn = norminette
+
+# Neovim
+alias v = nvim
+alias vc = vim | lolcat
+alias clear_nvim = rm -rf ~/.local/share/nvim
+ 
+# git
 alias ga = git add
 alias gap = git add -p
 alias gst = git status
 alias gc = git commit -m
+alias gp = git push
+alias gl = git pull
+alias gco = git checkout
+alias gcb = git checkout -b
+alias glgg = git log --graph --oneline --decorate
+alias glgs = git log --graph --oneline --decorate | head -n 7
+alias gm = git merge --stat --log
+
+# kitty at 42
+if ($env.USER == "passunca" or $env.USER == "zedr0" or $env.USER == "Zedro" or $env.USER == "zedro") {
+    alias kitty = ~/.local/kitty.app/bin/kitty
+}
+alias k = kitty --start-as=fullscreen
+alias icat = kitty +kitten icat
+alias kdiff = kitty +kitten diff
+
+# Glow Markdown Renderer
+alias glow = ~/bin/glow/glow
+
+# File system Navigation
+
+# ls || eza
+if (which eza | is-empty) == false {
+    echo "[Running (ansi green)eza(ansi reset)! 📊]"
+    alias ls = eza
+    alias ll = ls -al
+    alias llx = eza -laZ --total-size
+    alias llg = eza -laZ --total-size --git --git-repos
+} else {
+    echo "[Running (ansi yellow)ls(ansi reset)! ]"
+    alias ll = ls -al
+}
+
+# Load Cowsay
+if (which lolcat | is-empty) == false {
+    zshcow | lolcat
+} else {
+    zshcow
+}
 
 source ~/.config/nushell/env.nu
 
