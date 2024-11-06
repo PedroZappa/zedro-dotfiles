@@ -180,3 +180,7 @@ source <(fzf --zsh)
 # Set up fzf key bindings and fuzzy completion
 # source /usr/share/doc/fzf/examples/key-bindings.zsh
 # source /usr/share/doc/fzf/examples/completion.zsh
+
+alias fancynorm='~/scripts_shell/fancy_norm/run.sh | grep " "' 
+
+alias fnorm='~/scripts_shell/fancy_norm/run.sh | grep " "'
