@@ -22,7 +22,7 @@ function M.add_boxed_comment()
     comment_start = "// "
     comment_end = " //"
     fill_char = "*"
-    vim.notify("File type is not configured. Using '//' style. Add your preferences to commenter plugin",
+    vim.notify("File type ** filetype ** is not configured. Using '//' style. Add your preferences to commenter plugin",
       vim.log.levels.WARN)
   end
 
@@ -52,7 +52,5 @@ function M.add_boxed_comment()
     vim.api.nvim_buf_set_lines(0, vim.fn.line(".") - 1, vim.fn.line("."), false, comment_lines)
   end)
 end
-
-vim.keymap.set('n', '<leader>sep', ":lua require('zedro.funkz.commenter').add_boxed_comment()<CR>", { desc = "Create Separator" })
 
 return M

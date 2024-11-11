@@ -247,3 +247,8 @@ local function toggle_hardmode()
   require("precognition").toggle()
 end
 keymap.set("n", "<leader>ht", toggle_hardmode, { desc = "Toggle Hardmode" })
+
+vim.keymap.set('n', '<leader>;', function()
+    require('zedro.funkz.commenter').add_boxed_comment()
+end, { desc = "Create Separator" })
+

@@ -183,4 +183,6 @@ source <(fzf --zsh)
 
 alias fancynorm='~/scripts_shell/fancy_norm/run.sh | grep " "' 
 
-alias fnorm='~/scripts_shell/fancy_norm/run.sh | grep " "'
+alias fnorm='~/scripts_shell/fancy_norm/run.sh inc src | grep " "'
+
+alias fanorm='~/scripts_shell/fancy_norm/run.sh | grep " "'

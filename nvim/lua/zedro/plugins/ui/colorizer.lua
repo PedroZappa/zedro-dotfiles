@@ -1,0 +1,3 @@
+return {
+  -- 'MrSloth-dev/NvimColorizer'
+}
