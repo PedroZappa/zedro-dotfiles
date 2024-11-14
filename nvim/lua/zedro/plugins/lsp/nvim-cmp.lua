@@ -101,7 +101,7 @@ return {
         { name = "lsp_kind" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" },  -- text within current buffer
-        { name = "path" },    -- file system paths
+        -- { name = "path" },    -- file system paths
         { name = "codeium" }, -- codeium
         -- { name = "cmdline" }, -- cmdline
         {
