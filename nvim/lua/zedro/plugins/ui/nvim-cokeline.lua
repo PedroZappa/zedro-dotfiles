@@ -11,7 +11,7 @@ return {
     local is_picking_close = require('cokeline.mappings').is_picking_close
     -- Colors
     local get_hex = require('cokeline.hlgroups').get_hl_attr
-    local purple = '#BD93F9'
+    local purple = '#854dff'
     local green = '#50fa7b'
     local yellow = '#F1FA8C'
 

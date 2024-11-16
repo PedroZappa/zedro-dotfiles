@@ -83,14 +83,14 @@ return {
         NeoTreeBufferNumber = { fg = "#e8eb34" },
         NeoTreeCursorLine = { fg = "#34eb43", bg = "#000000", underline = true },
         NeoTreeTabActive = { fg = "#e8eb34", bold = true },
-        NeoTreeTabSeparatorActive = { bg = "#8426ff", fg = "#000000" },
+        NeoTreeTabSeparatorActive = { bg = "#854dff", fg = "#000000" },
         NeoTreeRootName = { fg = "#34eb43", bold = true, italic = true },
         NeoTreeIndentMarker = { fg = "#e8eb34" },
         NeoTreeSignColumn = { fg = "#e8eb34" },
         NeoTreeFileIcon = { fg = "green", bold = true },
         NeoTreeDotfile = { fg = "#6272a4" },
-        NeoTreeGitUnstaged = { fg = "#8426ff" },
-        NeoTreeGitModified = { fg = "#8426ff" },
+        NeoTreeGitUnstaged = { fg = "#854dff" },
+        NeoTreeGitModified = { fg = "#854dff" },
         NeoCodeiumLabel = { bg = "#34eb43", fg = "#000000" },
       }
 
