@@ -87,7 +87,7 @@ return {
           require('lspconfig').lua_ls.setup({
             on_init = function(client)
               local uv = vim.uv or vim.loop
-              local path = client.workspace_folders[1].name
+              -- local path = client.workspace_folders[1].name
 
               lsp_zero.nvim_lua_settings(client, {})
               -- Don't do anything if there is a project local config
