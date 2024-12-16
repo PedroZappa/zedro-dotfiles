@@ -108,6 +108,7 @@ fi
 alias k='kitty --start-as=fullscreen'
 alias icat='kitty +kitten icat'
 alias kdiff='kitty +kitten diff'
+alias kt="sh $HOME/.dotfiles/scripts/kitty.sh" 
 
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
