@@ -79,9 +79,6 @@ alias ccw='cc -Wall -Wextra -Werror -g'
 
 # 42 Norm Check
 alias nn='norminette'
-# Franinette alias
-alias francinette=~/francinette/tester.sh
-alias fr='francinette'
 
 # Neovim
 alias v='nvim'
