@@ -110,6 +110,8 @@ alias kt="sh $HOME/.dotfiles/scripts/kitty.sh"
 # Glow Markdown Renderer
 alias glow=~/bin/glow/glow
 
+alias obsidian='~/.local/share/AppImage/Obsidian-1.7.7.AppImage --no-sandbox'
+
 # File system Navigation
 # cd || zoxide
 if command -v zoxide > /dev/null 2>&1; then
@@ -154,9 +156,6 @@ if [[ $USER == "passunca" ]]; then
   rm -rf ~/.config/google-chrome/Singleton*
 fi
 
-alias m_test=~/Minishell_Tester/start.sh
-alias reallyshell=~/Minishell_Tester/connect.sh
-
 eval "$(atuin init zsh)"
 
 # Set up fzf key bindings and fuzzy completion
@@ -178,9 +177,3 @@ source <(fzf --zsh)
 # Set up fzf key bindings and fuzzy completion
 # source /usr/share/doc/fzf/examples/key-bindings.zsh
 # source /usr/share/doc/fzf/examples/completion.zsh
-
-alias fancynorm='~/scripts_shell/fancy_norm/run.sh | grep " "' 
-
-alias fnorm='~/scripts_shell/fancy_norm/run.sh inc src | grep " "'
-
-alias fanorm='~/scripts_shell/fancy_norm/run.sh | grep " "'
