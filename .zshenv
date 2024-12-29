@@ -37,9 +37,7 @@ if [[ $USER == "passunca" ]]; then
 elif [[ $USER == "zedr0" ]]; then
 	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ $USER == "zedro" ]]; then
-	eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-	export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+	export PATH="/usr/local/Cellar/neovim/0.10.3/bin:$PATH"
 fi
 
 # colored GCC warnings and errors
