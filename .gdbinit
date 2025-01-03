@@ -27,6 +27,12 @@ define nr
   next
   refresh
 end
+python
+import sys
+sys.path.insert(0, '~/gdb_printers/python')
+from libstdcxx.v6.printers import register_libstdcxx_printers
+register_libstdcxx_printers (None)
+end
 
 # __________________gdb options_________________
 
