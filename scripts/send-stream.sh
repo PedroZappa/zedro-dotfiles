@@ -25,13 +25,24 @@ if [ -z "$TMUX" ]; then
   exit 1
 fi
 
-# Transfer the SDP file in a new tmux pane
-tmux split-window -h '(zsh || bash && sleep 1)'
-tmux send-keys -t 2 "echo -e 'Transferring SDP file to $IP2SEND:$DEST_PATH...'" C-m
-tmux send-keys -t 2 "sleep 1 && scp stream.sdp $DEST_USER@$IP2SEND:$DEST_PATH" C-m
+# Pass environment variables to tmux session
+tmux set-environment -g IP2SEND $IP2SEND
+tmux set-environment -g DEST_USER $DEST_USER
+tmux set-environment -g DEST_PATH $DEST_PATH
+tmux set-environment -g PORT $PORT
+tmux set-environment -g N_CH $N_CH
+tmux set-environment -g RATE $RATE
+tmux set-environment -g INTERFACE $INTERFACE
+tmux set-environment -g CODEC $CODEC
+
+cmd='ffmpeg -f alsa -ac $N_CH -ar $RATE -i $INTERFACE -acodec $CODEC \
+	-f rtp rtp://$IP2SEND:$PORT -sdp_file stream.sdp'
 
 # Generate the RTP stream and SDP file
-echo -e "${MAG}Generating RTP stream and SDP file...${D}" 
-ffmpeg -f alsa -ac $N_CH -ar $RATE -i $INTERFACE -acodec $CODEC \
-    -f rtp rtp://$IP2SEND:$PORT -sdp_file stream.sdp
+tmux set-option remain-on-exit on
+# tmux split-window -h ${cmd}
+tmux split-window -h "$cmd"
 
+# Transfer the SDP file in a new tmux pane
+echo -e "${MAG} Transfering stream information to Receiver:${D}" 
+sleep 1 && scp stream.sdp $DEST_USER@$IP2SEND:$DEST_PATH
