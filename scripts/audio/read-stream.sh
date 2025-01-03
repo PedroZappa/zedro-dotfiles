@@ -20,5 +20,5 @@ INTERFACE=default
 CODEC=pcm_s16le 
 
 ffmpeg -analyzeduration 0 -probesize 100 \
-    -protocol_whitelist "file,udp,tcp" \
+    -protocol_whitelist "file,udp,rtp" \
     -i ~/stream.sdp -f sdl "RTP Stream"
