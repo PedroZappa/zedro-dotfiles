@@ -21,4 +21,4 @@ CODEC=pcm_s16le
 
 ffmpeg -analyzeduration 0 -probesize 100 \
     -protocol_whitelist "file,udp,tcp" \
-    -i stream.sdp - sdl "RTP Stream" -f $CODEC
+    -i stream.sdp -f sdl "RTP Stream"
