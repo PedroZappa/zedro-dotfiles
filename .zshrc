@@ -111,6 +111,11 @@
  alias glow=~/bin/glow/glow
  
  alias obsidian='~/.local/share/AppImage/Obsidian-1.7.7.AppImage --no-sandbox'
+
+# Audio
+# Send / Read Streams
+alias sstream="~/.dotfiles/scripts/audio/send-stream.sh"
+alias rstream="~/.dotfiles/scripts/audio/read-stream.sh"
  
  # File system Navigation
  # cd || zoxide
