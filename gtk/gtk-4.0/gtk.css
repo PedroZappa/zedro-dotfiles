@@ -1,0 +1,12 @@
+@import url("resource:///com/ubuntu/themes/Yaru-magenta-dark/4.0/gtk.css");
+
+/* Set transparency for all GTK windows */
+window {
+    background-color: rgba(0, 0, 0, 0) !important;  /* Fully transparent background */
+}
+
+/* Set transparency for GTK menus, if needed */
+* {
+    background-color: rgba(0, 0, 0, 0.5) !important;  /* Semi-transparent background */
+}
+
