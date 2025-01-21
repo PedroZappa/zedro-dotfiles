@@ -40,6 +40,7 @@ elif [[ $USER == "zedro" ]]; then
 	export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 	export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 	export PATH="/usr/local/Cellar/neovim/0.10.3/bin:$PATH"
+	export PATH="/usr/local/lib/JUCE/modules:$PATH"
 fi
 
 # colored GCC warnings and errors

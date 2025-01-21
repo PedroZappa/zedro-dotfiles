@@ -145,7 +145,7 @@ return {
               -- clangdFileWatched = true,
               fallbackFlags = {
                 "-I" .. vim.loop.cwd() .. "/include", -- Custom include path
-                "-I/usr/local/include",               -- System-wide include
+                "-I/usr/local/lib",                  -- System-wide include
               }
             },
             filetypes = { "c", "h", "hpp", "cpp", "objc", "objcpp" },
