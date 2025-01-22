@@ -17,12 +17,12 @@ return {
         lineFoldingOnly = true
       }
 
-      local language_servers = require("lspconfig").util.available_servers()
-      for _, ls in ipairs(language_servers) do
-        require('lspconfig')[ls].setup({
-          capabilities = capabilities
-        })
-      end
+      -- local language_servers = require("lspconfig").util.available_servers()
+      -- for _, ls in ipairs(language_servers) do
+      --   require('lspconfig')[ls].setup({
+      --     capabilities = capabilities
+      --   })
+      -- end
 
       require('ufo').setup({
         provider_selector = function(bufnr, filetype, buftype)
