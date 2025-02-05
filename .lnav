@@ -1,0 +1,52 @@
+// vim: set filetype=json :
+{
+  "$schema": "https://lnav.org/schemas/config-v1.schema.json",
+  "properties": {
+    "$schema": {
+      "title": "/$schema",
+      "description": "The URI that specifies the schema that describes this type of file",
+      "type": "string",
+      "examples": [
+        "https://lnav.org/schemas/config-v1.schema.json"
+      ]
+    },
+    "ui": {
+      "properties": {
+        "mouse": {
+          "description": "Mouse-related settings",
+          "title": "/ui/mouse",
+          "type": "object",
+          "properties": {
+            "mode": {
+              "title": "/ui/mouse/mode",
+              "description": "Overall control for mouse support",
+              "type": "string",
+              "enum": [
+                "disabled",
+                "enabled"
+              ],
+              "examples": [
+                "enabled",
+                "disabled"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+      },
+    },
+    "global": {
+      "title": "/global",
+      "description": "The global configuration options that apply to all files",
+      "type": "string",
+      "patternProperties": {
+        "^(\\w+)$": {
+        "title": "/global/<var_name>",
+        "description": "A global variable definition.  Global variables can be referenced in scripts, SQL statements, or commands.",
+        "type": "string"
+        }
+      },
+    }
+  },
+  "definitions": {}
+}

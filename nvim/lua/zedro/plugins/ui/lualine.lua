@@ -23,6 +23,39 @@ return {
       end
     end
 
+    -- OLLAMA
+    -- Define the Ollama component
+    local ollama_component = {
+      function()
+        -- Get the current status from the ollama module
+        local ollama_status = require("ollama").status()
+        -- Define two icons (feel free to change these)
+        local icons = {
+          "󱙺", -- nf-md-robot-outline
+          "󰚩", -- nf-md-robot
+        }
+        if ollama_status == "IDLE" then
+          return icons[1]
+        elseif ollama_status == "WORKING" then
+          -- simple animation based on seconds
+          return icons[(os.date("%S") % #icons) + 1]
+        end
+      end,
+      cond = function()
+        -- Check if the external executable is present and the module is available
+        -- Option 1: Check for executable in the system
+        if vim.fn.executable("ollama") ~= 1 then
+          return false
+        end
+        -- Option 2: Check that the module can be required without error
+        local ok, ollama = pcall(require, "ollama")
+        if not ok or ollama.status() == nil then
+          return false
+        end
+        return true
+      end,
+    }
+
     lualine.setup({
       options = {
         theme = 'dracula',
@@ -56,6 +89,7 @@ return {
             color = { fg = "#ff9e64" },
           },
           { virtual_env, color = { fg = "#e8eb34" } },
+          ollama_component,
         },
         -- Right side
         lualine_x = {

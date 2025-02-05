@@ -49,8 +49,8 @@ opt.formatoptions:remove("o")
 opt.clipboard = "unnamedplus"
 
 -- Scroll
-opt.scrolloff = 7
-opt.sidescrolloff = 7
+-- opt.scrolloff = 7
+-- opt.sidescrolloff = 88
 -- opt.sidescrolloff = 999
 
 -- Fold Marks
@@ -99,6 +99,7 @@ vim.g.bulitin_lsp = true
 -- Other
 opt.showcmd = true
 opt.showmode = true
+opt.laststatus = 3
 -- opt.iskeyword:append("-") -- Considers '-' as part of a word
 
 -- Appearance

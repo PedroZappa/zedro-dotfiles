@@ -133,7 +133,7 @@ return {
         required_width = 30, -- min width of window required to show this column
       },
       file_size = {
-        enabled = true,
+        enabled = false,
         required_width = 10, -- min width of window required to show this column
       },
       last_modified = {
@@ -155,7 +155,7 @@ return {
 
     window = {
       position = "right",
-      width = 40,
+      width = 30,
       mapping_options = {
         noremap = true,
         nowait = true,
