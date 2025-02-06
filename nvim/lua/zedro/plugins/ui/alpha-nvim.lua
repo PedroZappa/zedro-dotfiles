@@ -365,6 +365,7 @@ local buttons = {
     button("n", "  New file", 'Macro', ':ene <BAR> startinsert <CR>'),
     button("f", "  Find file", 'Macro', ':Telescope find_files <CR>'),
     button("F", "  Find text", 'Macro', ':Telescope live_grep <CR>'),
+    button("a", "🎛 Get AI", 'Macro', ':AvanteChat<CR>'),
     button("-", "󰼙  Get Oil", 'Macro', ':Oil --float<CR>'),
     button("r", "󱣱  Get Ranger", 'Macro', ':Ranger<CR>'),
     button("l", "  Get Lazy", 'Macro', ':Lazy<CR>'),

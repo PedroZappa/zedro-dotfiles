@@ -56,16 +56,16 @@ return {
       hints = { enabled = true },
       windows = {
         ---@type "right" | "left" | "top" | "bottom"
-        position = "left", -- the position of the sidebar
-        wrap = true,    -- similar to vim.o.wrap
-        width = 40,     -- default % based on available width
+        position = "left",  -- the position of the sidebar
+        wrap = true,        -- similar to vim.o.wrap
+        width = 45,         -- default % based on available width
         sidebar_header = {
-          enabled = true, -- true, false to enable/disable the header
+          enabled = true,   -- true, false to enable/disable the header
           align = "center", -- left, center, right for title
-          rounded = false,
+          rounded = true,
         },
         input = {
-          prefix = "$> ",
+          prefix = "$>",
           height = 4, -- Height of the input window in vertical layout
         },
         edit = {
@@ -73,7 +73,7 @@ return {
           start_insert = true, -- Start insert mode when opening the edit window
         },
         ask = {
-          floating = false, -- Open the 'AvanteAsk' prompt in a floating window
+          floating = false,    -- Open the 'AvanteAsk' prompt in a floating window
           start_insert = true, -- Start insert mode when opening the ask window
           border = "rounded",
           ---@type "ours" | "theirs"
