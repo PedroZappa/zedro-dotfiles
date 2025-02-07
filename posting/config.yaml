@@ -1,0 +1,13 @@
+theme: galaxy
+layout: horizontal
+editor: nvim
+pager: bat
+pager_json: jq
+response:
+  prettify_json: true
+heading:
+  visible: false
+  show_host: true
+watch_env_files: true
+animation: full
+use_host_environment: true

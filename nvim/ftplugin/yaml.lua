@@ -10,8 +10,8 @@ vim.api.nvim_buf_set_keymap(0, "n", "<leader>yt", ":YAMLTelescope<CR>", { norema
 vim.api.nvim_buf_set_keymap(0, "n", "<leader>yl", ":!yamllint %<CR>", { noremap = true, silent = true })
 
 -- Folding
-vim.opt_local.foldmethod = "indent"
-vim.opt_local.foldlevel = 1
+-- vim.opt_local.foldmethod = "indent"
+-- vim.opt_local.foldlevel = 1
 -- ~/.config/nvim/lua/user_functions/keybindings.lua
 vim.api.nvim_buf_set_keymap(
   0,

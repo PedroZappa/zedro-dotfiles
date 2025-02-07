@@ -128,3 +128,5 @@
 # fi
 # alias m_test='~/Minishell_Tester/start.sh'
 # alias reallyshell='~/Minishell_Tester/connect.sh'
+
+. "$HOME/.local/share/../bin/env"

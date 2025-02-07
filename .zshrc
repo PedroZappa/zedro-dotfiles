@@ -182,3 +182,5 @@ alias rstream="~/.dotfiles/scripts/audio/read-stream.sh"
  # Set up fzf key bindings and fuzzy completion
  # source /usr/share/doc/fzf/examples/key-bindings.zsh
  # source /usr/share/doc/fzf/examples/completion.zsh
+
+. "$HOME/.local/share/../bin/env"
