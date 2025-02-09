@@ -67,56 +67,58 @@
  #############
  ### Enoji ###
  #############
- 
- alias zemoji=""
 
- ################
- ### Keyboard ###
- ################
+zemoji() {
+    # Navigate to the project directory
+    cd ~/.dotfiles/scripts/zemoji/ || return
+    # Run the make command to set up the virtual environment and database
+    make
+    # Activate the virtual environment
+    source .venv/bin/activate
+    # Execute the Python script
+    python app.py
+    # Deactivate the virtual environment after the script completes
+    deactivate
+}
+
+################
+### Keyboard ###
+################
+
+eval "setxkbmap us"
+
+#######################
+### Zedro's Aliases ###
+#######################
+
+# Compiling
+alias ccw='cc -Wall -Wextra -Werror -g'
+
+# 42 Norm Check
+alias nn='norminette'
+
+# Neovim
+alias v='nvim'
+alias vc='vim | lolcat'
+alias clear_nvim='rm -rf ~/.local/share/nvim'
  
- eval "setxkbmap us"
- 
- #######################
- ### Zedro's Aliases ###
- #######################
- 
- # Compiling
- alias ccw='cc -Wall -Wextra -Werror -g'
- 
- # 42 Norm Check
- alias nn='norminette'
- 
- # Neovim
- alias v='nvim'
- alias vc='vim | lolcat'
- alias clear_nvim='rm -rf ~/.local/share/nvim'
-  
- # git
- alias ga='git add'
- alias gap='git add -p'
- alias gst='git status'
- alias gc='git commit -m'
- alias gp='git push'
- alias gl='git pull'
- alias gco='git checkout'
- alias gcb='git checkout -b'
- alias glgg='git log --graph --oneline --decorate'
- alias glgs='git log --graph --oneline --decorate | head -n 7'
- alias gm='git merge --stat --log'
- 
- # kitty at 42
- if [[ $USER == "passunca" || $USER == "zedr0" || $USER == "Zedro" || $USER == "zedro" ]]; then
- 	alias kitty=~/.local/kitty.app/bin/kitty
- fi
- alias k='kitty --start-as=fullscreen'
- alias icat='kitty +kitten icat'
- alias kdiff='kitty +kitten diff'
- alias kt="sh $HOME/.dotfiles/scripts/kitty.sh" 
- 
- # Glow Markdown Renderer
- alias glow=~/bin/glow/glow
- 
- alias obsidian='~/.local/share/AppImage/Obsidian-1.7.7.AppImage --no-sandbox'
+# git
+alias ga='git add'
+alias gap='git add -p'
+alias gst='git status'
+alias gc='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias glgg='git log --graph --oneline --decorate'
+alias glgs='git log --graph --oneline --decorate | head -n 7'
+alias gm='git merge --stat --log'
+
+# Glow Markdown Renderer
+alias glow=~/bin/glow/glow
+
+alias obsidian='~/.local/share/AppImage/Obsidian-1.7.7.AppImage --no-sandbox'
 
 # Audio
 # Send / Read Streams
