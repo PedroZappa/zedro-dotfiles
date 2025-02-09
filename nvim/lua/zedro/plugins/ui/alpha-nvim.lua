@@ -336,7 +336,12 @@ local header = {
 -- Get Neovim version
 local get_neovim_version = function()
   local v = vim.version()
-  return "v" .. v.major .. "." .. v.minor .. "." .. v.patch
+  -- return "v" .. v.major .. "." .. v.minor .. "." .. v.patch
+  return string.format("%d.%d.%d", v.major, v.minor, v.patch)
+end
+
+local get_neovim_startuptime = function()
+  return vim.fn.printf("%.2f", vim.fn.reltimefloat(vim.fn.reltime(vim.g.start_time)))
 end
 
 local footer = {
@@ -349,6 +354,7 @@ local footer = {
     "",
     "",
     "Neovim " .. get_neovim_version(),
+    "loaded in " .. get_neovim_startuptime() .. "ms",
     "󰟪'ed by Zedro",
   },
   opts = {

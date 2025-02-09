@@ -3,7 +3,7 @@ return {
   event = "VeryLazy",
   config = function()
     require("cloak").setup({
-      enabled = true,
+      enabled = false,
       cloak_character = "☠",
       -- The applied highlight group (colors) on the cloaking, see `:h highlight`.
       highlight_group = "Comment",

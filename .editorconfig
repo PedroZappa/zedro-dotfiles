@@ -27,7 +27,7 @@ tab_width = 2
 continuation_indent = 2
 
 [*.{py,go}]
-indent_style = tab
+indent_style = space
 indent_size = 2
 tab_width = 2
 continuation_indent = 2

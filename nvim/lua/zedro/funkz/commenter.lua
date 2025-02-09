@@ -14,6 +14,10 @@ function M.add_boxed_comment()
     comment_start = "/* "
     comment_end = " */"
     fill_char = "*"
+  elseif filetype == "py" then
+    comment_start = "# "
+    comment_end = " #"
+    fill_char = "*"
   elseif filetype == "lua" then
     comment_start = "-- "
     comment_end = " --"
@@ -42,9 +46,9 @@ function M.add_boxed_comment()
     -- Construct the comment box
     local comment_lines = {
       comment_start .. string.rep(fill_char, content_width) .. comment_end,
-      comment_start .. string.rep(" ", content_width) .. comment_end,
+      -- comment_start .. string.rep(" ", content_width) .. comment_end,
       comment_start .. string.rep(" ", left_padding) .. input .. string.rep(" ", right_padding) .. comment_end,
-      comment_start .. string.rep(" ", content_width) .. comment_end,
+      -- comment_start .. string.rep(" ", content_width) .. comment_end,
       comment_start .. string.rep(fill_char, content_width) .. comment_end,
     }
 

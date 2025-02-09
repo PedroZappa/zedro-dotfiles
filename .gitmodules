@@ -1,0 +1,3 @@
+[submodule "scripts/zemoji"]
+	path = scripts/zemoji
+	url = git@github.com:PedroZappa/zEmoji_Picker.git
