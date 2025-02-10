@@ -120,6 +120,7 @@ alias gm='git merge --stat --log'
 alias glow=~/bin/glow/glow
 
 alias obsidian='~/.local/share/AppImage/Obsidian-1.7.7.AppImage --no-sandbox'
+alias ghostty='~/.local/bin/ghostty.AppImage'
 
 # Audio
 # Send / Read Streams
