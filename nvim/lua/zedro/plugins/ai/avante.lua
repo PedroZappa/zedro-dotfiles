@@ -58,7 +58,7 @@ return {
         ---@type "right" | "left" | "top" | "bottom"
         position = "left",  -- the position of the sidebar
         wrap = true,        -- similar to vim.o.wrap
-        width = 45,         -- default % based on available width
+        width = 35,         -- default % based on available width
         sidebar_header = {
           enabled = true,   -- true, false to enable/disable the header
           align = "center", -- left, center, right for title
@@ -121,7 +121,7 @@ return {
         opts = {
           -- recommended settings
           default = {
-            embed_image_as_base64 = false,
+            embed_image_as_base64 = true,
             prompt_for_file_name = false,
             drag_and_drop = {
               insert_mode = true,
