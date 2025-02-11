@@ -132,7 +132,7 @@ alias rstream="~/.dotfiles/scripts/audio/read-stream.sh"
  if command -v zoxide > /dev/null 2>&1; then
  	eval "$(zoxide init --cmd cd zsh)"
  	echo "[Running ${GREEN}zoxide${NC}! 📂]"
- else
+ else 
  	echo "[Running ${YELLOW}cd${NC}! 📂]"
  fi
  # ls || eza
