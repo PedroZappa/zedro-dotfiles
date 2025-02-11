@@ -18,6 +18,7 @@ font-size = 12
 
 # Mouse
 mouse-hide-while-typing = true
+copy-on-select = clipboard
 
 # Cursor
 cursor-color = #00FF00

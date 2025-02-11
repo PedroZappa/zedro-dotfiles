@@ -85,7 +85,7 @@ zemoji() {
 ### Keyboard ###
 ################
 
-eval "setxkbmap us"
+# eval "setxkbmap us"
 
 #######################
 ### Zedro's Aliases ###
