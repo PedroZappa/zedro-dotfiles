@@ -110,10 +110,10 @@ alias gc='git commit -m'
 alias gp='git push'
 alias gl='git pull'
 alias gls='git pull && git submodule update --recursive --progress'
+alias gcl='git clone'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias glgg='git log --graph --oneline --decorate'
-alias glgs='git log --graph --oneline --decorate | head -n 7'
 alias gm='git merge --stat --log'
 
 # Glow Markdown Renderer

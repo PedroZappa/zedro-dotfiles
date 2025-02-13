@@ -4,12 +4,7 @@
 [user]
 	name = Zedro 
 	email = 45104292+PedroZappa@users.noreply.github.com 
-	signingkey = 222CC9FAEBD4D20C14FB649AE967AD14D4EA421F
 [core]
 	editor = nvim
 [diff]
 	submodule = log
-[commit]
-	gpgsign = true
-[tag]
-	gpgSign = true
