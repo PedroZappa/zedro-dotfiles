@@ -3,7 +3,7 @@ return {
   cmd = "Trouble",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  config = function ()
+  config = function()
     require("trouble").setup({
       auto_close = false,
       auto_open = false,
@@ -71,13 +71,13 @@ return {
         zN = "fold_enable",
         zi = "fold_toggle_enable",
         gb = { -- example of a custom action that toggles the active view filter
-          action = function (view)
+          action = function(view)
             view:filter({ buf = 0 }, { toggle = true })
           end,
           desc = "Toggle Current Buffer Filter",
         },
         s = { -- example of a custom action that toggles the severity
-          action = function (view)
+          action = function(view)
             local f = view:get_filter("severity")
             local severity = ((f and f.filter.severity or 0) + 1) % 5
             view:filter({ severity = severity }, {
@@ -178,7 +178,26 @@ return {
       },
     }) -- refer to the configuration section below
   end,
-  opts = {
+  opts = {},
+  specs = {
+    "folke/snacks.nvim",
+    opts = function(_, opts)
+      return vim.tbl_deep_extend("force", opts or {}, {
+        picker = {
+          actions = require("trouble.sources.snacks").actions,
+          win = {
+            input = {
+              keys = {
+                ["<c-t>"] = {
+                  "trouble_open",
+                  mode = { "n", "i" },
+                },
+              },
+            },
+          },
+        },
+      })
+    end,
   },
   keys = {
     {

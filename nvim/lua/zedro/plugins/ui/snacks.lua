@@ -322,7 +322,7 @@ return {
       preset = {
         -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
         ---@type fun(cmd:string, opts:table)|nil
-        pick = "telescope.nvim",
+        pick = nil,
         -- Used by the `keys` section to show keymaps.
         -- Set your custom keymaps here.
         -- When using a function, the `items` argument are the default keymaps.
@@ -662,7 +662,7 @@ return {
     },
     picker = {
       enabled = true,
-      prompt = " ",
+      prompt = "$ ",
       sources = {},
       focus = "input",
       layout = {
@@ -1116,6 +1116,41 @@ return {
       foldopen = true, -- open folds after jumping
       jumplist = true, -- set jump point before jumping
       modes = { "n", "i", "c" }, -- modes to show references
+    },
+    zen = {
+      -- You can add any `Snacks.toggle` id here.
+      -- Toggle state is restored when the window is closed.
+      -- Toggle config options are NOT merged.
+      ---@type table<string, boolean>
+      toggles = {
+        dim = true,
+        git_signs = false,
+        mini_diff_signs = false,
+        -- diagnostics = false,
+        -- inlay_hints = false,
+      },
+      show = {
+        statusline = false, -- can only be shown when using the global statusline
+        tabline = false,
+      },
+      ---@type snacks.win.Config
+      win = { style = "zen" },
+      --- Callback when the window is opened.
+      ---@param win snacks.win
+      on_open = function(win) end,
+      --- Callback when the window is closed.
+      ---@param win snacks.win
+      on_close = function(win) end,
+      --- Options for the `Snacks.zen.zoom()`
+      ---@type snacks.zen.Config
+      zoom = {
+        toggles = {},
+        show = { statusline = true, tabline = true },
+        win = {
+          backdrop = false,
+          width = 0, -- full width
+        },
+      },
     },
     styles = {
       notification = {
