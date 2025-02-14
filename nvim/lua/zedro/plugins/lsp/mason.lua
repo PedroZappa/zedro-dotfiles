@@ -89,13 +89,13 @@ return {
               local uv = vim.uv or vim.loop
               -- local path = client.workspace_folders[1].name
 
-              lsp_zero.nvim_lua_settings(client, {})
+              -- lsp_zero.nvim_lua_settings(client, {})
               -- Don't do anything if there is a project local config
-              if uv.fs_stat(path .. '/.luarc.json')
-                  or uv.fs_stat(path .. '/.luarc.jsonc')
-              then
-                return
-              end
+              -- if uv.fs_stat(path .. '/.luarc.json')
+              --     or uv.fs_stat(path .. '/.luarc.jsonc')
+              -- then
+              --   return
+              -- end
               -- Apply neovim specific settings
               local lua_opts = lsp_zero.nvim_lua_ls()
 
