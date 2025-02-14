@@ -12,12 +12,12 @@ local function button(sc, txt, hl, keybind, keybind_opts)
   local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
 
   local opts = {
-    position       = "center",
-    shortcut       = sc,
-    cursor         = 5,
-    width          = 33,
+    position = "center",
+    shortcut = sc,
+    cursor = 5,
+    width = 33,
     align_shortcut = "right",
-    hl_shortcut    = hl,
+    hl_shortcut = hl,
   }
 
   if keybind then
@@ -26,15 +26,15 @@ local function button(sc, txt, hl, keybind, keybind_opts)
   end
 
   local function on_press()
-    local key = vim.api.nvim_replace_termcodes(sc_ .. '<Ignore>', true, false, true)
+    local key = vim.api.nvim_replace_termcodes(sc_ .. "<Ignore>", true, false, true)
     vim.api.nvim_feedkeys(key, "normal", false)
   end
 
   return {
-    type     = "button",
-    val      = txt,
+    type = "button",
+    val = txt,
     on_press = on_press,
-    opts     = opts,
+    opts = opts,
   }
 end
 
@@ -200,7 +200,6 @@ Headers = {
     [[                 ||  .-.   ( v~\ ; |  (  (\]],
     [[        ....     || _|_ \   \_/' `.|   |\.\\]],
     [[^^^^^^^ `=.`''===.' (_)     /\     |  _]_]`\\]],
-
   },
   {
     [[_____   __                 _____]],
@@ -314,28 +313,28 @@ Headers = {
     [[ ##:. ###: ##::::::: ##:::: ##::. ## ##:::: ##:: ##:.:: ##:]],
     [[ ##::. ##: ########:. #######::::. ###::::'####: ##:::: ##:]],
     [[..::::..::........:::.......::::::...:::::....::..:::::..::]],
-  }
+  },
 }
 
 ---@diagnostic disable: missing-parameter
 local buttons = {
   type = "group",
   val = {
-    button("n", "  New file", 'Macro', ':ene <BAR> startinsert <CR>'),
-    button("f", "  Find file", 'Macro', ':Telescope find_files <CR>'),
-    button("F", "  Find text", 'Macro', ':Telescope live_grep <CR>'),
-    button("a", "🎛 Get AI", 'Macro', ':AvanteChat<CR>'),
-    button("-", "󰼙  Get Oil", 'Macro', ':Oil --float<CR>'),
-    button("r", "󱣱  Get Ranger", 'Macro', ':Ranger<CR>'),
-    button("l", "  Get Lazy", 'Macro', ':Lazy<CR>'),
-    button("m", "  Get Mason", 'Macro', ':Mason<CR>'),
-    button("h", "󰞋  Get Help", 'Macro', ':vertical help<CR>'),
-    button("o", "  Get Options", 'Macro', ':vertical options<CR>'),
-    button("q", "󰩈  Quit", 'Macro', ':qa<CR>'),
+    button("n", "  New file", "Macro", ":ene <BAR> startinsert <CR>"),
+    button("f", "  Find file", "Macro", ":Telescope find_files <CR>"),
+    button("F", "  Find text", "Macro", ":Telescope live_grep <CR>"),
+    button("a", "🎛 Get AI", "Macro", ":AvanteChat<CR>"),
+    button("-", "󰼙  Get Oil", "Macro", ":Oil --float<CR>"),
+    button("r", "󱣱  Get Ranger", "Macro", ":Ranger<CR>"),
+    button("l", "  Get Lazy", "Macro", ":Lazy<CR>"),
+    button("m", "  Get Mason", "Macro", ":Mason<CR>"),
+    button("h", "󰞋  Get Help", "Macro", ":vertical help<CR>"),
+    button("o", "  Get Options", "Macro", ":vertical options<CR>"),
+    button("q", "󰩈  Quit", "Macro", ":qa<CR>"),
   },
   opts = {
     spacing = 1,
-  }
+  },
 }
 ---@diagnostic enable: missing-parameter
 
@@ -345,16 +344,22 @@ local header = {
   -- val = Headers[3],
   opts = {
     position = "center",
-    hl       = "Character",
-  }
+    hl = "Character",
+  },
 }
 
 return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  ---@type snacks.Config
   opts = {
+    animate = {
+      enabled = true,
+      ---@type snacks.animate.Duration|number
+      duration = 20, -- ms per step
+      easing = "linear",
+      fps = 60, -- frames per second. Global setting for all animations
+    },
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = true },
@@ -883,8 +888,8 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle
-            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-            :map("<leader>uc")
+          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+          :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
