@@ -1,42 +1,5 @@
-local options
-
 -- For random header
 math.randomseed(os.time())
--- Create button for initial keybind.
---- @param sc string
---- @param txt string
---- @param hl string
---- @param keybind string optional
---- @param keybind_opts table optional
-local function button(sc, txt, hl, keybind, keybind_opts)
-  local sc_ = sc:gsub("%s", ""):gsub("SPC", "<leader>")
-
-  local opts = {
-    position = "center",
-    shortcut = sc,
-    cursor = 5,
-    width = 33,
-    align_shortcut = "right",
-    hl_shortcut = hl,
-  }
-
-  if keybind then
-    keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
-    opts.keymap = { "n", sc_, keybind, keybind_opts }
-  end
-
-  local function on_press()
-    local key = vim.api.nvim_replace_termcodes(sc_ .. "<Ignore>", true, false, true)
-    vim.api.nvim_feedkeys(key, "normal", false)
-  end
-
-  return {
-    type = "button",
-    val = txt,
-    on_press = on_press,
-    opts = opts,
-  }
-end
 
 -- All custom headers
 Headers = {
@@ -316,38 +279,6 @@ Headers = {
   },
 }
 
----@diagnostic disable: missing-parameter
--- local buttons = {
---   type = "group",
---   val = {
---     button("n", "  New file", "Macro", ":ene <BAR> startinsert <CR>"),
---     button("f", "  Find file", "Macro", ":Telescope find_files <CR>"),
---     button("F", "  Find text", "Macro", ":Telescope live_grep <CR>"),
---     button("a", "🎛 Get AI", "Macro", ":AvanteChat<CR>"),
---     button("-", "󰼙  Get Oil", "Macro", ":Oil --float<CR>"),
---     button("r", "󱣱  Get Ranger", "Macro", ":Ranger<CR>"),
---     button("l", "  Get Lazy", "Macro", ":Lazy<CR>"),
---     button("m", "  Get Mason", "Macro", ":Mason<CR>"),
---     button("h", "󰞋  Get Help", "Macro", ":vertical help<CR>"),
---     button("o", "  Get Options", "Macro", ":vertical options<CR>"),
---     button("q", "󰩈  Quit", "Macro", ":qa<CR>"),
---   },
---   opts = {
---     spacing = 1,
---   },
--- }
----@diagnostic enable: missing-parameter
-
-local header = {
-  type = "text",
-  val = Headers[math.random(#Headers)],
-  -- val = Headers[3],
-  opts = {
-    position = "center",
-    hl = "Character",
-  },
-}
-
 return {
   "folke/snacks.nvim",
   priority = 1000,
@@ -356,7 +287,7 @@ return {
     animate = {
       enabled = true,
       ---@type snacks.animate.Duration|number
-      duration = 20, -- ms per step
+      duration = 33, -- ms per step
       easing = "linear",
       fps = 60,      -- frames per second. Global setting for all animations
     },
@@ -382,10 +313,10 @@ return {
     },
     dashboard = {
       enabled = true,
-      width = 60,
+      width = 50,
       row = nil,                                                                   -- dashboard position. nil for center
       col = nil,                                                                   -- dashboard position. nil for center
-      pane_gap = 4,                                                                -- empty columns between vertical panes
+      pane_gap = 10,                                                               -- empty columns between vertical panes
       autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
       -- These settings are used by some built-in sections
       preset = {
@@ -397,18 +328,20 @@ return {
         -- When using a function, the `items` argument are the default keymaps.
         ---@type snacks.dashboard.Item[]
         keys = {
+          { icon = "󰞋 ", key = "h", desc = "Get Help", action = ":vertical help" },
           { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
           { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
           { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
           { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = " ", key = "o", desc = "Get Options", action = ":vertical options" },
           {
             icon = " ",
             key = "c",
-            desc = "Config",
+            desc = "Get Config",
             action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
           },
-          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
-          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = "󰒲 ", key = "L", desc = "Get Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
           { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
         -- Used by the `header` section
@@ -419,35 +352,52 @@ return {
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
-      },
-      -- item field formatters
-      formats = {
-        icon = function(item)
-          if item.file and item.icon == "file" or item.icon == "directory" then
-            return M.icon(item.file, item.icon)
-          end
-          return { item.icon, width = 2, hl = "icon" }
-        end,
-        footer = { "%s", align = "center" },
-        header = { "%s", align = "center" },
-        file = function(item, ctx)
-          local fname = vim.fn.fnamemodify(item.file, ":~")
-          fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
-          if #fname > ctx.width then
-            local dir = vim.fn.fnamemodify(fname, ":h")
-            local file = vim.fn.fnamemodify(fname, ":t")
-            if dir and file then
-              file = file:sub(-(ctx.width - #dir - 2))
-              fname = dir .. "/…" .. file
-            end
-          end
-          local dir, file = fname:match("^(.*)/(.+)$")
-          return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
-        end,
+        -- { header = Headers[math.random(#Headers)] },
       },
       sections = {
-        { section = "header" },
+        { section = "header", pane = 1 },
+        {
+          pane = 2,
+          section = "terminal",
+          cmd = "colorscript -e awk-rgb-test",
+          -- cmd = function()
+          --   local commands = {
+          --     "colorscript -e pinguco",
+          --     "colorscript -e awk-rgb-test",
+          --     -- ... other commands
+          --   }
+          --   return commands[math.random(#commands)]
+          -- end,
+          height = 5,
+          padding = 1,
+        },
         { section = "keys",   gap = 1, padding = 1 },
+        {
+          pane = 2,
+          icon = " ",
+          desc = "Browse Repo",
+          padding = 1,
+          key = "b",
+          action = function()
+            Snacks.gitbrowse()
+          end,
+        },
+        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+        { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+        {
+          pane = 2,
+          icon = " ",
+          title = "Git Status",
+          section = "terminal",
+          enabled = function()
+            return Snacks.git.get_root() ~= nil
+          end,
+          cmd = "git status --short --branch --renames",
+          height = 5,
+          padding = 1,
+          ttl = 5 * 60,
+          indent = 3,
+        },
         { section = "startup" },
       },
     },
