@@ -317,25 +317,25 @@ Headers = {
 }
 
 ---@diagnostic disable: missing-parameter
-local buttons = {
-  type = "group",
-  val = {
-    button("n", "  New file", "Macro", ":ene <BAR> startinsert <CR>"),
-    button("f", "  Find file", "Macro", ":Telescope find_files <CR>"),
-    button("F", "  Find text", "Macro", ":Telescope live_grep <CR>"),
-    button("a", "🎛 Get AI", "Macro", ":AvanteChat<CR>"),
-    button("-", "󰼙  Get Oil", "Macro", ":Oil --float<CR>"),
-    button("r", "󱣱  Get Ranger", "Macro", ":Ranger<CR>"),
-    button("l", "  Get Lazy", "Macro", ":Lazy<CR>"),
-    button("m", "  Get Mason", "Macro", ":Mason<CR>"),
-    button("h", "󰞋  Get Help", "Macro", ":vertical help<CR>"),
-    button("o", "  Get Options", "Macro", ":vertical options<CR>"),
-    button("q", "󰩈  Quit", "Macro", ":qa<CR>"),
-  },
-  opts = {
-    spacing = 1,
-  },
-}
+-- local buttons = {
+--   type = "group",
+--   val = {
+--     button("n", "  New file", "Macro", ":ene <BAR> startinsert <CR>"),
+--     button("f", "  Find file", "Macro", ":Telescope find_files <CR>"),
+--     button("F", "  Find text", "Macro", ":Telescope live_grep <CR>"),
+--     button("a", "🎛 Get AI", "Macro", ":AvanteChat<CR>"),
+--     button("-", "󰼙  Get Oil", "Macro", ":Oil --float<CR>"),
+--     button("r", "󱣱  Get Ranger", "Macro", ":Ranger<CR>"),
+--     button("l", "  Get Lazy", "Macro", ":Lazy<CR>"),
+--     button("m", "  Get Mason", "Macro", ":Mason<CR>"),
+--     button("h", "󰞋  Get Help", "Macro", ":vertical help<CR>"),
+--     button("o", "  Get Options", "Macro", ":vertical options<CR>"),
+--     button("q", "󰩈  Quit", "Macro", ":qa<CR>"),
+--   },
+--   opts = {
+--     spacing = 1,
+--   },
+-- }
 ---@diagnostic enable: missing-parameter
 
 local header = {
@@ -358,13 +358,13 @@ return {
       ---@type snacks.animate.Duration|number
       duration = 20, -- ms per step
       easing = "linear",
-      fps = 60, -- frames per second. Global setting for all animations
+      fps = 60,      -- frames per second. Global setting for all animations
     },
     bigfile = {
       enabled = true,
-      notify = true, -- show notification when big file detected
+      notify = true,              -- show notification when big file detected
       size = (1.5 * 1024 * 1024), -- 1.5MB
-      line_length = 1000, -- average line length (useful for minified files)
+      line_length = 1000,         -- average line length (useful for minified files)
       -- Enable or disable features when big file detected
       ---@param ctx {buf: number, ft:string}
       setup = function(ctx)
@@ -380,8 +380,142 @@ return {
         end)
       end,
     },
-    dashboard = { enabled = true },
-    explorer = { enabled = true },
+    dashboard = {
+      enabled = true,
+      width = 60,
+      row = nil,                                                                   -- dashboard position. nil for center
+      col = nil,                                                                   -- dashboard position. nil for center
+      pane_gap = 4,                                                                -- empty columns between vertical panes
+      autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+      -- These settings are used by some built-in sections
+      preset = {
+        -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+        ---@type fun(cmd:string, opts:table)|nil
+        pick = nil,
+        -- Used by the `keys` section to show keymaps.
+        -- Set your custom keymaps here.
+        -- When using a function, the `items` argument are the default keymaps.
+        ---@type snacks.dashboard.Item[]
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          {
+            icon = " ",
+            key = "c",
+            desc = "Config",
+            action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+          },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+        },
+        -- Used by the `header` section
+        header = [[
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+      },
+      -- item field formatters
+      formats = {
+        icon = function(item)
+          if item.file and item.icon == "file" or item.icon == "directory" then
+            return M.icon(item.file, item.icon)
+          end
+          return { item.icon, width = 2, hl = "icon" }
+        end,
+        footer = { "%s", align = "center" },
+        header = { "%s", align = "center" },
+        file = function(item, ctx)
+          local fname = vim.fn.fnamemodify(item.file, ":~")
+          fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+          if #fname > ctx.width then
+            local dir = vim.fn.fnamemodify(fname, ":h")
+            local file = vim.fn.fnamemodify(fname, ":t")
+            if dir and file then
+              file = file:sub(-(ctx.width - #dir - 2))
+              fname = dir .. "/…" .. file
+            end
+          end
+          local dir, file = fname:match("^(.*)/(.+)$")
+          return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
+        end,
+      },
+      sections = {
+        { section = "header" },
+        { section = "keys",   gap = 1, padding = 1 },
+        { section = "startup" },
+      },
+    },
+    explorer = {
+      enabled = true,
+      replace_netrw = true, -- Replace netrw with the snacks explorer
+    },
+    git = {
+      width = 0.6,
+      height = 0.6,
+      border = "rounded",
+      title = " Git Blame ",
+      title_pos = "center",
+      ft = "git",
+    },
+    gitbrowse = {
+      notify = true, -- show notification on open
+      -- Handler to open the url in a browser
+      ---@param url string
+      open = function(url)
+        if vim.fn.has("nvim-0.10") == 0 then
+          require("lazy.util").open(url, { system = true })
+          return
+        end
+        vim.ui.open(url)
+      end,
+      ---@type "repo" | "branch" | "file" | "commit" | "permalink"
+      what = "commit", -- what to open. not all remotes support all types
+      branch = nil, ---@type string?
+      line_start = nil, ---@type number?
+      line_end = nil, ---@type number?
+      -- patterns to transform remotes to an actual URL
+      remote_patterns = {
+        { "^(https?://.*)%.git$",               "%1" },
+        { "^git@(.+):(.+)%.git$",               "https://%1/%2" },
+        { "^git@(.+):(.+)$",                    "https://%1/%2" },
+        { "^git@(.+)/(.+)$",                    "https://%1/%2" },
+        { "^org%-%d+@(.+):(.+)%.git$",          "https://%1/%2" },
+        { "^ssh://git@(.*)$",                   "https://%1" },
+        { "^ssh://([^:/]+)(:%d+)/(.*)$",        "https://%1/%3" },
+        { "^ssh://([^/]+)/(.*)$",               "https://%1/%2" },
+        { "ssh%.dev%.azure%.com/v3/(.*)/(.*)$", "dev.azure.com/%1/_git/%2" },
+        { "^https://%w*@(.*)",                  "https://%1" },
+        { "^git@(.*)",                          "https://%1" },
+        { ":%d+",                               "" },
+        { "%.git$",                             "" },
+      },
+      url_patterns = {
+        ["github%.com"] = {
+          branch = "/tree/{branch}",
+          file = "/blob/{branch}/{file}#L{line_start}-L{line_end}",
+          permalink = "/blob/{commit}/{file}#L{line_start}-L{line_end}",
+          commit = "/commit/{commit}",
+        },
+        ["gitlab%.com"] = {
+          branch = "/-/tree/{branch}",
+          file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
+          permalink = "/-/blob/{commit}/{file}#L{line_start}-L{line_end}",
+          commit = "/-/commit/{commit}",
+        },
+        ["bitbucket%.org"] = {
+          branch = "/src/{branch}",
+          file = "/src/{branch}/{file}#lines-{line_start}-L{line_end}",
+          permalink = "/src/{commit}/{file}#lines-{line_start}-L{line_end}",
+          commit = "/commits/{commit}",
+        },
+      },
+    },
     indent = { enabled = true },
     input = { enabled = true },
     notifier = {
@@ -907,8 +1041,8 @@ return {
         Snacks.toggle.diagnostics():map("<leader>ud")
         Snacks.toggle.line_number():map("<leader>ul")
         Snacks.toggle
-          .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
-          :map("<leader>uc")
+            .option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 })
+            :map("<leader>uc")
         Snacks.toggle.treesitter():map("<leader>uT")
         Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
         Snacks.toggle.inlay_hints():map("<leader>uh")
