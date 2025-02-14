@@ -1,6 +1,13 @@
 -- For random header
 math.randomseed(os.time())
 
+-- Get Neovim version
+local get_neovim_version = function()
+  local v = vim.version()
+  -- return "v" .. v.major .. "." .. v.minor .. "." .. v.patch
+  return string.format("%d.%d.%d", v.major, v.minor, v.patch)
+end
+
 -- All custom headers
 Headers = {
   {
@@ -322,7 +329,7 @@ return {
       preset = {
         -- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
         ---@type fun(cmd:string, opts:table)|nil
-        pick = nil,
+        pick = "telescope.nvim",
         -- Used by the `keys` section to show keymaps.
         -- Set your custom keymaps here.
         -- When using a function, the `items` argument are the default keymaps.
@@ -371,9 +378,9 @@ return {
           height = 7,
           padding = 1,
         },
-        { section = "keys", gap = 1, padding = 1 },
         { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
         { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+        { section = "keys", gap = 1, padding = 1 },
         {
           pane = 2,
           icon = " ",
@@ -399,6 +406,7 @@ return {
           indent = 3,
         },
         { section = "startup" },
+        { desc = get_neovim_version(), pane = 1, indent = 6 },
       },
     },
     explorer = {
@@ -1124,8 +1132,8 @@ return {
       ---@type table<string, boolean>
       toggles = {
         dim = true,
-        git_signs = false,
-        mini_diff_signs = false,
+        git_signs = true,
+        mini_diff_signs = true,
         -- diagnostics = false,
         -- inlay_hints = false,
       },
